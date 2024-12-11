@@ -3,9 +3,6 @@ import React from 'react';
 const Objectives = () => {
   return (
     <div className="p-8">
-      <div className="text-sm text-gray-500 mb-6">
-        Playbook App Overview / Objectives
-      </div>
       
       <h1 className="text-4xl font-light text-red-800 mb-8">Objectives</h1>
       

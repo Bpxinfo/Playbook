@@ -2,43 +2,94 @@ import React, { useState } from 'react';
 import { Home, Search, ChevronUp, ChevronDown } from 'lucide-react';
 import SidebarItem from '../components/SidebarItem';
 import { Link, useLocation } from 'react-router-dom';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const MainLayout = ({ children }) => {
   const location = useLocation();
-  const [expandedSections, setExpandedSections] = useState({
-    'playbook-app': false,
-    'ccc-initiative': false,
-    'communication-plan': true,
-    'internal': true,
-    'engagement-plan': true,
-    'internal-onboarding': false,
-    'processes': false,
-    'systems': false
-  });
+  
+  // Track expanded state for each navigation level separately
+  const [expandedTopSection, setExpandedTopSection] = useState(null);
+  const [expandedSubSection, setExpandedSubSection] = useState(null);
 
-  const isSelected = (section, item) => {
+  const hasSubsections = (section) => {
+    return section && 'subsections' in section && Array.isArray(section.subsections);
+  };
+
+  const isSelected = (section, item, subsection = null) => {
     if (!section || !item) return false;
-    const itemPath = `/${section}/${item.toLowerCase().replace(/\s+/g, '-')}`;
+    const itemPath = getItemPath(section, item, subsection);
     return location.pathname === itemPath;
   };
 
-  const isSectionSelected = (section) => {
-    if (!section) return false;
-    return location.pathname.startsWith(`/${section}`);
+  const isSectionSelected = (path) => {
+    if (!path) return false;
+    return location.pathname.startsWith(`/${path}`);
   };
 
-  const getItemPath = (section, item) => {
+  const getItemPath = (section, item, subsection = null) => {
     if (!section || !item) return '/';
-    return `/${section}/${item.toLowerCase().replace(/\s+/g, '-')}`;
+    const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
+    
+    if (subsection) {
+      const subsectionSlug = subsection.toLowerCase().replace(/\s+/g, '-');
+      return `/${section}/${subsectionSlug}/${itemSlug}`;
+    }
+    
+    return `/${section}/${itemSlug}`;
   };
 
-  const toggleSection = (section) => {
-    if (!section) return;
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
+  const toggleTopSection = (sectionKey) => {
+    setExpandedTopSection(current => current === sectionKey ? null : sectionKey);
+    // When changing top-level sections, close any open subsections
+    setExpandedSubSection(null);
   };
+
+  const toggleSubSection = (subsectionKey, e) => {
+    e.stopPropagation(); // Prevent the parent section from toggling
+    setExpandedSubSection(current => current === subsectionKey ? null : subsectionKey);
+  };
+
+  const renderSubsectionItems = (section, sectionKey, subsection) => (
+    <div className="ml-4">
+      {subsection.items.map((item, itemIdx) => {
+        const itemIsSelected = isSelected(sectionKey, item, subsection.title);
+        return (
+          <Link 
+            key={itemIdx}
+            to={getItemPath(sectionKey, item, subsection.title)}
+            className={`block py-1 text-sm rounded px-2 ${
+              itemIsSelected
+                ? 'bg-red-800 text-white pointer-events-none'
+                : 'text-black hover:bg-gray-100'
+            }`}
+          >
+            {item}
+          </Link>
+        );
+      })}
+    </div>
+  );
+
+  const renderSectionItems = (section, sectionKey) => (
+    <div className="mt-2 ml-2">
+      {section.items.map((item, idx) => {
+        const itemIsSelected = isSelected(sectionKey, item);
+        return (
+          <Link
+            key={idx}
+            to={getItemPath(sectionKey, item)}
+            className={`block py-1 text-sm rounded px-2 ${
+              itemIsSelected
+                ? 'bg-red-800 text-white pointer-events-none'
+                : 'text-black hover:bg-gray-100'
+            }`}
+          >
+            {item}
+          </Link>
+        );
+      })}
+    </div>
+  );
 
   const navigationItems = {
     'playbook-app-overview': {
@@ -136,77 +187,55 @@ const MainLayout = ({ children }) => {
           {Object.entries(navigationItems).map(([key, section]) => (
             <div key={key} className="mb-2">
               <button
-                onClick={() => toggleSection(key)}
-                className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors
-                  ${isSectionSelected(key) 
+                onClick={() => toggleTopSection(key)}
+                className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
+                  isSectionSelected(key) 
                     ? 'bg-red-800 text-white' 
-                    : 'bg-white text-black hover:bg-gray-100'}`}
+                    : 'bg-white text-black'
+                } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
               >
                 <span className="text-sm">{section.title}</span>
-                {expandedSections[key] ? (
+                {expandedTopSection === key ? (
                   <ChevronUp className="w-4 h-4" />
                 ) : (
                   <ChevronDown className="w-4 h-4" />
                 )}
               </button>
               
-              {expandedSections[key] && section.subsections && (
-                <div className="mt-2 ml-2">
-                  {section.subsections.map((subsection) => (
-                    <div key={subsection.id} className="mb-2">
-                      <button
-                        onClick={() => toggleSection(subsection.id)}
-                        className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors
-                          ${isSectionSelected(subsection.id)
-                            ? 'bg-red-800 text-white'
-                            : 'bg-white text-black hover:bg-gray-100'}`}
-                      >
-                        <span className="text-sm">{subsection.title}</span>
-                        {expandedSections[subsection.id] ? (
-                          <ChevronUp className="w-4 h-4" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4" />
-                        )}
-                      </button>
-                      
-                      {expandedSections[subsection.id] && subsection.items && (
-                        <div className="ml-4">
-                          {subsection.items.map((item, itemIdx) => (
-                            <Link 
-                              key={itemIdx}
-                              to={getItemPath(key, item)}
-                              className={`block py-1 text-sm rounded px-2 ${
-                                isSelected(key, item)
-                                  ? 'bg-red-800 text-white'
-                                  : 'text-black hover:bg-gray-100'
-                              }`}
-                            >
-                              {item}
-                            </Link>
-                          ))}
+              {expandedTopSection === key && (
+                <>
+                  {hasSubsections(section) && (
+                    <div className="mt-2 ml-2">
+                      {section.subsections.map((subsection) => (
+                        <div key={subsection.id} className="mb-2">
+                          <button
+                            onClick={(e) => toggleSubSection(subsection.id, e)}
+                            className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
+                              isSectionSelected(`${key}/${subsection.id}`)
+                                ? 'bg-red-800 text-white'
+                                : 'bg-white text-black'
+                            } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
+                          >
+                            <span className="text-sm">{subsection.title}</span>
+                            {expandedSubSection === subsection.id ? (
+                              <ChevronUp className="w-4 h-4" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4" />
+                            )}
+                          </button>
+                          
+                          {expandedSubSection === subsection.id && (
+                            renderSubsectionItems(section, key, subsection)
+                          )}
                         </div>
-                      )}
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-              
-              {expandedSections[key] && section.items && (
-                <div className="mt-2 ml-2">
-                  {section.items.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      to={getItemPath(key, item)}
-                      className={`block py-1 text-sm rounded px-2 ${
-                        isSelected(key, item)
-                          ? 'bg-red-800 text-white'
-                          : 'text-black hover:bg-gray-100'
-                      }`}
-                    >
-                      {item}
-                    </Link>
-                  ))}
-                </div>
+                  )}
+                  
+                  {section.items && !hasSubsections(section) && (
+                    renderSectionItems(section, key)
+                  )}
+                </>
               )}
             </div>
           ))}
@@ -224,6 +253,7 @@ const MainLayout = ({ children }) => {
             <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
           </div>
         </div>
+        <Breadcrumbs />
         {children}
       </div>
     </div>

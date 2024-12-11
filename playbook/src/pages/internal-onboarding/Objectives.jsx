@@ -3,41 +3,28 @@ import React from 'react';
 const Objectives = () => {
   return (
     <div className="p-8">
-      <div className="text-sm text-gray-500 mb-6">
-        Playbook App Overview / Objectives
-      </div>
-      
+
       <h1 className="text-4xl font-light text-red-800 mb-8">Objectives</h1>
-      
+
       <div className="max-w-4xl">
-        <section className="mb-8">
-          <h2 className="text-2xl text-red-800 mb-4">Primary Objective</h2>
-          <p className="text-gray-700 mb-4">
-            To create a centralized knowledge base that serves as the single source of truth for all CCC-related information, processes, and guidelines.
-          </p>
-        </section>
+        <p className="text-gray-700 mb-4">
+          The objective of this comprehensive integration program is to accelerate the onboarding of high-potential CCC Project Leaders into a community patient mission-driven initiative, ensuring their rapid alignment with strategic goals and maximizing their impact from day one. Through a structured, year-long journey, the program systematically transforms new entrants into fully integrated, high-performing contributors and ambassadors for the initiative.
+        </p>
+        <p className="text-gray-700 mb-4">
+          This meticulously designed framework encompasses six key phases: pre-integration preparation, initial orientation, immersive contribution, deepened engagement, full integration, and ongoing support. Each phase is carefully crafted to build upon the previous, fostering a self-driven approach to leadership development while simultaneously advancing the initiative's objectives.
+        </p>
+        <p className="text-gray-700">
+          The program's emphasis on hands-on experience, strategic responsibility allocation, and external engagement ensures that participants not only assimilate into their roles but also emerge as catalysts for innovation and growth within the organization.
+        </p>
+      </div>
 
-        <section className="mb-8">
-          <h2 className="text-2xl text-red-800 mb-4">Key Goals</h2>
-          <ul className="list-disc pl-6 space-y-3 text-gray-700">
-            <li>Streamline access to CCC documentation and resources</li>
-            <li>Ensure consistency in CCC processes and communications</li>
-            <li>Facilitate onboarding of new team members</li>
-            <li>Support ongoing reference and learning needs</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl text-red-800 mb-4">Success Metrics</h2>
-          <div className="bg-white rounded-lg shadow p-6">
-            <ul className="list-decimal pl-6 space-y-3 text-gray-700">
-              <li>Reduced time to find CCC-related information</li>
-              <li>Increased consistency in CCC process execution</li>
-              <li>Improved onboarding experience ratings</li>
-              <li>Higher engagement with CCC resources</li>
-            </ul>
-          </div>
-        </section>
+      <div className="flex justify-between mt-8">
+        <button className="bg-gray-500 text-white px-4 py-2 rounded-full">
+          &lt;
+        </button>
+        <button className="bg-red-800 text-white px-4 py-2 rounded-full">
+          &gt;
+        </button>
       </div>
     </div>
   );
