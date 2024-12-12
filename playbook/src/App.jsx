@@ -4,6 +4,7 @@ import MainLayout from './layouts/MainLayout';
 
 // Import page components
 import PlaybookObjectives from './pages/playbook-app/Objectives';
+import FeedbackForm from './pages/feedback/Feedback';
 
 //CCC Initiative Overview
 import CCCOverview from './pages/ccc-initiative/Objectives';
@@ -37,12 +38,14 @@ import LinksToProcess from './pages/processes/LinktoSGF';
 
 //Systems
 import SystemsObjectives from './pages/systems/Objectives';
+import DigitalSystems from './pages/systems/DigitalSystems';
 
 function App() {
   return (
     <MainLayout>
       <Routes>
         {/* Playbook App Overview */}
+        <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/playbook-app-overview/objectives" element={<PlaybookObjectives />} />
 
         {/* CCC Initiative */}
@@ -79,6 +82,7 @@ function App() {
 
         {/* Systems */}
         <Route path="/systems/objectives" element={<SystemsObjectives />} />
+        <Route path="/systems/digital-systems" element={<DigitalSystems />} />
 
         {/* Default route */}
         <Route path="/" element={
