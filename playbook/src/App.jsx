@@ -26,9 +26,16 @@ import LeadershipSteerCoMonitoring from './pages/communication-plan/engagement/I
 import InternalEngagementStrategies from './pages/communication-plan/engagement/InternalEngagementStrategies';
 import InternalEngagementPlan from './pages/communication-plan/engagement/InternalFeedback';
 
-
+//Onboarding
 import OnboardingObjectives from './pages/internal-onboarding/Objectives';
+
+//Processes
 import ProcessesObjectives from './pages/processes/Objectives';
+import ProcessesGovernance from './pages/processes/ProcessesGovernance';
+import ComplianceGuidance from './pages/processes/ComplianceGuidance';
+import LinksToProcess from './pages/processes/LinktoSGF';
+
+//Systems
 import SystemsObjectives from './pages/systems/Objectives';
 
 function App() {
@@ -66,6 +73,9 @@ function App() {
 
         {/* Processes */}
         <Route path="/processes/objectives" element={<ProcessesObjectives />} />
+        <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
+        <Route path="/processes/compliance-guidance" element={<ComplianceGuidance />} />
+        <Route path="/processes/link-to-sops,-guidance,-forms,-etc." element={<LinksToProcess />} />
 
         {/* Systems */}
         <Route path="/systems/objectives" element={<SystemsObjectives />} />

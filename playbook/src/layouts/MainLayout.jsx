@@ -1,15 +1,82 @@
 import React, { useState } from 'react';
-import { Home, Search, ChevronUp, ChevronDown } from 'lucide-react';
+import { 
+  Home,
+  Search, 
+  ChevronUp, 
+  ChevronDown,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Book,
+  Building,
+  MessageSquare,
+  UserPlus,
+  Settings,
+  Database,
+  Layout
+} from 'lucide-react';
 import SidebarItem from '../components/SidebarItem';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const MainLayout = ({ children }) => {
   const location = useLocation();
-  
-  // Track expanded state for each navigation level separately
+  const navigate = useNavigate();
   const [expandedTopSection, setExpandedTopSection] = useState(null);
   const [expandedSubSection, setExpandedSubSection] = useState(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  // Map section keys to icons and their default routes
+  const sectionConfig = {
+    'playbook-app-overview': {
+      icon: Book,
+      defaultRoute: '/playbook-app-overview/objectives'
+    },
+    'ccc-initiative': {
+      icon: Building,
+      defaultRoute: '/ccc-initiative/objectives-and-ccc-overview'
+    },
+    'communication-plan': {
+      icon: MessageSquare,
+      defaultRoute: '/communication-plan/internal/objectives'
+    },
+    'internal-onboarding': {
+      icon: UserPlus,
+      defaultRoute: '/internal-onboarding/objectives'
+    },
+    'processes': {
+      icon: Settings,
+      defaultRoute: '/processes/objectives'
+    },
+    'systems': {
+      icon: Database,
+      defaultRoute: '/systems/objectives'
+    },
+    'projects-archetypes': {
+      icon: Layout,
+      defaultRoute: '/projects-archetypes/objectives'
+    }
+  };
+
+  const handleSectionClick = (key) => {
+    if (isSidebarCollapsed) {
+      // Navigate to default route instead of expanding
+      navigate(sectionConfig[key].defaultRoute);
+    } else {
+      setExpandedTopSection(current => current === key ? null : key);
+      setExpandedSubSection(null);
+    }
+  };
+
+  // Map section keys to icons
+  const sectionIcons = {
+    'playbook-app-overview': Book,
+    'ccc-initiative': Building,
+    'communication-plan': MessageSquare,
+    'internal-onboarding': UserPlus,
+    'processes': Settings,
+    'systems': Database,
+    'projects-archetypes': Layout
+  };
 
   const hasSubsections = (section) => {
     return section && 'subsections' in section && Array.isArray(section.subsections);
@@ -39,13 +106,15 @@ const MainLayout = ({ children }) => {
   };
 
   const toggleTopSection = (sectionKey) => {
+    if (isSidebarCollapsed) {
+      setIsSidebarCollapsed(false);
+    }
     setExpandedTopSection(current => current === sectionKey ? null : sectionKey);
-    // When changing top-level sections, close any open subsections
     setExpandedSubSection(null);
   };
 
   const toggleSubSection = (subsectionKey, e) => {
-    e.stopPropagation(); // Prevent the parent section from toggling
+    e.stopPropagation();
     setExpandedSubSection(current => current === subsectionKey ? null : subsectionKey);
   };
 
@@ -171,74 +240,94 @@ const MainLayout = ({ children }) => {
     }
   };
 
-  return (
+return (
     <div className="flex h-screen bg-gray-100">
-      <div className="w-64 flex-shrink-0 bg-white shadow-lg">
-        <Link to="/" className="block">
-          <div className="p-4 border-b">
-            <div className="flex items-center text-red-800 font-medium">
-              <Home className="w-4 h-4 mr-2" />
-              Playbook Home
-            </div>
+      <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
+        <div className="p-4 border-b flex items-center justify-between">
+          <div className="flex items-center">
+            <Home className="w-5 h-5 text-red-800" />
+            {!isSidebarCollapsed && (
+              <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
+            )}
           </div>
-        </Link>
+          <button 
+            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+            className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
+          >
+            {isSidebarCollapsed ? (
+              <PanelLeftOpen className="w-5 h-5 text-gray-600" />
+            ) : (
+              <PanelLeftClose className="w-5 h-5 text-gray-600" />
+            )}
+          </button>
+        </div>
         
         <nav className="p-2 bg-white">
-          {Object.entries(navigationItems).map(([key, section]) => (
-            <div key={key} className="mb-2">
-              <button
-                onClick={() => toggleTopSection(key)}
-                className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
-                  isSectionSelected(key) 
-                    ? 'bg-red-800 text-white' 
-                    : 'bg-white text-black'
-                } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
-              >
-                <span className="text-sm">{section.title}</span>
-                {expandedTopSection === key ? (
-                  <ChevronUp className="w-4 h-4" />
-                ) : (
-                  <ChevronDown className="w-4 h-4" />
-                )}
-              </button>
-              
-              {expandedTopSection === key && (
-                <>
-                  {hasSubsections(section) && (
-                    <div className="mt-2 ml-2">
-                      {section.subsections.map((subsection) => (
-                        <div key={subsection.id} className="mb-2">
-                          <button
-                            onClick={(e) => toggleSubSection(subsection.id, e)}
-                            className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
-                              isSectionSelected(`${key}/${subsection.id}`)
-                                ? 'bg-red-800 text-white'
-                                : 'bg-white text-black'
-                            } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
-                          >
-                            <span className="text-sm">{subsection.title}</span>
-                            {expandedSubSection === subsection.id ? (
-                              <ChevronUp className="w-4 h-4" />
-                            ) : (
-                              <ChevronDown className="w-4 h-4" />
+          {Object.entries(navigationItems).map(([key, section]) => {
+            const SectionIcon = sectionConfig[key].icon;
+            return (
+              <div key={key} className="mb-2">
+                <button
+                  onClick={() => handleSectionClick(key)}
+                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
+                    isSectionSelected(key) 
+                      ? 'bg-red-800 text-white' 
+                      : 'bg-white text-black'
+                  } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
+                >
+                  <div className="flex items-center">
+                    {SectionIcon && <SectionIcon className="w-5 h-5" />}
+                    {!isSidebarCollapsed && (
+                      <span className="text-sm ml-2">{section.title}</span>
+                    )}
+                  </div>
+                  {!isSidebarCollapsed && (
+                    expandedTopSection === key ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )
+                  )}
+                </button>
+                
+                {expandedTopSection === key && !isSidebarCollapsed && (
+                  <>
+                    {hasSubsections(section) && (
+                      <div className="mt-2 ml-2">
+                        {section.subsections.map((subsection) => (
+                          <div key={subsection.id} className="mb-2">
+                            <button
+                              onClick={(e) => toggleSubSection(subsection.id, e)}
+                              className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
+                                isSectionSelected(`${key}/${subsection.id}`)
+                                  ? 'bg-red-800 text-white'
+                                  : 'bg-white text-black'
+                              } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
+                            >
+                              <span className="text-sm">{subsection.title}</span>
+                              {expandedSubSection === subsection.id ? (
+                                <ChevronUp className="w-4 h-4" />
+                              ) : (
+                                <ChevronDown className="w-4 h-4" />
+                              )}
+                            </button>
+                            
+                            {expandedSubSection === subsection.id && (
+                              renderSubsectionItems(section, key, subsection)
                             )}
-                          </button>
-                          
-                          {expandedSubSection === subsection.id && (
-                            renderSubsectionItems(section, key, subsection)
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {section.items && !hasSubsections(section) && (
-                    renderSectionItems(section, key)
-                  )}
-                </>
-              )}
-            </div>
-          ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {section.items && !hasSubsections(section) && (
+                      renderSectionItems(section, key)
+                    )}
+                  </>
+                )}
+              </div>
+            );
+          })}
         </nav>
       </div>
 
