@@ -17,15 +17,6 @@ const Objectives = () => {
           The framework's emphasis on transparent documentation, clear accountability structures, and proactive risk management ensures that the CCC initiative not only meets its current obligations but is also positioned to scale effectively and respond to emerging complexities. Through systematic monitoring and regular review cycles, the framework promotes continuous improvement while maintaining the agility necessary to address evolving patient needs, treatment landscapes, and operational demands.
         </p>
       </div>
-
-      <div className="flex justify-between mt-8">
-        <button className="bg-gray-500 text-white px-4 py-2 rounded-full">
-          &lt;
-        </button>
-        <button className="bg-red-800 text-white px-4 py-2 rounded-full">
-          &gt;
-        </button>
-      </div>
     </div>
   );
 };

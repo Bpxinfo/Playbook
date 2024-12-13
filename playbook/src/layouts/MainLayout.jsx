@@ -24,44 +24,60 @@ const MainLayout = ({ children }) => {
   const [expandedTopSection, setExpandedTopSection] = useState(null);
   const [expandedSubSection, setExpandedSubSection] = useState(null);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Map section keys to icons and their default routes
   const sectionConfig = {
     'playbook-app-overview': {
       icon: Book,
-      defaultRoute: '/playbook-app-overview/objectives'
+      defaultRoute: '/playbook-app-overview'
     },
     'ccc-initiative': {
       icon: Building,
-      defaultRoute: '/ccc-initiative/objectives-and-ccc-overview'
+      defaultRoute: '/ccc-initiative'
     },
     'communication-plan': {
       icon: MessageSquare,
-      defaultRoute: '/communication-plan/internal/objectives'
+      defaultRoute: '/communication-plan'
     },
     'internal-onboarding': {
       icon: UserPlus,
-      defaultRoute: '/internal-onboarding/objectives'
+      defaultRoute: '/internal-onboarding'
     },
     'processes': {
       icon: Settings,
-      defaultRoute: '/processes/objectives'
+      defaultRoute: '/processes'
     },
     'systems': {
       icon: Database,
-      defaultRoute: '/systems/objectives'
+      defaultRoute: '/systems'
     },
     'projects-archetypes': {
       icon: Layout,
-      defaultRoute: '/projects-archetypes/objectives'
+      defaultRoute: '/projects-archetypes'
+    }
+  };
+
+  //search functions
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch(e);
     }
   };
 
   const handleSectionClick = (key) => {
-    if (isSidebarCollapsed) {
-      // Navigate to default route instead of expanding
-      navigate(sectionConfig[key].defaultRoute);
-    } else {
+    // Always navigate to default route when clicking section header
+    navigate(sectionConfig[key].defaultRoute);
+    
+    // Only expand/collapse if sidebar isn't collapsed
+    if (!isSidebarCollapsed) {
       setExpandedTopSection(current => current === key ? null : key);
       setExpandedSubSection(null);
     }
@@ -243,24 +259,24 @@ const MainLayout = ({ children }) => {
 return (
     <div className="flex h-screen bg-gray-100">
       <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
-        <div className="p-4 border-b flex items-center justify-between">
-          <div className="flex items-center">
-            <Home className="w-5 h-5 text-red-800" />
-            {!isSidebarCollapsed && (
-              <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
-            )}
-          </div>
-          <button 
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
-          >
-            {isSidebarCollapsed ? (
-              <PanelLeftOpen className="w-5 h-5 text-gray-600" />
-            ) : (
-              <PanelLeftClose className="w-5 h-5 text-gray-600" />
-            )}
-          </button>
-        </div>
+      <div className="p-4 border-b flex items-center justify-between">
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <Home className="w-5 h-5 text-red-800" />
+          {!isSidebarCollapsed && (
+            <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
+          )}
+        </Link>
+        <button 
+          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+          className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
+        >
+          {isSidebarCollapsed ? (
+            <PanelLeftOpen className="w-5 h-5 text-gray-600" />
+          ) : (
+            <PanelLeftClose className="w-5 h-5 text-gray-600" />
+          )}
+        </button>
+      </div>
         
         <nav className="p-2 bg-white">
           {Object.entries(navigationItems).map(([key, section]) => {
@@ -333,21 +349,24 @@ return (
 
       <div className="flex-1 overflow-auto">
         <div className="bg-white p-4 shadow-sm flex justify-end items-center space-x-4">
-        <Link
-          to="/feedback"
-          className="flex items-center text-red-800 hover:text-red-700 transition-colors"
-        >
-          <MessageSquare className="w-4 h-4 mr-2" />
-          Submit Feedback
-        </Link>
-          <div className="relative">
+          <Link
+            to="/feedback"
+            className="flex items-center text-red-800 hover:text-red-700 transition-colors"
+          >
+            <MessageSquare className="w-4 h-4 mr-2" />
+            Submit Feedback
+          </Link>
+          <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
               placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
               className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
             />
             <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-          </div>
+          </form>
         </div>
         <Breadcrumbs />
         {children}

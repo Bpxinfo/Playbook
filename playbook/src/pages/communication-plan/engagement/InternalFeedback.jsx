@@ -43,15 +43,6 @@ const InternalEngagementPlan = () => {
           </div>
         </section>
       </div>
-
-      <div className="flex justify-between mt-8">
-        <button className="bg-red-800 text-white px-4 py-2 rounded-full">
-          &lt;
-        </button>
-        <button className="bg-red-800 text-white px-4 py-2 rounded-full">
-          &gt;
-        </button>
-      </div>
     </div>
   );
 };
