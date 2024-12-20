@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { searchPages } from '../utils/search';
+import { searchIndex } from '../utils/searchIndex';
 import SearchResults from '../components/SearchResults';
 
 const SearchPage = () => {
@@ -10,15 +10,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      // In a real application, you would import all your page components
-      // and their content here. For now, we'll use a mock pages object
-      const pages = {
-        '/ccc-initiative/objectives': 'Objectives content...',
-        '/processes/compliance-guidance': 'Compliance guidance content...',
-        // Add more pages here
-      };
-
-      const searchResults = searchPages(pages, searchTerm);
+      const searchResults = searchIndex.search(searchTerm, 20);
       setResults(searchResults);
     }
   }, [searchTerm]);

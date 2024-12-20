@@ -1,180 +1,36 @@
-import React, { useState } from 'react';
-import { 
+import React, { useState, useEffect, useRef } from 'react';
+import {
   Home,
-  Search, 
-  ChevronUp, 
+  Search,
+  ChevronUp,
   ChevronDown,
   PanelLeftClose,
   PanelLeftOpen,
+  MessageSquare,
   Book,
   Building,
-  MessageSquare,
   UserPlus,
   Settings,
   Database,
   Layout
 } from 'lucide-react';
-import SidebarItem from '../components/SidebarItem';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { searchIndex } from '../utils/searchIndex';
+import useContentSearch from '../hooks/useContentSearch';
 
 const MainLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { searchContent } = useContentSearch();
+  
   const [expandedTopSection, setExpandedTopSection] = useState(null);
   const [expandedSubSection, setExpandedSubSection] = useState(null);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
-  // Map section keys to icons and their default routes
-  const sectionConfig = {
-    'playbook-app-overview': {
-      icon: Book,
-      defaultRoute: '/playbook-app-overview'
-    },
-    'ccc-initiative': {
-      icon: Building,
-      defaultRoute: '/ccc-initiative'
-    },
-    'communication-plan': {
-      icon: MessageSquare,
-      defaultRoute: '/communication-plan'
-    },
-    'internal-onboarding': {
-      icon: UserPlus,
-      defaultRoute: '/internal-onboarding'
-    },
-    'processes': {
-      icon: Settings,
-      defaultRoute: '/processes'
-    },
-    'systems': {
-      icon: Database,
-      defaultRoute: '/systems'
-    },
-    'projects-archetypes': {
-      icon: Layout,
-      defaultRoute: '/projects-archetypes'
-    }
-  };
-
-  //search functions
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
-    }
-  };
-
-  const handleSearchKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch(e);
-    }
-  };
-
-  const handleSectionClick = (key) => {
-    // Always navigate to default route when clicking section header
-    navigate(sectionConfig[key].defaultRoute);
-    
-    // Only expand/collapse if sidebar isn't collapsed
-    if (!isSidebarCollapsed) {
-      setExpandedTopSection(current => current === key ? null : key);
-      setExpandedSubSection(null);
-    }
-  };
-
-  // Map section keys to icons
-  const sectionIcons = {
-    'playbook-app-overview': Book,
-    'ccc-initiative': Building,
-    'communication-plan': MessageSquare,
-    'internal-onboarding': UserPlus,
-    'processes': Settings,
-    'systems': Database,
-    'projects-archetypes': Layout
-  };
-
-  const hasSubsections = (section) => {
-    return section && 'subsections' in section && Array.isArray(section.subsections);
-  };
-
-  const isSelected = (section, item, subsection = null) => {
-    if (!section || !item) return false;
-    const itemPath = getItemPath(section, item, subsection);
-    return location.pathname === itemPath;
-  };
-
-  const isSectionSelected = (path) => {
-    if (!path) return false;
-    return location.pathname.startsWith(`/${path}`);
-  };
-
-  const getItemPath = (section, item, subsection = null) => {
-    if (!section || !item) return '/';
-    const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
-    
-    if (subsection) {
-      const subsectionSlug = subsection.toLowerCase().replace(/\s+/g, '-');
-      return `/${section}/${subsectionSlug}/${itemSlug}`;
-    }
-    
-    return `/${section}/${itemSlug}`;
-  };
-
-  const toggleTopSection = (sectionKey) => {
-    if (isSidebarCollapsed) {
-      setIsSidebarCollapsed(false);
-    }
-    setExpandedTopSection(current => current === sectionKey ? null : sectionKey);
-    setExpandedSubSection(null);
-  };
-
-  const toggleSubSection = (subsectionKey, e) => {
-    e.stopPropagation();
-    setExpandedSubSection(current => current === subsectionKey ? null : subsectionKey);
-  };
-
-  const renderSubsectionItems = (section, sectionKey, subsection) => (
-    <div className="ml-4">
-      {subsection.items.map((item, itemIdx) => {
-        const itemIsSelected = isSelected(sectionKey, item, subsection.title);
-        return (
-          <Link 
-            key={itemIdx}
-            to={getItemPath(sectionKey, item, subsection.title)}
-            className={`block py-1 text-sm rounded px-2 ${
-              itemIsSelected
-                ? 'bg-red-800 text-white pointer-events-none'
-                : 'text-black hover:bg-gray-100'
-            }`}
-          >
-            {item}
-          </Link>
-        );
-      })}
-    </div>
-  );
-
-  const renderSectionItems = (section, sectionKey) => (
-    <div className="mt-2 ml-2">
-      {section.items.map((item, idx) => {
-        const itemIsSelected = isSelected(sectionKey, item);
-        return (
-          <Link
-            key={idx}
-            to={getItemPath(sectionKey, item)}
-            className={`block py-1 text-sm rounded px-2 ${
-              itemIsSelected
-                ? 'bg-red-800 text-white pointer-events-none'
-                : 'text-black hover:bg-gray-100'
-            }`}
-          >
-            {item}
-          </Link>
-        );
-      })}
-    </div>
-  );
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const searchRef = useRef(null);
 
   const navigationItems = {
     'playbook-app-overview': {
@@ -255,6 +111,248 @@ const MainLayout = ({ children }) => {
       items: ['Objectives']
     }
   };
+
+   // Map section keys to icons and their default routes
+   const sectionConfig = {
+    'playbook-app-overview': {
+      icon: Book,
+      defaultRoute: '/playbook-app-overview'
+    },
+    'ccc-initiative': {
+      icon: Building,
+      defaultRoute: '/ccc-initiative'
+    },
+    'communication-plan': {
+      icon: MessageSquare,
+      defaultRoute: '/communication-plan'
+    },
+    'internal-onboarding': {
+      icon: UserPlus,
+      defaultRoute: '/internal-onboarding'
+    },
+    'processes': {
+      icon: Settings,
+      defaultRoute: '/processes'
+    },
+    'systems': {
+      icon: Database,
+      defaultRoute: '/systems'
+    },
+    'projects-archetypes': {
+      icon: Layout,
+      defaultRoute: '/projects-archetypes'
+    }
+  };
+
+  const searchThroughNavigation = (query) => {
+    const normalizedQuery = query.toLowerCase().trim();
+    const results = [];
+    
+    Object.entries(navigationItems).forEach(([key, section]) => {
+      // Check section title
+      if (section.title.toLowerCase().includes(normalizedQuery)) {
+        results.push({
+          title: section.title,
+          path: `/${key}`,
+          excerpt: `Section: ${section.title}`,
+          score: 3
+        });
+      }
+
+      // Check items
+      if (section.items) {
+        section.items.forEach(item => {
+          if (item.toLowerCase().includes(normalizedQuery)) {
+            results.push({
+              title: item,
+              path: `/${key}/${item.toLowerCase().replace(/\s+/g, '-')}`,
+              excerpt: `${section.title} > ${item}`,
+              score: 2
+            });
+          }
+        });
+      }
+
+      // Check subsections
+      if (section.subsections) {
+        section.subsections.forEach(subsection => {
+          if (subsection.title.toLowerCase().includes(normalizedQuery)) {
+            results.push({
+              title: subsection.title,
+              path: `/${key}/${subsection.id}`,
+              excerpt: `${section.title} > ${subsection.title}`,
+              score: 2
+            });
+          }
+
+          subsection.items?.forEach(item => {
+            if (item.toLowerCase().includes(normalizedQuery)) {
+              results.push({
+                title: item,
+                path: `/${key}/${subsection.id}/${item.toLowerCase().replace(/\s+/g, '-')}`,
+                excerpt: `${section.title} > ${subsection.title} > ${item}`,
+                score: 2
+              });
+            }
+          });
+        });
+      }
+    });
+
+    return results;
+  };
+
+  // Main search function that combines navigation and content search
+  const performLocalSearch = (query) => {
+    if (!query?.trim()) return [];
+    
+    // Search through navigation structure
+    const navigationResults = searchThroughNavigation(query);
+    
+    // Search through content
+    const contentResults = searchContent(query);
+    
+    // Combine and deduplicate results
+    const combinedResults = [...navigationResults, ...(contentResults || [])];
+    const uniqueResults = Array.from(
+      new Map(combinedResults.map(item => [item.path, item])).values()
+    );
+    
+    // Sort by relevance and return top 5
+    return uniqueResults
+      .sort((a, b) => ((b.score || b.relevance || 1) - (a.score || a.relevance || 1)))
+      .slice(0, 5);
+  };
+
+  // Event handlers
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    
+    if (value.trim().length > 1) {
+      const results = performLocalSearch(value);
+      setSearchResults(results);
+      setShowSearchDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowSearchDropdown(false);
+    }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      setShowSearchDropdown(false);
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
+  // Navigation helper functions
+  const hasSubsections = (section) => {
+    return section && 'subsections' in section && Array.isArray(section.subsections);
+  };
+
+  const isSelected = (section, item, subsection = null) => {
+    if (!section || !item) return false;
+    const itemPath = getItemPath(section, item, subsection);
+    return location.pathname === itemPath;
+  };
+
+  const isSectionSelected = (path) => {
+    if (!path) return false;
+    return location.pathname.startsWith(`/${path}`);
+  };
+
+  const getItemPath = (section, item, subsection = null) => {
+    if (!section || !item) return '/';
+    const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
+    
+    if (subsection) {
+      const subsectionSlug = subsection.toLowerCase().replace(/\s+/g, '-');
+      return `/${section}/${subsectionSlug}/${itemSlug}`;
+    }
+    
+    return `/${section}/${itemSlug}`;
+  };
+
+  // Section handling functions
+  const handleSectionClick = (key) => {
+    navigate(sectionConfig[key].defaultRoute);
+    
+    if (!isSidebarCollapsed) {
+      setExpandedTopSection(current => current === key ? null : key);
+      setExpandedSubSection(null);
+    }
+  };
+
+  const toggleTopSection = (sectionKey) => {
+    if (isSidebarCollapsed) {
+      setIsSidebarCollapsed(false);
+    }
+    setExpandedTopSection(current => current === sectionKey ? null : sectionKey);
+    setExpandedSubSection(null);
+  };
+
+  const toggleSubSection = (subsectionKey, e) => {
+    e.stopPropagation();
+    setExpandedSubSection(current => current === subsectionKey ? null : subsectionKey);
+  };
+
+  // Click outside handler for search dropdown
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowSearchDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Rendering helper functions
+  const renderSubsectionItems = (section, sectionKey, subsection) => (
+    <div className="ml-4">
+      {subsection.items.map((item, itemIdx) => {
+        const itemIsSelected = isSelected(sectionKey, item, subsection.title);
+        return (
+          <Link 
+            key={itemIdx}
+            to={getItemPath(sectionKey, item, subsection.title)}
+            className={`block py-1 text-sm rounded px-2 ${
+              itemIsSelected
+                ? 'bg-red-800 text-white pointer-events-none'
+                : 'text-black hover:bg-gray-100'
+            }`}
+          >
+            {item}
+          </Link>
+        );
+      })}
+    </div>
+  );
+
+  const renderSectionItems = (section, sectionKey) => (
+    <div className="mt-2 ml-2">
+      {section.items.map((item, idx) => {
+        const itemIsSelected = isSelected(sectionKey, item);
+        return (
+          <Link
+            key={idx}
+            to={getItemPath(sectionKey, item)}
+            className={`block py-1 text-sm rounded px-2 ${
+              itemIsSelected
+                ? 'bg-red-800 text-white pointer-events-none'
+                : 'text-black hover:bg-gray-100'
+            }`}
+          >
+            {item}
+          </Link>
+        );
+      })}
+    </div>
+  );
+
 
 return (
     <div className="flex h-screen bg-gray-100">
@@ -356,16 +454,41 @@ return (
             <MessageSquare className="w-4 h-4 mr-2" />
             Submit Feedback
           </Link>
-          <form onSubmit={handleSearch} className="relative">
+          <form onSubmit={handleSearch} className="relative" ref={searchRef}>
             <input
               type="text"
               placeholder="Search"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleSearchKeyDown}
+              onChange={handleSearchChange}
               className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
             />
             <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+            
+            {showSearchDropdown && searchResults.length > 0 && (
+              <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
+                {searchResults.map((result, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      navigate(result.path);
+                      setShowSearchDropdown(false);
+                      setSearchTerm('');
+                    }}
+                    className="w-full px-4 py-3 text-left bg-white hover:bg-gray-50 flex flex-col border-b last:border-b-0"
+                  >
+                    <span className="font-medium text-red-800">{result.title}</span>
+                    <span className="text-sm text-gray-600">{result.excerpt}</span>
+                  </button>
+                ))}
+                
+                <button
+                  onClick={handleSearch}
+                  className="w-full px-4 py-2 text-center text-sm text-red-800 bg-white hover:bg-gray-50 border-t"
+                >
+                  View all results
+                </button>
+              </div>
+            )}
           </form>
         </div>
         <Breadcrumbs />

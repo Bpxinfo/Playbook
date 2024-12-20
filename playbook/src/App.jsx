@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 
@@ -7,6 +7,10 @@ import HomePage from './pages/index';
 // Import page components
 import FeedbackForm from './pages/feedback/Feedback';
 import SearchPage from './pages/SearchPage';
+import { initializeSearch } from './utils/searchIndex';
+import { initializeSearchIndex } from './utils/pageRegistry';
+import ContentIndexer from './components/ContentIndexer';
+
 
 //playbook app overview
 import PlaybookObjectives from './pages/playbook-app/Objectives';
@@ -59,8 +63,29 @@ import DigitalSystems from './pages/systems/DigitalSystems';
 import SystemsHome from './pages/systems';
 
 function App() {
+  useEffect(() => {
+    const initSearch = async () => {
+      try {
+        // Initialize content indexing
+        const contentSearcher = new ContentSearch();
+        await contentSearcher.indexCurrentPage();
+        
+        // Initialize navigation/structure indexing
+        const pages = await initializeSearchIndex();
+        Object.entries(pages).forEach(([path, pageData]) => {
+          searchIndex.indexPage(path, pageData);
+        });
+      } catch (error) {
+        console.error('Error initializing search:', error);
+      }
+    };
+  
+    initSearch();
+  }, []);
+
   return (
     <MainLayout>
+      <ContentIndexer />
       <Routes>
         {/* Components*/}
         <Route path="/feedback" element={<FeedbackForm />} />
