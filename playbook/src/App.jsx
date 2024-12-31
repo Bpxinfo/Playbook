@@ -6,9 +6,9 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/index';
 // Import page components
 import FeedbackForm from './pages/feedback/Feedback';
-import SearchPage from './pages/SearchPage';
-import { initializeSearch } from './utils/searchIndex';
+import SearchPage from './pages/SearchPage'; 
 import { initializeSearchIndex } from './utils/pageRegistry';
+import { searchIndex } from './utils/searchIndex';
 import ContentIndexer from './components/ContentIndexer';
 
 
@@ -26,6 +26,7 @@ import CCCInitiativeHome from './pages/ccc-initiative/index';
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
+import CommInternalHome from './pages/communication-plan/internal/internalIndex';
 import InternalObjectives from './pages/communication-plan/internal/Objectives';
 import CommunicationChannels from './pages/communication-plan/internal/CCCCommunications';
 import CCCStakeholders from './pages/communication-plan/internal/CCCStakeholders';
@@ -34,6 +35,7 @@ import StrategiesTactics from './pages/communication-plan/internal/StrategiesNTa
 import Timeline from './pages/communication-plan/internal/Timeline';
 
 import EngagementObjectives from './pages/communication-plan/engagement/Objectives';
+import CommEngHome from './pages/communication-plan/engagement/engIndex';
 import CommunicationPlan from './pages/communication-plan/engagement/CommunicationPath';
 import LeadershipSteerCoMonitoring from './pages/communication-plan/engagement/ImpactMonitoring';
 import InternalEngagementStrategies from './pages/communication-plan/engagement/InternalEngagementStrategies';
@@ -55,26 +57,26 @@ import ProcessesHome from './pages/processes/index';
 import ProcessesObjectives from './pages/processes/Objectives';
 import ProcessesGovernance from './pages/processes/ProcessesGovernance';
 import ComplianceGuidance from './pages/processes/ComplianceGuidance';
-import LinksToProcess from './pages/processes/LinktoSGF';
+import LinktoSGF from './pages/processes/LinktoSGF';
 
 //Systems
 import SystemsObjectives from './pages/systems/Objectives';
 import DigitalSystems from './pages/systems/DigitalSystems';
 import SystemsHome from './pages/systems';
+import LinkstoProcess from './pages/systems/LinkstoProcess';
+import ManualSystems from './pages/systems/ManualSystems';
 
 function App() {
   useEffect(() => {
     const initSearch = async () => {
       try {
-        // Initialize content indexing
-        const contentSearcher = new ContentSearch();
-        await contentSearcher.indexCurrentPage();
-        
-        // Initialize navigation/structure indexing
+        // Initialize page content indexing
         const pages = await initializeSearchIndex();
-        Object.entries(pages).forEach(([path, pageData]) => {
-          searchIndex.indexPage(path, pageData);
-        });
+        if (pages) {
+          Object.entries(pages).forEach(([path, pageData]) => {
+            searchIndex.indexPage(path, pageData);
+          });
+        }
       } catch (error) {
         console.error('Error initializing search:', error);
       }
@@ -104,6 +106,7 @@ function App() {
 
         {/* Communication Plan - Internal */}
         <Route path="/communication-plan" element={<CommunicationPlanHome />} />
+        <Route path="/communication-plan/internal" element={<CommInternalHome />} />
         <Route path="/communication-plan/internal/objectives" element={<InternalObjectives />} />
         <Route path="/communication-plan/internal/ccc-communications" element={<CommunicationChannels />} />
         <Route path="/communication-plan/internal/ccc-stakeholders" element={<CCCStakeholders />} />
@@ -115,6 +118,7 @@ function App() {
         {/* Communication Plan - Engagement */}
 
         <Route path="/communication-plan/engagement-plan/objectives" element={<EngagementObjectives />} />
+        <Route path="/communication-plan/engagement-plan" element={<CommEngHome />} />
         <Route path="/communication-plan/engagement-plan/communication-path" element={<CommunicationPlan />} />
         <Route path="/communication-plan/engagement-plan/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
         <Route path="/communication-plan/engagement-plan/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
@@ -137,13 +141,14 @@ function App() {
         <Route path="/processes/objectives" element={<ProcessesObjectives />} />
         <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
         <Route path="/processes/compliance-guidance" element={<ComplianceGuidance />} />
-        <Route path="/processes/link-to-sops,-guidance,-forms,-etc." element={<LinksToProcess />} />
+        <Route path="/processes/link-to-sops,-guidance,-forms,-etc." element={<LinktoSGF />} />
 
         {/* Systems */}
         <Route path="/systems" element={<SystemsHome />} />
         <Route path="/systems/objectives" element={<SystemsObjectives />} />
         <Route path="/systems/digital-systems" element={<DigitalSystems />} />
-
+        <Route path="/systems/manual-systems" element={<ManualSystems />} />
+        <Route path="systems/links-to-process" element={<LinkstoProcess />} />
         {/* Default route */}
         <Route path="/" element={<HomePage />} />
       </Routes>

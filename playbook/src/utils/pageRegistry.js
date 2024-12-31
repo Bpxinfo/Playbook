@@ -1,4 +1,5 @@
-// src/utils/pageRegistry.js
+import { createRoot, unmountComponentAtNode } from 'react-dom/client';
+
 export const pageRegistry = {
     // Home
     '/': {
@@ -183,15 +184,11 @@ export const pageRegistry = {
     for (const [path, config] of Object.entries(pageRegistry)) {
       try {
         const module = await config.component();
-        const component = module.default;
-        
-        // Extract text content from component
-        const content = await extractComponentContent(component);
         
         pages[path] = {
           title: config.title,
-          content,
-          path
+          path,
+          metadata: config.metadata || ''
         };
       } catch (error) {
         console.error(`Error loading page ${path}:`, error);
@@ -201,22 +198,3 @@ export const pageRegistry = {
     return pages;
   }
   
-  // Helper function to extract text content from a React component
-  async function extractComponentContent(Component) {
-    try {
-      // Create a temporary element to render the component
-      const tempDiv = document.createElement('div');
-      //const content = ReactDOM.render(<Component />, tempDiv);
-      
-      // Extract text content
-      const text = tempDiv.textContent || tempDiv.innerText;
-      
-      // Clean up
-      ReactDOM.unmountComponentAtNode(tempDiv);
-      
-      return text;
-    } catch (error) {
-      console.error('Error extracting component content:', error);
-      return '';
-    }
-  }

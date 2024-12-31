@@ -1,7 +1,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const LinksToProcess = () => {
+const LinktoSGF = () => {
   return (
     <div className="p-8">
       <div className="text-sm text-gray-500 mb-6">
@@ -46,4 +46,4 @@ const LinksToProcess = () => {
   );
 };
 
-export default LinksToProcess;
+export default LinktoSGF;

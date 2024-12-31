@@ -1,5 +1,3 @@
-// src/utils/searchIndex.js
-
 class SearchIndex {
   constructor() {
     this.index = new Map();
