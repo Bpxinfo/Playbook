@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Objectives = () => {
+const PAObjectives = () => {
   return (
     <div className="p-8">
 
@@ -21,4 +21,4 @@ const Objectives = () => {
   );
 };
 
-export default Objectives;
+export default PAObjectives;

@@ -66,6 +66,10 @@ import SystemsHome from './pages/systems';
 import LinkstoProcess from './pages/systems/LinkstoProcess';
 import ManualSystems from './pages/systems/ManualSystems';
 
+//Archetypes
+import ProjectArchetypeHome from './pages/project-archetype';
+import PAObjectives from './pages/project-archetype/Objectives';
+
 function App() {
   useEffect(() => {
     const initSearch = async () => {
@@ -148,7 +152,12 @@ function App() {
         <Route path="/systems/objectives" element={<SystemsObjectives />} />
         <Route path="/systems/digital-systems" element={<DigitalSystems />} />
         <Route path="/systems/manual-systems" element={<ManualSystems />} />
-        <Route path="systems/links-to-process" element={<LinkstoProcess />} />
+        <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
+
+        {/*Project Archetype */}
+        <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
+        <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
+
         {/* Default route */}
         <Route path="/" element={<HomePage />} />
       </Routes>
