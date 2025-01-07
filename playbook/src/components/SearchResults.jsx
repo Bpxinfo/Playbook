@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FileText, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { FileText, ArrowRight, Loader } from 'lucide-react';
 
-const SearchResults = ({ results, searchTerm }) => {
+const SearchResults = ({ results, searchTerm, isLoading }) => {
   const navigate = useNavigate();
 
   const handleResultClick = (path) => {
-    navigate(path);
+    if (path) {
+      navigate(path);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="p-8 flex items-center justify-center">
+        <Loader className="w-6 h-6 animate-spin text-red-800 mr-2" />
+        <span>Searching...</span>
+      </div>
+    );
+  }
 
   if (!searchTerm) {
     return (
@@ -27,10 +38,10 @@ const SearchResults = ({ results, searchTerm }) => {
       
       <div className="space-y-6">
         {results.map((result, index) => (
-          <div 
+          <button 
             key={index}
-            className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow cursor-pointer"
             onClick={() => handleResultClick(result.path)}
+            className="w-full text-left bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start space-x-4">
               <div className="flex-shrink-0">
@@ -53,7 +64,7 @@ const SearchResults = ({ results, searchTerm }) => {
                 )}
               </div>
             </div>
-          </div>
+          </button>
         ))}
         
         {results.length === 0 && (

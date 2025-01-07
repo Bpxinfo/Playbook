@@ -145,29 +145,31 @@ const MainLayout = ({ children }) => {
     }
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  const navigateToSearchResults = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
     if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
       setShowSearchDropdown(false);
       setSearchTerm('');
-      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
-
-const handleSearchChange = (e) => {
-  const value = e.target.value;
-  setSearchTerm(value);
   
-  if (value.trim().length > 1) {
-    const results = performLocalSearch(value);
-    setSearchResults(results);
-    setShowSearchDropdown(true);
-  } else {
-    setSearchResults([]);
-    setShowSearchDropdown(false);
-  }
-};
-
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    
+    if (value.trim().length > 1) {
+      const results = performLocalSearch(value);
+      setSearchResults(results);
+      setShowSearchDropdown(true);
+    } else {
+      setSearchResults([]);
+      setShowSearchDropdown(false);
+    }
+  };
+  
   const searchThroughNavigation = (query) => {
     const normalizedQuery = query.toLowerCase().trim();
     const results = [];
@@ -245,43 +247,6 @@ const handleSearchChange = (e) => {
     return uniqueResults.sort((a, b) => ((b.score || b.relevance || 1) - (a.score || a.relevance || 1)));
   };
 
-  const searchDropdownSection = (
-    showSearchDropdown && searchResults.length > 0 && (
-      <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-        {/* Show only first 3 results */}
-        {searchResults.slice(0, 3).map((result, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              navigate(result.path);
-              setShowSearchDropdown(false);
-              setSearchTerm('');
-            }}
-            className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
-          >
-            <span className="font-medium text-red-800">{result.title}</span>
-            <span className="text-sm text-gray-600">{result.excerpt}</span>
-          </button>
-        ))}
-        
-        {/* Show count of additional results if there are more */}
-        {searchResults.length > 3 && (
-          <div className="px-4 py-2 text-sm text-gray-500 border-b">
-            {searchResults.length - 3} more results available
-          </div>
-        )}
-        
-        <button
-          onClick={handleSearch}
-          className="w-full px-4 py-2 text-center text-sm text-red-800 hover:bg-gray-50 border-t"
-        >
-          View all results
-        </button>
-      </div>
-    )
-  );
-  
-
   // Navigation helper functions
   const hasSubsections = (section) => {
     return section && 'subsections' in section && Array.isArray(section.subsections);
@@ -344,42 +309,6 @@ const handleSearchChange = (e) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const renderSearchDropdown = () => {
-    if (!showSearchDropdown || searchResults.length === 0) return null;
-
-    return (
-      <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-        {searchResults.map((result, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              navigate(result.path);
-              setShowSearchDropdown(false);
-              setSearchTerm('');
-            }}
-            className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
-          >
-            <span className="font-medium text-red-800">{result.title}</span>
-            <span className="text-sm text-gray-600">{result.excerpt}</span>
-          </button>
-        ))}
-        
-        {searchResults.length > 3 && (
-          <div className="px-4 py-2 text-sm text-gray-500 border-b">
-            {searchResults.length - 3} more results available
-          </div>
-        )}
-        
-        <button
-          onClick={handleSearch}
-          className="w-full px-4 py-2 text-center text-sm text-red-800 hover:bg-gray-50 border-t"
-        >
-          View all results
-        </button>
-      </div>
-    );
-  };
     
   // Rendering helper functions
   const renderSubsectionItems = (section, sectionKey, subsection) => (
@@ -525,7 +454,14 @@ return (
             <MessageSquare className="w-4 h-4 mr-2" />
             Submit Feedback
           </Link>
-          <form onSubmit={handleSearch} className="relative" ref={searchRef}>
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              navigateToSearchResults();
+            }} 
+            className="relative" 
+            ref={searchRef}
+          >
             <input
               type="text"
               placeholder="Search"
@@ -539,29 +475,30 @@ return (
                 {searchResults.slice(0, 3).map((result, index) => (
                   <button
                     key={index}
-                    onClick={(e) => {
-                      e.preventDefault();
+                    type="button"
+                    onClick={() => {
                       setShowSearchDropdown(false);
                       setSearchTerm('');
                       navigate(result.path);
                     }}
-                    className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
-                  >
+                    className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
+                    >
                     <span className="font-medium text-red-800">{result.title}</span>
                     <span className="text-sm text-gray-600">{result.excerpt}</span>
                   </button>
                 ))}
                 
                 {searchResults.length > 3 && (
-                  <div className="px-4 py-2 text-sm text-gray-500 border-b">
+                  <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
                     {searchResults.length - 3} more results available
                   </div>
                 )}
                 
                 <button
-                  onClick={handleSearch}
-                  className="w-full px-4 py-2 text-center text-sm text-red-800 hover:bg-gray-50 border-t"
-                >
+                  type="button" // Explicitly set type to button
+                  onClick={() => navigateToSearchResults()}
+                  className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
+                  >
                   View all results
                 </button>
               </div>

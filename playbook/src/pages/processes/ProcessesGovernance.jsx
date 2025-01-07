@@ -1,4 +1,5 @@
 import React from 'react';
+import CCC_Process_Overview from '../../assets/CCC_Process_Overview.png';
 
 const ProcessesGovernance = () => {
   return (
@@ -18,7 +19,7 @@ const ProcessesGovernance = () => {
           
           <div className="mb-8">
             <img 
-              src="/src/assets/CCC_Process_Overview.png" 
+              src={CCC_Process_Overview} 
               alt="CCC Process Overview" 
               className="w-full rounded-lg shadow-lg mb-4"
             />

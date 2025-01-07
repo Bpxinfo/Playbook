@@ -23,6 +23,7 @@ import KeyMessages from './pages/ccc-initiative/KeyMessaging';
 import Stakeholders from './pages/ccc-initiative/Stakeholders';
 import StrategicPillars from './pages/ccc-initiative/StrategicPillars';
 import CCCInitiativeHome from './pages/ccc-initiative/index';
+import GlossaryOfTerms from './pages/ccc-initiative/GlossaryOfTerms';
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
@@ -107,6 +108,7 @@ function App() {
         <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
         <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
         <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
+        <Route path="/ccc-initiative/glossary-of-terms" element={<GlossaryOfTerms />} />
 
         {/* Communication Plan - Internal */}
         <Route path="/communication-plan" element={<CommunicationPlanHome />} />
