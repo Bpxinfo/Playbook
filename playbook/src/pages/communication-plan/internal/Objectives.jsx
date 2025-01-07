@@ -10,30 +10,20 @@ const Objectives = () => {
         <section className="mb-8">
           <h2 className="text-2xl text-red-800 mb-4">Primary Objective</h2>
           <p className="text-gray-700 mb-4">
-            To create a centralized knowledge base that serves as the single source of truth for all CCC-related information, processes, and guidelines.
-          </p>
+          Effective communication is an essential element of a good playbook, and it must be both timely and appropriately directed. 
+          The purpose of this communication plan is to outline how the communication process will be managed in reference to <u>who</u> should be notified 
+          (in the stakeholders) section, <u>what</u> is being communicated (in the message section), <u>how and when</u> they should be notified (in the distribution section), 
+          and what should happen following notification (in the implementation section).</p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-2xl text-red-800 mb-4">Key Goals</h2>
           <ul className="list-disc pl-6 space-y-3 text-gray-700">
-            <li>Streamline access to CCC documentation and resources</li>
-            <li>Ensure consistency in CCC processes and communications</li>
-            <li>Facilitate onboarding of new team members</li>
-            <li>Support ongoing reference and learning needs</li>
+            <li>Map out key stakeholders and segment them into priority tiers</li>
+            <li>Validate and refine existing key messages to ensure alignment with objectives</li>
+            <li>Establish a robust framework for notification methods and timing, enhancing communication efficiency</li>
+            <li>Develop a RACI chart for post-notification actions with clear KPIs for each responsible party</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl text-red-800 mb-4">Success Metrics</h2>
-          <div className="bg-white rounded-lg shadow p-6">
-            <ul className="list-decimal pl-6 space-y-3 text-gray-700">
-              <li>Reduced time to find CCC-related information</li>
-              <li>Increased consistency in CCC process execution</li>
-              <li>Improved onboarding experience ratings</li>
-              <li>Higher engagement with CCC resources</li>
-            </ul>
-          </div>
         </section>
       </div>
     </div>

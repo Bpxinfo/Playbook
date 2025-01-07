@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CCC_Overview from '../../assets/CCC_Overview.jpg'
 const CCCOverview = () => {
   return (
     <div className="p-8">
@@ -8,12 +8,14 @@ const CCCOverview = () => {
       <div className="max-w-4xl">
         <section className="mb-8">
           <h2 className="text-2xl text-red-800 mb-4">The Project Summary</h2>
-          <p className="text-gray-700 mb-4">
-            A screenshot of a website
-          </p>
-          <p className="text-gray-700 mb-4">
-            Description automatically generated
-          </p>
+          <div className="mb-8">
+            <img 
+              src={CCC_Overview} 
+              alt="CCC Overview" 
+              className="w-full rounded-lg shadow-lg mb-4"
+            />
+            <p className="text-sm text-gray-500 text-center">CCC Overview Diagram</p>
+          </div>
         </section>
 
         <section className="mb-8">
