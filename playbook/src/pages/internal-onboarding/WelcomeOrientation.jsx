@@ -3,7 +3,7 @@ import React from 'react';
 const WelcomeOrientation = () => {
   return (
     <div className="p-8">
-      <h1 className="text-4xl font-light text-red-800 mb-8">Welcome Orientation</h1>
+      <h1 className="text-4xl font-light text-red-800 mb-8">Welcome Orientation (Month 1)</h1>
       <div className="max-w-4xl">
         <section className="mb-8">
           <h2 className="text-2xl text-red-800 mb-4">A. CCC Meeting Intro</h2>

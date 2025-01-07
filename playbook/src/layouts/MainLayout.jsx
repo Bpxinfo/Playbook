@@ -102,7 +102,7 @@ const MainLayout = ({ children }) => {
       title: 'Systems',
       items: [
         'Objectives',
-        'Digital Systems',
+        'Internal Platforms',
         'Manual Systems',
         'Links to Process'
       ]

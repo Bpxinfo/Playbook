@@ -7,19 +7,79 @@ const GlossaryOfTerms = () => {
   // Sample glossary terms - you can replace these with your actual terms
   const glossaryTerms = [
     {
-      term: 'CCC',
-      definition: 'Community Cancer Collective - An initiative designed to address gaps in care for cancer patients in non-academic settings.'
+      term: "CCC",
+      definition: "Community Cancer Collective",
     },
     {
-      term: 'SOP',
-      definition: 'Standard Operating Procedure - A set of step-by-step instructions to help workers carry out complex routine operations.'
+      term: "CCC Core",
+      definition: "CCC Corea Team",
     },
     {
-      term: 'KPI',
-      definition: 'Key Performance Indicator - A quantifiable measure used to evaluate the success in meeting objectives.'
-    }
-    // Add more terms as needed
+      term: "CCC Extended",
+      definition: "CCC Extended Team",
+    },
+    {
+      term: "CCC Leadership SteerCo",
+      definition: "CCC Leadership Team / CCC Leadership Steering Committee",
+    },
+    {
+      term: "CCC Hub",
+      definition: "CCC Communications Hub",
+    },
+    // {
+    //   term: "Global IDA",
+    //   definition: "N/A",
+    // },
+    {
+      term: "GMAO",
+      definition: "Global Medical Affairs Operations",
+    },
+    {
+      term: "GPFIS",
+      definition: "Global Patient Focused Implementation Science",
+    },
+    {
+      term: "GRC",
+      definition: "Global Review Committee",
+    },
+    {
+      term: "HEOR",
+      definition: "Health Economics & Outcomes Research",
+    },
+    {
+      term: "KAD",
+      definition: "Key Account Director",
+    },
+    {
+      term: "Legal/Compliance",
+      definition: "Legal/Compliance",
+    },
+    {
+      term: "LRC",
+      definition: "Local Review Committee",
+    },
+    {
+      term: "MSL",
+      definition: "Medical Science Liaisons",
+    },
+    {
+      term: "MVEL",
+      definition: "Medical Value & Evidence Liaisons",
+    },
+    {
+      term: "PAQ",
+      definition: "Patient Access & Quality of Care",
+    },
+    {
+      term: "RFP",
+      definition: "Request For Proposal",
+    },
+    {
+      term: "RWE",
+      definition: "Real World Evidence",
+    },
   ];
+  
 
   // Filter terms based on search
   const filteredTerms = glossaryTerms.filter(item =>

@@ -62,7 +62,7 @@ import LinktoSGF from './pages/processes/LinktoSGF';
 
 //Systems
 import SystemsObjectives from './pages/systems/Objectives';
-import DigitalSystems from './pages/systems/DigitalSystems';
+import InternalPlatforms from './pages/systems/InternalPlatforms';
 import SystemsHome from './pages/systems';
 import LinkstoProcess from './pages/systems/LinkstoProcess';
 import ManualSystems from './pages/systems/ManualSystems';
@@ -152,7 +152,7 @@ function App() {
         {/* Systems */}
         <Route path="/systems" element={<SystemsHome />} />
         <Route path="/systems/objectives" element={<SystemsObjectives />} />
-        <Route path="/systems/digital-systems" element={<DigitalSystems />} />
+        <Route path="/systems/internal-platforms" element={<InternalPlatforms />} />
         <Route path="/systems/manual-systems" element={<ManualSystems />} />
         <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
 

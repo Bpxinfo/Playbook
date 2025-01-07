@@ -21,9 +21,9 @@ export default function SystemsHome() {
       color: "bg-blue-50"
     },
     {
-      title: "Digital Systems",
+      title: "Internal Platforms",
       description: "Overview of all digital platforms, tools, and applications used in CCC operations.",
-      path: "/systems/digital-systems",
+      path: "/systems/internal-platforms",
       icon: Monitor,
       color: "bg-purple-50"
     },

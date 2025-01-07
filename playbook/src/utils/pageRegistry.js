@@ -172,9 +172,9 @@ export const pageRegistry = {
       component: () => import('../pages/systems/Objectives'),
       title: 'Systems Objectives'
     },
-    '/systems/digital-systems': {
-      component: () => import('../pages/systems/DigitalSystems'),
-      title: 'Digital Systems'
+    '/systems/internal-platforms': {
+      component: () => import('../pages/systems/InternalPlatforms'),
+      title: 'Internal Platforms'
     }
   };
   
