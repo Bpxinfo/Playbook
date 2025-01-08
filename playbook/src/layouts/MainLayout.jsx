@@ -357,7 +357,7 @@ const MainLayout = ({ children }) => {
 return (
     <div className="flex h-screen bg-gray-100">
       <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
-      <div className="p-4 border-b flex items-center justify-between">
+      <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <Home className="w-5 h-5 text-red-800" />
           {!isSidebarCollapsed && (
@@ -374,6 +374,7 @@ return (
             <PanelLeftClose className="w-5 h-5 text-gray-600" />
           )}
         </button>
+        
       </div>
         
         <nav className="p-2 bg-white">
@@ -446,8 +447,19 @@ return (
       </div>
 
       <div className="flex-1 overflow-auto">
-        <div className="bg-white p-4 shadow-sm flex justify-end items-center space-x-4">
-          <Link
+      <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-end items-center space-x-4">
+        <div className="flex items-center space-x-6">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC SharePoint
+          </a>
+          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC Roadmap
+          </a>
+          <a href="https://teams.microsoft.com/l/message/19:_TkzRgZXMaElC80lbjf5yAAAjIHb7mqskMYagjWGLAo1@thread.tacv2/1734705452841?tenantId=e7f500ac-0b75-43f5-8828-a47b41ce80a3&groupId=2e75375c-5013-425e-8285-f1ad5f9651f5&parentMessageId=1734705452841&teamName=G_Team&channelName=General&createdTime=1734705452841" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC Teams
+          </a>
+        </div>
+        <Link
             to="/feedback"
             className="flex items-center text-red-800 hover:text-red-700 transition-colors"
           >
