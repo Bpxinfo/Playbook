@@ -14,7 +14,7 @@ const CCCStakeholders = () => {
             <table className="min-w-full table-auto border-collapse text-sm text-gray-700">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="border px-4 py-2 text-left font-medium">CCC Stakeholders</th>
+                  <th className="border px-4 py-2 text-left font-medium">CCC Groups</th>
                   <th className="border px-4 py-2 text-left font-medium">Description</th>
                   <th className="border px-4 py-2 text-left font-medium">Deliverable [Receive / Provide]</th>
                   <th className="border px-4 py-2 text-left font-medium">Priority</th>
@@ -26,17 +26,14 @@ const CCCStakeholders = () => {
                 <tr>
                   <td className="border px-4 py-2">CCC Leadership SteerCo</td>
                   <td className="border px-4 py-2">Definition of what SteerCo does. Functions included, what are their roles</td>
-                  <td className="border px-4 py-2">
-                    Provide guidance and endorsement of strategy, objectives, messaging<br />
-                    Receive Updates
-                  </td>
+                  <td className="border px-4 py-2">Provide guidance and endorsement of strategy, objectives, messaging<br />Receive Updates</td>
                   <td className="border px-4 py-2">Advise & Advocate<br />Provide direction and objectives to be executed</td>
                   <td className="border px-4 py-2">Slide Decks, Meetings</td>
                   <td className="border px-4 py-2">Bi-Monthly Meetings<br />Email Updates</td>
                 </tr>
                 <tr>
                   <td className="border px-4 py-2">CCC Core Team</td>
-                  <td className="border px-4 py-2">Advisers to the CCC</td>
+                  <td className="border px-4 py-2">Advisors to the CCC</td>
                   <td className="border px-4 py-2">Provide Input on Projects, Guidance, Guardrails</td>
                   <td className="border px-4 py-2">Lead & Execute the CCC</td>
                   <td className="border px-4 py-2">Meetings, Discussion</td>
@@ -44,7 +41,7 @@ const CCCStakeholders = () => {
                 </tr>
                 <tr>
                   <td className="border px-4 py-2">CCC Extended Team</td>
-                  <td className="border px-4 py-2">Alignment across extended functions (list of functions – PAQ)</td>
+                  <td className="border px-4 py-2">Alignment across extended</td>
                   <td className="border px-4 py-2">Provide / Receive Information Updates</td>
                   <td className="border px-4 py-2">Informed & Consulted</td>
                   <td className="border px-4 py-2">Meetings, Email Updates</td>
@@ -52,8 +49,8 @@ const CCCStakeholders = () => {
                 </tr>
                 <tr>
                   <td className="border px-4 py-2">CCC Project Leads</td>
-                  <td className="border px-4 py-2">USMA Strategy Leads, SEC, PAQ, GPFIS, MM</td>
-                  <td className="border px-4 py-2">Provide Project Updates (milestones, resources, budget, spend, KPIs, Patient Impact data)</td>
+                  <td className="border px-4 py-2">USMA Strategy, Lead, SEC, PAQ, GPFIS, MM</td>
+                  <td className="border px-4 py-2">Provide Project Updates (milestones, risks, budget, spend, KPIs, Patient Impact data)</td>
                   <td className="border px-4 py-2">Lead and Execute Projects</td>
                   <td className="border px-4 py-2">Meetings, Email Updates</td>
                   <td className="border px-4 py-2">Monthly</td>
@@ -85,8 +82,8 @@ const CCCStakeholders = () => {
                 <tr>
                   <td className="border px-4 py-2">PAQ</td>
                   <td className="border px-4 py-2">Patient Assistance & Quality</td>
-                  <td className="border px-4 py-2">Inform patients about PAQ the services they provide and guide them through the application process</td>
-                  <td className="border px-4 py-2">help patients access medications and medical care they might otherwise be unable to afford</td>
+                  <td className="border px-4 py-2">Inform patients about PAQ, the services they provide and guide them through the application process</td>
+                  <td className="border px-4 py-2">Help patients access medications and medical care they might otherwise be unable to afford</td>
                   <td className="border px-4 py-2">Team meetings</td>
                   <td className="border px-4 py-2">Team meetings<br />Email<br />Instant Message<br />SharePoint</td>
                 </tr>
@@ -102,14 +99,14 @@ const CCCStakeholders = () => {
                   <td className="border px-4 py-2">MM</td>
                   <td className="border px-4 py-2">Managed Markets</td>
                   <td className="border px-4 py-2">Receive Updates<br />Provide input per strategy, Implications for discussions with key external stakeholders</td>
-                  <td className="border px-4 py-2">Commercial Partner that connects to key external markets of National Accts, medicare NPO, includes Key Account Director KADs, Also focuses on reimbursement</td>
+                  <td className="border px-4 py-2">Commercial Partner that connects to key external markets of National Accts, medicare NPO, includes Key Account Director KADs. Also focuses on reimbursement</td>
                   <td className="border px-4 py-2">Slide Decks, Meetings, CCC Leadership SteerCo</td>
                   <td className="border px-4 py-2">Bi-Monthly Meetings<br />Email Updates<br />(Extended Team Quarterly, Project Team Monthly)</td>
                 </tr>
                 <tr>
                   <td className="border px-4 py-2">Field Team</td>
                   <td className="border px-4 py-2">KADs<br />MSLs<br />MVELs</td>
-                  <td className="border px-4 py-2">Interact with external professionals to discuss CCC and must follow Community Cancer collective CCC Legal & Compliance Guidance (May 29, 2024)</td>
+                  <td className="border px-4 py-2">Interact with external professionals to discuss CCC but must follow Community Cancer collective (CCC) Legal & Compliance Guidance (May 29, 2024)</td>
                   <td className="border px-4 py-2">Review of CCC partnering plans and visit with external professionals</td>
                   <td className="border px-4 py-2">Review/discuss published data and approved plans with external professionals</td>
                   <td className="border px-4 py-2">Team meetings<br />Email<br />Instant Message<br />SharePoint (MSLs)<br />Egnyto (MVELs)<br />P alert</td>

@@ -40,9 +40,10 @@ const CCCOverview = () => {
         <section className="mb-8">
           <h2 className="text-2xl text-red-800 mb-4">CCCs is working with community sites to address the following Unmet Needs:</h2>
           <ul className="list-disc pl-6 space-y-2 text-gray-700">
-            <li>Address gaps between evidence generated in clinical trials and implementation in the real-world community setting</li>
-            <li>Address care gaps identified in the SE community setting with the potential to scale to other regions in the US</li>
-            <li>Support improvements in cancer care delivery through novel approaches to provider education and patient empowerment</li>
+            <li>Advance Evidence-Based Solutions: Close the gap between clinical trial evidence and real-world implementation in community settings</li>
+            <li>Reduce Disparities in Cancer Care: Focus on health equity by addressing specific care gaps in underserved regions, starting with the Southeastern U.S., and scaling nationally</li>
+            <li>Enhance Provider and Patient Education: Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey</li>
+            <li>Improve Cancer Care Delivery: Collaborate with community-focused institutions to develop capabilities that optimize the quality of care for diverse oncology populations</li>
           </ul>
         </section>
 
