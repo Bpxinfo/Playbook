@@ -455,7 +455,7 @@ return (
           <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
             CCC Roadmap
           </a>
-          <a href="https://teams.microsoft.com/l/message/19:_TkzRgZXMaElC80lbjf5yAAAjIHb7mqskMYagjWGLAo1@thread.tacv2/1734705452841?tenantId=e7f500ac-0b75-43f5-8828-a47b41ce80a3&groupId=2e75375c-5013-425e-8285-f1ad5f9651f5&parentMessageId=1734705452841&teamName=G_Team&channelName=General&createdTime=1734705452841" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
             CCC Teams
           </a>
         </div>
