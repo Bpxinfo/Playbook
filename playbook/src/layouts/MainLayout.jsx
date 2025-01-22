@@ -98,6 +98,10 @@ const MainLayout = ({ children }) => {
         'Link to SOPs, Guidance, Forms, etc.'
       ]
     },
+    'projects-archetypes': {
+      title: 'Projects Archetypes',
+      items: ['Objectives']
+    },
     'systems': {
       title: 'Systems',
       items: [
@@ -106,10 +110,6 @@ const MainLayout = ({ children }) => {
         'Manual Systems',
         'Links to Process'
       ]
-    },
-    'projects-archetypes': {
-      title: 'Projects Archetypes',
-      items: ['Objectives']
     }
   };
 
