@@ -3,7 +3,7 @@ import React from 'react';
 const Objectives = () => {
   return (
     <div className="p-8 bg-white text-gray-900">
-      <h1 className="text-4xl font-light text-red-800 mb-8">Objectives</h1>
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">OBJECTIVES</h1>
 
       <div className="max-w-4xl space-y-8">
         <section>

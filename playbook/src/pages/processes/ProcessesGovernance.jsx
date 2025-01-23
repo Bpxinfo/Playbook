@@ -4,6 +4,7 @@ import governance_model from '../../assets/governance_model.png'
 import stakeholder from '../../assets/Stakeholder.jpg'
 import leadership from '../../assets/leadership.jpg'
 import adjud from '../../assets/adjud.jpg'
+import purple from '../../assets/Purple and Lilac Project Management Mind Map.png'
 
 const ProcessesGovernance = () => {
   return (
@@ -19,7 +20,7 @@ const ProcessesGovernance = () => {
             <div className="bg-gray-50 p-4 rounded-lg text-center">
               <div className="mb-8">
                 <img 
-                  src={governance_model} 
+                  src={purple} 
                   alt="CCC Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />

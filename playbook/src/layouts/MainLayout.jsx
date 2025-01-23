@@ -102,7 +102,15 @@ const MainLayout = ({ children }) => {
     },
     'projects-archetypes': {
       title: 'Projects Archetypes',
-      items: ['Objectives']
+      items: [
+        'Objectives', 
+        'CORE Principles',
+        'CCC Project Lifecycle',
+        'CCC Project Types',
+        'Global Funding Mechanisms Awareness',
+        'Nomenclature',
+        'Tracking Systems'
+        ]
     },
     'systems': {
       title: 'Systems',
