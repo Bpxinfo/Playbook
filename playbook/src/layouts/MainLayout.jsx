@@ -106,10 +106,10 @@ const MainLayout = ({ children }) => {
         'Objectives', 
         'CORE Principles',
         'CCC Project Lifecycle',
-        'CCC Project Types',
-        'Global Funding Mechanisms Awareness',
-        'Nomenclature',
-        'Tracking Systems'
+        'CCC Project Types'
+        // 'Global Funding Mechanisms Awareness',
+        // 'Nomenclature',
+        // 'Tracking Systems'
         ]
     },
     'systems': {

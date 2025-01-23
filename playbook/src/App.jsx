@@ -70,6 +70,9 @@ import ManualSystems from './pages/systems/ManualSystems';
 //Archetypes
 import ProjectArchetypeHome from './pages/project-archetype';
 import PAObjectives from './pages/project-archetype/Objectives';
+import CorePrinciples from './pages/project-archetype/coreprinciples';
+import CCCProjectLifecycle from './pages/project-archetype/ccc-project-lifecycle';
+import CCCProjectTypes from './pages/project-archetype/projecttypes';
 
 //Glossary of Terms
 import GlossaryOfTerms from './pages/glossary/GlossaryOfTerms';
@@ -161,7 +164,9 @@ function App() {
         {/*Project Archetype */}
         <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
         <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
-
+        <Route path="/projects-archetypes/core-principles" element={<CorePrinciples />} />
+        <Route path="/projects-archetypes/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
+        <Route path="/projects-archetypes/ccc-project-types" element={<CCCProjectTypes />} />
         {/* Glossary of Terms */}
         <Route path="/glossary" element={<GlossaryOfTerms />} />
 

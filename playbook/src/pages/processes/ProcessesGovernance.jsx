@@ -39,6 +39,7 @@ const ProcessesGovernance = () => {
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">1.2 DIA (RACI)</h2>
           <div className="bg-gray-50 p-4 rounded-lg">
+            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
           </div>
         </section>
 
@@ -48,7 +49,7 @@ const ProcessesGovernance = () => {
           <p className="text-gray-700 mb-4">Iteration of the Process Map with clickable buttons for study type – that greys out all irrelevant steps of process flow</p>
           
           <div className="space-y-4">
-            <h3 className="text-xl text-red-800 mb-2">Example</h3>
+            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
             <div className="bg-gray-50 p-4 rounded-lg text-center">
               {/* Content will go here */}
             </div>
@@ -99,11 +100,23 @@ const ProcessesGovernance = () => {
         {/* 1.6 Multi-Institutional Consortium */}
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">1.6 RFP Process</h2>
+          <div className="space-y-4">
+            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
+            <div className="bg-gray-50 p-4 rounded-lg text-center">
+              {/* Content will go here */}
+            </div>
+          </div>
         </section>
 
         {/* 1.7 Multi-Institutional Consortium */}
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">1.7 Multi-Institutional Ecosystem</h2>
+          <div className="space-y-4">
+            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
+            <div className="bg-gray-50 p-4 rounded-lg text-center">
+              {/* Content will go here */}
+            </div>
+          </div>
         </section>
       </div>
     </div>

@@ -332,7 +332,7 @@ const ComplianceGuidance = () => {
           {/* Compliance Monitoring */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
             <h3 className="text-lg font-semibold text-red-800 mb-4">2.4.3 Compliance Monitoring</h3>
-            <p>The CCC will be subject to monitoring to ensure that all operations are following Gilead policies and procedures. </p>
+            <p className="text-gray-700 mb-4">The CCC will be subject to monitoring to ensure that all operations are following Gilead policies and procedures. </p>
           </div>
           
           {/* External Interaction Guidelines */}
