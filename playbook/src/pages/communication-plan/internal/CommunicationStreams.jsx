@@ -2,67 +2,11 @@ import React from 'react';
 
 const CommunicationStreams = () => {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-light text-red-800 mb-8">Communication Content</h1>
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Communication Streams</h1>
 
-      <div className="max-w-6xl">
-        <p className="text-gray-700 mb-4">
-          Communication streams are the different message passing systems allowing the CCC information to travel between individuals or groups.
-        </p>
-
-        <section className="mb-8">
-          <h2 className="text-2xl text-red-800 mb-4">Table 3 – CCC Communication Content</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm text-gray-700 border-collapse border border-gray-300">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="border px-4 py-2 text-left">Content Stream</th>
-                  <th className="border px-4 py-2 text-left">Channel(s)</th>
-                  <th className="border px-4 py-2 text-left">Responsible / Accountable</th>
-                  <th className="border px-4 py-2 text-left">Reviewers / Approvers</th>
-                  <th className="border px-4 py-2 text-left">Audience</th>
-                  <th className="border px-4 py-2 text-left">Frequency</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border px-4 py-2">CCC Newsletter (Proposed)</td>
-                  <td className="border px-4 py-2">CCC SP Hub & Internal Email</td>
-                  <td className="border px-4 py-2">Cross Functional Team</td>
-                  <td className="border px-4 py-2">CCC Lead</td>
-                  <td className="border px-4 py-2">CCC Extended Team + Cross Functional Stakeholders</td>
-                  <td className="border px-4 py-2">Quarterly</td>
-                </tr>
-                <tr>
-                  <td className="border px-4 py-2">CCC Spotlights (Proposed)</td>
-                  <td className="border px-4 py-2">CCC SP Hub Blog / Newsletter</td>
-                  <td className="border px-4 py-2">Project Leads</td>
-                  <td className="border px-4 py-2">CCC Lead</td>
-                  <td className="border px-4 py-2">CCC Extended Team + Cross Functional Stakeholders</td>
-                  <td className="border px-4 py-2">Monthly</td>
-                </tr>
-                <tr>
-                  <td className="border px-4 py-2">CCC Lessons Learned (Proposed)</td>
-                  <td className="border px-4 py-2">SP Hub / Newsletter</td>
-                  <td className="border px-4 py-2">CCC Extended Team, Project Leads</td>
-                  <td className="border px-4 py-2">CCC Lead</td>
-                  <td className="border px-4 py-2">CCC Extended Team + Cross Functional Stakeholders</td>
-                  <td className="border px-4 py-2">Ad Hoc</td>
-                </tr>
-                <tr>
-                  <td className="border px-4 py-2">Project Proposals</td>
-                  <td className="border px-4 py-2">Email</td>
-                  <td className="border px-4 py-2">Project Lead</td>
-                  <td className="border px-4 py-2">CCC Lead</td>
-                  <td className="border px-4 py-2">CCC Core Team + Adjudication Committee</td>
-                  <td className="border px-4 py-2">Ad Hoc</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section>
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Table 4 – CCC Communication Cadence</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-gray-700 border-collapse border border-gray-300 mb-8">
@@ -172,7 +116,10 @@ const CommunicationStreams = () => {
               </tbody>
             </table>
           </div>
+        </section>
 
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">Work Development Communication</h2>
           <p className="text-gray-700 mb-4">Work Development meetings will have their own communication streams:</p>
           <ol className="list-decimal pl-6 space-y-2 text-gray-700">
             <li>To CCC Core Team for input, alignment, output generation</li>

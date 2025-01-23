@@ -23,7 +23,7 @@ import KeyMessages from './pages/ccc-initiative/KeyMessaging';
 import Stakeholders from './pages/ccc-initiative/Stakeholders';
 import StrategicPillars from './pages/ccc-initiative/StrategicPillars';
 import CCCInitiativeHome from './pages/ccc-initiative/index';
-import GlossaryOfTerms from './pages/ccc-initiative/GlossaryOfTerms';
+
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
@@ -71,6 +71,9 @@ import ManualSystems from './pages/systems/ManualSystems';
 import ProjectArchetypeHome from './pages/project-archetype';
 import PAObjectives from './pages/project-archetype/Objectives';
 
+//Glossary of Terms
+import GlossaryOfTerms from './pages/glossary/GlossaryOfTerms';
+
 function App() {
   useEffect(() => {
     const initSearch = async () => {
@@ -108,7 +111,6 @@ function App() {
         <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
         <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
         <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
-        <Route path="/ccc-initiative/glossary-of-terms" element={<GlossaryOfTerms />} />
 
         {/* Communication Plan - Internal */}
         <Route path="/communication-plan" element={<CommunicationPlanHome />} />
@@ -159,6 +161,9 @@ function App() {
         {/*Project Archetype */}
         <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
         <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
+
+        {/* Glossary of Terms */}
+        <Route path="/glossary" element={<GlossaryOfTerms />} />
 
         {/* Default route */}
         <Route path="/" element={<HomePage />} />

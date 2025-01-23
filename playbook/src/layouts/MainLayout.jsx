@@ -12,7 +12,10 @@ import {
   UserPlus,
   Settings,
   Database,
-  Layout
+  Layout,
+  ArrowUp,
+  ArrowDown,
+  BookOpen
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -44,8 +47,7 @@ const MainLayout = ({ children }) => {
         'Objectives and CCC Overview',
         'Strategic Pillars',
         'Key Messaging',
-        'Stakeholders',
-        'Glossary of Terms'
+        'Stakeholders'
       ]
     },
     'communication-plan': {
@@ -110,6 +112,10 @@ const MainLayout = ({ children }) => {
         'Manual Systems',
         'Links to Process'
       ]
+    },
+    'glossary': {
+      title: 'Glossary of Terms',
+
     }
   };
 
@@ -142,6 +148,10 @@ const MainLayout = ({ children }) => {
     'projects-archetypes': {
       icon: Layout,
       defaultRoute: '/projects-archetypes'
+    },
+    'glossary': {
+      icon: BookOpen,
+      defaultRoute: '/glossary'
     }
   };
 
@@ -353,174 +363,211 @@ const MainLayout = ({ children }) => {
     </div>
   );
 
+  const scrollToSection = (direction) => {
+    const sections = document.querySelectorAll('h2, h3'); // Assuming sections are marked with h2 or h3
+    const currentScrollY = window.scrollY;
 
-return (
-    <div className="flex h-screen bg-gray-100">
-      <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
-      <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
-        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
-          <Home className="w-5 h-5 text-red-800" />
-          {!isSidebarCollapsed && (
-            <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
-          )}
-        </Link>
-        <button 
-          onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-          className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
-        >
-          {isSidebarCollapsed ? (
-            <PanelLeftOpen className="w-5 h-5 text-gray-600" />
-          ) : (
-            <PanelLeftClose className="w-5 h-5 text-gray-600" />
-          )}
-        </button>
-        
-      </div>
-        
-        <nav className="p-2 bg-white">
-          {Object.entries(navigationItems).map(([key, section]) => {
-            const SectionIcon = sectionConfig[key].icon;
-            return (
-              <div key={key} className="mb-2">
-                <button
-                  onClick={() => handleSectionClick(key)}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
-                    isSectionSelected(key) 
-                      ? 'bg-red-800 text-white' 
-                      : 'bg-white text-black'
-                  } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
-                >
-                  <div className="flex items-center">
-                    {SectionIcon && <SectionIcon className="w-5 h-5" />}
+    if (direction === 'up') {
+      const previousSection = [...sections].reverse().find(section => section.getBoundingClientRect().top < 0);
+      if (previousSection) {
+        previousSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top if no previous section
+      }
+    } else if (direction === 'down') {
+      const nextSection = [...sections].find(section => section.getBoundingClientRect().top > 0);
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // Scroll to bottom if no next section
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="flex h-screen bg-gray-100">
+        <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
+          <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
+            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Home className="w-5 h-5 text-red-800" />
+              {!isSidebarCollapsed && (
+                <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
+              )}
+            </Link>
+            <button 
+              onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
+            >
+              {isSidebarCollapsed ? (
+                <PanelLeftOpen className="w-5 h-5 text-gray-600" />
+              ) : (
+                <PanelLeftClose className="w-5 h-5 text-gray-600" />
+              )}
+            </button>
+          </div>
+          
+          <nav className="p-2 bg-white">
+            {Object.entries(navigationItems).map(([key, section]) => {
+              const SectionIcon = sectionConfig[key].icon;
+              return (
+                <div key={key} className="mb-2">
+                  <button
+                    onClick={() => handleSectionClick(key)}
+                    className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
+                      isSectionSelected(key) 
+                        ? 'bg-red-800 text-white' 
+                        : 'bg-white text-black'
+                    } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
+                  >
+                    <div className="flex items-center">
+                      {SectionIcon && <SectionIcon className="w-5 h-5" />}
+                      {!isSidebarCollapsed && (
+                        <span className="text-sm ml-2">{section.title}</span>
+                      )}
+                    </div>
                     {!isSidebarCollapsed && (
-                      <span className="text-sm ml-2">{section.title}</span>
+                      expandedTopSection === key ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )
                     )}
-                  </div>
-                  {!isSidebarCollapsed && (
-                    expandedTopSection === key ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )
-                  )}
-                </button>
-                
-                {expandedTopSection === key && !isSidebarCollapsed && (
-                  <>
-                    {hasSubsections(section) && (
-                      <div className="mt-2 ml-2">
-                        {section.subsections.map((subsection) => (
-                          <div key={subsection.id} className="mb-2">
-                            <button
-                              onClick={(e) => toggleSubSection(subsection.id, e)}
-                              className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
-                                isSectionSelected(`${key}/${subsection.id}`)
-                                  ? 'bg-red-800 text-white'
-                                  : 'bg-white text-black'
-                              } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
-                            >
-                              <span className="text-sm">{subsection.title}</span>
-                              {expandedSubSection === subsection.id ? (
-                                <ChevronUp className="w-4 h-4" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4" />
+                  </button>
+                  
+                  {expandedTopSection === key && !isSidebarCollapsed && (
+                    <>
+                      {hasSubsections(section) && (
+                        <div className="mt-2 ml-2">
+                          {section.subsections.map((subsection) => (
+                            <div key={subsection.id} className="mb-2">
+                              <button
+                                onClick={(e) => toggleSubSection(subsection.id, e)}
+                                className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
+                                  isSectionSelected(`${key}/${subsection.id}`)
+                                    ? 'bg-red-800 text-white'
+                                    : 'bg-white text-black'
+                                } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
+                              >
+                                <span className="text-sm">{subsection.title}</span>
+                                {expandedSubSection === subsection.id ? (
+                                  <ChevronUp className="w-4 h-4" />
+                                ) : (
+                                  <ChevronDown className="w-4 h-4" />
+                                )}
+                              </button>
+                              
+                              {expandedSubSection === subsection.id && (
+                                renderSubsectionItems(section, key, subsection)
                               )}
-                            </button>
-                            
-                            {expandedSubSection === subsection.id && (
-                              renderSubsectionItems(section, key, subsection)
-                            )}
-                          </div>
-                        ))}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {section.items && !hasSubsections(section) && (
+                        renderSectionItems(section, key)
+                      )}
+                    </>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+        </div>
+
+        <div className="flex-1 overflow-auto relative">
+          <div className="fixed top-16 right-8 flex flex-col space-y-2 z-50">
+            <button
+              onClick={() => scrollToSection('up')}
+              onDoubleClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="p-2 bg-white rounded-full shadow-md hover:bg-gray-200"
+            >
+              <ArrowUp className="w-5 h-5 text-gray-600" />
+            </button>
+            <button
+              onClick={() => scrollToSection('down')}
+              onDoubleClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+              className="p-2 bg-white rounded-full shadow-md hover:bg-gray-200"
+            >
+              <ArrowDown className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
+          <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-end items-center space-x-4">
+            <div className="flex items-center space-x-6">
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC SharePoint
+              </a>
+              <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC Roadmap
+              </a>
+              <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC Teams
+              </a>
+            </div>
+            <Link
+                to="/feedback"
+                className="flex items-center text-red-800 hover:text-red-700 transition-colors"
+              >
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Submit Feedback
+              </Link>
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  navigateToSearchResults();
+                }} 
+                className="relative" 
+                ref={searchRef}
+              >
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
+                />
+                <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+                {showSearchDropdown && searchResults.length > 0 && (
+                  <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
+                    {searchResults.slice(0, 3).map((result, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => {
+                          setShowSearchDropdown(false);
+                          setSearchTerm('');
+                          navigate(result.path);
+                        }}
+                        className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
+                        >
+                        <span className="font-medium text-red-800">{result.title}</span>
+                        <span className="text-sm text-gray-600">{result.excerpt}</span>
+                      </button>
+                    ))}
+                    
+                    {searchResults.length > 3 && (
+                      <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
+                        {searchResults.length - 3} more results available
                       </div>
                     )}
                     
-                    {section.items && !hasSubsections(section) && (
-                      renderSectionItems(section, key)
-                    )}
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </nav>
-      </div>
-
-      <div className="flex-1 overflow-auto">
-      <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-end items-center space-x-4">
-        <div className="flex items-center space-x-6">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-            CCC SharePoint
-          </a>
-          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-            CCC Roadmap
-          </a>
-          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-            CCC Teams
-          </a>
-        </div>
-        <Link
-            to="/feedback"
-            className="flex items-center text-red-800 hover:text-red-700 transition-colors"
-          >
-            <MessageSquare className="w-4 h-4 mr-2" />
-            Submit Feedback
-          </Link>
-          <form 
-            onSubmit={(e) => {
-              e.preventDefault();
-              navigateToSearchResults();
-            }} 
-            className="relative" 
-            ref={searchRef}
-          >
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
-            />
-            <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-            {showSearchDropdown && searchResults.length > 0 && (
-              <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-                {searchResults.slice(0, 3).map((result, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => {
-                      setShowSearchDropdown(false);
-                      setSearchTerm('');
-                      navigate(result.path);
-                    }}
-                    className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
-                    >
-                    <span className="font-medium text-red-800">{result.title}</span>
-                    <span className="text-sm text-gray-600">{result.excerpt}</span>
-                  </button>
-                ))}
-                
-                {searchResults.length > 3 && (
-                  <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
-                    {searchResults.length - 3} more results available
+                    <button
+                      type="button" // Explicitly set type to button
+                      onClick={() => navigateToSearchResults()}
+                      className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
+                      >
+                      View all results
+                    </button>
                   </div>
                 )}
-                
-                <button
-                  type="button" // Explicitly set type to button
-                  onClick={() => navigateToSearchResults()}
-                  className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
-                  >
-                  View all results
-                </button>
-              </div>
-            )}
-          </form>
+              </form>
+            </div>
+            <Breadcrumbs />
+            {children}
+          </div>
         </div>
-        <Breadcrumbs />
-        {children}
-      </div>
-    </div>
+    </>
   );
 };
 

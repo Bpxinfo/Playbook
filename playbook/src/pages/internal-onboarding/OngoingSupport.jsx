@@ -2,10 +2,11 @@ import React from 'react';
 
 const OngoingSupport = () => {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-light text-red-800 mb-8">Ongoing Support</h1>
-      <div className="max-w-4xl">
-        <section className="mb-8">
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Ongoing Support</h1>
+      
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">A. Continuous Learning</h2>
           <ol className="list-decimal pl-6 space-y-2 text-gray-700">
             <li>Provide monthly updates on initiative progress and changes</li>
@@ -14,7 +15,7 @@ const OngoingSupport = () => {
           </ol>
         </section>
 
-        <section className="mb-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">B. Team Integration</h2>
           <ol className="list-decimal pl-6 space-y-2 text-gray-700">
             <li>Ongoing participation in team meetings and CCC activities</li>
@@ -24,7 +25,7 @@ const OngoingSupport = () => {
           </ol>
         </section>
 
-        <section>
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">C. Project Execution</h2>
           <ol className="list-decimal pl-6 space-y-2 text-gray-700">
             <li>Monthly status updates and progress tracking</li>

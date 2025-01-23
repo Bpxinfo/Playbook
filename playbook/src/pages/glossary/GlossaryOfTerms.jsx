@@ -88,38 +88,33 @@ const GlossaryOfTerms = () => {
   );
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-light text-red-800 mb-8">Glossary of Terms</h1>
-      
-      {/* Search Bar */}
-      <div className="mb-8 relative">
-        <input
-          type="text"
-          placeholder="Search terms..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-800"
-        />
-        <Search className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
-      </div>
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Glossary of Terms</h1>
 
-      {/* Glossary List */}
-      <div className="space-y-4">
-        {filteredTerms.map((item, index) => (
-          <div 
-            key={index} 
-            className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
-          >
-            <h3 className="text-lg font-semibold text-red-800 mb-2">{item.term}</h3>
-            <p className="text-gray-700">{item.definition}</p>
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <div className="relative mb-6">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search terms..."
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-red-800 focus:border-red-800 sm:text-sm"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-        ))}
-        
-        {filteredTerms.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
-            No terms found matching "{searchTerm}"
+
+          <div className="space-y-4">
+            {filteredTerms.map((item, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-red-800 mb-1">{item.term}</h3>
+                <p className="text-gray-700">{item.definition}</p>
+              </div>
+            ))}
           </div>
-        )}
+        </section>
       </div>
     </div>
   );

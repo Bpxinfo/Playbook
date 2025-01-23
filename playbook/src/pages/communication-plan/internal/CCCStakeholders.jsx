@@ -2,11 +2,11 @@ import React from 'react';
 
 const CCCStakeholders = () => {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-light text-red-800 mb-8">CCC Stakeholders</h1>
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">CCC Stakeholders</h1>
 
-      <div className="max-w-7xl">
-        <section className="mb-8">
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Stakeholder Communications</h2>
           <p className="text-gray-700 mb-4">The identity of CCC stakeholders, their needs, methods, channels:</p>
 

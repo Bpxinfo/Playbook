@@ -2,47 +2,48 @@ import React from 'react';
 
 const ManualSystems = () => {
   return (
-    <div className="p-8">
-      <div className="text-sm text-gray-500 mb-6">
+    <div className="p-8 mx-auto max-w-7xl">
+      <div className="text-sm text-gray-500 mb-6 text-center">
         Systems / Manual Systems
       </div>
 
-      <h1 className="text-4xl font-light text-red-800 mb-8">Manual Systems</h1>
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Manual Systems</h1>
 
-      <div className="max-w-4xl space-y-8">
+      <div className="space-y-8">
         {/* Contract Initiation */}
-        <div>
-          <h2 className="text-xl font-semibold text-red-800 mb-4">1. Contract Initiation</h2>
-          <div className="bg-white shadow-lg rounded-lg p-6 text-black">
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">1. Contract Initiation</h2>
+          <div className="text-gray-700">
             {/* Placeholder for future content */}
             <p>[CONTENT]</p>
           </div>
-        </div>
+        </section>
 
         {/* PO Creation */}
-        <div>
-          <h2 className="text-xl font-semibold text-red-800 mb-4">2. PO Creation</h2>
-          <div className="bg-white shadow-lg rounded-lg p-6 text-black">
-          <p>[CONTENT]</p>
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">2. PO Creation</h2>
+          <div className="text-gray-700">
+            <p>[CONTENT]</p>
           </div>
-        </div>
+        </section>
 
         {/* Invoicing */}
-        <div>
-          <h2 className="text-xl font-semibold text-red-800 mb-4">3. Invoicing</h2>
-          <div className="bg-white shadow-lg rounded-lg p-6 text-black space-y-4">
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">3. Invoicing</h2>
+          <div className="space-y-4 text-gray-700">
             <div>
               <p>[CONTENT]</p>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Budget Tracking */}
-        <div>
-          <h2 className="text-xl font-semibold text-red-800 mb-4">4. Budget Tracking</h2>
-          <div className="bg-white shadow-lg rounded-lg p-6 text-black">
-          <p>[CONTENT]</p>          </div>
-        </div>
+        <section className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">4. Budget Tracking</h2>
+          <div className="text-gray-700">
+            <p>[CONTENT]</p>
+          </div>
+        </section>
       </div>
     </div>
   );

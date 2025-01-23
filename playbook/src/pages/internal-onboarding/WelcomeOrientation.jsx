@@ -5,7 +5,7 @@ const WelcomeOrientation = () => {
     <div className="p-8">
       <h1 className="text-4xl font-light text-red-800 mb-8">Welcome Orientation (Month 1)</h1>
       <div className="max-w-4xl">
-        <section className="mb-8">
+        <section className="bg-white shadow-md rounded-lg p-6 mb-8">
           <h2 className="text-2xl text-red-800 mb-4">A. CCC Meeting Intro</h2>
           <ul className="list-decimal pl-6 text-gray-700">
             <li>Introduction of immediate team and new members</li>
@@ -13,7 +13,7 @@ const WelcomeOrientation = () => {
             <li>Q&A session</li>
           </ul>
         </section>
-        <section className="mb-8">
+        <section className="bg-white shadow-md rounded-lg p-6 mb-8">
           <h2 className="text-2xl text-red-800 mb-4">B. Initiative Deep Dive</h2>
           <ul className="list-decimal pl-6 text-gray-700">
             <li>LINK to CCC Overview Detailed walkthrough of current and past initiatives</li>
@@ -22,7 +22,7 @@ const WelcomeOrientation = () => {
             <li>LINK to Processes, Governance, and Ways of Working</li>
           </ul>
         </section>
-        <section>
+        <section className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-2xl text-red-800 mb-4">C. Administrative Tasks</h2>
           <ul className="list-decimal pl-6 text-gray-700">
             <li>Review FAQs and propose additional questions if needed</li>

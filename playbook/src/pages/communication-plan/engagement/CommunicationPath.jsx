@@ -2,12 +2,11 @@ import React from 'react';
 
 const CommunicationPlan = () => {
   return (
-    <div className="p-8">
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Communication Plan</h1>
 
-      <h1 className="text-4xl font-light text-red-800 mb-8">Communication Plan</h1>
-
-      <div className="max-w-4xl">
-        <section className="mb-8">
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Objectives</h2>
           <p className="text-gray-700 mb-4">
             Effective communication is an essential element of a good playbook, and it must be both timely and appropriately directed. The purpose of this communication plan is to outline how the communication process will be managed in reference to who should be notified (in the stakeholders section), what is being communicated (in the message section), how and when they should be notified (in the distribution section), and what should happen following notification (in the implementation section).

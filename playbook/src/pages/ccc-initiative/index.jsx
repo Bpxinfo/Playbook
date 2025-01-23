@@ -34,13 +34,6 @@ export default function CCCInitiativeHome() {
       icon: Users,
       color: "bg-yellow-50"
     },
-    {
-      title: "Glossary of Terms",
-      description: "Reference guide for commonly used terms and acronyms in the CCC initiative.",
-      path: "/ccc-initiative/glossary-of-terms",
-      icon: BookText,
-      color: "bg-pink-50"
-    }
   ];
 
   return (

@@ -2,12 +2,11 @@ import React from 'react';
 
 const PreIntegrationPrep = () => {
   return (
-    <div className="p-8">
+    <div className="p-8 mx-auto max-w-7xl">
+      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Pre-Integration Prep</h1>
 
-      <h1 className="text-4xl font-light text-red-800 mb-8">Pre-Integration Prep</h1>
-
-      <div className="max-w-4xl">
-        <section className="mb-8">
+      <div className="space-y-8">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">A. Background Information</h2>
           <ul className="list-decimal pl-6 space-y-3 text-gray-700">
             <li>Playbook Review
@@ -27,7 +26,7 @@ const PreIntegrationPrep = () => {
           </ul>
         </section>
 
-        <section>
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">B. Logistics</h2>
           <ul className="list-decimal pl-6 space-y-3 text-gray-700">
             <li>LINK to systems, request for necessary access rights and accounts</li>
