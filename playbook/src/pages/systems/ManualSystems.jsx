@@ -15,7 +15,7 @@ const ManualSystems = () => {
           <h2 className="text-2xl text-red-800 mb-4">1. Contract Initiation</h2>
           <div className="text-gray-700">
             {/* Placeholder for future content */}
-            <p>[CONTENT]</p>
+            <p>COMING SOON</p>
           </div>
         </section>
 
@@ -23,7 +23,7 @@ const ManualSystems = () => {
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">2. PO Creation</h2>
           <div className="text-gray-700">
-            <p>[CONTENT]</p>
+            <p>COMING SOON</p>
           </div>
         </section>
 
@@ -32,7 +32,7 @@ const ManualSystems = () => {
           <h2 className="text-2xl text-red-800 mb-4">3. Invoicing</h2>
           <div className="space-y-4 text-gray-700">
             <div>
-              <p>[CONTENT]</p>
+              <p>COMING SOON</p>
             </div>
           </div>
         </section>
@@ -41,7 +41,7 @@ const ManualSystems = () => {
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">4. Budget Tracking</h2>
           <div className="text-gray-700">
-            <p>[CONTENT]</p>
+            <p>COMING SOON</p>
           </div>
         </section>
       </div>
