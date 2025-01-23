@@ -405,7 +405,7 @@ const MainLayout = ({ children }) => {
             </Link>
             <button 
               onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-              className="absolute -right-3 top-4 bg-white rounded-full p-1 shadow-md"
+              className="absolute z-50 -right-3 top-4 bg-white rounded-full p-1 shadow-md"
             >
               {isSidebarCollapsed ? (
                 <PanelLeftOpen className="w-5 h-5 text-gray-600" />
@@ -501,76 +501,79 @@ const MainLayout = ({ children }) => {
               <ArrowDown className="w-5 h-5 text-gray-600" />
             </button>
           </div>
-          <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-end items-center space-x-4">
-            <div className="flex items-center space-x-6">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-                CCC SharePoint
-              </a>
-              <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-                CCC Roadmap
-              </a>
-              <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-                CCC Teams
-              </a>
-            </div>
+          <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center">
+          {/* Left-aligned group */}
+          <div className="flex items-center space-x-6">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC SharePoint
+            </a>
+            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC Roadmap
+            </a>
+            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC Teams
+            </a>
+          </div>
+
+          {/* Right-aligned group */}
+          <div className="flex items-center space-x-4">
             <Link
-                to="/feedback"
-                className="flex items-center text-red-800 hover:text-red-700 transition-colors"
-              >
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Submit Feedback
-              </Link>
-              <form 
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  navigateToSearchResults();
-                }} 
-                className="relative" 
-                ref={searchRef}
-              >
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                  className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
-                />
-                <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-                {showSearchDropdown && searchResults.length > 0 && (
-                  <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-                    {searchResults.slice(0, 3).map((result, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        onClick={() => {
-                          setShowSearchDropdown(false);
-                          setSearchTerm('');
-                          navigate(result.path);
-                        }}
-                        className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
-                        >
-                        <span className="font-medium text-red-800">{result.title}</span>
-                        <span className="text-sm text-gray-600">{result.excerpt}</span>
-                      </button>
-                    ))}
-                    
-                    {searchResults.length > 3 && (
-                      <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
-                        {searchResults.length - 3} more results available
-                      </div>
-                    )}
-                    
+              to="/feedback"
+              className="flex items-center text-red-800 hover:text-red-700 transition-colors"
+            >
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Submit Feedback
+            </Link>
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigateToSearchResults();
+              }} 
+              className="relative" 
+              ref={searchRef}
+            >
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
+              />
+              <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+              {showSearchDropdown && searchResults.length > 0 && (
+                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
+                  {searchResults.slice(0, 3).map((result, index) => (
                     <button
-                      type="button" // Explicitly set type to button
-                      onClick={() => navigateToSearchResults()}
-                      className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
-                      >
-                      View all results
+                      key={index}
+                      type="button"
+                      onClick={() => {
+                        setShowSearchDropdown(false);
+                        setSearchTerm('');
+                        navigate(result.path);
+                      }}
+                      className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
+                    >
+                      <span className="font-medium text-red-800">{result.title}</span>
+                      <span className="text-sm text-gray-600">{result.excerpt}</span>
                     </button>
-                  </div>
-                )}
-              </form>
-            </div>
+                  ))}
+                  {searchResults.length > 3 && (
+                    <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
+                      {searchResults.length - 3} more results available
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => navigateToSearchResults()}
+                    className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
+                  >
+                    View all results
+                  </button>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
             <Breadcrumbs />
             {children}
           </div>

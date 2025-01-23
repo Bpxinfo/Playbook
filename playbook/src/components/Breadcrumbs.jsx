@@ -38,7 +38,12 @@ const Breadcrumbs = () => {
       const mappedSegment = pathMap[segment] || {
         display: segment
           .split('-')
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .map(word => {
+            if (word.toLowerCase() === 'ccc') {
+              return 'CCC'; // Ensure "CCC" is always fully capitalized
+            }
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
           .join(' '),
         parent: null
       };
