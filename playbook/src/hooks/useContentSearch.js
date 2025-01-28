@@ -20,7 +20,7 @@ export const useContentSearch = () => {
 
     // Get text content
     return fragment.textContent || fragment.innerText || '';
-  };
+  }; 
 
   const indexCurrentPage = () => {
     // Wait for content to be rendered

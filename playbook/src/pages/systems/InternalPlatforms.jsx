@@ -7,7 +7,7 @@ const InternalPlatforms = () => {
         Systems / Internal Platforms
       </div>
 
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">CCC Internal Platforms</h1>
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">CCC Internal Platforms</h1>
 
       <div className="space-y-8">
         {/* Main Systems Table */}

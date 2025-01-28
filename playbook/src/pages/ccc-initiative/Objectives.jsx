@@ -5,11 +5,11 @@ const CCCOverview = () => {
   return (
     <div className="p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-red-800 mb-8 text-center">OBJECTIVES</h1>
+        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">OBJECTIVES</h1>
         
         <div className="space-y-8">
           <section>
-            <h2 className="text-2xl text-red-800 mb-4">The Project Summary</h2>
+            <h2 className="text-2xl text-red-800 mb-4 text-center">The Project Summary</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <div className="mb-8">
                 <img 
@@ -23,7 +23,7 @@ const CCCOverview = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl text-red-800 mb-4">CCC Overview</h2>
+            <h2 className="text-2xl text-red-800 mb-4 text-center">CCC Overview</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <p className="text-gray-700 mb-4">
                 The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in community settings. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions.
@@ -35,7 +35,7 @@ const CCCOverview = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl text-red-800 mb-4">Three Strategic Pillars</h2>
+            <h2 className="text-2xl text-red-800 mb-4 text-center">Three Strategic Pillars</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <ol className="list-decimal pl-6 space-y-2 text-gray-700">
                 <li>Generating Evidence</li>
@@ -46,7 +46,7 @@ const CCCOverview = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl text-red-800 mb-4">CCCs is working with community sites to address the following Unmet Needs:</h2>
+            <h2 className="text-2xl text-red-800 mb-4 text-center">CCCs is working with community sites to address the following Unmet Needs:</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>Advance Evidence-Based Solutions: Close the gap between clinical trial evidence and real-world implementation in community settings</li>
@@ -58,7 +58,7 @@ const CCCOverview = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl text-red-800 mb-4">Partnership Approach</h2>
+            <h2 className="text-2xl text-red-800 mb-4 text-center">Partnership Approach</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <p className="text-gray-700">
                 To achieve this goal, Gilead partners with community-focused institutions treating patients and nationwide support organizations to identify meaningful opportunities, develop community site capabilities, and execute impactful solutions for diverse oncology patient populations.

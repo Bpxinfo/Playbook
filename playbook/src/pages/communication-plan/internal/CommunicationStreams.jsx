@@ -3,7 +3,7 @@ import React from 'react';
 const CommunicationStreams = () => {
   return (
     <div className="p-8 mx-auto max-w-7xl">
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Communication Streams</h1>
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Communication Streams</h1>
 
       <div className="space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6">

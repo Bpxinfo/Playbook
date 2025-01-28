@@ -2,9 +2,9 @@ import React from 'react'
 import lifecycle from '../../assets/CCC_Process_Overview.png'
 const CCCProjectLifecycle = () => {
   return (
-    <div className="p-8 mx-auto max-w-7xl">
+    <div className="p-8 mx-auto max-w-full">
       {/* Main Page Title */}
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">CCC Project Lifecycle</h1>
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">CCC Project Lifecycle</h1>
 
       <section className="bg-white rounded-lg shadow-md p-6">
         <div className="bg-gray-50 p-4 rounded-lg text-center">
@@ -33,7 +33,7 @@ const CCCProjectLifecycle = () => {
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-2xl text-red-800 mb-4">1. Strategy Development</h2>
         <p className="text-gray-700">
-          The project’s purpose and strategy are defined with input from external experts and internal
+          The project's purpose and strategy are defined with input from external experts and internal
           teams. This ensures the project is aligned with broader organizational objectives and has a
           clear focus.
         </p>

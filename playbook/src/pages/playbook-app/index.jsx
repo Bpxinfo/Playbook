@@ -17,7 +17,7 @@ export default function PlaybookOverviewHome() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-4xl font-light text-red-800 mb-6">Playbook App Overview</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Playbook App Overview</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <p className="text-gray-700 mb-4">
@@ -36,7 +36,7 @@ export default function PlaybookOverviewHome() {
             <button
               key={index}
               onClick={() => navigate(section.path)}
-              className="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left"
+              className="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left col-span-1 md:col-span-2 lg:col-span-3"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">

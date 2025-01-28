@@ -4,12 +4,11 @@ import governance_model from '../../assets/governance_model.png'
 import stakeholder from '../../assets/Stakeholder.jpg'
 import leadership from '../../assets/leadership.jpg'
 import adjud from '../../assets/adjud.jpg'
-import purple from '../../assets/Purple and Lilac Project Management Mind Map.png'
 
 const ProcessesGovernance = () => {
   return (
-    <div className="p-8 mx-auto max-w-7xl">
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Processes & Governance</h1>
+    <div className="p-8 mx-auto max-w-full">
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Processes & Governance</h1>
       
       <div className="space-y-8">
         {/* 1.1 Process Map & Governance Model */}
@@ -20,7 +19,7 @@ const ProcessesGovernance = () => {
             <div className="bg-gray-50 p-4 rounded-lg text-center">
               <div className="mb-8">
                 <img 
-                  src={purple} 
+                  src={CCC_Process_Overview} 
                   alt="CCC Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
@@ -35,9 +34,9 @@ const ProcessesGovernance = () => {
           </div>
         </section>
 
-        {/* 1.2 DIA (RACI) */}
+        {/* 1.2  (RACI) */}
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.2 DIA (RACI)</h2>
+          <h2 className="text-2xl text-red-800 mb-4">1.2 DAI (RACI)</h2>
           <div className="bg-gray-50 p-4 rounded-lg">
             <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
           </div>

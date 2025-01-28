@@ -39,7 +39,7 @@ export default function CCCInitiativeHome() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-4xl font-light text-red-800 mb-6">CCC Initiative Overview</h1>
+        <h1 className="text-4xl font-light text-white mb-6 bg-red-800 p-4 uppercase">CCC Initiative Overview</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <p className="text-gray-700 mb-4">

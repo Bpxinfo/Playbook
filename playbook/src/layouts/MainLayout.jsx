@@ -16,7 +16,7 @@ import {
   ArrowUp,
   ArrowDown,
   BookOpen
-} from 'lucide-react';
+} from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { searchIndex } from '../utils/searchIndex';
@@ -32,7 +32,7 @@ const MainLayout = ({ children }) => {
   const [expandedSubSection, setExpandedSubSection] = useState(null);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState({ results: [], hiddenCount: 0 });
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const searchRef = useRef(null);
 
@@ -179,11 +179,14 @@ const MainLayout = ({ children }) => {
     setSearchTerm(value);
     
     if (value.trim().length > 1) {
-      const results = performLocalSearch(value);
-      setSearchResults(results);
+      const { displayedResults, hiddenCount } = performLocalSearch(value.trim());
+      setSearchResults({
+        results: displayedResults,
+        hiddenCount
+      });
       setShowSearchDropdown(true);
     } else {
-      setSearchResults([]);
+      setSearchResults({ results: [], hiddenCount: 0 });
       setShowSearchDropdown(false);
     }
   };
@@ -249,20 +252,13 @@ const MainLayout = ({ children }) => {
   const performLocalSearch = (query) => {
     if (!query?.trim()) return [];
     
-    // Search through navigation structure
-    const navigationResults = searchThroughNavigation(query);
+    const results = performGlobalSearch(query, 5);
+    const hasMore = results.length > 5;
     
-    // Search through content
-    const contentResults = searchContent(query);
-    
-    // Combine and deduplicate results
-    const combinedResults = [...navigationResults, ...(contentResults || [])];
-    const uniqueResults = Array.from(
-      new Map(combinedResults.map(item => [item.path, item])).values()
-    );
-    
-    // Sort by relevance - don't limit results here
-    return uniqueResults.sort((a, b) => ((b.score || b.relevance || 1) - (a.score || a.relevance || 1)));
+    return {
+      displayedResults: results.slice(0, 5),
+      hiddenCount: hasMore ? results.length - 5 : 0
+    };
   };
 
   // Navigation helper functions
@@ -540,35 +536,36 @@ const MainLayout = ({ children }) => {
                 className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
               />
               <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-              {showSearchDropdown && searchResults.length > 0 && (
-                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-                  {searchResults.slice(0, 3).map((result, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => {
-                        setShowSearchDropdown(false);
-                        setSearchTerm('');
-                        navigate(result.path);
-                      }}
-                      className="w-full px-4 py-3 text-left bg-white flex flex-col border-b last:border-b-0"
-                    >
-                      <span className="font-medium text-red-800">{result.title}</span>
-                      <span className="text-sm text-gray-600">{result.excerpt}</span>
-                    </button>
-                  ))}
-                  {searchResults.length > 3 && (
-                    <div className="px-4 py-2 text-sm bg-white text-gray-500 border-b">
-                      {searchResults.length - 3} more results available
-                    </div>
+              {showSearchDropdown && (
+                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200">
+                  {searchResults.results.length > 0 ? (
+                    <>
+                      {searchResults.results.map((result, index) => (
+                        <Link
+                          key={index}
+                          to={result.path}
+                          className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
+                          onClick={() => setShowSearchDropdown(false)}
+                        >
+                          <span className="font-medium text-red-800">{result.title}</span>
+                          <span className="text-sm text-gray-600 line-clamp-1">
+                            {result.excerpt}
+                          </span>
+                        </Link>
+                      ))}
+                      {searchResults.hiddenCount > 0 && (
+                        <Link
+                          to={`/search?q=${encodeURIComponent(searchTerm.trim())}`}
+                          className="w-full px-4 py-2 text-center bg-gray-50 text-sm text-red-800 border-t hover:bg-gray-100"
+                          onClick={() => setShowSearchDropdown(false)}
+                        >
+                          View {searchResults.hiddenCount} more results
+                        </Link>
+                      )}
+                    </>
+                  ) : (
+                    <div className="px-4 py-3 text-gray-500">No matches found</div>
                   )}
-                  <button
-                    type="button"
-                    onClick={() => navigateToSearchResults()}
-                    className="w-full px-4 py-2 text-center bg-white text-sm text-red-800 border-t"
-                  >
-                    View all results
-                  </button>
                 </div>
               )}
             </form>

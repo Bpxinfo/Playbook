@@ -7,4 +7,4 @@ const ContentIndexer = () => {
   return null; // This component doesn't render anything
 };
 
-export default ContentIndexer;
+export default ContentIndexer; 

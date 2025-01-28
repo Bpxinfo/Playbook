@@ -4,7 +4,7 @@ const LinksToProcess = () => {
   return (
     <div className="p-8 flex justify-center">
       <div className="max-w-4xl w-full">
-        <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Links To Process</h1>
+        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Links To Process</h1>
         <div className="space-y-8">
           <section className="bg-white shadow-md rounded-lg p-6 text-left">
             <h2 className="text-2xl text-red-800 mb-4">Title/Subheader</h2>

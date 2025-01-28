@@ -7,7 +7,7 @@ const ManualSystems = () => {
         Systems / Manual Systems
       </div>
 
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">Manual Systems</h1>
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Manual Systems</h1>
 
       <div className="space-y-8">
         {/* Contract Initiation */}

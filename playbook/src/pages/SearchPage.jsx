@@ -13,7 +13,7 @@ const SearchPage = () => {
   const { searchContent } = useContentSearch();
   const location = useLocation();
 
-  useEffect(() => {
+  useEffect(() => { 
     const performSearch = async () => {
       if (location.pathname === '/search' && searchTerm) {
         setIsLoading(true);

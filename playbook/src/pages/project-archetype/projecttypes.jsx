@@ -4,9 +4,7 @@ const CCCProjectTypes = () => {
   return (
     <div className="p-8 mx-auto max-w-7xl">
       {/* Page Title */}
-      <h1 className="text-4xl font-light text-red-800 mb-8 text-center">
-        CCC Project Types (use SOP 13096)
-      </h1>
+      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">CCC Project Types (use SOP 13096)</h1>
 
       {/* Collaborative Studies (GRC / LRC) */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -59,7 +57,7 @@ const CCCProjectTypes = () => {
 
         <p className="text-gray-700 mb-2">
           After review of the ISR proposal, the submission should either be rejected or accepted
-          with no changes requested. If the proposal is approved by the IRC, Gilead’s role is
+          with no changes requested. If the proposal is approved by the IRC, Gilead's role is
           limited to:
         </p>
         <ul className="list-disc pl-6 mb-4 text-gray-700">
