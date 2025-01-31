@@ -57,7 +57,7 @@ export const pageRegistry = {
   
     // Communication Plan - Internal
     '/communication-plan/internal': {
-      component: () => import('../pages/communication-plan/internal/InternalIndex'),
+      component: () => import('@/pages/communication-plan/internal/InternalIndex'),
       title: 'Internal Communications'
     },
     '/communication-plan/internal/objectives': {
@@ -87,7 +87,7 @@ export const pageRegistry = {
   
     // Communication Plan - Engagement
     '/communication-plan/engagement-plan': {
-      component: () => import('../pages/communication-plan/engagement/EngIndex'),
+      component: () => import('@/pages/communication-plan/engagement/EngIndex'),
       title: 'Engagement Plan'
     },
     '/communication-plan/engagement-plan/objectives': {
