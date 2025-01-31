@@ -1,83 +1,79 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
-
-//index page
-import HomePage from './pages/index';
-// Import page components
-import FeedbackForm from './pages/feedback/Feedback';
-import SearchPage from './pages/SearchPage'; 
 import { initializeSearchIndex } from './utils/pageRegistry';
 import { searchIndex } from './utils/searchIndex';
-import ContentIndexer from './components/ContentIndexer';                                                        
+import ContentIndexer from './components/ContentIndexer';
 
+// Lazy load all page components
+const HomePage = lazy(() => import('./pages/index'));
+const FeedbackForm = lazy(() => import('./pages/feedback/Feedback'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
 
-//playbook app overview
-import PlaybookObjectives from './pages/playbook-app/Objectives';
-import PlaybookOverviewHome from './pages/playbook-app/index';
+// Playbook app overview
+const PlaybookObjectives = lazy(() => import('./pages/playbook-app/Objectives'));
+const PlaybookOverviewHome = lazy(() => import('./pages/playbook-app/index'));
 
+// CCC Initiative Overview
+const CCCOverview = lazy(() => import('./pages/ccc-initiative/Objectives'));
+const KeyMessages = lazy(() => import('./pages/ccc-initiative/KeyMessaging'));
+const Stakeholders = lazy(() => import('./pages/ccc-initiative/Stakeholders'));
+const StrategicPillars = lazy(() => import('./pages/ccc-initiative/StrategicPillars'));
+const CCCInitiativeHome = lazy(() => import('./pages/ccc-initiative/index'));
 
-//CCC Initiative Overview
-import CCCOverview from './pages/ccc-initiative/Objectives';
-import KeyMessages from './pages/ccc-initiative/KeyMessaging';
-import Stakeholders from './pages/ccc-initiative/Stakeholders';
-import StrategicPillars from './pages/ccc-initiative/StrategicPillars';
-import CCCInitiativeHome from './pages/ccc-initiative/index';
-
-
-//Communicaiton pLan
-import CommunicationPlanHome from './pages/communication-plan/index';
+// Communication Plan
+const CommunicationPlanHome = lazy(() => import('./pages/communication-plan/index'));
 const CommInternalHome = lazy(() => import('./pages/communication-plan/internal/InternalIndex'));
-import InternalObjectives from './pages/communication-plan/internal/Objectives';
-import CommunicationChannels from './pages/communication-plan/internal/CCCCommunications';
-import CCCStakeholders from './pages/communication-plan/internal/CCCStakeholders';
-import CommunicationStreams from './pages/communication-plan/internal/CommunicationStreams';
-import StrategiesTactics from './pages/communication-plan/internal/StrategiesNTactics';
-import Timeline from './pages/communication-plan/internal/Timeline';
+const InternalObjectives = lazy(() => import('./pages/communication-plan/internal/Objectives'));
+const CommunicationChannels = lazy(() => import('./pages/communication-plan/internal/CCCCommunications'));
+const CCCStakeholders = lazy(() => import('./pages/communication-plan/internal/CCCStakeholders'));
+const CommunicationStreams = lazy(() => import('./pages/communication-plan/internal/CommunicationStreams'));
+const StrategiesTactics = lazy(() => import('./pages/communication-plan/internal/StrategiesNTactics'));
+const Timeline = lazy(() => import('./pages/communication-plan/internal/Timeline'));
 
-import EngagementObjectives from './pages/communication-plan/engagement/Objectives';
-import CommEngHome from './pages/communication-plan/engagement/EngIndex';
-import CommunicationPlan from './pages/communication-plan/engagement/CommunicationPath';
-import LeadershipSteerCoMonitoring from './pages/communication-plan/engagement/ImpactMonitoring';
-import InternalEngagementStrategies from './pages/communication-plan/engagement/InternalEngagementStrategies';
-import InternalEngagementPlan from './pages/communication-plan/engagement/InternalFeedback';
+const EngagementObjectives = lazy(() => import('./pages/communication-plan/engagement/Objectives'));
+const CommEngHome = lazy(() => import('./pages/communication-plan/engagement/EngIndex'));
+const CommunicationPlan = lazy(() => import('./pages/communication-plan/engagement/CommunicationPath'));
+const LeadershipSteerCoMonitoring = lazy(() => import('./pages/communication-plan/engagement/ImpactMonitoring'));
+const InternalEngagementStrategies = lazy(() => import('./pages/communication-plan/engagement/InternalEngagementStrategies'));
+const InternalEngagementPlan = lazy(() => import('./pages/communication-plan/engagement/InternalFeedback'));
 
-//Onboarding
-import InternalOnboardingHome from './pages/internal-onboarding/index';
-import OnboardingObjectives from './pages/internal-onboarding/Objectives';
-import DeepenEngagement from './pages/internal-onboarding/DeepenEngagement';
-import FullIntegration from './pages/internal-onboarding/FullIntegration';
-import ImmerseContribute from './pages/internal-onboarding/Immerse';
-import PreIntegrationPrep from './pages/internal-onboarding/PrePrep';
-import ExternalLinks from './pages/internal-onboarding/ExternalLinks';
-import OngoingSupport from './pages/internal-onboarding/OngoingSupport';
-import WelcomeOrientation from './pages/internal-onboarding/WelcomeOrientation';
+// Onboarding
+const InternalOnboardingHome = lazy(() => import('./pages/internal-onboarding/index'));
+const OnboardingObjectives = lazy(() => import('./pages/internal-onboarding/Objectives'));
+const DeepenEngagement = lazy(() => import('./pages/internal-onboarding/DeepenEngagement'));
+const FullIntegration = lazy(() => import('./pages/internal-onboarding/FullIntegration'));
+const ImmerseContribute = lazy(() => import('./pages/internal-onboarding/Immerse'));
+const PreIntegrationPrep = lazy(() => import('./pages/internal-onboarding/PrePrep'));
+const ExternalLinks = lazy(() => import('./pages/internal-onboarding/ExternalLinks'));
+const OngoingSupport = lazy(() => import('./pages/internal-onboarding/OngoingSupport'));
+const WelcomeOrientation = lazy(() => import('./pages/internal-onboarding/WelcomeOrientation'));
 
-//Processes
-import ProcessesHome from './pages/processes/index';
-import ProcessesObjectives from './pages/processes/Objectives';
-import ProcessesGovernance from './pages/processes/ProcessesGovernance';
-import LinktoSGF from './pages/processes/RandD';
+// Processes
+const ProcessesHome = lazy(() => import('./pages/processes/index'));
+const ProcessesObjectives = lazy(() => import('./pages/processes/Objectives'));
+const ProcessesGovernance = lazy(() => import('./pages/processes/ProcessesGovernance'));
+const LinktoSGF = lazy(() => import('./pages/processes/RandD'));
 
-//Systems
-import SystemsObjectives from './pages/systems/Objectives';
-import InternalPlatforms from './pages/systems/InternalPlatforms';
-import SystemsHome from './pages/systems/index';
-import LinkstoProcess from './pages/systems/LinksToProcess';
-import ManualSystems from './pages/systems/ManualSystems';
+// Compliance
+const ComplianceGuidance = lazy(() => import('./pages/compliance/ComplianceGuidance'));
 
-//Compliance
-import ComplianceGuidance from './pages/compliance/ComplianceGuidance';
+// Systems
+const SystemsHome = lazy(() => import('./pages/systems/index'));
+const SystemsObjectives = lazy(() => import('./pages/systems/Objectives'));
+const InternalPlatforms = lazy(() => import('./pages/systems/InternalPlatforms'));
+const ManualSystems = lazy(() => import('./pages/systems/ManualSystems'));
+const LinkstoProcess = lazy(() => import('./pages/systems/LinksToProcess'));
 
-//Archetypes
-import ProjectArchetypeHome from './pages/project-archetype/index';
-import PAObjectives from './pages/project-archetype/Objectives';
-import CorePrinciples from './pages/project-archetype/CorePrinciples';
-import CCCProjectLifecycle from './pages/project-archetype/ccc-project-lifecycle';
-import CCCProjectTypes from './pages/project-archetype/ProjectTypes';
+// Project Archetype
+const ProjectArchetypeHome = lazy(() => import('./pages/project-archetype/index'));
+const PAObjectives = lazy(() => import('./pages/project-archetype/Objectives'));
+const CorePrinciples = lazy(() => import('./pages/project-archetype/CorePrinciples'));
+const CCCProjectLifecycle = lazy(() => import('./pages/project-archetype/ccc-project-lifecycle'));
+const CCCProjectTypes = lazy(() => import('./pages/project-archetype/ProjectTypes'));
 
-//Glossary of Terms
-import GlossaryOfTerms from './pages/glossary/GlossaryOfTerms';
+// Glossary
+const GlossaryOfTerms = lazy(() => import('./pages/glossary/GlossaryOfTerms'));
 
 function App() {
   useEffect(() => {
