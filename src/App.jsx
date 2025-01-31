@@ -1,25 +1,25 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import { initializeSearchIndex } from './utils/pageRegistry';
-import { searchIndex } from './utils/searchIndex';
-import ContentIndexer from './components/ContentIndexer';
+import MainLayout from '@/layouts/MainLayout';
+import { initializeSearchIndex } from '@/utils/pageRegistry';
+import { searchIndex } from '@/utils/searchIndex';
+import ContentIndexer from '@/components/ContentIndexer';
 
 // Lazy load all page components
-const HomePage = lazy(() => import('./pages/index'));
-const FeedbackForm = lazy(() => import('./pages/feedback/Feedback'));
-const SearchPage = lazy(() => import('./pages/SearchPage'));
+const HomePage = lazy(() => import('@/pages/index'));
+const FeedbackForm = lazy(() => import('@/pages/feedback/Feedback'));
+const SearchPage = lazy(() => import('@/pages/SearchPage'));
 
 // Playbook app overview
-const PlaybookObjectives = lazy(() => import('./pages/playbook-app/Objectives'));
-const PlaybookOverviewHome = lazy(() => import('./pages/playbook-app/index'));
+const PlaybookObjectives = lazy(() => import('@/pages/playbook-app/Objectives'));
+const PlaybookOverviewHome = lazy(() => import('@/pages/playbook-app/index'));
 
 // CCC Initiative Overview
-const CCCOverview = lazy(() => import('./pages/ccc-initiative/Objectives'));
-const KeyMessages = lazy(() => import('./pages/ccc-initiative/KeyMessaging'));
-const Stakeholders = lazy(() => import('./pages/ccc-initiative/Stakeholders'));
-const StrategicPillars = lazy(() => import('./pages/ccc-initiative/StrategicPillars'));
-const CCCInitiativeHome = lazy(() => import('./pages/ccc-initiative/index'));
+const CCCOverview = lazy(() => import('@/pages/ccc-initiative/Objectives'));
+const KeyMessages = lazy(() => import('@/pages/ccc-initiative/KeyMessaging'));
+const Stakeholders = lazy(() => import('@/pages/ccc-initiative/Stakeholders'));
+const StrategicPillars = lazy(() => import('@/pages/ccc-initiative/StrategicPillars'));
+const CCCInitiativeHome = lazy(() => import('@/pages/ccc-initiative/index'));
 
 // Communication Plan
 const CommunicationPlanHome = lazy(() => import('@/pages/communication-plan/index'));
@@ -39,41 +39,41 @@ const InternalEngagementStrategies = lazy(() => import('@/pages/communication-pl
 const InternalEngagementPlan = lazy(() => import('@/pages/communication-plan/engagement/InternalFeedback'));
 
 // Onboarding
-const InternalOnboardingHome = lazy(() => import('./pages/internal-onboarding/index'));
-const OnboardingObjectives = lazy(() => import('./pages/internal-onboarding/Objectives'));
-const DeepenEngagement = lazy(() => import('./pages/internal-onboarding/DeepenEngagement'));
-const FullIntegration = lazy(() => import('./pages/internal-onboarding/FullIntegration'));
-const ImmerseContribute = lazy(() => import('./pages/internal-onboarding/Immerse'));
-const PreIntegrationPrep = lazy(() => import('./pages/internal-onboarding/PrePrep'));
-const ExternalLinks = lazy(() => import('./pages/internal-onboarding/ExternalLinks'));
-const OngoingSupport = lazy(() => import('./pages/internal-onboarding/OngoingSupport'));
-const WelcomeOrientation = lazy(() => import('./pages/internal-onboarding/WelcomeOrientation'));
+const InternalOnboardingHome = lazy(() => import('@/pages/internal-onboarding/index'));
+const OnboardingObjectives = lazy(() => import('@/pages/internal-onboarding/Objectives'));
+const DeepenEngagement = lazy(() => import('@/pages/internal-onboarding/DeepenEngagement'));
+const FullIntegration = lazy(() => import('@/pages/internal-onboarding/FullIntegration'));
+const ImmerseContribute = lazy(() => import('@/pages/internal-onboarding/Immerse'));
+const PreIntegrationPrep = lazy(() => import('@/pages/internal-onboarding/PrePrep'));
+const ExternalLinks = lazy(() => import('@/pages/internal-onboarding/ExternalLinks'));
+const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSupport'));
+const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation'));
 
 // Processes
-const ProcessesHome = lazy(() => import('./pages/processes/index'));
-const ProcessesObjectives = lazy(() => import('./pages/processes/Objectives'));
-const ProcessesGovernance = lazy(() => import('./pages/processes/ProcessesGovernance'));
-const LinktoSGF = lazy(() => import('./pages/processes/RandD'));
+const ProcessesHome = lazy(() => import('@/pages/processes/index'));
+const ProcessesObjectives = lazy(() => import('@/pages/processes/Objectives'));
+const ProcessesGovernance = lazy(() => import('@/pages/processes/ProcessesGovernance'));
+const LinktoSGF = lazy(() => import('@/pages/processes/RandD'));
 
 // Compliance
-const ComplianceGuidance = lazy(() => import('./pages/compliance/ComplianceGuidance'));
+const ComplianceGuidance = lazy(() => import('@/pages/compliance/ComplianceGuidance'));
 
 // Systems
-const SystemsHome = lazy(() => import('./pages/systems/index'));
-const SystemsObjectives = lazy(() => import('./pages/systems/Objectives'));
-const InternalPlatforms = lazy(() => import('./pages/systems/InternalPlatforms'));
-const ManualSystems = lazy(() => import('./pages/systems/ManualSystems'));
-const LinkstoProcess = lazy(() => import('./pages/systems/LinksToProcess'));
+const SystemsHome = lazy(() => import('@/pages/systems/index'));
+const SystemsObjectives = lazy(() => import('@/pages/systems/Objectives'));
+const InternalPlatforms = lazy(() => import('@/pages/systems/InternalPlatforms'));
+const ManualSystems = lazy(() => import('@/pages/systems/ManualSystems'));
+const LinkstoProcess = lazy(() => import('@/pages/systems/LinkstoProcess'));
 
 // Project Archetype
-const ProjectArchetypeHome = lazy(() => import('./pages/project-archetype/index'));
-const PAObjectives = lazy(() => import('./pages/project-archetype/Objectives'));
-const CorePrinciples = lazy(() => import('./pages/project-archetype/CorePrinciples'));
-const CCCProjectLifecycle = lazy(() => import('./pages/project-archetype/ccc-project-lifecycle'));
-const CCCProjectTypes = lazy(() => import('./pages/project-archetype/ProjectTypes'));
+const ProjectArchetypeHome = lazy(() => import('@/pages/project-archetype/index'));
+const PAObjectives = lazy(() => import('@/pages/project-archetype/Objectives'));
+const CorePrinciples = lazy(() => import('@/pages/project-archetype/CorePrinciples'));
+const CCCProjectLifecycle = lazy(() => import('@/pages/project-archetype/ccc-project-lifecycle'));
+const CCCProjectTypes = lazy(() => import('@/pages/project-archetype/ProjectTypes'));
 
 // Glossary
-const GlossaryOfTerms = lazy(() => import('./pages/glossary/GlossaryOfTerms'));
+const GlossaryOfTerms = lazy(() => import('@/pages/glossary/GlossaryOfTerms'));
 
 function App() {
   useEffect(() => {

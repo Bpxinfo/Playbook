@@ -3,55 +3,55 @@ import { createRoot, unmountComponentAtNode } from 'react-dom/client';
 export const pageRegistry = {
     // Home
     '/': {
-      component: () => import('../pages/index'),
+      component: () => import('@/pages/index'),
       title: 'CCC Playbook Home'
     },
   
     // Core Pages
     '/feedback': {
-      component: () => import('../pages/feedback/Feedback'),
+      component: () => import('@/pages/feedback/Feedback'),
       title: 'Submit Feedback'
     },
     '/search': {
-      component: () => import('../pages/SearchPage'),
+      component: () => import('@/pages/SearchPage'),
       title: 'Search Results'
     },
   
     // Playbook App Overview
     '/playbook-app-overview': {
-      component: () => import('../pages/playbook-app/index'),
+      component: () => import('@/pages/playbook-app/index'),
       title: 'Playbook Overview'
     },
     '/playbook-app-overview/objectives': {
-      component: () => import('../pages/playbook-app/Objectives'),
+      component: () => import('@/pages/playbook-app/Objectives'),
       title: 'Playbook Objectives'
     },
   
     // CCC Initiative
     '/ccc-initiative': {
-      component: () => import('../pages/ccc-initiative/index'),
+      component: () => import('@/pages/ccc-initiative/index'),
       title: 'CCC Initiative Overview'
     },
     '/ccc-initiative/objectives-and-ccc-overview': {
-      component: () => import('../pages/ccc-initiative/Objectives'),
+      component: () => import('@/pages/ccc-initiative/Objectives'),
       title: 'CCC Overview & Objectives'
     },
     '/ccc-initiative/strategic-pillars': {
-      component: () => import('../pages/ccc-initiative/StrategicPillars'),
+      component: () => import('@/pages/ccc-initiative/StrategicPillars'),
       title: 'Strategic Pillars'
     },
     '/ccc-initiative/key-messaging': {
-      component: () => import('../pages/ccc-initiative/KeyMessaging'),
+      component: () => import('@/pages/ccc-initiative/KeyMessaging'),
       title: 'Key Messaging'
     },
     '/ccc-initiative/stakeholders': {
-      component: () => import('../pages/ccc-initiative/Stakeholders'),
+      component: () => import('@/pages/ccc-initiative/Stakeholders'),
       title: 'Stakeholders'
     },
   
     // Communication Plan
     '/communication-plan': {
-      component: () => import('../pages/communication-plan/index'),
+      component: () => import('@/pages/communication-plan/index'),
       title: 'Communication Plan'
     },
   
@@ -61,27 +61,27 @@ export const pageRegistry = {
       title: 'Internal Communications'
     },
     '/communication-plan/internal/objectives': {
-      component: () => import('../pages/communication-plan/internal/Objectives'),
+      component: () => import('@/pages/communication-plan/internal/Objectives'),
       title: 'Internal Communication Objectives'
     },
     '/communication-plan/internal/ccc-communications': {
-      component: () => import('../pages/communication-plan/internal/CCCCommunications'),
+      component: () => import('@/pages/communication-plan/internal/CCCCommunications'),
       title: 'CCC Communications'
     },
     '/communication-plan/internal/ccc-stakeholders': {
-      component: () => import('../pages/communication-plan/internal/CCCStakeholders'),
+      component: () => import('@/pages/communication-plan/internal/CCCStakeholders'),
       title: 'CCC Stakeholders'
     },
     '/communication-plan/internal/communication-streams': {
-      component: () => import('../pages/communication-plan/internal/CommunicationStreams'),
+      component: () => import('@/pages/communication-plan/internal/CommunicationStreams'),
       title: 'Communication Streams'
     },
     '/communication-plan/internal/strategies-&-tactics': {
-      component: () => import('../pages/communication-plan/internal/StrategiesNTactics'),
+      component: () => import('@/pages/communication-plan/internal/StrategiesNTactics'),
       title: 'Strategies & Tactics'
     },
     '/communication-plan/internal/timeline': {
-      component: () => import('../pages/communication-plan/internal/Timeline'),
+      component: () => import('@/pages/communication-plan/internal/Timeline'),
       title: 'Communication Timeline'
     },
   
@@ -91,33 +91,33 @@ export const pageRegistry = {
       title: 'Engagement Plan'
     },
     '/communication-plan/engagement-plan/objectives': {
-      component: () => import('../pages/communication-plan/engagement/Objectives'),
+      component: () => import('@/pages/communication-plan/engagement/Objectives'),
       title: 'Engagement Plan Objectives'
     },
     '/communication-plan/engagement-plan/communication-path': {
-      component: () => import('../pages/communication-plan/engagement/CommunicationPath'),
+      component: () => import('@/pages/communication-plan/engagement/CommunicationPath'),
       title: 'Communication Path'
     },
     '/communication-plan/engagement-plan/impact-monitoring': {
-      component: () => import('../pages/communication-plan/engagement/ImpactMonitoring'),
+      component: () => import('@/pages/communication-plan/engagement/ImpactMonitoring'),
       title: 'Impact Monitoring'
     },
     '/communication-plan/engagement-plan/internal-engagement-strategies': {
-      component: () => import('../pages/communication-plan/engagement/InternalEngagementStrategies'),
+      component: () => import('@/pages/communication-plan/engagement/InternalEngagementStrategies'),
       title: 'Internal Engagement Strategies'
     },
     '/communication-plan/engagement-plan/internal-feedback': {
-      component: () => import('../pages/communication-plan/engagement/InternalFeedback'),
+      component: () => import('@/pages/communication-plan/engagement/InternalFeedback'),
       title: 'Internal Feedback'
     },
   
     // Internal Onboarding
     '/internal-onboarding': {
-      component: () => import('../pages/internal-onboarding/index'),
+      component: () => import('@/pages/internal-onboarding/index'),
       title: 'Internal Onboarding'
     },
     '/internal-onboarding/objectives': {
-      component: () => import('../pages/internal-onboarding/Objectives'),
+      component: () => import('@/pages/internal-onboarding/Objectives'),
       title: 'Onboarding Objectives'
     },
     '/internal-onboarding/deepen-engagement': {
