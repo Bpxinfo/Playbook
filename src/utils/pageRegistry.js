@@ -154,13 +154,15 @@ export const pageRegistry = {
       component: () => import('../pages/processes/ProcessesGovernance'),
       title: 'Processes & Governance'
     },
-    '/processes/compliance-guidance': {
-      component: () => import('../pages/processes/ComplianceGuidance'),
-      title: 'Compliance Guidance'
-    },
-    '/processes/link-to-sops,-guidance,-forms,-etc.': {
+    '/processes/resources-&-documentation': {
       component: () => import('../pages/processes/RandD'),
-      title: 'Links to SOPs, Guidance & Forms'
+      title: 'Resources & Documentation'
+    },
+  
+    // Compliance
+    '/compliance': {
+      component: () => import('../pages/compliance/ComplianceGuidance'),
+      title: 'Compliance Guidance'
     },
   
     // Systems
