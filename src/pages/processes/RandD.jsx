@@ -161,9 +161,6 @@ const LinktoSGF = () => {
 
   return (
     <div className="p-8">
-      <div className="text-sm text-gray-500 mb-6">
-        Processes / Link to SOPs, Guidance, Forms, etc.
-      </div>
 
       <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Resources & Documentation</h1>
 

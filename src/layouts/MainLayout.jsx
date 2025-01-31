@@ -15,7 +15,8 @@ import {
   Layout,
   ArrowUp,
   ArrowDown,
-  BookOpen
+  BookOpen,
+  Shield
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -35,6 +36,7 @@ const MainLayout = ({ children }) => {
   const [searchResults, setSearchResults] = useState({ results: [], hiddenCount: 0 });
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const searchRef = useRef(null);
+  const isScrollingRef = useRef(false);
 
   const navigationItems = {
     'playbook-app-overview': {
@@ -96,8 +98,20 @@ const MainLayout = ({ children }) => {
       items: [
         'Objectives',
         'Processes & Governance',
-        'Compliance Guidance',
-        'Link to SOPs, Guidance, Forms, etc.'
+        'Resources & Documentation'
+      ]
+    },
+    'compliance': {
+      title: 'Compliance Guidance',
+      items: [
+        'Overview',
+        'Key Compliance Principles',
+        'Compliance Requirements',
+        'Resources and Support',
+        'CCC Independence',
+        'CCC Strategy Development',
+        'Project Proposals & Approvals',
+        'Project Operations'
       ]
     },
     'projects-archetypes': {
@@ -148,6 +162,10 @@ const MainLayout = ({ children }) => {
     'processes': {
       icon: Settings,
       defaultRoute: '/processes'
+    },
+    'compliance': {
+      icon: Shield,
+      defaultRoute: '/compliance'
     },
     'systems': {
       icon: Database,
@@ -279,6 +297,13 @@ const MainLayout = ({ children }) => {
 
   const getItemPath = (section, item, subsection = null) => {
     if (!section || !item) return '/';
+    
+    // Special handling for compliance section anchors
+    if (section === 'compliance') {
+      const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
+      return `/compliance#${anchorId}`;
+    }
+    
     const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
     
     if (subsection) {
@@ -372,20 +397,47 @@ const MainLayout = ({ children }) => {
     const currentScrollY = window.scrollY;
 
     if (direction === 'up') {
-      const previousSection = [...sections].reverse().find(section => section.getBoundingClientRect().top < 0);
+      // Find the previous section
+      const previousSection = [...sections].reverse().find(section => {
+        const sectionTop = section.getBoundingClientRect().top + currentScrollY;
+        return sectionTop < currentScrollY; // Check if the section is above the current scroll position
+      });
       if (previousSection) {
         previousSection.scrollIntoView({ behavior: 'smooth' });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top if no previous section
       }
     } else if (direction === 'down') {
-      const nextSection = [...sections].find(section => section.getBoundingClientRect().top > 0);
+      // Find the next section
+      const nextSection = [...sections].find(section => {
+        const sectionTop = section.getBoundingClientRect().top + currentScrollY;
+        return sectionTop > currentScrollY; // Check if the section is below the current scroll position
+      });
       if (nextSection) {
         nextSection.scrollIntoView({ behavior: 'smooth' });
       } else {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // Scroll to bottom if no next section
       }
     }
+  };
+
+  const handleSingleClick = (direction) => {
+    if (!isScrollingRef.current) {
+      scrollToSection(direction);
+    }
+  };
+
+  const handleDoubleClick = (direction) => {
+    isScrollingRef.current = true;
+    if (direction === 'up') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+    // Reset the scrolling state after animation completes
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
   };
 
   return (
@@ -483,15 +535,15 @@ const MainLayout = ({ children }) => {
         <div className="flex-1 overflow-auto relative">
           <div className="fixed top-16 right-8 flex flex-col space-y-2 z-50">
             <button
-              onClick={() => scrollToSection('up')}
-              onDoubleClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => handleSingleClick('up')}
+              onDoubleClick={() => handleDoubleClick('up')}
               className="p-2 bg-white rounded-full shadow-md hover:bg-gray-200"
             >
               <ArrowUp className="w-5 h-5 text-gray-600" />
             </button>
             <button
-              onClick={() => scrollToSection('down')}
-              onDoubleClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+              onClick={() => handleSingleClick('down')}
+              onDoubleClick={() => handleDoubleClick('down')}
               className="p-2 bg-white rounded-full shadow-md hover:bg-gray-200"
             >
               <ArrowDown className="w-5 h-5 text-gray-600" />

@@ -35,9 +35,9 @@ export default function ProcessesHome() {
       color: "bg-green-50"
     },
     {
-      title: "Link to SOPs, Guidance, Forms, etc.",
+      title: "Resources & Documentation",
       description: "Access to standard operating procedures, forms, and other essential documentation.",
-      path: "/processes/link-to-sops,-guidance,-forms,-etc.",
+      path: "/processes/resources-&-documentation",
       icon: FileText,
       color: "bg-yellow-50"
     }

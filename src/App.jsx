@@ -9,7 +9,7 @@ import FeedbackForm from './pages/feedback/Feedback';
 import SearchPage from './pages/SearchPage'; 
 import { initializeSearchIndex } from './utils/pageRegistry';
 import { searchIndex } from './utils/searchIndex';
-import ContentIndexer from './components/ContentIndexer';
+import ContentIndexer from './components/ContentIndexer';                                                        
 
 
 //playbook app overview
@@ -27,7 +27,7 @@ import CCCInitiativeHome from './pages/ccc-initiative/index';
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
-import CommInternalHome from './pages/communication-plan/internal/internalIndex';
+import CommInternalHome from './pages/communication-plan/internal/InternalIndex';
 import InternalObjectives from './pages/communication-plan/internal/Objectives';
 import CommunicationChannels from './pages/communication-plan/internal/CCCCommunications';
 import CCCStakeholders from './pages/communication-plan/internal/CCCStakeholders';
@@ -36,7 +36,7 @@ import StrategiesTactics from './pages/communication-plan/internal/StrategiesNTa
 import Timeline from './pages/communication-plan/internal/Timeline';
 
 import EngagementObjectives from './pages/communication-plan/engagement/Objectives';
-import CommEngHome from './pages/communication-plan/engagement/engIndex';
+import CommEngHome from './pages/communication-plan/engagement/EngIndex';
 import CommunicationPlan from './pages/communication-plan/engagement/CommunicationPath';
 import LeadershipSteerCoMonitoring from './pages/communication-plan/engagement/ImpactMonitoring';
 import InternalEngagementStrategies from './pages/communication-plan/engagement/InternalEngagementStrategies';
@@ -57,22 +57,24 @@ import WelcomeOrientation from './pages/internal-onboarding/WelcomeOrientation';
 import ProcessesHome from './pages/processes/index';
 import ProcessesObjectives from './pages/processes/Objectives';
 import ProcessesGovernance from './pages/processes/ProcessesGovernance';
-import ComplianceGuidance from './pages/processes/ComplianceGuidance';
-import LinktoSGF from './pages/processes/LinktoSGF';
+import LinktoSGF from './pages/processes/RandD';
 
 //Systems
 import SystemsObjectives from './pages/systems/Objectives';
 import InternalPlatforms from './pages/systems/InternalPlatforms';
-import SystemsHome from './pages/systems';
-import LinkstoProcess from './pages/systems/LinkstoProcess';
+import SystemsHome from './pages/systems/index';
+import LinkstoProcess from './pages/systems/LinksToProcess';
 import ManualSystems from './pages/systems/ManualSystems';
 
+//Compliance
+import ComplianceGuidance from './pages/compliance/ComplianceGuidance';
+
 //Archetypes
-import ProjectArchetypeHome from './pages/project-archetype';
+import ProjectArchetypeHome from './pages/project-archetype/index';
 import PAObjectives from './pages/project-archetype/Objectives';
-import CorePrinciples from './pages/project-archetype/coreprinciples';
+import CorePrinciples from './pages/project-archetype/CorePrinciples';
 import CCCProjectLifecycle from './pages/project-archetype/ccc-project-lifecycle';
-import CCCProjectTypes from './pages/project-archetype/projecttypes';
+import CCCProjectTypes from './pages/project-archetype/ProjectTypes';
 
 //Glossary of Terms
 import GlossaryOfTerms from './pages/glossary/GlossaryOfTerms';
@@ -151,8 +153,10 @@ function App() {
         <Route path="/processes" element={<ProcessesHome />} />
         <Route path="/processes/objectives" element={<ProcessesObjectives />} />
         <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
-        <Route path="/processes/compliance-guidance" element={<ComplianceGuidance />} />
-        <Route path="/processes/link-to-sops,-guidance,-forms,-etc." element={<LinktoSGF />} />
+        <Route path="/processes/resources-&-documentation" element={<LinktoSGF />} />
+
+        {/* Compliance */}
+        <Route path="/compliance" element={<ComplianceGuidance />} />
 
         {/* Systems */}
         <Route path="/systems" element={<SystemsHome />} />

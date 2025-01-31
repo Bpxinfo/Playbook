@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AlertTriangle, Info } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import advisory from '../../assets/advisory.jpg'
 import legalcompliance from '../../assets/legalcompliance.jpg'
 import partner from '../../assets/partner-selection.jpg'
 
 const ComplianceGuidance = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Function to handle scrolling to section
+    const scrollToSection = () => {
+      const hash = location.hash;
+      if (hash) {
+        // Remove the '#' from the hash
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          // Add a small delay to ensure the page is fully rendered
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    // Scroll on mount and hash change
+    scrollToSection();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', scrollToSection);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('hashchange', scrollToSection);
+    };
+  }, [location]);
+
   return (
     <div className="p-8 mx-auto max-w-7xl">
       <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Compliance Guidance</h1>
 
       <div className="space-y-8">
-        <section className="bg-white rounded-lg shadow-md p-6">
+        <section id="overview" className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Overview</h2>
           <p className="text-gray-700 mb-4">
             The Community Cancer Collective (CCC) is committed to operating in compliance with all applicable laws, regulations, and company policies. This guidance document outlines key compliance considerations for CCC activities.
           </p>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
+        <section id="key-compliance-principles" className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Key Compliance Principles</h2>
           <div className="space-y-4">
             <div className="flex items-start gap-4 p-4 bg-yellow-50 rounded-lg">
@@ -35,7 +67,7 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
+        <section id="compliance-requirements" className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Compliance Requirements</h2>
           <div className="space-y-6">
             <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
@@ -66,7 +98,7 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
+        <section id="resources-and-support" className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Resources and Support</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border border-gray-200 rounded-lg">
@@ -80,8 +112,8 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.1 CCC Independence</h2>
+        <section id="ccc-independence" className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">CCC Independence</h2>
           <div className="bg-white rounded-lg shadow p-6">
             <p className="text-gray-700 mb-4">
               To maintain the independence of the CCC as a patient-focused initiative, CCC partners and projects must be selected solely based on established criteria with a clear firewall between the CCC program and certain Gilead activities and personnel.
@@ -96,11 +128,11 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">2.2 CCC Strategy Development</h2>
+        <section id="ccc-strategy-development" className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">CCC Strategy Development</h2>
           {/* Advisory Council */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.2.1 CCC Advisory Council</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">CCC Advisory Council</h3>
             <div className="mb-8">
               <img 
                 src={advisory} 
@@ -113,7 +145,7 @@ const ComplianceGuidance = () => {
           
           {/* Expert Advisors */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.2.2 CCC Expert Advisors</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">CCC Expert Advisors</h3>
             <ol className="list-decimal pl-6 text-gray-700 space-y-2">
               <li>Selection of Expert Advisors must follow objective criteria based on demonstrated expertise and experience in CCC focus areas, explicitly moving beyond titles or commercial relationships and ensuring diversity across both major centers and community oncology institutions, with no more than 50% from initial CCC partner sites. </li>
               <li>All Expert Advisor engagements must align with Gilead's existing U.S. BCM policies for Advisory Boards and require clear business justification through detailed documentation pre-approved by Legal/Compliance teams. </li>
@@ -123,7 +155,7 @@ const ComplianceGuidance = () => {
 
           {/* Internal Collaboration */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.2.3 Internal Collaboration</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">Internal Collaboration</h3>
             <ul className="list-disc pl-6 text-gray-700 space-y-2">
               <li>Medical Affairs and Commercial teams, and other cross-functional partners may participate in strategy meetings to discuss learnings from external advisors and share relevant information on patient care challenges and gaps in the community cancer setting and collaborate on priority development for CCC projects.  </li>
               <li>Participants may include the leads for U.S. Medical and Commercial functions, leads for the U.S. Medical and Commercial Oncology teams (VP or above), as well as appropriate leads from other functional areas. Teams may interact and collaborate to the extent allowed by existing WoW and other Gilead policies and guidance noted above.  </li>
@@ -132,8 +164,8 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">2.3 Project Proposals & Approvals</h2>
+        <section id="project-proposals-and-approvals" className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">Project Proposals & Approvals</h2>
           <div className="bg-white rounded-lg shadow p-6">
             <ul className="list-disc pl-6 text-gray-700 space-y-2">
               <li>All proposals are subject to existing Gilead policies and procedures.  Sales teams are strictly prohibited from any involvement in project development or oversight, while Research proposals remain under Medical's exclusive purview. </li>
@@ -145,7 +177,7 @@ const ComplianceGuidance = () => {
           <div className="space-y-6">
             {/* Selection Criteria */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">2.3.1 Partner & Project Selection</h3>
+              <h3 className="text-lg font-semibold text-red-800 mb-4">Partner & Project Selection</h3>
               <div className="mb-8">
                 <img 
                   src={partner} 
@@ -181,7 +213,7 @@ const ComplianceGuidance = () => {
 
             {/* Review Process */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">2.3.2 Project Review & Approval</h3>
+              <h3 className="text-lg font-semibold text-red-800 mb-4">Project Review & Approval</h3>
               <div>
                 <p>CCC project proposals are subject to either a Standard Project or Complex Project review process.</p>
                 <ul className="list-disc pl-6 text-gray-700 space-y-2">
@@ -193,7 +225,7 @@ const ComplianceGuidance = () => {
 
             {/* Adjudication Committee */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">2.3.3 Adjudication Committee</h3>
+              <h3 className="text-lg font-semibold text-red-800 mb-4">Adjudication Committee</h3>
               <p className="text-gray-700 mb-4">The CCC Adjudication Committee will review Complex Projects and include representatives from Medical Affairs, Medical Governance, Legal, and Compliance. No one from the Commercial organization, including Managed Markets, will sit on the Adjudication Committee.</p>
               <p className="text-gray-700 mb-4">The Adjudication Committee's role and responsibilities are to provide initial review and approval of Complex Project proposals presented by the CCC Chair and evaluate whether:  </p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
@@ -205,12 +237,12 @@ const ComplianceGuidance = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">2.4 Project Operations</h2>
+        <section id="project-operations" className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl text-red-800 mb-4">Project Operations</h2>
           
           {/* Review & Approval */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.4.1 Review & Approval Process</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">Review & Approval Process</h3>
             <p className="text-gray-700 mb-4">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.  </p>
             <p className="text-gray-700 mb-4">Includes the department's standard process for:  </p>
             <ul className="list-disc pl-6 text-gray-700 space-y-2">
@@ -227,7 +259,7 @@ const ComplianceGuidance = () => {
 
           {/* Updates & Reporting */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.4.2 Updates & Reporting</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">Updates & Reporting</h3>
             <p className="text-gray-700 mb-8">
               The Gilead team responsible for a CCC project may provide updates on CCC projects, so long as such internal information sharing is consistent with existing WoW, policies and procedures.
             </p>
@@ -331,13 +363,13 @@ const ComplianceGuidance = () => {
           </div>
           {/* Compliance Monitoring */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.4.3 Compliance Monitoring</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">Compliance Monitoring</h3>
             <p className="text-gray-700 mb-4">The CCC will be subject to monitoring to ensure that all operations are following Gilead policies and procedures. </p>
           </div>
           
           {/* External Interaction Guidelines */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">2.4.4 External Interaction Guidelines</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">External Interaction Guidelines</h3>
             <div className="mb-8">
               <img 
                 src={legalcompliance} 

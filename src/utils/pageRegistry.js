@@ -159,7 +159,7 @@ export const pageRegistry = {
       title: 'Compliance Guidance'
     },
     '/processes/link-to-sops,-guidance,-forms,-etc.': {
-      component: () => import('../pages/processes/LinktoSGF'),
+      component: () => import('../pages/processes/RandD'),
       title: 'Links to SOPs, Guidance & Forms'
     },
   
