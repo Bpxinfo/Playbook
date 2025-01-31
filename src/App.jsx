@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 
@@ -27,7 +27,7 @@ import CCCInitiativeHome from './pages/ccc-initiative/index';
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
-import CommInternalHome from './pages/communication-plan/internal/InternalIndex';
+const CommInternalHome = lazy(() => import('./pages/communication-plan/internal/InternalIndex'));
 import InternalObjectives from './pages/communication-plan/internal/Objectives';
 import CommunicationChannels from './pages/communication-plan/internal/CCCCommunications';
 import CCCStakeholders from './pages/communication-plan/internal/CCCStakeholders';
@@ -101,82 +101,84 @@ function App() {
   return (
     <MainLayout>
       <ContentIndexer />
-      <Routes>
-        {/* Components*/}
-        <Route path="/feedback" element={<FeedbackForm />} />
-        <Route path="/search" element={<SearchPage />} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {/* Components*/}
+          <Route path="/feedback" element={<FeedbackForm />} />
+          <Route path="/search" element={<SearchPage />} />
 
-        {/* Playbook App Overview */}
-        <Route path="/playbook-app-overview/objectives" element={<PlaybookObjectives />} />
-        <Route path="/playbook-app-overview" element={<PlaybookOverviewHome />} />
+          {/* Playbook App Overview */}
+          <Route path="/playbook-app-overview/objectives" element={<PlaybookObjectives />} />
+          <Route path="/playbook-app-overview" element={<PlaybookOverviewHome />} />
 
-        {/* CCC Initiative */}
-        <Route path="/ccc-initiative" element={<CCCInitiativeHome />} />
-        <Route path="/ccc-initiative/objectives-and-ccc-overview" element={<CCCOverview />} />
-        <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
-        <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
-        <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
+          {/* CCC Initiative */}
+          <Route path="/ccc-initiative" element={<CCCInitiativeHome />} />
+          <Route path="/ccc-initiative/objectives-and-ccc-overview" element={<CCCOverview />} />
+          <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
+          <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
+          <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
 
-        {/* Communication Plan - Internal */}
-        <Route path="/communication-plan" element={<CommunicationPlanHome />} />
-        <Route path="/communication-plan/internal" element={<CommInternalHome />} />
-        <Route path="/communication-plan/internal/objectives" element={<InternalObjectives />} />
-        <Route path="/communication-plan/internal/ccc-communications" element={<CommunicationChannels />} />
-        <Route path="/communication-plan/internal/ccc-stakeholders" element={<CCCStakeholders />} />
-        <Route path="/communication-plan/internal/communication-streams" element={<CommunicationStreams />} />
-        <Route path="/communication-plan/internal/strategies-&-tactics" element={<StrategiesTactics />} />
-        <Route path="/communication-plan/internal/timeline" element={<Timeline />} />
-
-
-        {/* Communication Plan - Engagement */}
-
-        <Route path="/communication-plan/engagement-plan/objectives" element={<EngagementObjectives />} />
-        <Route path="/communication-plan/engagement-plan" element={<CommEngHome />} />
-        <Route path="/communication-plan/engagement-plan/communication-path" element={<CommunicationPlan />} />
-        <Route path="/communication-plan/engagement-plan/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
-        <Route path="/communication-plan/engagement-plan/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
-        <Route path="/communication-plan/engagement-plan/internal-feedback" element={<InternalEngagementPlan />} />
+          {/* Communication Plan - Internal */}
+          <Route path="/communication-plan" element={<CommunicationPlanHome />} />
+          <Route path="/communication-plan/internal" element={<CommInternalHome />} />
+          <Route path="/communication-plan/internal/objectives" element={<InternalObjectives />} />
+          <Route path="/communication-plan/internal/ccc-communications" element={<CommunicationChannels />} />
+          <Route path="/communication-plan/internal/ccc-stakeholders" element={<CCCStakeholders />} />
+          <Route path="/communication-plan/internal/communication-streams" element={<CommunicationStreams />} />
+          <Route path="/communication-plan/internal/strategies-&-tactics" element={<StrategiesTactics />} />
+          <Route path="/communication-plan/internal/timeline" element={<Timeline />} />
 
 
-        {/* Internal Onboarding */}
-        <Route path="/internal-onboarding" element={<InternalOnboardingHome />} />
-        <Route path="/internal-onboarding/objectives" element={<OnboardingObjectives />} />
-        <Route path="/internal-onboarding/deepen-engagement" element={<DeepenEngagement />} />
-        <Route path="/internal-onboarding/full-integration" element={<FullIntegration />} />
-        <Route path="/internal-onboarding/immerse,-contribute" element={<ImmerseContribute />} />
-        <Route path="/internal-onboarding/pre-integration-prep" element={<PreIntegrationPrep />} />
-        <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
-        <Route path="/internal-onboarding/ongoing-support" element={<OngoingSupport />} />
-        <Route path="/internal-onboarding/welcome-orientation" element={<WelcomeOrientation />} />
+          {/* Communication Plan - Engagement */}
 
-        {/* Processes */}
-        <Route path="/processes" element={<ProcessesHome />} />
-        <Route path="/processes/objectives" element={<ProcessesObjectives />} />
-        <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
-        <Route path="/processes/resources-&-documentation" element={<LinktoSGF />} />
+          <Route path="/communication-plan/engagement-plan/objectives" element={<EngagementObjectives />} />
+          <Route path="/communication-plan/engagement-plan" element={<CommEngHome />} />
+          <Route path="/communication-plan/engagement-plan/communication-path" element={<CommunicationPlan />} />
+          <Route path="/communication-plan/engagement-plan/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
+          <Route path="/communication-plan/engagement-plan/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
+          <Route path="/communication-plan/engagement-plan/internal-feedback" element={<InternalEngagementPlan />} />
 
-        {/* Compliance */}
-        <Route path="/compliance" element={<ComplianceGuidance />} />
 
-        {/* Systems */}
-        <Route path="/systems" element={<SystemsHome />} />
-        <Route path="/systems/objectives" element={<SystemsObjectives />} />
-        <Route path="/systems/internal-platforms" element={<InternalPlatforms />} />
-        <Route path="/systems/manual-systems" element={<ManualSystems />} />
-        <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
+          {/* Internal Onboarding */}
+          <Route path="/internal-onboarding" element={<InternalOnboardingHome />} />
+          <Route path="/internal-onboarding/objectives" element={<OnboardingObjectives />} />
+          <Route path="/internal-onboarding/deepen-engagement" element={<DeepenEngagement />} />
+          <Route path="/internal-onboarding/full-integration" element={<FullIntegration />} />
+          <Route path="/internal-onboarding/immerse,-contribute" element={<ImmerseContribute />} />
+          <Route path="/internal-onboarding/pre-integration-prep" element={<PreIntegrationPrep />} />
+          <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
+          <Route path="/internal-onboarding/ongoing-support" element={<OngoingSupport />} />
+          <Route path="/internal-onboarding/welcome-orientation" element={<WelcomeOrientation />} />
 
-        {/*Project Archetype */}
-        <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
-        <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
-        <Route path="/projects-archetypes/core-principles" element={<CorePrinciples />} />
-        <Route path="/projects-archetypes/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
-        <Route path="/projects-archetypes/ccc-project-types" element={<CCCProjectTypes />} />
-        {/* Glossary of Terms */}
-        <Route path="/glossary" element={<GlossaryOfTerms />} />
+          {/* Processes */}
+          <Route path="/processes" element={<ProcessesHome />} />
+          <Route path="/processes/objectives" element={<ProcessesObjectives />} />
+          <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
+          <Route path="/processes/resources-&-documentation" element={<LinktoSGF />} />
 
-        {/* Default route */}
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+          {/* Compliance */}
+          <Route path="/compliance" element={<ComplianceGuidance />} />
+
+          {/* Systems */}
+          <Route path="/systems" element={<SystemsHome />} />
+          <Route path="/systems/objectives" element={<SystemsObjectives />} />
+          <Route path="/systems/internal-platforms" element={<InternalPlatforms />} />
+          <Route path="/systems/manual-systems" element={<ManualSystems />} />
+          <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
+
+          {/*Project Archetype */}
+          <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
+          <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
+          <Route path="/projects-archetypes/core-principles" element={<CorePrinciples />} />
+          <Route path="/projects-archetypes/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
+          <Route path="/projects-archetypes/ccc-project-types" element={<CCCProjectTypes />} />
+          {/* Glossary of Terms */}
+          <Route path="/glossary" element={<GlossaryOfTerms />} />
+
+          {/* Default route */}
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Suspense>
     </MainLayout>
   );
 }

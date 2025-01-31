@@ -56,6 +56,10 @@ export const pageRegistry = {
     },
   
     // Communication Plan - Internal
+    '/communication-plan/internal': {
+      component: () => import('../pages/communication-plan/internal/InternalIndex'),
+      title: 'Internal Communications'
+    },
     '/communication-plan/internal/objectives': {
       component: () => import('../pages/communication-plan/internal/Objectives'),
       title: 'Internal Communication Objectives'
