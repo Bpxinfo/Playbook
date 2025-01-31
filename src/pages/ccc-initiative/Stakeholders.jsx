@@ -1,5 +1,5 @@
 import React from 'react';
-import stakeholder from '../../assets/Stakeholder.jpg'
+import stakeholder from '../../assets/stakeholder.jpg'
 
 const Stakeholders = () => {
   return (

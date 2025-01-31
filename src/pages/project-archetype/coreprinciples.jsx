@@ -1,7 +1,7 @@
 import React from 'react'
 // Uncomment or add imports for any icons or images you want to include
 import { AlertTriangle, Info } from 'lucide-react'
-import coreprinciples from '../../assets/core.jpg'
+import core from '../../assets/core.jpg'
 
 const CorePrinciples = () => {
   return (
@@ -36,7 +36,7 @@ const CorePrinciples = () => {
       <div className="bg-gray-50 p-4 rounded-lg text-center">
         <div className="mb-8">
             <img 
-                src={coreprinciples} 
+                src={core} 
                 alt="Core Principles" 
                 className="w-full rounded-lg shadow-lg mb-4"
             />

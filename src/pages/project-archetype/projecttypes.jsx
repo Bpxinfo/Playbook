@@ -1,5 +1,5 @@
 import React from 'react';
-import projecttypes from '../../assets/partner-selection.jpg'
+import partnerSelection from '../../assets/partner-selection.jpg'
 const CCCProjectTypes = () => {
   return (
     <div className="p-8 mx-auto max-w-7xl">
@@ -122,7 +122,7 @@ const CCCProjectTypes = () => {
         <div className="bg-white rounded-lg shadow p-6 mb-6">
             <div className="mb-8">
               <img 
-                src={projecttypes} 
+                src={partnerSelection} 
                 alt="Project Types" 
                 className="w-full rounded-lg shadow-lg mb-4"
               />

@@ -1,7 +1,7 @@
 import React from 'react';
 import CCC_Process_Overview from '../../assets/CCC_Process_Overview.png'
 import governance_model from '../../assets/governance_model.png'
-import stakeholder from '../../assets/Stakeholder.jpg'
+import stakeholder from '../../assets/stakeholder.jpg'
 import leadership from '../../assets/leadership.jpg'
 import adjud from '../../assets/adjud.jpg'
 
