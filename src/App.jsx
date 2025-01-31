@@ -23,7 +23,7 @@ const CCCInitiativeHome = lazy(() => import('./pages/ccc-initiative/index'));
 
 // Communication Plan
 const CommunicationPlanHome = lazy(() => import('./pages/communication-plan/index'));
-const CommInternalHome = lazy(() => import('./pages/communication-plan/internal/InternalIndex.jsx'));
+const CommInternalHome = lazy(() => import('./pages/communication-plan/internal/InternalIndex'));
 const InternalObjectives = lazy(() => import('./pages/communication-plan/internal/Objectives'));
 const CommunicationChannels = lazy(() => import('./pages/communication-plan/internal/CCCCommunications'));
 const CCCStakeholders = lazy(() => import('./pages/communication-plan/internal/CCCStakeholders'));
@@ -32,7 +32,7 @@ const StrategiesTactics = lazy(() => import('./pages/communication-plan/internal
 const Timeline = lazy(() => import('./pages/communication-plan/internal/Timeline'));
 
 const EngagementObjectives = lazy(() => import('./pages/communication-plan/engagement/Objectives'));
-const CommEngHome = lazy(() => import('./pages/communication-plan/engagement/EngIndex.jsx'));
+const CommEngHome = lazy(() => import('./pages/communication-plan/engagement/EngIndex'));
 const CommunicationPlan = lazy(() => import('./pages/communication-plan/engagement/CommunicationPath'));
 const LeadershipSteerCoMonitoring = lazy(() => import('./pages/communication-plan/engagement/ImpactMonitoring'));
 const InternalEngagementStrategies = lazy(() => import('./pages/communication-plan/engagement/InternalEngagementStrategies'));

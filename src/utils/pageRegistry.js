@@ -86,6 +86,10 @@ export const pageRegistry = {
     },
   
     // Communication Plan - Engagement
+    '/communication-plan/engagement-plan': {
+      component: () => import('../pages/communication-plan/engagement/EngIndex'),
+      title: 'Engagement Plan'
+    },
     '/communication-plan/engagement-plan/objectives': {
       component: () => import('../pages/communication-plan/engagement/Objectives'),
       title: 'Engagement Plan Objectives'
