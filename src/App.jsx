@@ -27,7 +27,7 @@ import CCCInitiativeHome from './pages/ccc-initiative/index';
 
 //Communicaiton pLan
 import CommunicationPlanHome from './pages/communication-plan/index';
-import CommInternalHome from './pages/communication-plan/internal/internalIndex';
+import CommInternalHome from './pages/communication-plan/internal/InternalIndex';
 import InternalObjectives from './pages/communication-plan/internal/Objectives';
 import CommunicationChannels from './pages/communication-plan/internal/CCCCommunications';
 import CCCStakeholders from './pages/communication-plan/internal/CCCStakeholders';
