@@ -35,9 +35,9 @@ export default function ProcessesHome() {
       color: "bg-green-50"
     },
     {
-      title: "Resources & Documentation",
+      title: "SOPs & Resources",
       description: "Access to standard operating procedures, forms, and other essential documentation.",
-      path: "/processes/resources-&-documentation",
+      path: "/processes/sops-&-resources",
       icon: FileText,
       color: "bg-yellow-50"
     }
@@ -46,7 +46,7 @@ export default function ProcessesHome() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Processes, Governance & Ways of Working</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Processes & Governance</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <div className="flex items-center mb-4">

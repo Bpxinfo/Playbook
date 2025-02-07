@@ -94,11 +94,11 @@ const MainLayout = ({ children }) => {
       ]
     },
     'processes': {
-      title: 'Processes, Governance, Ways of working',
+      title: 'Processes & Governance',
       items: [
         'Objectives',
         'Processes & Governance',
-        'Resources & Documentation'
+        'SOPs & Resources'
       ]
     },
     'compliance': {

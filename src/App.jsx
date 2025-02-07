@@ -150,7 +150,7 @@ function App() {
           <Route path="/processes" element={<ProcessesHome />} />
           <Route path="/processes/objectives" element={<ProcessesObjectives />} />
           <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
-          <Route path="/processes/resources-&-documentation" element={<LinktoSGF />} />
+          <Route path="/processes/sops-&-resources" element={<LinktoSGF />} />
 
           {/* Compliance */}
           <Route path="/compliance" element={<ComplianceGuidance />} />

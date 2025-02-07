@@ -21,7 +21,7 @@ const WelcomeOrientation = () => {
               <li>LINK to CCC Overview Detailed walkthrough of current and past initiatives</li>
               <li>LINK to CCC Overview for Explanation of ongoing projects, strategic pillars, and top priorities</li>
               <li>LINK to Systems for Introduction to tools and methodologies in use</li>
-              <li>LINK to Processes, Governance, and Ways of Working</li>
+              <li>LINK to Processes &Governance</li>
             </ul>
           </section>
           
