@@ -36,7 +36,8 @@ const CommEngHome = lazy(() => import('@/pages/communication-plan/engagement/Eng
 const CommunicationPlan = lazy(() => import('@/pages/communication-plan/engagement/CommunicationPath.jsx'));
 const LeadershipSteerCoMonitoring = lazy(() => import('@/pages/communication-plan/engagement/ImpactMonitoring.jsx'));
 const InternalEngagementStrategies = lazy(() => import('@/pages/communication-plan/engagement/InternalEngagementStrategies.jsx'));
-const InternalEngagementPlan = lazy(() => import('@/pages/communication-plan/engagement/InternalFeedback.jsx'));
+const InternalEngagementPlan = lazy(() => import('@/pages/communication-plan/engagement/InternalEngagementPlan.jsx'));
+
 
 // Onboarding
 const InternalOnboardingHome = lazy(() => import('@/pages/internal-onboarding/index.jsx'));
@@ -132,7 +133,7 @@ function App() {
           <Route path="/communication-plan/engagement-plan/communication-path" element={<CommunicationPlan />} />
           <Route path="/communication-plan/engagement-plan/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
           <Route path="/communication-plan/engagement-plan/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
-          <Route path="/communication-plan/engagement-plan/internal-feedback" element={<InternalEngagementPlan />} />
+          <Route path="/communication-plan/engagement-plan/internal-engagement-plan" element={<InternalEngagementPlan />} />
 
 
           {/* Internal Onboarding */}

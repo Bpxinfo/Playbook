@@ -74,7 +74,7 @@ const MainLayout = ({ children }) => {
             'Objectives',
             'Communication Path',
             'Internal Engagement Strategies',
-            'Internal Feedback',
+            'Internal Engagement Plan',
             'Impact Monitoring'
           ]
         }

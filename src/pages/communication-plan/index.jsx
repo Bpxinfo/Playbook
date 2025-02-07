@@ -97,12 +97,13 @@ export default function CommunicationPlanHome() {
           color: "bg-green-50"
         },
         {
-          title: "Internal Feedback",
+          title: "Internal Engagement Plan",
           description: "Systems for collecting and acting on feedback",
-          path: "/communication-plan/engagement-plan/internal-feedback",
+          path: "/communication-plan/engagement-plan/internal-engagement-plan",
           icon: UserCheck,
           color: "bg-green-50"
         },
+
         {
           title: "Impact Monitoring",
           description: "Tracking and measuring engagement effectiveness",

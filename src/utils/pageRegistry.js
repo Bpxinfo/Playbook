@@ -106,11 +106,12 @@ export const pageRegistry = {
       component: () => import('@/pages/communication-plan/engagement/InternalEngagementStrategies'),
       title: 'Internal Engagement Strategies'
     },
-    '/communication-plan/engagement-plan/internal-feedback': {
-      component: () => import('@/pages/communication-plan/engagement/InternalFeedback'),
-      title: 'Internal Feedback'
+    '/communication-plan/engagement-plan/internal-engagement-plan': {
+      component: () => import('@/pages/communication-plan/engagement/InternalEngagementPlan'),
+      title: 'Internal Engagement Plan'
     },
   
+
     // Internal Onboarding
     '/internal-onboarding': {
       component: () => import('@/pages/internal-onboarding/index'),
