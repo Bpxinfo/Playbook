@@ -8,7 +8,7 @@ const Stakeholders = () => {
 
       <div className="space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1. CCC Leadership SteerCo</h2>
+          <h2 className="text-2xl text-red-800 mb-4">1. CCC Internal Stakeholders</h2>
           <p className="text-gray-700">
             The CCC Leadership SteerCo within Gilead will advise and endorse objectives for the Community Cancer Collective initiative. The leadership group needs clear and concise project updates to provide advice, prioritization and endorsement.
           </p>
