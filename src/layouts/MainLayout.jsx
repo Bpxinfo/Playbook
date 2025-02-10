@@ -623,8 +623,14 @@ const MainLayout = ({ children }) => {
             </form>
           </div>
         </div>
-            <Breadcrumbs />
-            {children}
+            <div className="p-8">
+              <Breadcrumbs />
+              {children}
+            </div>
+            <div className="flex items-center justify-center p-4 border-t">
+              <span className="text-gray-600 mr-2">Powered by</span>
+              <img src="/bpxlogo.svg" alt="BPX Logo" className="h-6" />
+            </div>
           </div>
         </div>
     </>
