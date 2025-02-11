@@ -45,13 +45,13 @@ export default function CCCFAQs() {
       <div className="mb-12">
         <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">CCC Initiative FAQs</h1>
         
-        <button
+        {/* <button
           onClick={() => navigate('/ccc-initiative')}
           className="mb-8 inline-flex items-center text-red-800 hover:text-red-700"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to CCC Initiative Overview
-        </button>
+        </button> */}
 
         <div className="space-y-8">
           {faqs.map((faq, index) => (
