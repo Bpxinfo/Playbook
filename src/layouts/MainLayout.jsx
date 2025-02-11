@@ -49,7 +49,9 @@ const MainLayout = ({ children }) => {
         'Objectives and CCC Overview',
         'Strategic Pillars',
         'Key Messaging',
-        'Stakeholders'
+        'Stakeholders',
+        'Patient Impact',
+        'FAQs'
       ]
     },
     'communication-plan': {

@@ -20,6 +20,8 @@ const KeyMessages = lazy(() => import('@/pages/ccc-initiative/KeyMessaging.jsx')
 const Stakeholders = lazy(() => import('@/pages/ccc-initiative/Stakeholders.jsx'));
 const StrategicPillars = lazy(() => import('@/pages/ccc-initiative/StrategicPillars.jsx'));
 const CCCInitiativeHome = lazy(() => import('@/pages/ccc-initiative/index.jsx'));
+const PatientImpact = lazy(() => import('@/pages/ccc-initiative/PatientImpact.jsx'));
+const CCCFAQs = lazy(() => import('@/pages/ccc-initiative/faqs.jsx'));
 
 // Communication Plan
 const CommunicationPlanHome = lazy(() => import('@/pages/communication-plan/index.jsx'));
@@ -114,6 +116,8 @@ function App() {
           <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
           <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
           <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
+          <Route path="/ccc-initiative/patient-impact" element={<PatientImpact />} />
+          <Route path="/ccc-initiative/faqs" element={<CCCFAQs />} />
 
           {/* Communication Plan - Internal */}
           <Route path="/communication-plan" element={<CommunicationPlanHome />} />

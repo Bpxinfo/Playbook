@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Building, Target, MessageSquare, Users, BookText, ArrowRight } from 'lucide-react';
+import { Building, Target, MessageSquare, Users, BookText, ArrowRight, HelpCircle, Heart } from 'lucide-react';
 
 export default function CCCInitiativeHome() {
   const navigate = useNavigate();
@@ -34,6 +34,20 @@ export default function CCCInitiativeHome() {
       icon: Users,
       color: "bg-yellow-50"
     },
+    {
+      title: "Patient Impact",
+      description: "Learn about how CCC initiatives are making a difference in patient outcomes and care quality.",
+      path: "/ccc-initiative/patient-impact",
+      icon: Heart,
+      color: "bg-pink-50"
+    },
+    {
+      title: "FAQs",
+      description: "Find answers to commonly asked questions about the CCC Initiative.",
+      path: "/ccc-initiative/faqs",
+      icon: HelpCircle,
+      color: "bg-orange-50"
+    }
   ];
 
   return (
@@ -71,6 +85,28 @@ export default function CCCInitiativeHome() {
             </button>
           );
         })}
+      </div>
+
+      <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-semibold text-red-800 mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">What is the Community Cancer Collective (CCC)?</h3>
+            <p className="text-gray-700">The CCC is a patient-focused initiative addressing care gaps for cancer patients in community settings. We work with key partners and oncology treatment sites nationwide to identify opportunities and implement innovative solutions.</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">What are the three strategic pillars of CCC?</h3>
+            <p className="text-gray-700">The CCC focuses on three key areas: Generating Evidence, Addressing Disparities & Improving Health Equity, and Enabling Education for Providers and Patients.</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">How does CCC select its partners?</h3>
+            <p className="text-gray-700">Partners are selected based on objective criteria including demonstrated expertise, experience in CCC focus areas, and commitment to community oncology care. Selection ensures diversity across both major centers and community oncology institutions.</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">How can I get involved with CCC projects?</h3>
+            <p className="text-gray-700">CCC projects are open to qualified sites through our RFP program via GOptics, posted on AskGilead.com. Projects are selected based on alignment with CCC objectives, strategic pillars, and scientific merit.</p>
+          </div>
+        </div>
       </div>
 
       <div className="mt-12 bg-gray-50 rounded-lg shadow-lg p-6">

@@ -8,14 +8,14 @@ const Stakeholders = () => {
 
       <div className="space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1. CCC Internal Stakeholders</h2>
+          <h2 className="text-2xl text-red-800 mb-4">CCC Internal Stakeholders</h2>
           <p className="text-gray-700">
             The CCC Leadership SteerCo within Gilead will advise and endorse objectives for the Community Cancer Collective initiative. The leadership group needs clear and concise project updates to provide advice, prioritization and endorsement.
           </p>
         </section>
 
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">2. USMA Organization</h2>
+          <h2 className="text-2xl text-red-800 mb-4">USMA Organization</h2>
           <div className="space-y-4">
             <p className="text-gray-700">
               CCC is strategically aligned to the USMA Oncology strategic plan and POA.
@@ -30,21 +30,21 @@ const Stakeholders = () => {
         </section>
 
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">3. Cross Functional Field Team</h2>
+          <h2 className="text-2xl text-red-800 mb-4">Cross Functional Field Team</h2>
           <p className="text-gray-700">
             The Gilead field team includes KADs, MSL and MVELs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.
           </p>
         </section>
 
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">4. Internal (Gilead) line-functions for project review</h2>
+          <h2 className="text-2xl text-red-800 mb-4">Internal (Gilead) line-functions for project review</h2>
           <p className="text-gray-700">
             Line functions of different departments that contribute to review of RFPs. Line-functions work with USMA, as needed, depending on the project type. Gilead department(s) responsible for the CCC project will oversee CCC development under the strategic pillars. This includes the department's standard process for submission, review, approval.
           </p>
         </section>
 
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">5. PAQ</h2>
+          <h2 className="text-2xl text-red-800 mb-4">CCC Internal Stakeholders</h2>
           <p className="text-gray-700 italic">
             [Need 1) Group description, 2) what they do in the CCC, 3) what they need in terms of Comms]
           </p>
