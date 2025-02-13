@@ -11,8 +11,9 @@ const FeedbackForm = lazy(() => import('@/pages/feedback/Feedback.jsx'));
 const SearchPage = lazy(() => import('@/pages/SearchPage.jsx'));
 
 // Playbook app overview
+const PlaybookHome = lazy(() => import('@/pages/playbook-app/index.jsx'));
+const PlaybookOverview = lazy(() => import('@/pages/playbook-app/index.jsx'));
 const PlaybookObjectives = lazy(() => import('@/pages/playbook-app/Objectives.jsx'));
-const PlaybookOverviewHome = lazy(() => import('@/pages/playbook-app/index.jsx'));
 
 // CCC Initiative Overview
 const CCCOverview = lazy(() => import('@/pages/ccc-initiative/Objectives.jsx'));
@@ -24,22 +25,21 @@ const PatientImpact = lazy(() => import('@/pages/ccc-initiative/PatientImpact.js
 const CCCFAQs = lazy(() => import('@/pages/ccc-initiative/faqs.jsx'));
 
 // Communication Plan
-const CommunicationPlanHome = lazy(() => import('@/pages/communication-plan/index.jsx'));
-const CommInternalHome = lazy(() => import('@/pages/communication-plan/internal/InternalIndex.jsx'));
-const InternalObjectives = lazy(() => import('@/pages/communication-plan/internal/Objectives.jsx'));
-const CommunicationChannels = lazy(() => import('@/pages/communication-plan/internal/CCCCommunications.jsx'));
-const CCCStakeholders = lazy(() => import('@/pages/communication-plan/internal/CCCStakeholders.jsx'));
-const CommunicationStreams = lazy(() => import('@/pages/communication-plan/internal/CommunicationStreams.jsx'));
-const StrategiesTactics = lazy(() => import('@/pages/communication-plan/internal/StrategiesNTactics.jsx'));
-const Timeline = lazy(() => import('@/pages/communication-plan/internal/Timeline.jsx'));
+const CommunicationsHome = lazy(() => import('@/pages/communications/index.jsx'));
+const InternalCommsHome = lazy(() => import('@/pages/communications/internal-comms-plan/InternalIndex.jsx'));
+const InternalObjectives = lazy(() => import('@/pages/communications/internal-comms-plan/Objectives.jsx'));
+const Channels = lazy(() => import('@/pages/communications/internal-comms-plan/Channels.jsx'));
+const CCCStakeholders = lazy(() => import('@/pages/communications/internal-comms-plan/CCCStakeholders.jsx'));
+const Cadence = lazy(() => import('@/pages/communications/internal-comms-plan/Cadence.jsx'));
+const StrategiesTactics = lazy(() => import('@/pages/communications/internal-comms-plan/StrategiesNTactics.jsx'));
+const Timeline = lazy(() => import('@/pages/communications/internal-comms-plan/Timeline.jsx'));
 
-const EngagementObjectives = lazy(() => import('@/pages/communication-plan/engagement/Objectives.jsx'));
-const CommEngHome = lazy(() => import('@/pages/communication-plan/engagement/EngIndex.jsx'));
-const CommunicationPlan = lazy(() => import('@/pages/communication-plan/engagement/CommunicationPath.jsx'));
-const LeadershipSteerCoMonitoring = lazy(() => import('@/pages/communication-plan/engagement/ImpactMonitoring.jsx'));
-const InternalEngagementStrategies = lazy(() => import('@/pages/communication-plan/engagement/InternalEngagementStrategies.jsx'));
-const InternalEngagementPlan = lazy(() => import('@/pages/communication-plan/engagement/InternalEngagementPlan.jsx'));
-
+const EngagementObjectives = lazy(() => import('@/pages/communications/internal-engagement/Objectives.jsx'));
+const CommEngHome = lazy(() => import('@/pages/communications/internal-engagement/EngIndex.jsx'));
+const CommunicationPlan = lazy(() => import('@/pages/communications/internal-engagement/CommunicationPath.jsx'));
+const LeadershipSteerCoMonitoring = lazy(() => import('@/pages/communications/internal-engagement/ImpactMonitoring.jsx'));
+const InternalEngagementStrategies = lazy(() => import('@/pages/communications/internal-engagement/InternalEngagementStrategies.jsx'));
+const InternalEngagementPlan = lazy(() => import('@/pages/communications/internal-engagement/InternalEngagementPlan.jsx'));
 
 // Onboarding
 const InternalOnboardingHome = lazy(() => import('@/pages/internal-onboarding/index.jsx'));
@@ -107,8 +107,8 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
 
           {/* Playbook App Overview */}
+          <Route path="/playbook-app-overview" element={<PlaybookOverview />} />
           <Route path="/playbook-app-overview/objectives" element={<PlaybookObjectives />} />
-          <Route path="/playbook-app-overview" element={<PlaybookOverviewHome />} />
 
           {/* CCC Initiative */}
           <Route path="/ccc-initiative" element={<CCCInitiativeHome />} />
@@ -120,25 +120,22 @@ function App() {
           <Route path="/ccc-initiative/faqs" element={<CCCFAQs />} />
 
           {/* Communication Plan - Internal */}
-          <Route path="/communication-plan" element={<CommunicationPlanHome />} />
-          <Route path="/communication-plan/internal" element={<CommInternalHome />} />
-          <Route path="/communication-plan/internal/objectives" element={<InternalObjectives />} />
-          <Route path="/communication-plan/internal/ccc-communications" element={<CommunicationChannels />} />
-          <Route path="/communication-plan/internal/ccc-stakeholders" element={<CCCStakeholders />} />
-          <Route path="/communication-plan/internal/communication-streams" element={<CommunicationStreams />} />
-          <Route path="/communication-plan/internal/strategies-&-tactics" element={<StrategiesTactics />} />
-          <Route path="/communication-plan/internal/timeline" element={<Timeline />} />
-
+          <Route path="/communications" element={<CommunicationsHome />} />
+          <Route path="/communications/internal-comms-plan" element={<InternalCommsHome />} />
+          <Route path="/communications/internal-comms-plan/objectives" element={<InternalObjectives />} />
+          <Route path="/communications/internal-comms-plan/channels" element={<Channels />} />
+          <Route path="/communications/internal-comms-plan/ccc-stakeholders" element={<CCCStakeholders />} />
+          <Route path="/communications/internal-comms-plan/cadence" element={<Cadence />} />
+          <Route path="/communications/internal-comms-plan/strategies-&-tactics" element={<StrategiesTactics />} />
+          <Route path="/communications/internal-comms-plan/timeline" element={<Timeline />} />
 
           {/* Communication Plan - Engagement */}
-
-          <Route path="/communication-plan/engagement-plan/objectives" element={<EngagementObjectives />} />
-          <Route path="/communication-plan/engagement-plan" element={<CommEngHome />} />
-          <Route path="/communication-plan/engagement-plan/communication-path" element={<CommunicationPlan />} />
-          <Route path="/communication-plan/engagement-plan/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
-          <Route path="/communication-plan/engagement-plan/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
-          <Route path="/communication-plan/engagement-plan/internal-engagement-plan" element={<InternalEngagementPlan />} />
-
+          <Route path="/communications/internal-engagement/objectives" element={<EngagementObjectives />} />
+          <Route path="/communications/internal-engagement" element={<CommEngHome />} />
+          <Route path="/communications/internal-engagement/communication-path" element={<CommunicationPlan />} />
+          <Route path="/communications/internal-engagement/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
+          <Route path="/communications/internal-engagement/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
+          <Route path="/communications/internal-engagement/internal-engagement-plan" element={<InternalEngagementPlan />} />
 
           {/* Internal Onboarding */}
           <Route path="/internal-onboarding" element={<InternalOnboardingHome />} />

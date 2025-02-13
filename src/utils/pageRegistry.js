@@ -50,64 +50,64 @@ export const pageRegistry = {
     },
   
     // Communication Plan
-    '/communication-plan': {
-      component: () => import('@/pages/communication-plan/index'),
+    '/communications': {
+      component: () => import('@/pages/communications/index'),
       title: 'Communication Plan'
     },
   
     // Communication Plan - Internal
-    '/communication-plan/internal': {
-      component: () => import('@/pages/communication-plan/internal/InternalIndex'),
+    '/communications/internal-comms-plan': {
+      component: () => import('@/pages/communications/internal-comms-plan/InternalIndex'),
       title: 'Internal Communications'
     },
-    '/communication-plan/internal/objectives': {
-      component: () => import('@/pages/communication-plan/internal/Objectives'),
-      title: 'Internal Communication Objectives'
+    '/communications/internal-comms-plan/objectives': {
+      component: () => import('@/pages/communications/internal-comms-plan/Objectives'),
+      title: 'Objectives'
     },
-    '/communication-plan/internal/ccc-communications': {
-      component: () => import('@/pages/communication-plan/internal/CCCCommunications'),
-      title: 'CCC Communications'
+    '/communications/internal-comms-plan/ccc-communications': {
+      component: () => import('@/pages/communications/internal-comms-plan/Channels'),
+      title: 'Channels'
     },
-    '/communication-plan/internal/ccc-stakeholders': {
-      component: () => import('@/pages/communication-plan/internal/CCCStakeholders'),
+    '/communications/internal-comms-plan/ccc-stakeholders': {
+      component: () => import('@/pages/communications/internal-comms-plan/CCCStakeholders'),
       title: 'CCC Stakeholders'
     },
-    '/communication-plan/internal/communication-streams': {
-      component: () => import('@/pages/communication-plan/internal/CommunicationStreams'),
-      title: 'Communication Streams'
+    '/communications/internal-comms-plan/communication-streams': {
+      component: () => import('@/pages/communications/internal-comms-plan/Cadence'),
+      title: 'Cadence'
     },
-    '/communication-plan/internal/strategies-&-tactics': {
-      component: () => import('@/pages/communication-plan/internal/StrategiesNTactics'),
+    '/communications/internal-comms-plan/strategies-&-tactics': {
+      component: () => import('@/pages/communications/internal-comms-plan/StrategiesNTactics'),
       title: 'Strategies & Tactics'
     },
-    '/communication-plan/internal/timeline': {
-      component: () => import('@/pages/communication-plan/internal/Timeline'),
-      title: 'Communication Timeline'
+    '/communications/internal-comms-plan/timeline': {
+      component: () => import('@/pages/communications/internal-comms-plan/Timeline'),
+      title: 'Timeline'
     },
   
     // Communication Plan - Engagement
-    '/communication-plan/engagement-plan': {
-      component: () => import('@/pages/communication-plan/engagement/EngIndex'),
-      title: 'Engagement Plan'
+    '/communications/internal-engagement': {
+      component: () => import('@/pages/communications/internal-engagement/EngIndex'),
+      title: 'Internal Engagement'
     },
-    '/communication-plan/engagement-plan/objectives': {
-      component: () => import('@/pages/communication-plan/engagement/Objectives'),
-      title: 'Engagement Plan Objectives'
+    '/communications/internal-engagement/objectives': {
+      component: () => import('@/pages/communications/internal-engagement/Objectives'),
+      title: 'Objectives'
     },
-    '/communication-plan/engagement-plan/communication-path': {
-      component: () => import('@/pages/communication-plan/engagement/CommunicationPath'),
+    '/communications/internal-engagement/communication-path': {
+      component: () => import('@/pages/communications/internal-engagement/CommunicationPath'),
       title: 'Communication Path'
     },
-    '/communication-plan/engagement-plan/impact-monitoring': {
-      component: () => import('@/pages/communication-plan/engagement/ImpactMonitoring'),
+    '/communications/internal-engagement/impact-monitoring': {
+      component: () => import('@/pages/communications/internal-engagement/ImpactMonitoring'),
       title: 'Impact Monitoring'
     },
-    '/communication-plan/engagement-plan/internal-engagement-strategies': {
-      component: () => import('@/pages/communication-plan/engagement/InternalEngagementStrategies'),
+    '/communications/internal-engagement/internal-engagement-strategies': {
+      component: () => import('@/pages/communications/internal-engagement/InternalEngagementStrategies'),
       title: 'Internal Engagement Strategies'
     },
-    '/communication-plan/engagement-plan/internal-engagement-plan': {
-      component: () => import('@/pages/communication-plan/engagement/InternalEngagementPlan'),
+    '/communications/internal-engagement/internal-engagement-plan': {
+      component: () => import('@/pages/communications/internal-engagement/InternalEngagementPlan'),
       title: 'Internal Engagement Plan'
     },
   

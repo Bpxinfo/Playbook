@@ -1,0 +1,116 @@
+import React from 'react';
+
+const Channels = () => {
+  return (
+    <div className="p-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Communication Channels</h1>
+
+        <div className="space-y-6">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Primary Channels</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Our communication strategy utilizes multiple channels to ensure effective information dissemination across the organization:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h3 className="text-lg font-semibold text-red-800 mb-2">Digital Platforms</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Microsoft Teams</li>
+                    <li>SharePoint</li>
+                    <li>Email Communications</li>
+                    <li>Internal Newsletter</li>
+                    <li>Digital Bulletin Boards</li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h3 className="text-lg font-semibold text-red-800 mb-2">In-Person Channels</h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Team Meetings</li>
+                    <li>Town Halls</li>
+                    <li>Training Sessions</li>
+                    <li>One-on-One Meetings</li>
+                    <li>Workshop Sessions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Channel Selection Guidelines</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Choose the appropriate channel based on these key factors:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Message urgency and importance</li>
+                <li>Target audience preferences</li>
+                <li>Content complexity and format</li>
+                <li>Required interaction level</li>
+                <li>Information security requirements</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Best Practices</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Follow these guidelines for effective channel usage:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Use multiple channels for critical communications</li>
+                <li>Maintain consistent messaging across all channels</li>
+                <li>Consider audience accessibility needs</li>
+                <li>Monitor channel effectiveness and engagement</li>
+                <li>Regularly review and update channel strategy</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Channel Matrix</h2>
+            <div className="space-y-4">
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Channel</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Best For</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Response Time</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Formality Level</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Teams Chat</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Quick updates</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Immediate</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Informal</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Email</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Detailed info</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">24-48 hours</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Formal</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">SharePoint</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Documentation</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">N/A</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Very Formal</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Channels;

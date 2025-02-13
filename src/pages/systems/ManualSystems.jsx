@@ -3,9 +3,6 @@ import React from 'react';
 const ManualSystems = () => {
   return (
     <div className="p-8 mx-auto max-w-7xl">
-      <div className="text-sm text-gray-500 mb-6 text-center">
-        Systems / Manual Systems
-      </div>
 
       <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Manual Systems</h1>
 

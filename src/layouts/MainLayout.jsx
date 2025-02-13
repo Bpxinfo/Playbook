@@ -16,7 +16,8 @@ import {
   ArrowUp,
   ArrowDown,
   BookOpen,
-  Shield
+  Shield,
+  Link as LinkIcon
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -54,24 +55,24 @@ const MainLayout = ({ children }) => {
         'FAQs'
       ]
     },
-    'communication-plan': {
-      title: 'Communication Plan',
+    'communications': {
+      title: 'Communications',
       subsections: [
         {
-          id: 'internal',
-          title: 'Internal',
+          id: 'internal-comms-plan',
+          title: 'Internal Comms Plan',
           items: [
             'Objectives',
             'CCC Stakeholders',
             'Strategies & Tactics',
             'Timeline',
-            'CCC Communications',
-            'Communication Streams'
+            'Channels',
+            'Cadence'
           ]
         },
         {
-          id: 'engagement-plan',
-          title: 'Engagement Plan',
+          id: 'internal-engagement',
+          title: 'Internal Engagement',
           items: [
             'Objectives',
             'Communication Path',
@@ -153,9 +154,9 @@ const MainLayout = ({ children }) => {
       icon: Building,
       defaultRoute: '/ccc-initiative'
     },
-    'communication-plan': {
+    'communications': {
       icon: MessageSquare,
-      defaultRoute: '/communication-plan'
+      defaultRoute: '/communications'
     },
     'internal-onboarding': {
       icon: UserPlus,
@@ -552,80 +553,107 @@ const MainLayout = ({ children }) => {
             </button>
           </div>
           <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center">
-          {/* Left-aligned group */}
-          <div className="flex items-center space-x-6">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC SharePoint
-            </a>
-            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Roadmap
-            </a>
-            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Teams
-            </a>
-          </div>
-
-          {/* Right-aligned group */}
-          <div className="flex items-center space-x-4">
-            <Link
-              to="/feedback"
-              className="flex items-center text-red-800 hover:text-red-700 transition-colors"
-            >
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Submit Feedback
-            </Link>
-            <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                navigateToSearchResults();
-              }} 
-              className="relative" 
-              ref={searchRef}
-            >
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
-              />
-              <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-              {showSearchDropdown && (
-                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200">
-                  {searchResults.results.length > 0 ? (
-                    <>
-                      {searchResults.results.map((result, index) => (
-                        <Link
-                          key={index}
-                          to={result.path}
-                          className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
-                          onClick={() => setShowSearchDropdown(false)}
-                        >
-                          <span className="font-medium text-red-800">{result.title}</span>
-                          <span className="text-sm text-gray-600 line-clamp-1">
-                            {result.excerpt}
-                          </span>
-                        </Link>
-                      ))}
-                      {searchResults.hiddenCount > 0 && (
-                        <Link
-                          to={`/search?q=${encodeURIComponent(searchTerm.trim())}`}
-                          className="w-full px-4 py-2 text-center bg-gray-50 text-sm text-red-800 border-t hover:bg-gray-100"
-                          onClick={() => setShowSearchDropdown(false)}
-                        >
-                          View {searchResults.hiddenCount} more results
-                        </Link>
-                      )}
-                    </>
-                  ) : (
-                    <div className="px-4 py-3 text-gray-500">No matches found</div>
-                  )}
+            {/* Left-aligned group */}
+            <div className="flex items-center space-x-6">
+              <div 
+                className="relative group"
+              >
+                <button className="flex items-center text-red-800 hover:text-red-700 bg-white">
+                  <LinkIcon className="w-4 h-4 mr-2" />
+                  Quick Links
+                  <ChevronDown className="w-4 h-4 ml-1" />
+                </button>
+                {/* Add invisible bridge to maintain hover */}
+                <div className="absolute w-full h-2 bg-transparent" />
+                <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+                  <div className="py-2">
+                    <Link to="/ccc-initiative/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      FAQs
+                    </Link>
+                    <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <Shield className="w-4 h-4 mr-2" />
+                      Compliance Guidance
+                    </Link>
+                    <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      <Database className="w-4 h-4 mr-2" />
+                      SOPs & Resources
+                    </Link>
+                  </div>
                 </div>
-              )}
-            </form>
+              </div>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC SharePoint
+              </a>
+              <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC Roadmap
+              </a>
+              <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+                CCC Teams
+              </a>
+            </div>
+
+            {/* Right-aligned group */}
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/feedback"
+                className="flex items-center text-red-800 hover:text-red-700 transition-colors"
+              >
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Submit Feedback
+              </Link>
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  navigateToSearchResults();
+                }} 
+                className="relative" 
+                ref={searchRef}
+              >
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
+                />
+                <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
+                {showSearchDropdown && (
+                  <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200">
+                    {searchResults.results.length > 0 ? (
+                      <>
+                        {searchResults.results.map((result, index) => (
+                          <Link
+                            key={index}
+                            to={result.path}
+                            className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
+                            onClick={() => setShowSearchDropdown(false)}
+                          >
+                            <span className="font-medium text-red-800">{result.title}</span>
+                            <span className="text-sm text-gray-600 line-clamp-1">
+                              {result.excerpt}
+                            </span>
+                          </Link>
+                        ))}
+                        {searchResults.hiddenCount > 0 && (
+                          <Link
+                            to={`/search?q=${encodeURIComponent(searchTerm.trim())}`}
+                            className="w-full px-4 py-2 text-center bg-gray-50 text-sm text-red-800 border-t hover:bg-gray-100"
+                            onClick={() => setShowSearchDropdown(false)}
+                          >
+                            View {searchResults.hiddenCount} more results
+                          </Link>
+                        )}
+                      </>
+                    ) : (
+                      <div className="px-4 py-3 text-gray-500">No matches found</div>
+                    )}
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
-        </div>
-            <div className="p-8">
+            <div className="p-4">
               <Breadcrumbs />
               {children}
             </div>

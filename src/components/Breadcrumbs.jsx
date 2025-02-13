@@ -4,24 +4,148 @@ import { Link, useLocation } from 'react-router-dom';
 const Breadcrumbs = () => {
   const location = useLocation();
   
-  const pathMap = {
-    'communication-plan': {
-      display: 'Communication Plan',
-      parent: null
+  const pathConfig = {
+    'playbook-app-overview': {
+      label: 'Playbook App Overview'
     },
-    'engagement-plan': {
-      display: 'Engagement Plan',
-      parent: 'communication-plan'
+    'ccc-initiative': {
+      label: 'CCC Initiative Overview'
+    },
+    'communications': {
+      label: 'Communications'
+    },
+    'internal-comms-plan': {
+      label: 'Internal Comms Plan',
+      parent: 'communications'
+    },
+    'internal-engagement': {
+      label: 'Internal Engagement',
+      parent: 'communications'
+    },
+    'objectives': {
+      label: 'Objectives',
+      parent: null  // Will be determined by context
+    },
+    'ccc-stakeholders': {
+      label: 'CCC Stakeholders',
+      parent: 'internal-comms-plan'
+    },
+    'strategies-&-tactics': {
+      label: 'Strategies & Tactics',
+      parent: 'internal-comms-plan'
+    },
+    'timeline': {
+      label: 'Timeline',
+      parent: 'internal-comms-plan'
+    },
+    'ccc-communications': {
+      label: 'Channels',
+      parent: 'internal-comms-plan'
+    },
+    'communication-streams': {
+      label: 'Cadence',
+      parent: 'internal-comms-plan'
+    },
+    'communication-path': {
+      label: 'Communication Path',
+      parent: 'internal-engagement'
+    },
+    'internal-engagement-strategies': {
+      label: 'Internal Engagement Strategies',
+      parent: 'internal-engagement'
+    },
+    'internal-engagement-plan': {
+      label: 'Internal Engagement Plan',
+      parent: 'internal-engagement'
     },
     'impact-monitoring': {
-      display: 'Impact Monitoring',
-      parent: 'engagement-plan'
+      label: 'Impact Monitoring',
+      parent: 'internal-engagement'
     },
-    'internal': {
-      display: 'Internal',
-      parent: 'communication-plan'
+    // Internal Onboarding
+    'internal-onboarding': {
+      label: 'Internal Onboarding'
+    },
+    'pre-integration-prep': {
+      label: 'Pre-Integration Prep',
+      parent: 'internal-onboarding'
+    },
+    'welcome-orientation': {
+      label: 'Welcome Orientation',
+      parent: 'internal-onboarding'
+    },
+    'immerse,-contribute': {
+      label: 'Immerse, Contribute',
+      parent: 'internal-onboarding'
+    },
+    'deepen-engagement': {
+      label: 'Deepen Engagement',
+      parent: 'internal-onboarding'
+    },
+    'full-integration': {
+      label: 'Full Integration',
+      parent: 'internal-onboarding'
+    },
+    'ongoing-support': {
+      label: 'Ongoing Support',
+      parent: 'internal-onboarding'
+    },
+    'external-links': {
+      label: 'External Links',
+      parent: 'internal-onboarding'
+    },
+    // Processes
+    'processes': {
+      label: 'Processes & Governance'
+    },
+    'processes-&-governance': {
+      label: 'Processes & Governance',
+      parent: 'processes'
+    },
+    'sops-&-resources': {
+      label: 'SOPs & Resources',
+      parent: 'processes'
+    },
+    // Compliance
+    'compliance': {
+      label: 'Compliance Guidance'
+    },
+    // Systems
+    'systems': {
+      label: 'Systems'
+    },
+    'internal-platforms': {
+      label: 'Internal Platforms',
+      parent: 'systems'
+    },
+    'manual-systems': {
+      label: 'Manual Systems',
+      parent: 'systems'
+    },
+    'links-to-process': {
+      label: 'Links to Process',
+      parent: 'systems'
+    },
+    // Projects Archetypes
+    'projects-archetypes': {
+      label: 'Projects Archetypes'
+    },
+    'core-principles': {
+      label: 'CORE Principles',
+      parent: 'projects-archetypes'
+    },
+    'ccc-project-lifecycle': {
+      label: 'CCC Project Lifecycle',
+      parent: 'projects-archetypes'
+    },
+    'ccc-project-types': {
+      label: 'CCC Project Types',
+      parent: 'projects-archetypes'
+    },
+    // Glossary
+    'glossary': {
+      label: 'Glossary of Terms'
     }
-    // Add more mappings as needed
   };
 
   const generateBreadcrumbs = () => {
@@ -35,8 +159,8 @@ const Breadcrumbs = () => {
     let currentPath = '';
     segments.forEach((segment) => {
       currentPath += `/${segment}`;
-      const mappedSegment = pathMap[segment] || {
-        display: segment
+      const mappedSegment = pathConfig[segment] || {
+        label: segment
           .split('-')
           .map(word => {
             if (word.toLowerCase() === 'ccc') {
@@ -49,7 +173,7 @@ const Breadcrumbs = () => {
       };
       
       breadcrumbs.push({
-        text: mappedSegment.display,
+        text: mappedSegment.label || mappedSegment.display,
         url: currentPath
       });
     });
@@ -60,7 +184,7 @@ const Breadcrumbs = () => {
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <nav className="px-8 py-4 text-sm text-gray-500">
+    <nav className="px-4 py-2 text-sm text-gray-500">
       <div className="flex items-center">
         <Link to="/" className="hover:text-red-800">
           Playbook

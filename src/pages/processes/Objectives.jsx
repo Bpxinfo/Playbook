@@ -2,11 +2,11 @@ import React from 'react';
 
 const Objectives = () => {
   return (
-    <div className="p-8">
+    <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">OBJECTIVES</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">OBJECTIVES</h1>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           <section>
             <h2 className="text-2xl text-red-800 mb-4">Process Framework Overview</h2>
             <div className="bg-white rounded-lg shadow p-6">

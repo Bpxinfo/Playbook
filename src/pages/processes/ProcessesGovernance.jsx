@@ -7,116 +7,103 @@ import adjud from '../../assets/adjud.jpg'
 
 const ProcessesGovernance = () => {
   return (
-    <div className="p-8 mx-auto max-w-full">
-      <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Processes & Governance</h1>
-      
-      <div className="space-y-8">
-        {/* 1.1 Process Map & Governance Model */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.1 Process Map & GOVERNANCE MODEL</h2>
-          <div className="space-y-6">
-            {/* Placeholder for Process Map Diagram */}
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <div className="mb-8">
+    <div className="p-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Processes & Governance</h1>
+        
+        <div className="space-y-6">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Process Map & Governance Model</h2>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <img 
                   src={CCC_Process_Overview} 
-                  alt="CCC Overview" 
+                  alt="CCC Process Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
-                <p className="text-sm text-gray-500 text-center">Flow Diagram</p>
+                <p className="text-sm text-gray-500 text-center">Process Flow Diagram</p>
+              </div>
+              <div className="space-y-2 text-gray-700">
+                <p>1. GRC - Global Research Committee</p>
+                <p>2. LRC - Local Research Committee</p>
               </div>
             </div>
-          
-            <div className="space-y-2 text-gray-700">
-              <p>1. GRC - Global Research Committee</p>
-              <p>2. LRC - Local Research Committee</p>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">DAI (RACI)</h2>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-red-800 mb-2">COMING SOON</h3>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* 1.2  (RACI) */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.2 DAI (RACI)</h2>
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
-          </div>
-        </section>
-
-        {/* 1.3 ISR / Collaborative Studies Approval Process */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.3 ISR / Collaborative Studies Approval Process</h2>
-          <p className="text-gray-700 mb-4">Iteration of the Process Map with clickable buttons for study type – that greys out all irrelevant steps of process flow</p>
-          
-          <div className="space-y-4">
-            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              {/* Content will go here */}
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">ISR / Collaborative Studies Approval Process</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">Iteration of the Process Map with clickable buttons for study type – that greys out all irrelevant steps of process flow</p>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-red-800 mb-2">COMING SOON</h3>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* 1.4 CCC Leadership - SteerCo */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.4 CCC Leadership - SteerCo</h2>
-          <div className="space-y-6">
-            <h3 className="text-xl text-red-800 mb-4">CCC Internal Stakeholders & CCC Leadership SteerCo</h3>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <div className="mb-8">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">CCC Leadership - SteerCo</h2>
+            <div className="space-y-4">
+              <h3 className="text-xl text-red-800 mb-4">CCC Internal Stakeholders & CCC Leadership SteerCo</h3>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <img 
+                    src={stakeholder} 
+                    alt="CCC Stakeholders" 
+                    className="w-full rounded-lg shadow-lg mb-4"
+                  />
+                  <p className="text-sm text-gray-500 text-center">Stakeholders</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <img 
+                    src={leadership} 
+                    alt="Leadership SteerCo" 
+                    className="w-full rounded-lg shadow-lg mb-4"
+                  />
+                  <p className="text-sm text-gray-500 text-center">Leadership SteerCo</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">CCC Adjudication Committee</h2>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <img 
-                  src={stakeholder} 
-                  alt="CCC Overview" 
+                  src={adjud} 
+                  alt="Adjudication Model" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
-                <p className="text-sm text-gray-500 text-center">Stakeholders</p>
-              </div>
-              <div className="mb-8">
-                <img 
-                  src={leadership} 
-                  alt="CCC Overview" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">Leadership SteerCo</p>
+                <p className="text-sm text-gray-500 text-center">Adjudication Model</p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* 1.5 IRB / Ethics Committee */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.5 CCC Adjudication Committee</h2>
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <div className="mb-8">
-              <img 
-                src={adjud} 
-                alt="CCC Overview" 
-                className="w-full rounded-lg shadow-lg mb-4"
-              />
-              <p className="text-sm text-gray-500 text-center">Adjudication Model</p>
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">RFP Process</h2>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-red-800 mb-2">COMING SOON</h3>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* 1.6 Multi-Institutional Consortium */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.6 RFP Process</h2>
-          <div className="space-y-4">
-            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              {/* Content will go here */}
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Multi-Institutional Ecosystem</h2>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold text-red-800 mb-2">COMING SOON</h3>
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* 1.7 Multi-Institutional Consortium */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl text-red-800 mb-4">1.7 Multi-Institutional Ecosystem</h2>
-          <div className="space-y-4">
-            <h3 className="text-xl text-red-800 mb-2">COMING SOON</h3>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              {/* Content will go here */}
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
   );
