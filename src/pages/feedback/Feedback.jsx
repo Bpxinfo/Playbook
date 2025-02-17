@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import { supabase } from '../../lib/supabaseClient';
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -11,26 +12,50 @@ const FeedbackForm = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.description) {
       setError('Please fill in all required fields');
       return;
     }
-    console.log('Feedback submitted:', formData);
-    setSubmitted(true);
-    setError('');
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        section: '',
-        requestType: 'revision',
-        description: ''
-      });
-      setSubmitted(false);
-    }, 3000);
+
+    setIsSubmitting(true);
+    try {
+      const { error: supabaseError } = await supabase
+        .from('feedback')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            section: formData.section,
+            request_type: formData.requestType,
+            description: formData.description,
+            submitted_at: new Date().toISOString(),
+          }
+        ]);
+
+      if (supabaseError) throw supabaseError;
+
+      setSubmitted(true);
+      setError('');
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          section: '',
+          requestType: 'revision',
+          description: ''
+        });
+        setSubmitted(false);
+      }, 3000);
+    } catch (err) {
+      setError('Failed to submit feedback. Please try again later.');
+      console.error('Error submitting feedback:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -157,9 +182,10 @@ const FeedbackForm = () => {
 
               <button
                 type="submit"
-                className="w-full bg-red-800 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
+                className="w-full bg-red-800 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors disabled:bg-red-500"
+                disabled={isSubmitting}
               >
-                Submit Feedback
+                {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
               </button>
             </form>
           </section>
