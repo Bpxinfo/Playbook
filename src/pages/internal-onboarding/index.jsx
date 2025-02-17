@@ -75,7 +75,7 @@ export default function InternalOnboardingHome() {
   ];
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-4 max-w-7xl mx-auto">
       <div className="mb-12">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Internal Onboarding</h1>
         

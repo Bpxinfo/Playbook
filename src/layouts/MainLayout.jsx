@@ -67,7 +67,8 @@ const MainLayout = ({ children }) => {
             'Strategies & Tactics',
             'Timeline',
             'Channels',
-            'Cadence'
+            'Cadence',
+            'Key Communications'
           ]
         },
         {
@@ -353,43 +354,74 @@ const MainLayout = ({ children }) => {
   }, []);
     
   // Rendering helper functions
-  const renderSubsectionItems = (section, sectionKey, subsection) => (
+  const renderSectionItems = (section, sectionKey) => (
     <div className="ml-4">
-      {subsection.items.map((item, itemIdx) => {
-        const itemIsSelected = isSelected(sectionKey, item, subsection.title);
+      {section.items.map((item) => {
+        const path = getItemPath(sectionKey, item);
+        const isActive = location.pathname === path;
         return (
-          <Link 
-            key={itemIdx}
-            to={getItemPath(sectionKey, item, subsection.title)}
-            className={`block py-1 text-sm rounded px-2 ${
-              itemIsSelected
-                ? 'bg-red-800 text-white pointer-events-none'
-                : 'text-black hover:bg-gray-100'
-            }`}
-          >
-            {item}
-          </Link>
+          <div key={item} className="mb-1">
+            {path ? (
+              <Link
+                to={path}
+                className={`block p-2 text-sm rounded-lg transition-colors ${
+                  isActive
+                    ? 'bg-red-800 text-white hover:text-white'
+                    : 'text-black hover:bg-gray-100'
+                }`}
+              >
+                {item}
+              </Link>
+            ) : (
+              <button
+                onClick={() => getItemPath(sectionKey, item)}
+                className="block w-full text-left p-2 text-sm rounded-lg transition-colors text-black hover:bg-gray-100"
+              >
+                {item}
+              </button>
+            )}
+          </div>
         );
       })}
     </div>
   );
 
-  const renderSectionItems = (section, sectionKey) => (
-    <div className="mt-2 ml-2">
-      {section.items.map((item, idx) => {
-        const itemIsSelected = isSelected(sectionKey, item);
+  const renderSubsectionItems = (section, sectionKey, subsection) => (
+    <div className="ml-4">
+      {subsection.items.map((item) => {
+        // Special case for Key Communications
+        if (item === 'Key Communications' && sectionKey === 'communications' && subsection.id === 'internal-comms-plan') {
+          return (
+            <div key={item} className="mb-1">
+              <div
+                onClick={() => window.open('https://www.google.com', '_blank')}
+                className="cursor-pointer block p-2 text-sm rounded-lg transition-colors text-black hover:bg-gray-100"
+              >
+                <span className="flex items-center">
+                  {item}
+                  <LinkIcon className="w-3 h-3 ml-1" />
+                </span>
+              </div>
+            </div>
+          );
+        }
+
+        // Normal case for other items
+        const path = getItemPath(sectionKey, item, subsection.id);
+        const isActive = location.pathname === path;
         return (
-          <Link
-            key={idx}
-            to={getItemPath(sectionKey, item)}
-            className={`block py-1 text-sm rounded px-2 ${
-              itemIsSelected
-                ? 'bg-red-800 text-white pointer-events-none'
-                : 'text-black hover:bg-gray-100'
-            }`}
-          >
-            {item}
-          </Link>
+          <div key={item} className="mb-1">
+            <Link
+              to={path}
+              className={`block p-2 text-sm rounded-lg transition-colors ${
+                isActive
+                  ? 'bg-red-800 text-white hover:text-white'
+                  : 'text-black hover:bg-gray-100'
+              }`}
+            >
+              {item}
+            </Link>
+          </div>
         );
       })}
     </div>

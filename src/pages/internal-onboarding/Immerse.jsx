@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImmerseContribute = () => {
   return (
-    <div className="p-8 flex justify-center">
+    <div className="p-4 flex justify-center">
       <div className="max-w-4xl w-full">
         <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Immerse and Contribute (1-2 months)</h1>
         <div className="space-y-8">

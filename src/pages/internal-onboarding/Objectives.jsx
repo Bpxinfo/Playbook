@@ -2,7 +2,7 @@ import React from 'react';
 
 const Objectives = () => {
   return (
-    <div className="p-8">
+    <div className="p-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">OBJECTIVES</h1>
 

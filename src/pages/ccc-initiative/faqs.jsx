@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-export default function CCCFAQs() {
+const CCCFAQs = () => {
   const navigate = useNavigate();
 
   const faqs = [
@@ -41,9 +41,9 @@ export default function CCCFAQs() {
   ];
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="mb-12">
-        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">CCC Initiative FAQs</h1>
+    <div className="p-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">CCC Initiative FAQs</h1>
         
         {/* <button
           onClick={() => navigate('/ccc-initiative')}
@@ -53,10 +53,10 @@ export default function CCCFAQs() {
           Back to CCC Initiative Overview
         </button> */}
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold text-red-800 mb-4">{faq.question}</h2>
+            <div key={index} className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-2xl text-red-800 mb-4">{faq.question}</h2>
               {faq.answer.split('\\n').map((paragraph, pIndex) => (
                 <p key={pIndex} className="text-gray-700 mb-2">
                   {paragraph}
@@ -68,4 +68,6 @@ export default function CCCFAQs() {
       </div>
     </div>
   );
-} 
+};
+
+export default CCCFAQs; 

@@ -2,13 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
-export default function PatientImpact() {
+const PatientImpact = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="mb-12">
-        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Patient Impact</h1>
+    <div className="p-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Patient Impact</h1>
         
         {/* <button
           onClick={() => navigate('/ccc-initiative')}
@@ -18,18 +18,16 @@ export default function PatientImpact() {
           Back to CCC Initiative Overview
         </button> */}
 
-        <div className="space-y-8">
-          {/* Overview Section */}
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-red-800 mb-4">Overview</h2>
+        <div className="space-y-6">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Overview</h2>
             <p className="text-gray-700 mb-4">
               The Community Cancer Collective (CCC) is dedicated to making a meaningful difference in patients' lives through our community-focused initiatives. Our impact is measured not just in numbers, but in the improved quality of care and better outcomes for cancer patients in community settings.
             </p>
           </section>
 
-          {/* Key Impact Areas */}
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-red-800 mb-4">Key Impact Areas</h2>
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Key Impact Areas</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Enhanced Access to Care</h3>
@@ -52,9 +50,8 @@ export default function PatientImpact() {
             </div>
           </section>
 
-          {/* Measuring Impact */}
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-red-800 mb-4">Measuring Our Impact</h2>
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Measuring Our Impact</h2>
             <div className="space-y-4">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Quantitative Metrics</h3>
@@ -77,9 +74,8 @@ export default function PatientImpact() {
             </div>
           </section>
 
-          {/* Future Goals */}
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-red-800 mb-4">Future Impact Goals</h2>
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Future Impact Goals</h2>
             <div className="space-y-4">
               <p className="text-gray-700">
                 Looking ahead, CCC aims to:
@@ -97,4 +93,6 @@ export default function PatientImpact() {
       </div>
     </div>
   );
-} 
+};
+
+export default PatientImpact; 
