@@ -9,5 +9,6 @@ Currently, two official plugins are available:
 
 npm run dev
 
-install node, vite, react-router-dom
+install node, vite, 
+npm installreact-router-dom
 nvm use 22
