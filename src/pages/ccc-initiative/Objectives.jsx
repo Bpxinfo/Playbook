@@ -1,5 +1,6 @@
 import React from 'react';
 import CCC_Overview from '../../assets/CCC_Overview.jpg';
+import StrategicPillars from '../../assets/strategicpillars.jpeg';
 import ImageWithZoom from '../../components/ImageWithZoom';
 
 const Objectives = () => {
@@ -24,7 +25,7 @@ const Objectives = () => {
             <h2 className="text-2xl text-red-800 mb-4 text-center">The Project Summary</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <div className="mb-8">
-                <img 
+                <ImageWithZoom 
                   src={CCC_Overview} 
                   alt="CCC Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
@@ -49,11 +50,13 @@ const Objectives = () => {
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center">Three Strategic Pillars</h2>
             <div className="bg-white rounded-lg shadow p-6">
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>Generating Evidence</li>
-                <li>Addressing Disparities, Improving Health Equity</li>
-                <li>Enabling Education for Providers and Patients</li>
-              </ul>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <ImageWithZoom 
+                  src={StrategicPillars} 
+                  alt="Strategic Pillars" 
+                  className="w-full rounded-lg shadow-lg mb-4"
+                />
+              </div>
             </div>
           </section>
 
