@@ -612,13 +612,27 @@ const MainLayout = ({ children }) => {
                 </div>
               </div>
             </div>
-            <Link
-              to="/feedback"
-              className="flex items-center text-red-800 hover:text-red-700 transition-colors"
-            >
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Feedback
-            </Link>
+            <div className="relative group">
+              <button className="flex items-center text-red-800 hover:text-red-700 bg-white transition-colors">
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Feedback
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+              {/* Add invisible bridge to maintain hover */}
+              <div className="absolute w-full h-2 bg-transparent" />
+              <div className="absolute z-50 mt-0 w-48 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+                <div className="py-2">
+                  <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Leave Feedback
+                  </Link>
+                  <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    See All Feedback
+                  </a>
+                </div>
+              </div>
+            </div>
             <form 
               onSubmit={(e) => {
                 e.preventDefault();

@@ -1,23 +1,82 @@
 import React from 'react';
-import { AlertTriangle, Info } from 'lucide-react';
+import { 
+  AlertTriangle, Info, Building, Users2, BookOpen, 
+  Target, Shield, FileCheck, ChevronRight, Briefcase,
+  Settings, UserCheck, Network, LineChart, CheckCircle2,
+  FileText, Flag, Brain
+} from 'lucide-react';
 import advisory from '../../assets/advisory.jpg'
 import legalcompliance from '../../assets/legalcompliance.jpg'
 import partner from '../../assets/partner-selection.jpg'
+import ImageWithZoom from '../../components/ImageWithZoom';
 
 const Processes = () => {
+  const selectionCriteria = [
+    { text: "Subject matter expertise", icon: Brain },
+    { text: "Data and IT infrastructure", icon: Settings },
+    { text: "Analytic/innovative culture", icon: Briefcase },
+    { text: "Institutional reputation", icon: Building },
+    { text: "Geographic location", icon: Target },
+    { text: "Project capabilities", icon: FileCheck }
+  ];
+
+  const projectLimitations = [
+    "Funding must be open to qualified sites and will not be steered towards CCC external advisor's sites, CCC initial partner sites, or to other key Commercial accounts.",
+    "CCC projects and partners must not be selected based on sales/revenue generating considerations.",
+    "CCC projects must not be initiated, directed, or influenced by Sales.",
+    "CCC projects must not be offered to physicians or sites in connection with (i) sales contracts, (ii) clinical pathways or other functions that determine which products may be recommended to oncologists for use with patients, or (iii) contract negotiations for discounts or rebates on Gilead products.",
+    "CCC projects must not be unnecessarily duplicative."
+  ];
+
+  const processSteps = [
+    { text: "Submission", icon: FileText },
+    { text: "Review", icon: Shield },
+    { text: "Approval", icon: CheckCircle2 },
+    { text: "Documentation retention", icon: FileCheck },
+    { text: "Management", icon: Settings },
+    { text: "Tracking", icon: LineChart },
+    { text: "Reporting/sharing", icon: Network }
+  ];
+
+  const projectTracking = [
+    "Track and report on key milestones, dates, and deliverables",
+    "Monitor contract timeline adherence and budget utilization",
+    "Flag dependencies, blockers, and risks",
+    "Maintain project phase status and resource needs",
+    "Document quick status indicators (On track/Needs attention/Blocked)"
+  ];
+
+  const impactMeasurement = [
+    "Record and verify direct patient benefits and outcomes",
+    "Capture unexpected positive results and ripple effects",
+    "Track resource efficiency improvements",
+    "Document patient stories and examples",
+    "Maintain 3-5 key performance metrics"
+  ];
+
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-gray-100 mb-6 text-center bg-red-800 p-4 uppercase">Processes</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase flex items-center justify-center">
+          <Settings className="w-8 h-8 mr-3" />
+          Processes
+        </h1>
 
         <div className="space-y-6">
-          <section id="ccc-strategy-development" className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">CCC Strategy Development</h2>
+          <section id="ccc-strategy-development" className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Target className="w-6 h-6 mr-2" />
+              CCC Strategy Development
+            </h2>
+            
             {/* Advisory Council */}
             <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">CCC Advisory Council</h3>
-              <div className="mb-8">
-                <img 
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Users2 className="w-5 h-5 mr-2" />
+                CCC Advisory Council
+              </h3>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <ImageWithZoom 
                   src={advisory} 
                   alt="CCC Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
@@ -27,252 +86,226 @@ const Processes = () => {
             </div>
             
             {/* Expert Advisors */}
-            <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">CCC Expert Advisors</h3>
-              <ol className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Selection of Expert Advisors must follow objective criteria based on demonstrated expertise and experience in CCC focus areas, explicitly moving beyond titles or commercial relationships and ensuring diversity across both major centers and community oncology institutions, with no more than 50% from initial CCC partner sites</li>
-                <li>All Expert Advisor engagements must align with Gilead's existing U.S. BCM policies for Advisory Boards and require clear business justification through detailed documentation pre-approved by Legal/Compliance teams</li>
-                <li>While Expert Advisors may provide input on operational aspects of complex CCC projects, they should maintain limited influence over broader CCC project design and selection decisions</li>
-              </ol>
+            <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Brain className="w-5 h-5 mr-2" />
+                CCC Expert Advisors
+              </h3>
+              <div className="space-y-3">
+                {[
+                  "Selection of Expert Advisors must follow objective criteria based on demonstrated expertise and experience in CCC focus areas, explicitly moving beyond titles or commercial relationships and ensuring diversity across both major centers and community oncology institutions, with no more than 50% from initial CCC partner sites",
+                  "All Expert Advisor engagements must align with Gilead's existing U.S. BCM policies for Advisory Boards and require clear business justification through detailed documentation pre-approved by Legal/Compliance teams",
+                  "While Expert Advisors may provide input on operational aspects of complex CCC projects, they should maintain limited influence over broader CCC project design and selection decisions"
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Internal Collaboration */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">Internal Collaboration</h3>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Medical Affairs and Commercial teams, and other cross-functional partners may participate in strategy meetings to discuss learnings from external advisors and share relevant information on patient care challenges and gaps in the community cancer setting and collaborate on priority development for CCC projects</li>
-                <li>Participants may include the leads for U.S. Medical and Commercial functions, leads for the U.S. Medical and Commercial Oncology teams (VP or above), as well as appropriate leads from other functional areas. Teams may interact and collaborate to the extent allowed by existing WoW and other Gilead policies and guidance noted above</li>
-                <li>For clarity, Gilead's Sales organization must not be involved in CCC internal collaboration and strategy development meetings</li>
-              </ul>
-            </div>
-          </section>
-
-          <section id="project-proposals-and-approvals" className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Project Proposals & Approvals</h2>
-            <div className="bg-white rounded-lg shadow p-6">
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>All proposals are subject to existing Gilead policies and procedures. Sales teams are strictly prohibited from any involvement in project development or oversight, while Research proposals remain under Medical's exclusive purview</li>
-                <li>Project development must align with internal cross-functional strategy and may incorporate feedback from external expert advisors, all while maintaining compliance with relevant Gilead policies for each type of initiative</li>
-                <li>CCC project proposals may be proposed through an RFP process or through specific internal Gilead teams, such as USMA (including PAQ), Managed Markets, Public Affairs, Gov't Affairs, Commercial (not sales)</li>
-                <li>A formal request for proposal ("RFP") process may be publicly advertised in order to solicit CCC project proposals. Note: The RFP must be reviewed and approved by Legal in advance of release and abide by all guidance in the RFP policy</li>
-              </ul>
-            </div>
-            <div className="space-y-6">
-              {/* Selection Criteria */}
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-semibold text-red-800 mb-4">Partner & Project Selection</h3>
-                <div className="mb-8">
-                  <img 
-                    src={partner} 
-                    alt="CCC Overview" 
-                    className="w-full rounded-lg shadow-lg mb-4"
-                  />
-                  <p className="text-sm text-gray-500 text-center">CCC Partner Selection Criteria</p>
-                </div>  
-                
-                <div>
-                  <p className="text-gray-700">CCC projects and partners will be selected based on neutral, objective criteria. Partners will be selected based on, but not limited to, the following criteria: </p>
-                  <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                    <li>Subject matter expertise</li>
-                    <li>Data and IT infrastructure</li>
-                    <li>Analytic/innovative culture</li>
-                    <li>Institutional reputation</li>
-                    <li>Geographic location</li>
-                    <li>Project capabilities</li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-gray-700 mb-2">Furthermore, CCC projects will be selected based on alignment with CCC objectives and strategic pillars. Selection of CCC projects must also be based on other objective criteria, including but not limited to the scientific merit of the proposed project, and data gaps. </p>
-                  <h4 className="font-semibold mb-2 text-gray-900">CCC project and partner selection is subject to the following limitations: </h4>
-                  <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                    <li>Funding must be open to qualified sites and will not be steered towards CCC external advisor's sites, CCC initial partner sites, or to other key Commercial accounts. </li>
-                    <li>CCC projects and partners must not be selected based on sales/revenue generating considerations. </li>
-                    <li>CCC projects must not be initiated, directed, or influenced by Sales. </li>
-                    <li>CCC projects must not be offered to physicians or sites in connection with (i) sales contracts, (ii) clinical pathways or other functions that determine which products may be recommended to oncologists for use with patients, or (iii) contract negotiations for discounts or rebates on Gilead products. </li>
-                    <li>CCC projects must not be unnecessarily duplicative. </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Review Process */}
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-semibold text-red-800 mb-4">Review & Approval Process</h3>
-                <p className="text-gray-700 mb-4">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.</p>
-                <p className="text-gray-700 mb-4">Includes the department's standard process for:</p>
-                <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                  <li>Submission</li>
-                  <li>Review</li>
-                  <li>Approval</li>
-                  <li>Documentation retention</li>
-                  <li>Management</li>
-                  <li>Tracking</li>
-                  <li>Reporting/sharing</li>
-                </ul>
-              </div>
-
-              {/* Adjudication Committee */}
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-semibold text-red-800 mb-4">Adjudication Committee</h3>
-                <p className="text-gray-700 mb-4">The CCC Adjudication Committee will review Complex Projects and include representatives from Medical Affairs, Medical Governance, Legal, and Compliance. No one from the Commercial organization, including Managed Markets, will sit on the Adjudication Committee.</p>
-                <p className="text-gray-700 mb-4">The Adjudication Committee's role and responsibilities are to provide initial review and approval of Complex Project proposals presented by the CCC Chair and evaluate whether: </p>
-                <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                  <li>They fit within the CCC's objectives and strategic pillars. </li>
-                  <li>They fit within the Partner and Project criteria. </li>
-                  <li>If initially approved, route the CCC project to the appropriate functional department for further respective review and approval. </li>
-                </ul>
+            <div className="bg-green-50 rounded-lg shadow p-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Network className="w-5 h-5 mr-2" />
+                Internal Collaboration
+              </h3>
+              <div className="space-y-3">
+                {[
+                  "Medical Affairs and Commercial teams, and other cross-functional partners may participate in strategy meetings to discuss learnings from external advisors and share relevant information on patient care challenges and gaps in the community cancer setting and collaborate on priority development for CCC projects",
+                  "Participants may include the leads for U.S. Medical and Commercial functions, leads for the U.S. Medical and Commercial Oncology teams (VP or above), as well as appropriate leads from other functional areas. Teams may interact and collaborate to the extent allowed by existing WoW and other Gilead policies and guidance noted above",
+                  "For clarity, Gilead's Sales organization must not be involved in CCC internal collaboration and strategy development meetings"
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
-          <section id="project-operations" className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Project Operations</h2>
-            
-            {/* Review & Approval */}
-            <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">Review & Approval Process</h3>
-              <p className="text-gray-700 mb-4">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.  </p>
-              <p className="text-gray-700 mb-4">Includes the department's standard process for:  </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Submission</li>
-                <li>Review</li>
-                <li>Approval</li>
-                <li>Documentation retention</li>
-                <li>Management</li>
-                <li>Tracking</li>
-                <li>Reporting/sharing</li>
-              </ul>
-              <div>
-                <p className="text-gray-700">The data and/or results of the project may be shared with cross-functional teams in accordance with existing WoW and other relevant Gilead policies.</p>
+          <section id="project-proposals-and-approvals" className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <FileCheck className="w-6 h-6 mr-2" />
+              Project Proposals & Approvals
+            </h2>
+            <div className="bg-yellow-50 rounded-lg shadow p-6 mb-6">
+              <div className="space-y-3">
+                {[
+                  "All proposals are subject to existing Gilead policies and procedures. Sales teams are strictly prohibited from any involvement in project development or oversight, while Research proposals remain under Medical's exclusive purview",
+                  "Project development must align with internal cross-functional strategy and may incorporate feedback from external expert advisors, all while maintaining compliance with relevant Gilead policies for each type of initiative",
+                  "CCC project proposals may be proposed through an RFP process or through specific internal Gilead teams, such as USMA (including PAQ), Managed Markets, Public Affairs, Gov't Affairs, Commercial (not sales)",
+                  "A formal request for proposal (\"RFP\") process may be publicly advertised in order to solicit CCC project proposals. Note: The RFP must be reviewed and approved by Legal in advance of release and abide by all guidance in the RFP policy",
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Updates & Reporting */}
+            {/* Selection Criteria */}
             <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">Updates & Reporting</h3>
-              <p className="text-gray-700 mb-8">
-                The Gilead team responsible for a CCC project may provide updates on CCC projects, so long as such internal information sharing is consistent with existing WoW, policies and procedures.
-              </p>
-              <h2 className="text-xl text-red-800 mb-6">PROJECT LEAD - RESPONSIBILITY LIST</h2>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl text-red-800 mb-4">Project Tracking & Monitoring</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Track and report on key milestones, dates, and deliverables</li>
-                    <li>Monitor contract timeline adherence and budget utilization</li>
-                    <li>Flag dependencies, blockers, and risks</li>
-                    <li>Maintain project phase status and resource needs</li>
-                    <li>Document quick status indicators (On track/Needs attention/Blocked)</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl text-red-800 mb-4">Impact Documentation & Measurement</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Record and verify direct patient benefits and outcomes</li>
-                    <li>Capture unexpected positive results and ripple effects</li>
-                    <li>Track resource efficiency improvements</li>
-                    <li>Document patient stories and examples</li>
-                    <li>Maintain 3-5 key performance metrics</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl text-red-800 mb-4">Reporting & Communication</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Submit standardized monthly project updates using templates</li>
-                    <li>Create quarterly shareable summaries</li>
-                    <li>Document lessons learned and best practices</li>
-                    <li>Complete impact snapshots showing current benefits achieved</li>
-                    <li>Report on metrics, blockers, and resource needs</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl text-red-800 mb-4">Opportunity Management</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-8">
-                    <li>Identify potential scale-up opportunities</li>
-                    <li>Spot resource-light quick wins</li>
-                    <li>Map new patient impact pathways</li>
-                    <li>Note cross-project synergies and collaboration possibilities</li>
-                    <li>Track emerging expansion areas</li>
-                  </ul>
-                </div>
-              </div>
-              <div>
-              <h3 className="text-xl text-red-800 mb-4">CCC PROJECT MONTHLY UPDATE TEMPLATE</h3>
-              <div className="bg-white rounded-lg shadow-lg p-6 space-y-6">
-                <p className="font-medium text-gray-900">[Project Name] - [Month Year]</p>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">WINS & IMPACTS</h4>
-                  <ul className="list-none pl-4 space-y-2 text-gray-700">
-                    <li><strong>Patient Benefit</strong>: [Most significant outcome]</li>
-                    <li><strong>System Impact</strong>: [Key ripple effect observed]</li>
-                    <li><strong>Unexpected Win</strong>: [Surprise positive outcome]</li>
-                    <li><strong>Quick Numbers</strong>:</li>
-                    <li className="pl-4">[Key Metric 1]: [Current] vs [Target]</li>
-                    <li className="pl-4">[Key Metric 2]: [Current] vs [Target]</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">PROJECT HEALTH</h4>
-                  <ul className="list-none pl-4 space-y-2 text-gray-700">
-                    <li><strong>Timeline</strong>: [On Track/At Risk/Blocked]</li>
-                    <li><strong>Budget</strong>: [Within/Attention/Over]</li>
-                    <li><strong>Next Milestone</strong>: [Date + Brief description]</li>
-                    <li><strong>Key Blocker</strong>: [If any - otherwise "None"]</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">SCALING OPPORTUNITIES</h4>
-                  <ul className="list-none pl-4 space-y-2 text-gray-700">
-                    <li><strong>Quick Win Spotted</strong>: [Resource-light opportunity]</li>
-                    <li><strong>Impact Pathway</strong>: [How we could scale impact]</li>
-                    <li><strong>Cross-Project Link</strong>: [Synergy with other CCC work, functions]</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">NEEDS & NEXT STEPS</h4>
-                  <ul className="list-none pl-4 space-y-2 text-gray-700">
-                    <li><strong>Resource Need</strong>: [Specific ask if any]</li>
-                    <li><strong>Decision Need</strong>: [Leadership input needed]</li>
-                    <li><strong>Support Need</strong>: [Cross-team help needed]</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">LOOKING AHEAD</h4>
-                  <p className="text-gray-700">Brief bullet on biggest opportunity for next 30 days</p>
-                </div>
-              </div>
-            </div>
-            </div>
-            {/* Compliance Monitoring */}
-            <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">Compliance Monitoring</h3>
-              <p className="text-gray-700 mb-4">The CCC will be subject to monitoring to ensure that all operations are following Gilead policies and procedures. </p>
-            </div>
-            
-            {/* External Interaction Guidelines */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4">External Interaction Guidelines</h3>
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <UserCheck className="w-5 h-5 mr-2" />
+                Partner & Project Selection
+              </h3>
               <div className="mb-8">
-                <img 
+                <ImageWithZoom 
+                  src={partner} 
+                  alt="CCC Overview" 
+                  className="w-full rounded-lg shadow-lg mb-4"
+                />
+                <p className="text-sm text-gray-500 text-center">CCC Partner Selection Criteria</p>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <p className="text-gray-700 mb-4">CCC projects and partners will be selected based on neutral, objective criteria. Partners will be selected based on, but not limited to, the following criteria:</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {selectionCriteria.map((item, index) => {
+                      const IconComponent = item.icon;
+                      return (
+                        <div key={index} className="flex items-center bg-blue-50 p-3 rounded-lg shadow-sm">
+                          <div className="bg-white p-2 rounded-full shadow-md">
+                            <IconComponent className="w-4 h-4 text-red-800" />
+                          </div>
+                          <span className="text-gray-700 ml-3">{item.text}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="bg-yellow-50 p-6 rounded-lg">
+                  <h4 className="font-semibold mb-4 text-gray-900 flex items-center">
+                    <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
+                    CCC project and partner selection is subject to the following limitations:
+                  </h4>
+                  <div className="space-y-3">
+                    {projectLimitations.map((text, index) => (
+                      <div key={index} className="flex items-start">
+                        <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                        <p className="text-gray-700">{text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Review Process */}
+            <div className="bg-indigo-50 rounded-lg shadow p-6 mb-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Shield className="w-5 h-5 mr-2" />
+                Review & Approval Process
+              </h3>
+              <p className="text-gray-700 mb-4">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {processSteps.map((step, index) => {
+                  const IconComponent = step.icon;
+                  return (
+                    <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                      <div className="bg-indigo-50 p-2 rounded-full shadow-md">
+                        <IconComponent className="w-4 h-4 text-red-800" />
+                      </div>
+                      <span className="text-gray-700 ml-3">{step.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Adjudication Committee */}
+            <div className="bg-purple-50 rounded-lg shadow p-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Shield className="w-5 h-5 mr-2" />
+                Adjudication Committee
+              </h3>
+              <p className="text-gray-700 mb-4">The CCC Adjudication Committee will review Complex Projects and include representatives from Medical Affairs, Medical Governance, Legal, and Compliance. No one from the Commercial organization, including Managed Markets, will sit on the Adjudication Committee.</p>
+              <div className="space-y-3">
+                {[
+                  "They fit within the CCC's objectives and strategic pillars.",
+                  "They fit within the Partner and Project criteria.",
+                  "If initially approved, route the CCC project to the appropriate functional department for further respective review and approval."
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="project-operations" className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Settings className="w-6 h-6 mr-2" />
+              Project Operations
+            </h2>
+
+            {/* Project Tracking */}
+            <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <LineChart className="w-5 h-5 mr-2" />
+                Project Tracking & Monitoring
+              </h3>
+              <div className="space-y-3">
+                {projectTracking.map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Impact Measurement */}
+            <div className="bg-green-50 rounded-lg shadow p-6 mb-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <Target className="w-5 h-5 mr-2" />
+                Impact Documentation & Measurement
+              </h3>
+              <div className="space-y-3">
+                {impactMeasurement.map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* External Interaction Guidelines */}
+            <div className="bg-red-50 rounded-lg shadow p-6">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <AlertTriangle className="w-5 h-5 mr-2" />
+                External Interaction Guidelines
+              </h3>
+              <div className="mb-8">
+                <ImageWithZoom 
                   src={legalcompliance} 
                   alt="CCC Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
                 <p className="text-sm text-gray-500 text-center">Legal & Compliance Guidance on CCC</p>
               </div>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>CCC discussions with customers are restricted to trained field personnel (MSLs, MVELs, KADs) using only approved materials, while sales teams including Oncology Sales Leadership must not engage in CCC discussions and must refer all inquiries to the CCC team</li>
-                <li>CCC Leadership Steer Co and Home Office teams may discuss strategic objectives within existing Gilead policies, but CCC projects must never be discussed in connection with clinical pathways, formulary decisions, or contract negotiations for Gilead products</li>
-                <li>All customer interactions regarding CCC must be channeled through the CCC team for follow-up, and commercial field personnel are prohibited from reaching out to CCC partners for project data or attending CCC-related meetings</li>
-                <li>All CCC materials require appropriate internal review approval (MRC or PRC) before customer use</li>
-              </ul>
+              <div className="space-y-3">
+                {[
+                  "CCC discussions with customers are restricted to trained field personnel (MSLs, MVELs, KADs) using only approved materials, while sales teams including Oncology Sales Leadership must not engage in CCC discussions and must refer all inquiries to the CCC team",
+                  "CCC Leadership Steer Co and Home Office teams may discuss strategic objectives within existing Gilead policies, but CCC projects must never be discussed in connection with clinical pathways, formulary decisions, or contract negotiations for Gilead products",
+                  "All customer interactions regarding CCC must be channeled through the CCC team for follow-up, and commercial field personnel are prohibited from reaching out to CCC partners for project data or attending CCC-related meetings",
+                  "All CCC materials require appropriate internal review approval (MRC or PRC) before customer use"
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         </div>

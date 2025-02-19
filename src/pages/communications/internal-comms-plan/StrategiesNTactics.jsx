@@ -1,120 +1,232 @@
 import React from 'react';
+import { 
+  Target, MessageCircle, Workflow, BarChart3, Users, 
+  Lightbulb, ChevronRight, Clock, Activity, Laptop, BookOpen,
+  CheckCircle2, LineChart, Settings
+} from 'lucide-react';
 
 const StrategiesNTactics = () => {
+  const strategies = [
+    {
+      title: "Internal Alignment",
+      items: [
+        "Clear Message Framework",
+        "Stakeholder Mapping",
+        "Channel Optimization",
+        "Feedback Integration",
+        "Performance Tracking"
+      ],
+      icon: Users,
+      color: "bg-blue-50"
+    },
+    {
+      title: "Engagement Focus",
+      items: [
+        "Interactive Sessions",
+        "Two-way Dialogue",
+        "Recognition Programs",
+        "Collaborative Tools",
+        "Knowledge Sharing"
+      ],
+      icon: MessageCircle,
+      color: "bg-green-50"
+    }
+  ];
+
+  const tactics = [
+    {
+      tactic: "Town Halls",
+      purpose: "Broad Updates",
+      frequency: "Monthly",
+      impact: "High",
+      icon: Users,
+      color: "bg-blue-50"
+    },
+    {
+      tactic: "Team Meetings",
+      purpose: "Detailed Planning",
+      frequency: "Weekly",
+      impact: "Medium",
+      icon: MessageCircle,
+      color: "bg-green-50"
+    },
+    {
+      tactic: "Newsletters",
+      purpose: "Information Sharing",
+      frequency: "Bi-weekly",
+      impact: "Medium",
+      icon: BookOpen,
+      color: "bg-purple-50"
+    }
+  ];
+
+  const resources = [
+    {
+      title: "Digital Tools",
+      items: [
+        "Communication Platform",
+        "Project Management",
+        "Analytics Dashboard",
+        "Feedback System"
+      ],
+      icon: Laptop,
+      color: "bg-indigo-50"
+    },
+    {
+      title: "Support Resources",
+      items: [
+        "Training Materials",
+        "Best Practices Guide",
+        "Templates Library",
+        "Help Documentation"
+      ],
+      icon: BookOpen,
+      color: "bg-pink-50"
+    }
+  ];
+
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Strategies & Tactics</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase flex items-center justify-center">
+          <Workflow className="w-8 h-8 mr-3" />
+          Strategies & Tactics
+        </h1>
 
         <div className="space-y-6">
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Communication Strategies</h2>
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Target className="w-6 h-6 mr-2" />
+              Communication Strategies
+            </h2>
             <div className="space-y-4">
-              <p className="text-gray-700">
-                Our comprehensive communication approach focuses on these key strategies:
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold text-red-800 mb-2">Internal Alignment</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Clear Message Framework</li>
-                    <li>Stakeholder Mapping</li>
-                    <li>Channel Optimization</li>
-                    <li>Feedback Integration</li>
-                    <li>Performance Tracking</li>
-                  </ul>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold text-red-800 mb-2">Engagement Focus</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Interactive Sessions</li>
-                    <li>Two-way Dialogue</li>
-                    <li>Recognition Programs</li>
-                    <li>Collaborative Tools</li>
-                    <li>Knowledge Sharing</li>
-                  </ul>
-                </div>
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  Our comprehensive communication approach focuses on these key strategies:
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                {strategies.map((strategy, index) => {
+                  const IconComponent = strategy.icon;
+                  return (
+                    <div key={index} className={`${strategy.color} p-6 rounded-lg shadow-md transform hover:scale-[1.02] transition-all duration-200`}>
+                      <div className="flex items-center mb-4">
+                        <div className="bg-white p-2 rounded-full shadow-md">
+                          <IconComponent className="w-6 h-6 text-red-800" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-red-800 ml-3">{strategy.title}</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        {strategy.items.map((item, i) => (
+                          <li key={i} className="flex items-start">
+                            <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                            <span className="text-gray-700">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Implementation Tactics</h2>
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Settings className="w-6 h-6 mr-2" />
+              Implementation Tactics
+            </h2>
             <div className="space-y-4">
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tactic</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Frequency</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impact</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Town Halls</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Broad Updates</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Monthly</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">High</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Team Meetings</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Detailed Planning</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Weekly</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Medium</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Newsletters</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Information Sharing</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Bi-weekly</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Medium</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="grid grid-cols-1 gap-4">
+                {tactics.map((tactic, index) => {
+                  const IconComponent = tactic.icon;
+                  return (
+                    <div key={index} className={`${tactic.color} p-6 rounded-lg shadow-md transform hover:scale-[1.02] transition-all duration-200`}>
+                      <div className="flex flex-wrap items-center justify-between">
+                        <div className="flex items-center mb-2 md:mb-0">
+                          <div className="bg-white p-2 rounded-full shadow-md">
+                            <IconComponent className="w-6 h-6 text-red-800" />
+                          </div>
+                          <h3 className="text-lg font-semibold text-gray-800 ml-3">{tactic.tactic}</h3>
+                        </div>
+                        <div className="flex items-center space-x-6">
+                          <div className="flex items-center">
+                            <Lightbulb className="w-5 h-5 text-red-800 mr-2" />
+                            <span className="text-gray-700">{tactic.purpose}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Clock className="w-5 h-5 text-red-800 mr-2" />
+                            <span className="text-gray-700">{tactic.frequency}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Activity className="w-5 h-5 text-red-800 mr-2" />
+                            <span className="text-gray-700">{tactic.impact}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Success Metrics</h2>
-            <div className="space-y-4">
-              <p className="text-gray-700">
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <BarChart3 className="w-6 h-6 mr-2" />
+              Success Metrics
+            </h2>
+            <div className="bg-orange-50 p-6 rounded-lg shadow-md">
+              <p className="text-gray-700 mb-4">
                 Key performance indicators for measuring effectiveness:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>Engagement Rates</li>
-                <li>Message Comprehension</li>
-                <li>Feedback Quality</li>
-                <li>Action Completion</li>
-                <li>Stakeholder Satisfaction</li>
-              </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { text: "Engagement Rates", icon: Activity },
+                  { text: "Message Comprehension", icon: CheckCircle2 },
+                  { text: "Feedback Quality", icon: MessageCircle },
+                  { text: "Action Completion", icon: Target },
+                  { text: "Stakeholder Satisfaction", icon: Users }
+                ].map((metric, index) => {
+                  const IconComponent = metric.icon;
+                  return (
+                    <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                      <IconComponent className="w-5 h-5 text-red-800 mr-2" />
+                      <span className="text-gray-700">{metric.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Tools & Resources</h2>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold text-red-800 mb-2">Digital Tools</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Communication Platform</li>
-                    <li>Project Management</li>
-                    <li>Analytics Dashboard</li>
-                    <li>Feedback System</li>
-                  </ul>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold text-red-800 mb-2">Support Resources</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Training Materials</li>
-                    <li>Best Practices Guide</li>
-                    <li>Templates Library</li>
-                    <li>Help Documentation</li>
-                  </ul>
-                </div>
-              </div>
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Settings className="w-6 h-6 mr-2" />
+              Tools & Resources
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {resources.map((resource, index) => {
+                const IconComponent = resource.icon;
+                return (
+                  <div key={index} className={`${resource.color} p-6 rounded-lg shadow-md transform hover:scale-[1.02] transition-all duration-200`}>
+                    <div className="flex items-center mb-4">
+                      <div className="bg-white p-2 rounded-full shadow-md">
+                        <IconComponent className="w-6 h-6 text-red-800" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-red-800 ml-3">{resource.title}</h3>
+                    </div>
+                    <ul className="space-y-2">
+                      {resource.items.map((item, i) => (
+                        <li key={i} className="flex items-start">
+                          <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </section>
         </div>
