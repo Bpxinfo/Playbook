@@ -22,34 +22,34 @@ const InternalPlatforms = () => {
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     <tr>
-                      <td className="px-4 py-2">GRC</td>
-                      <td className="px-4 py-2">Shannon Dervin, Sr Dir GMA, GRC Chair<br />Contact = Emma Lee</td>
-                      <td className="px-4 py-2"></td>
-                      <td className="px-4 py-2">GRC</td>
+                      <td className="px-4 py-2 text-gray-700">GRC</td>
+                      <td className="px-4 py-2 text-gray-700">Shannon Dervin, Sr Dir GMA, GRC Chair<br />Contact = Emma Lee</td>
+                      <td className="px-4 py-2 text-gray-700"></td>
+                      <td className="px-4 py-2 text-gray-700">GRC</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-2">LRC</td>
-                      <td className="px-4 py-2">Emma Lee, ED, PAQ, and co-LRC chair.</td>
-                      <td className="px-4 py-2"></td>
-                      <td className="px-4 py-2">Implement objectives</td>
+                      <td className="px-4 py-2 text-gray-700">LRC</td>
+                      <td className="px-4 py-2 text-gray-700">Emma Lee, ED, PAQ, and co-LRC chair.</td>
+                      <td className="px-4 py-2 text-gray-700"></td>
+                      <td className="px-4 py-2 text-gray-700">Implement objectives</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-2">GVault</td>
-                      <td className="px-4 py-2">Lauren Crane, Deborah Ablordeppey</td>
-                      <td className="px-4 py-2">CCC Processes</td>
-                      <td className="px-4 py-2"></td>
+                      <td className="px-4 py-2 text-gray-700">GVault</td>
+                      <td className="px-4 py-2 text-gray-700">Lauren Crane, Deborah Ablordeppey</td>
+                      <td className="px-4 py-2 text-gray-700">CCC Processes</td>
+                      <td className="px-4 py-2 text-gray-700"></td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-2">G360 (Veeva)</td>
-                      <td className="px-4 py-2">Jen Prokes (Lead)<br />(Gene Felber = Acct planning)</td>
-                      <td className="px-4 py-2">Field Planning</td>
-                      <td className="px-4 py-2">Jen Prokes (Main Point)</td>
+                      <td className="px-4 py-2 text-gray-700">G360 (Veeva)</td>
+                      <td className="px-4 py-2 text-gray-700">Jen Prokes (Lead)<br />(Gene Felber = Acct planning)</td>
+                      <td className="px-4 py-2 text-gray-700">Field Planning</td>
+                      <td className="px-4 py-2 text-gray-700">Jen Prokes (Main Point)</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-2">GOptics (Appian)</td>
-                      <td className="px-4 py-2">Janet Fobes</td>
-                      <td className="px-4 py-2">ISR Collaboration Platform → Study Concepts, Protocols</td>
-                      <td className="px-4 py-2"></td>
+                      <td className="px-4 py-2 text-gray-700">GOptics (Appian)</td>
+                      <td className="px-4 py-2 text-gray-700">Janet Fobes</td>
+                      <td className="px-4 py-2 text-gray-700">ISR Collaboration Platform → Study Concepts, Protocols</td>
+                      <td className="px-4 py-2 text-gray-700"></td>
                     </tr>
                   </tbody>
                 </table>

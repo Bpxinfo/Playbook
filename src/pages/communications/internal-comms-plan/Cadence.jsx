@@ -1,4 +1,5 @@
 import React from 'react';
+import { Calendar, Users, Table2, MessageCircle } from 'lucide-react';
 
 const Cadence = () => {
   return (
@@ -10,6 +11,17 @@ const Cadence = () => {
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">CCC Communication Cadence</h2>
             <div className="space-y-4">
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg mb-4">
+                <div className="flex items-start gap-4">
+                  <Calendar className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Communication Schedule</h3>
+                    <p className="text-gray-700 mb-4">
+                      Structured communication schedule to ensure consistent and effective information flow across all levels:
+                    </p>
+                  </div>
+                </div>
+              </div>
               <div className="overflow-x-auto">
                 <table className="min-w-full bg-white">
                   <thead className="bg-gray-50">
@@ -124,13 +136,55 @@ const Cadence = () => {
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Work Development Communication</h2>
             <div className="space-y-4">
-              <p className="text-gray-700 mb-4">Work Development meetings will have their own communication streams:</p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>To CCC Core Team for input, alignment, output generation</li>
-                <li>To CCC LT for alignment, approval</li>
-                <li>To CCC Extended Team for engagement, awareness</li>
-                <li>To broader Organization for awareness, engagement, expansion (can be done through CCC SP Hub, Newsletter, etc.)</li>
-              </ul>
+              <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-lg">
+                <div className="flex items-start gap-4">
+                  <MessageCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Development Streams</h3>
+                    <p className="text-gray-700 mb-4">Work Development meetings will have their own communication streams:</p>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                      <li>To CCC Core Team for input, alignment, output generation</li>
+                      <li>To CCC LT for alignment, approval</li>
+                      <li>To CCC Extended Team for engagement, awareness</li>
+                      <li>To broader Organization for awareness, engagement, expansion (can be done through CCC SP Hub, Newsletter, etc.)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Communication Frequency</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                <div className="flex items-start gap-4">
+                  <Calendar className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Regular Updates</h3>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                      <li>Biweekly Committee Meetings</li>
+                      <li>Monthly Project Updates</li>
+                      <li>Quarterly Reviews</li>
+                      <li>Annual Leadership Meetings</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-lg">
+                <div className="flex items-start gap-4">
+                  <Users className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Stakeholder Engagement</h3>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                      <li>Core Team Alignment</li>
+                      <li>Leadership Team Updates</li>
+                      <li>Extended Team Communication</li>
+                      <li>Organization-wide Awareness</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>

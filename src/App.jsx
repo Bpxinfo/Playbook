@@ -55,7 +55,8 @@ const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/Welcom
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
 const ProcessesObjectives = lazy(() => import('@/pages/processes/Objectives.jsx'));
-const ProcessesGovernance = lazy(() => import('@/pages/processes/ProcessesGovernance.jsx'));
+const Processes = lazy(() => import('@/pages/processes/Processes.jsx'));
+const ProcessesGovernance = lazy(() => import('@/pages/processes/Governance.jsx'));
 const LinktoSGF = lazy(() => import('@/pages/processes/RandD.jsx'));
 
 // Compliance
@@ -151,7 +152,8 @@ function App() {
           {/* Processes */}
           <Route path="/processes" element={<ProcessesHome />} />
           <Route path="/processes/objectives" element={<ProcessesObjectives />} />
-          <Route path="/processes/processes-&-governance" element={<ProcessesGovernance />} />
+          <Route path="/processes/processes" element={<Processes />} />
+          <Route path="/processes/governance" element={<ProcessesGovernance />} />
           <Route path="/processes/sops-&-resources" element={<LinktoSGF />} />
 
           {/* Compliance */}

@@ -1,13 +1,25 @@
 import React from 'react';
-import CCC_Overview from '../../assets/CCC_Overview.jpg'
+import CCC_Overview from '../../assets/CCC_Overview.jpg';
+import ImageWithZoom from '../../components/ImageWithZoom';
 
-const CCCOverview = () => {
+const Objectives = () => {
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">OBJECTIVES</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Objectives</h1>
         
-        <div className="space-y-8">
+        <div className="space-y-6">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">CCC Overview</h2>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <ImageWithZoom 
+                src={CCC_Overview} 
+                alt="CCC Overview" 
+                className="w-full rounded-lg shadow-lg mb-4"
+              />
+            </div>
+          </section>
+
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center">The Project Summary</h2>
             <div className="bg-white rounded-lg shadow p-6">
@@ -37,11 +49,11 @@ const CCCOverview = () => {
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center">Three Strategic Pillars</h2>
             <div className="bg-white rounded-lg shadow p-6">
-              <ol className="list-decimal pl-6 space-y-2 text-gray-700">
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 <li>Generating Evidence</li>
                 <li>Addressing Disparities, Improving Health Equity</li>
                 <li>Enabling Education for Providers and Patients</li>
-              </ol>
+              </ul>
             </div>
           </section>
 
@@ -71,4 +83,4 @@ const CCCOverview = () => {
   );
 };
 
-export default CCCOverview;
+export default Objectives;

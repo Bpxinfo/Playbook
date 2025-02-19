@@ -122,69 +122,73 @@ export const pageRegistry = {
       title: 'Onboarding Objectives'
     },
     '/internal-onboarding/deepen-engagement': {
-      component: () => import('../pages/internal-onboarding/DeepenEngagement'),
+      component: () => import('@/pages/internal-onboarding/DeepenEngagement'),
       title: 'Deepen Engagement'
     },
     '/internal-onboarding/full-integration': {
-      component: () => import('../pages/internal-onboarding/FullIntegration'),
+      component: () => import('@/pages/internal-onboarding/FullIntegration'),
       title: 'Full Integration'
     },
     '/internal-onboarding/immerse,-contribute': {
-      component: () => import('../pages/internal-onboarding/Immerse'),
+      component: () => import('@/pages/internal-onboarding/Immerse'),
       title: 'Immerse & Contribute'
     },
     '/internal-onboarding/pre-integration-prep': {
-      component: () => import('../pages/internal-onboarding/PrePrep'),
+      component: () => import('@/pages/internal-onboarding/PrePrep'),
       title: 'Pre-Integration Prep'
     },
     '/internal-onboarding/external-links': {
-      component: () => import('../pages/internal-onboarding/ExternalLinks'),
+      component: () => import('@/pages/internal-onboarding/ExternalLinks'),
       title: 'External Links'
     },
     '/internal-onboarding/ongoing-support': {
-      component: () => import('../pages/internal-onboarding/OngoingSupport'),
+      component: () => import('@/pages/internal-onboarding/OngoingSupport'),
       title: 'Ongoing Support'
     },
     '/internal-onboarding/welcome-orientation': {
-      component: () => import('../pages/internal-onboarding/WelcomeOrientation'),
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
       title: 'Welcome Orientation'
     },
   
     // Processes
     '/processes': {
-      component: () => import('../pages/processes/index'),
+      component: () => import('@/pages/processes/index'),
       title: 'Processes Overview'
     },
     '/processes/objectives': {
-      component: () => import('../pages/processes/Objectives'),
+      component: () => import('@/pages/processes/Objectives'),
       title: 'Process Objectives'
     },
-    '/processes/processes-&-governance': {
-      component: () => import('../pages/processes/ProcessesGovernance'),
-      title: 'Processes & Governance'
+    '/processes/processes': {
+      component: () => import('@/pages/processes/Processes'),
+      title: 'Processes'
+    },
+    '/processes/governance': {
+      component: () => import('@/pages/processes/Governance'),
+      title: 'Governance'
     },
     '/processes/resources-&-documentation': {
-      component: () => import('../pages/processes/RandD'),
+      component: () => import('@/pages/processes/RandD'),
       title: 'SOPs & Resources'
     },
   
     // Compliance
     '/compliance': {
-      component: () => import('../pages/compliance/ComplianceGuidance'),
+      component: () => import('@/pages/compliance/ComplianceGuidance'),
       title: 'Compliance Guidance'
     },
   
     // Systems
     '/systems': {
-      component: () => import('../pages/systems/index'),
+      component: () => import('@/pages/systems/index'),
       title: 'Systems Overview'
     },
     '/systems/objectives': {
-      component: () => import('../pages/systems/Objectives'),
+      component: () => import('@/pages/systems/Objectives'),
       title: 'Systems Objectives'
     },
     '/systems/internal-platforms': {
-      component: () => import('../pages/systems/InternalPlatforms'),
+      component: () => import('@/pages/systems/InternalPlatforms'),
       title: 'Internal Platforms'
     }
   };

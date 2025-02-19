@@ -47,19 +47,14 @@ const Stakeholders = () => {
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">CCC Internal Stakeholders</h2>
             <p className="text-gray-700 italic">
-              [Need 1) Group description, 2) what they do in the CCC, 3) what they need in terms of Comms]
-            </p>
-          </section>
-
-          <section className="bg-white rounded-lg shadow-md p-6">
             <div className="bg-gray-50 p-4 rounded-lg">
               <img 
                 src={stakeholder} 
                 alt="CCC Overview" 
                 className="w-full rounded-lg shadow-lg mb-4"
               />
-              <p className="text-sm text-gray-500 text-center">Stakeholder Diagram</p>
             </div>
+            </p>
           </section>
         </div>
       </div>

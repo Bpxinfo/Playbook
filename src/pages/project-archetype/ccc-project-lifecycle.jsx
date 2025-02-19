@@ -31,7 +31,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Strategy Development */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">1. Strategy Development</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Strategy Development</h2>
         <p className="text-gray-700">
           The project's purpose and strategy are defined with input from external experts and internal
           teams. This ensures the project is aligned with broader organizational objectives and has a
@@ -41,7 +41,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Project Development */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">2. Project Development</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Project Development</h2>
         <p className="text-gray-700">
           Detailed planning begins, including internal discussions (e.g., with Medical Affairs and
           Compliance) and collaboration with external stakeholders. A formal proposal is created,
@@ -51,7 +51,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Adjudication */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">3. Adjudication</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Adjudication</h2>
         <p className="text-gray-700">
           Projects are reviewed for compliance with legal, regulatory, and medical standards. Simple
           projects undergo a standard review, while complex projects require deeper scrutiny by
@@ -61,7 +61,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Review & Approval */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">4. Review &amp; Approval</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Review &amp; Approval</h2>
         <p className="text-gray-700">
           Committees, such as the Global or Local Review Committee, formally approve the project.
           These approvals ensure the project is ready to move forward and aligns with organizational
@@ -71,7 +71,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Contracting */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">5. Contracting</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Contracting</h2>
         <p className="text-gray-700">
           Necessary agreements and contracts are finalized to enable project execution. This ensures
           all parties involved are legally bound and aligned on responsibilities.
@@ -80,7 +80,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Oversight */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">6. Oversight</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Oversight</h2>
         <p className="text-gray-700">
           During execution, the project is closely monitored to ensure it stays on track, complies
           with plans, and meets quality standards. Regular updates are provided to stakeholders.
@@ -89,7 +89,7 @@ const CCCProjectLifecycle = () => {
 
       {/* Close-Out */}
       <section className="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 className="text-2xl text-red-800 mb-4">7. Close-Out</h2>
+        <h2 className="text-2xl text-red-800 mb-4">Close-Out</h2>
         <p className="text-gray-700">
           The project is formally concluded, with outcomes documented and any open issues resolved.
           This phase ensures the project is properly closed and all obligations are met.

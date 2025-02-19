@@ -1,6 +1,7 @@
 import React from 'react';
 import s1 from '../../assets/StrategicPillar1.jpg'
 import s2 from '../../assets/StrategicPillar2.jpg'
+import ImageWithZoom from '../../components/ImageWithZoom'
 
 const StrategicPillars = () => {
   return (
@@ -25,17 +26,17 @@ const StrategicPillars = () => {
             <h2 className="text-2xl text-red-800 mb-4">Strategic Framework</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 p-4 rounded-lg">
-                <img 
+                <ImageWithZoom 
                   src={s1} 
-                  alt="Strategic Pillars 1" 
+                  alt="Strategic Pillar 1" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
                 <p className="text-sm text-gray-500 text-center">Strategic Pillars Diagram 1</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <img 
+                <ImageWithZoom 
                   src={s2} 
-                  alt="Strategic Pillars 2" 
+                  alt="Strategic Pillar 2" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
                 <p className="text-sm text-gray-500 text-center">Strategic Pillars Diagram 2</p>

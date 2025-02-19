@@ -102,7 +102,8 @@ const MainLayout = ({ children }) => {
       title: 'Processes & Governance',
       items: [
         'Objectives',
-        'Processes & Governance',
+        'Processes',
+        'Governance',
         'SOPs & Resources'
       ]
     },
@@ -114,9 +115,9 @@ const MainLayout = ({ children }) => {
         'Compliance Requirements',
         'Resources and Support',
         'CCC Independence',
-        'CCC Strategy Development',
-        'Project Proposals & Approvals',
-        'Project Operations'
+        // 'CCC Strategy Development',
+        // 'Project Proposals & Approvals',
+        // 'Project Operations'
       ]
     },
     'projects-archetypes': {
@@ -137,7 +138,7 @@ const MainLayout = ({ children }) => {
         'Objectives',
         'Internal Platforms',
         'Manual Systems',
-        'Links to Process'
+        // 'Links to Process'
       ]
     },
     'glossary': {
@@ -394,15 +395,15 @@ const MainLayout = ({ children }) => {
         if (item === 'Key Communications' && sectionKey === 'communications' && subsection.id === 'internal-comms-plan') {
           return (
             <div key={item} className="mb-1">
-              <div
+              <button
                 onClick={() => window.open('https://www.google.com', '_blank')}
-                className="cursor-pointer block p-2 text-sm rounded-lg transition-colors text-black hover:bg-gray-100"
+                className={`block w-full p-2 text-sm rounded-lg transition-colors text-black bg-white hover:bg-gray-100 text-left`}
               >
                 <span className="flex items-center">
                   {item}
                   <LinkIcon className="w-3 h-3 ml-1" />
                 </span>
-              </div>
+              </button>
             </div>
           );
         }
@@ -477,7 +478,7 @@ const MainLayout = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen overflow-hidden">
       <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
         <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
           <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
@@ -571,6 +572,19 @@ const MainLayout = ({ children }) => {
         <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center">
           {/* Left-aligned group */}
           <div className="flex items-center space-x-6">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC SharePoint
+            </a>
+            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC Roadmap
+            </a>
+            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+              CCC Teams
+            </a>
+          </div>
+
+          {/* Right-aligned group */}
+          <div className="flex items-center space-x-4">
             <div 
               className="relative group"
             >
@@ -598,25 +612,12 @@ const MainLayout = ({ children }) => {
                 </div>
               </div>
             </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC SharePoint
-            </a>
-            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Roadmap
-            </a>
-            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Teams
-            </a>
-          </div>
-
-          {/* Right-aligned group */}
-          <div className="flex items-center space-x-4">
             <Link
               to="/feedback"
               className="flex items-center text-red-800 hover:text-red-700 transition-colors"
             >
               <MessageSquare className="w-4 h-4 mr-2" />
-              Submit Feedback
+              Feedback
             </Link>
             <form 
               onSubmit={(e) => {
@@ -677,6 +678,26 @@ const MainLayout = ({ children }) => {
           </div>
           <TextSelectionComment />
         </main>
+      </div>
+
+      {/* Powered by BPX Logo */}
+      <div 
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: 'white',
+          padding: '8px 12px',
+          borderRadius: '8px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          zIndex: 1000,
+        }}
+      >
+        <span style={{ color: '#4D4D4D', fontSize: '14px' }}>Powered by</span>
+        <img src="/bpxlogo.svg" alt="BPX Logo" style={{ height: '20px' }} />
       </div>
     </div>
   );
