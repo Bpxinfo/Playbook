@@ -3,11 +3,12 @@ import {
   AlertTriangle, Info, Building, Users2, BookOpen, 
   Target, Shield, FileCheck, ChevronRight, Briefcase,
   Settings, UserCheck, Network, LineChart, CheckCircle2,
-  FileText, Flag, Brain
+  FileText, Flag, Brain, Workflow
 } from 'lucide-react';
 import advisory from '../../assets/advisory.jpg'
 import legalcompliance from '../../assets/legalcompliance.jpg'
 import partner from '../../assets/partner-selection.jpg'
+import CCC_Process_Overview from '../../assets/CCC_Process_Overview.png'
 import ImageWithZoom from '../../components/ImageWithZoom';
 
 const Processes = () => {
@@ -63,65 +64,35 @@ const Processes = () => {
         </h1>
 
         <div className="space-y-6">
-          <section id="ccc-strategy-development" className="bg-white rounded-lg shadow-lg p-6">
+          <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Target className="w-6 h-6 mr-2" />
-              CCC Strategy Development
+              <Workflow className="w-6 h-6 mr-2" />
+              Process Map & Governance Model
             </h2>
-            
-            {/* Advisory Council */}
-            <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Users2 className="w-5 h-5 mr-2" />
-                CCC Advisory Council
-              </h3>
-              <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="space-y-4">
+              <div className="bg-blue-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
                 <ImageWithZoom 
-                  src={advisory} 
-                  alt="CCC Overview" 
+                  src={CCC_Process_Overview} 
+                  alt="CCC Process Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
-                <p className="text-sm text-gray-500 text-center">CCC Advisory Council</p>
+                <p className="text-sm text-gray-500 text-center">Process Flow Diagram</p>
               </div>
-            </div>
-            
-            {/* Expert Advisors */}
-            <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Brain className="w-5 h-5 mr-2" />
-                CCC Expert Advisors
-              </h3>
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  "Selection of Expert Advisors must follow objective criteria based on demonstrated expertise and experience in CCC focus areas, explicitly moving beyond titles or commercial relationships and ensuring diversity across both major centers and community oncology institutions, with no more than 50% from initial CCC partner sites",
-                  "All Expert Advisor engagements must align with Gilead's existing U.S. BCM policies for Advisory Boards and require clear business justification through detailed documentation pre-approved by Legal/Compliance teams",
-                  "While Expert Advisors may provide input on operational aspects of complex CCC projects, they should maintain limited influence over broader CCC project design and selection decisions"
-                ].map((text, index) => (
-                  <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Internal Collaboration */}
-            <div className="bg-green-50 rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Network className="w-5 h-5 mr-2" />
-                Internal Collaboration
-              </h3>
-              <div className="space-y-3">
-                {[
-                  "Medical Affairs and Commercial teams, and other cross-functional partners may participate in strategy meetings to discuss learnings from external advisors and share relevant information on patient care challenges and gaps in the community cancer setting and collaborate on priority development for CCC projects",
-                  "Participants may include the leads for U.S. Medical and Commercial functions, leads for the U.S. Medical and Commercial Oncology teams (VP or above), as well as appropriate leads from other functional areas. Teams may interact and collaborate to the extent allowed by existing WoW and other Gilead policies and guidance noted above",
-                  "For clarity, Gilead's Sales organization must not be involved in CCC internal collaboration and strategy development meetings"
-                ].map((text, index) => (
-                  <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
-                  </div>
-                ))}
+                  { text: "GRC - Global Research Committee", icon: Building },
+                  { text: "LRC - Local Research Committee", icon: Users2 }
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={index} className="flex items-center bg-gray-50 p-3 rounded-lg shadow-sm">
+                      <div className="bg-white p-2 rounded-full shadow-md">
+                        <IconComponent className="w-4 h-4 text-red-800" />
+                      </div>
+                      <span className="text-gray-700 ml-3">{item.text}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>

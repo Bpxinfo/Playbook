@@ -82,7 +82,7 @@ const CCCFAQs = () => {
               <div key={index} className={`${faq.color} rounded-lg shadow-md overflow-hidden transition-all duration-200`}>
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full p-6 text-left focus:outline-none"
+                  className="w-full p-6 text-left bg-white focus:outline-none"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
