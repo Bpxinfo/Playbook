@@ -46,7 +46,7 @@ const MainLayout = ({ children }) => {
       items: ['Objectives']
     },
     'ccc-initiative': {
-      title: 'CCC Initiative Overview',
+      title: 'CCC Overview',
       items: [
         'Objectives and CCC Overview',
         'Strategic Pillars',
