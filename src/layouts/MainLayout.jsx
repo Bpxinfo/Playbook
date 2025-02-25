@@ -484,7 +484,7 @@ const MainLayout = ({ children }) => {
           <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
             <Home className="w-5 h-5 text-red-800" />
             {!isSidebarCollapsed && (
-              <span className="ml-2 text-red-800 font-medium">Playbook Home</span>
+              <span className="ml-2 text-red-800 font-medium">CCC Playbook</span>
             )}
           </Link>
           <button 

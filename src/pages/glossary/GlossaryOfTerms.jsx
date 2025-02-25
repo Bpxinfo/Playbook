@@ -12,7 +12,7 @@ const GlossaryOfTerms = () => {
     },
     {
       term: "CCC Core",
-      definition: "CCC Corea Team",
+      definition: "CCC Core Team",
     },
     {
       term: "CCC Extended",
