@@ -111,16 +111,16 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
 
           {/* Playbook App Overview */}
-          <Route path="/playbook-app-overview" element={<PlaybookOverview />} />
-          <Route path="/playbook-app-overview/objectives" element={<PlaybookObjectives />} />
+          <Route path="/playbook-overview" element={<PlaybookOverview />} />
+          <Route path="/playbook-overview/objectives" element={<PlaybookObjectives />} />
 
           {/* CCC Initiative */}
-          <Route path="/ccc-initiative" element={<CCCInitiativeHome />} />
-          <Route path="/ccc-initiative/objectives-and-ccc-overview" element={<CCCOverview />} />
-          <Route path="/ccc-initiative/strategic-pillars" element={<StrategicPillars />} />
-          <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
-          <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
-          <Route path="/ccc-initiative/patient-impact" element={<PatientImpact />} />
+          <Route path="/ccc-overview" element={<CCCInitiativeHome />} />
+          <Route path="/ccc-overview/objectives" element={<CCCOverview />} />
+          <Route path="/ccc-overview/strategic-pillars" element={<StrategicPillars />} />
+          <Route path="/ccc-overview/key-messaging" element={<KeyMessages />} />
+          <Route path="/ccc-overview/stakeholders" element={<Stakeholders />} />
+          <Route path="/ccc-overview/patient-impact" element={<PatientImpact />} />
 
 
           {/* Communication Plan - Internal */}

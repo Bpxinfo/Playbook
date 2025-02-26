@@ -49,7 +49,7 @@ const MainLayout = ({ children }) => {
     'ccc-overview': {
       title: 'CCC Overview',
       items: [
-        'Objectives and CCC Overview',
+        'Objectives',
         'Strategic Pillars',
         'Key Messaging',
         'Stakeholders',

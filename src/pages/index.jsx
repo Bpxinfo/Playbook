@@ -14,10 +14,10 @@ const HomePage = () => {
       color: "bg-blue-50"
     },
     {
-      title: "CCC Initiative Overview",
+      title: "CCC Overview",
       description: "Understand our mission, vision, and strategic pillars",
       icon: Building,
-      path: "/ccc-initiative",
+      path: "/ccc-overview",
       color: "bg-green-50"
     },
     {

@@ -7,9 +7,9 @@ const CCCInitiativeHome = () => {
 
   const sections = [
     {
-      title: "Objectives and CCC Overview",
+      title: "Objectives",
       description: "Learn about our mission to address gaps in care for patients in non-academic settings through community collaboration.",
-      path: "/ccc-overview/objectives-and-ccc-overview",
+      path: "/ccc-overview/objectives",
       icon: Building,
       color: "bg-blue-50"
     },
