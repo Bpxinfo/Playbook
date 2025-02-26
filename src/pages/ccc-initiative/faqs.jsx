@@ -54,6 +54,10 @@ const CCCFAQs = () => {
       answer: "CCC maintains compliance through:\n- Clear separation from commercial influence\n- Objective selection criteria for partners and projects\n- Structured review processes via the Adjudication Committee\n- Alignment with Gilead's existing policies and procedures\n- Regular oversight and monitoring\n- Documentation of business justification and approvals",
       icon: Lock,
       color: "bg-red-50"
+    },
+    {
+      question: 'How can sites participate in CCC projects?',
+      answer: 'CCC projects are open to qualified sites through our RFP program via GOptics, posted on AskGilead.com'
     }
   ];
 
