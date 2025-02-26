@@ -1,0 +1,70 @@
+* [33m3df4944[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m changes
+[31m|[m * [33m375bda0[m[33m ([m[1;31morigin/main[m[33m)[m Playbook Overview
+[31m|[m * [33m884e235[m CCC overview
+[31m|[m * [33m923a9f2[m FAQ
+[31m|[m * [33m503ae7f[m Change CCC initiative
+[31m|[m[31m/[m  
+* [33m4881746[m changes
+* [33m5bb0923[m changes
+* [33mcba27ef[m Zoom Icon Fixed
+* [33m47be99c[m changes
+* [33m0164a39[m stakeholders
+* [33mef2f71f[m 'changes'
+* [33mc730ef4[m inline comments
+* [33mcefad93[m changes
+* [33mab9a134[m supbase
+* [33m065ef2a[m changes
+* [33m578069f[m web updates
+* [33mc5cc6b4[m static config
+* [33mf0d1f86[m changes
+* [33mc805eb8[m build
+* [33mcb733e9[m changes
+* [33m2e3cd97[m changes
+* [33m4b9db73[m changes
+* [33m398b145[m Fix case issue for EngIndex.jsx in engagement folder
+* [33m29edb93[m Fix case issue for EngIndex.jsx in engagement folder
+* [33m80dc560[m Fix case issue for InternalIndex.jsx
+* [33mabf3e00[m 'changes'
+* [33m32495b4[m changes
+* [33m6f98499[m change
+* [33mc058ad7[m changes
+* [33mb40104e[m 'changes'
+* [33m296fbae[m 'changes'
+* [33m6cdd307[m changes
+* [33m5ea5d4b[m changes
+* [33m8bd1500[m changes
+* [33m1256fa8[m changes
+* [33mde3ec02[m changes
+* [33ma91fe1f[m change
+* [33mcab5fbc[m changed structure
+* [33ma15636b[m changes made
+* [33m59c29fc[m slightly twek to glossary search
+* [33m3fa15cd[m changes
+* [33mf1aab59[m changes
+* [33m3ac4fac[m manual systems update
+* [33m33b7574[m changes
+* [33m173734f[m changes & archetypes update
+* [33mb534d06[m changes
+* [33m0c0122d[m changes to playboook
+* [33m651254f[m swapped systems w projects archetypes
+* [33meb8a7e1[m changed cccteams link
+* [33m2f96114[m changes according to word doc
+* [33mbce7bdf[m top nav bar
+* [33md3326dc[m updates
+* [33mde1fcf8[m ccc-initiative & internal started
+* [33m2527f23[m updates
+* [33m86f182b[m pages, search
+* [33mf986343[m pages, search function
+* [33m45ea980[m search bar
+* [33mfa1991b[m index pages
+* [33m55d55de[m feedback form
+* [33m2b088b9[m azure
+*   [33ma98c9b8[m Merge branch 'main' of github-company:Bpxinfo/Playbook
+[33m|[m[34m\[m  
+[33m|[m * [33m3d96a45[m ci: add Azure Static Web Apps workflow file on-behalf-of: @Azure opensource@microsoft.com
+[33m|[m * [33m77c93e2[m Add or update the Azure App Service build and deployment workflow config
+* [34m|[m [33m7d5c83d[m azure
+[34m|[m[34m/[m  
+* [33mc65cc5b[m updated nav bar, populated pages
+* [33md17bbf0[m commiting
+* [33m032a992[m first commit

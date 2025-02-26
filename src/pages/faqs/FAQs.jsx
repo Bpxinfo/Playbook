@@ -72,11 +72,11 @@ const CCCFAQs = () => {
         </h1>
         
         {/* <button
-          onClick={() => navigate('/ccc-initiative')}
+          onClick={() => navigate('/ccc-overview')}
           className="mb-8 inline-flex items-center text-red-800 hover:text-red-700"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to CCC Initiative Overview
+          Back to CCC Overview
         </button> */}
 
         <div className="space-y-4">
