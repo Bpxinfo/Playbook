@@ -46,11 +46,7 @@ const MainLayout = ({ children }) => {
       title: 'Playbook Overview',
       items: ['Objectives']
     },
-<<<<<<< HEAD
-    'ccc-initiative': {
-=======
     'ccc-overview': {
->>>>>>> origin/main
       title: 'CCC Overview',
       items: [
         'Objectives and CCC Overview',
@@ -607,11 +603,7 @@ const MainLayout = ({ children }) => {
               <div className="absolute w-full h-2 bg-transparent" />
               <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
                 <div className="py-2">
-<<<<<<< HEAD
                   <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-=======
-                  <Link to="/ccc-overview/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
->>>>>>> origin/main
                     <BookOpen className="w-4 h-4 mr-2" />
                     FAQs
                   </Link>
