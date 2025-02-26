@@ -9,42 +9,42 @@ const CCCInitiativeHome = () => {
     {
       title: "Objectives and CCC Overview",
       description: "Learn about our mission to address gaps in care for patients in non-academic settings through community collaboration.",
-      path: "/ccc-initiative/objectives-and-ccc-overview",
+      path: "/ccc-overview/objectives-and-ccc-overview",
       icon: Building,
       color: "bg-blue-50"
     },
     {
       title: "Strategic Pillars",
       description: "Explore our three key focus areas: Generating Evidence, Addressing Disparities, and Enabling Education.",
-      path: "/ccc-initiative/strategic-pillars",
+      path: "/ccc-overview/strategic-pillars",
       icon: Target,
       color: "bg-green-50"
     },
     {
       title: "Key Messaging",
       description: "Access our core messaging framework, including our North Star, Mission, and Vision statements.",
-      path: "/ccc-initiative/key-messaging",
+      path: "/ccc-overview/key-messaging",
       icon: MessageSquare,
       color: "bg-purple-50"
     },
     {
       title: "Stakeholders",
       description: "Understand the roles and responsibilities of key stakeholders in the CCC initiative.",
-      path: "/ccc-initiative/stakeholders",
+      path: "/ccc-overview/stakeholders",
       icon: Users,
       color: "bg-yellow-50"
     },
     {
       title: "Patient Impact",
       description: "Learn about how CCC initiatives are making a difference in patient outcomes and care quality.",
-      path: "/ccc-initiative/patient-impact",
+      path: "/ccc-overview/patient-impact",
       icon: Heart,
       color: "bg-pink-50"
     },
     {
       title: "FAQs",
       description: "Find answers to commonly asked questions about the CCC Initiative.",
-      path: "/ccc-initiative/faqs",
+      path: "/ccc-overview/faqs",
       icon: HelpCircle,
       color: "bg-orange-50"
     }
