@@ -41,8 +41,8 @@ const MainLayout = ({ children }) => {
   const isScrollingRef = useRef(false);
 
   const navigationItems = {
-    'playbook-app-overview': {
-      title: 'Playbook App Overview',
+    'playbook-overview': {
+      title: 'Playbook Overview',
       items: ['Objectives']
     },
     'ccc-overview': {
@@ -149,9 +149,9 @@ const MainLayout = ({ children }) => {
 
    // Map section keys to icons and their default routes
    const sectionConfig = {
-    'playbook-app-overview': {
+    'playbook-overview': {
       icon: Book,
-      defaultRoute: '/playbook-app-overview'
+      defaultRoute: '/playbook-overview'
     },
     'ccc-overview': {
       icon: Building,
