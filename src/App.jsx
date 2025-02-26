@@ -22,7 +22,7 @@ const Stakeholders = lazy(() => import('@/pages/ccc-initiative/Stakeholders.jsx'
 const StrategicPillars = lazy(() => import('@/pages/ccc-initiative/StrategicPillars.jsx'));
 const CCCInitiativeHome = lazy(() => import('@/pages/ccc-initiative/index.jsx'));
 const PatientImpact = lazy(() => import('@/pages/ccc-initiative/PatientImpact.jsx'));
-const CCCFAQs = lazy(() => import('@/pages/ccc-initiative/faqs.jsx'));
+
 
 // Communication Plan
 const CommunicationsHome = lazy(() => import('@/pages/communications/index.jsx'));
@@ -79,6 +79,9 @@ const CCCProjectTypes = lazy(() => import('@/pages/project-archetype/ProjectType
 // Glossary
 const GlossaryOfTerms = lazy(() => import('@/pages/glossary/GlossaryOfTerms.jsx'));
 
+// FAQs
+const CCCFAQs = lazy(() => import('@/pages/faqs/FAQs.jsx'));
+
 function App() {
   useEffect(() => {
     const initSearch = async () => {
@@ -118,7 +121,7 @@ function App() {
           <Route path="/ccc-initiative/key-messaging" element={<KeyMessages />} />
           <Route path="/ccc-initiative/stakeholders" element={<Stakeholders />} />
           <Route path="/ccc-initiative/patient-impact" element={<PatientImpact />} />
-          <Route path="/ccc-initiative/faqs" element={<CCCFAQs />} />
+
 
           {/* Communication Plan - Internal */}
           <Route path="/communications" element={<CommunicationsHome />} />
@@ -174,6 +177,9 @@ function App() {
           <Route path="/projects-archetypes/ccc-project-types" element={<CCCProjectTypes />} />
           {/* Glossary of Terms */}
           <Route path="/glossary" element={<GlossaryOfTerms />} />
+
+          {/* FAQs */}
+          <Route path="/faqs" element={<CCCFAQs />} />
 
           {/* Default route */}
           <Route path="/" element={<HomePage />} />

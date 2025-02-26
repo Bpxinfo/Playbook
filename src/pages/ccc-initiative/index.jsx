@@ -53,15 +53,15 @@ const CCCInitiativeHome = () => {
   return (
     <div className="p-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">CCC Initiative Overview</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">CCC Overview</h1>
         
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <p className="text-gray-700 mb-4">
-              The Community Cancer Collective (CCC) is a transformative initiative focused on improving cancer care in community settings. By fostering collaborations with treatment sites nationwide, we work to bridge care gaps and enhance patient outcomes through evidence-based approaches.
+              The Community Cancer Collective (CCC) is a transformative initiative focused on improving cancer care in the community setting. By fostering collaborations with treatment sites nationwide, we work to bridge care gaps and enhance patient outcomes through evidence-based approaches.
             </p>
             <p className="text-gray-700">
-              This section provides a comprehensive overview of the initiative, including our strategic framework, key messages, and the diverse stakeholders who contribute to our mission of elevating community cancer care.
+              This section provides a comprehensive overview of the CCC initiative, including our strategic framework, key messages, and the diverse stakeholders who contribute to our mission of elevating community cancer care.
             </p>
           </section>
 

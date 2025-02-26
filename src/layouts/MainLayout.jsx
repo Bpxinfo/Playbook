@@ -17,7 +17,8 @@ import {
   ArrowDown,
   BookOpen,
   Shield,
-  Link as LinkIcon
+  Link as LinkIcon,
+  HelpCircle
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -46,14 +47,13 @@ const MainLayout = ({ children }) => {
       items: ['Objectives']
     },
     'ccc-initiative': {
-      title: 'CCC Initiative Overview',
+      title: 'CCC Overview',
       items: [
         'Objectives and CCC Overview',
         'Strategic Pillars',
         'Key Messaging',
         'Stakeholders',
-        'Patient Impact',
-        'FAQs'
+        'Patient Impact'
       ]
     },
     'communications': {
@@ -143,7 +143,9 @@ const MainLayout = ({ children }) => {
     },
     'glossary': {
       title: 'Glossary of Terms',
-
+    },
+    'faqs': {
+      title: 'FAQs',
     }
   };
 
@@ -184,6 +186,10 @@ const MainLayout = ({ children }) => {
     'glossary': {
       icon: BookOpen,
       defaultRoute: '/glossary'
+    },
+    'faqs': {
+      icon: HelpCircle,
+      defaultRoute: '/faqs'
     }
   };
 
@@ -597,7 +603,7 @@ const MainLayout = ({ children }) => {
               <div className="absolute w-full h-2 bg-transparent" />
               <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
                 <div className="py-2">
-                  <Link to="/ccc-initiative/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
                     <BookOpen className="w-4 h-4 mr-2" />
                     FAQs
                   </Link>

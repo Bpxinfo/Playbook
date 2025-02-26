@@ -9,13 +9,13 @@ const CCCFAQs = () => {
   const faqs = [
     {
       question: "What is the Community Cancer Collective (CCC)?",
-      answer: "The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in community settings. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions. Gilead contributes to this mission by engaging in collaborative initiatives and facilitating communication among stakeholders to support and improve patient outcomes in community oncology care.",
+      answer: "The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in the community setting. By bringing together key partners and treating patients in the community oncology setting, we identify impactful opportunities and implement innovative solutions. Gilead contributes to this mission by engaging in collaborative initiatives and facilitating communication among stakeholders to support and improve patient outcomes in community oncology care.",
       icon: Building,
       color: "bg-blue-50"
     },
     {
       question: "What are the three strategic pillars of CCC?",
-      answer: "The CCC is built on three strategic pillars:\n1. Generating Evidence: Close the gap between clinical trial evidence and real-world implementation in community settings\n2. Addressing Disparities & Improving Health Equity: Focus on health equity by addressing specific care gaps in underserved regions\n3. Enabling Education: Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey",
+      answer: "The CCC is built on three strategic pillars:\n1. Generating Evidence: Close the gap between clinical trial evidence and real-world implementation in the community setting\n2. Addressing Disparities & Improving Health Equity: Focus on health equity by addressing specific care gaps in underserved regions\n3. Enabling Education for providers and patients: Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey",
       icon: Target,
       color: "bg-green-50"
     },
@@ -27,7 +27,7 @@ const CCCFAQs = () => {
     },
     {
       question: "How can I get involved with CCC projects?",
-      answer: "CCC projects are open to qualified sites through our RFP program via GOptics, posted on AskGilead.com. Projects are selected based on alignment with CCC objectives, strategic pillars, and scientific merit. Interested sites should ensure they meet the partner selection criteria and can demonstrate commitment to improving community cancer care.",
+      answer: "Projects are selected based on alignment with CCC objectives, strategic pillars, and scientific merit. Interested sites should ensure they meet the partner selection criteria and can demonstrate commitment to improving community cancer care.",
       icon: Briefcase,
       color: "bg-yellow-50"
     },
@@ -45,7 +45,7 @@ const CCCFAQs = () => {
     },
     {
       question: "What are CCC's key objectives?",
-      answer: "Key objectives include:\n- Advancing Evidence-Based Solutions in community settings\n- Reducing Disparities in Cancer Care\n- Enhancing Provider and Patient Education\n- Improving Cancer Care Delivery through collaboration\n- Supporting positive change for partners, communities, and patients\n- Developing capabilities that optimize quality of care for diverse oncology populations",
+      answer: "Key objectives include:\n- Advancing Evidence-Based Solutions in the community oncology setting\n- Reducing Disparities in Cancer Care\n- Enhancing Provider and Patient Education\n- Improving Cancer Care Delivery through collaboration\n- Supporting positive change for partners, communities, and patients\n- Developing capabilities that optimize quality of care for diverse oncology populations",
       icon: Goal,
       color: "bg-indigo-50"
     },
@@ -54,6 +54,12 @@ const CCCFAQs = () => {
       answer: "CCC maintains compliance through:\n- Clear separation from commercial influence\n- Objective selection criteria for partners and projects\n- Structured review processes via the Adjudication Committee\n- Alignment with Gilead's existing policies and procedures\n- Regular oversight and monitoring\n- Documentation of business justification and approvals",
       icon: Lock,
       color: "bg-red-50"
+    },
+    {
+      question: "How to submit a proposal?",
+      answer: "Email the CCC Lead (sabrina.meyers@gilead.com) with your proposal",
+      icon: Briefcase,
+      color: "bg-yellow-50"
     }
   ];
 
