@@ -8,7 +8,7 @@ const StrategicPillars = () => {
   const pillars = [
     {
       title: "Generating Evidence",
-      description: "Close the gap between clinical trial evidence and real-world implementation in community settings",
+      description: "Close the gap between clinical trial evidence and real-world implementation in the community setting",
       icon: LineChart,
       color: "bg-blue-50"
     },

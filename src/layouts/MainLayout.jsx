@@ -89,7 +89,7 @@ const MainLayout = ({ children }) => {
       title: 'Internal Onboarding',
       items: [
         'Objectives',
-        'Pre-Integration Prep',
+        'Onboarding Checklist',
         'Welcome Orientation',
         'Immerse, Contribute',
         'Deepen Engagement',

@@ -47,7 +47,7 @@ const OnboardingObjectives = lazy(() => import('@/pages/internal-onboarding/Obje
 const DeepenEngagement = lazy(() => import('@/pages/internal-onboarding/DeepenEngagement.jsx'));
 const FullIntegration = lazy(() => import('@/pages/internal-onboarding/FullIntegration.jsx'));
 const ImmerseContribute = lazy(() => import('@/pages/internal-onboarding/Immerse.jsx'));
-const PreIntegrationPrep = lazy(() => import('@/pages/internal-onboarding/PrePrep.jsx'));
+const OnboardingChecklist = lazy(() => import('@/pages/internal-onboarding/OnboardingChecklist.jsx'));
 const ExternalLinks = lazy(() => import('@/pages/internal-onboarding/ExternalLinks.jsx'));
 const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSupport.jsx'));
 const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation.jsx'));
@@ -147,7 +147,7 @@ function App() {
           <Route path="/internal-onboarding/deepen-engagement" element={<DeepenEngagement />} />
           <Route path="/internal-onboarding/full-integration" element={<FullIntegration />} />
           <Route path="/internal-onboarding/immerse,-contribute" element={<ImmerseContribute />} />
-          <Route path="/internal-onboarding/pre-integration-prep" element={<PreIntegrationPrep />} />
+          <Route path="/internal-onboarding/onboarding-checklist" element={<OnboardingChecklist />} />
           <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
           <Route path="/internal-onboarding/ongoing-support" element={<OngoingSupport />} />
           <Route path="/internal-onboarding/welcome-orientation" element={<WelcomeOrientation />} />

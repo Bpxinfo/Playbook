@@ -71,7 +71,7 @@ const CommunicationPlanHome = () => {
     },
     engagement: {
       title: "Internal Engagement",
-      description: "Framework for stakeholder engagement and feedback",
+      description: "Framework for internal stakeholder engagement and feedback",
       color: "bg-green-100",
       icon: Layout,
       subsections: [

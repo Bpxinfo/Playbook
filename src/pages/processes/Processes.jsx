@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   AlertTriangle, Info, Building, Users2, BookOpen, 
   Target, Shield, FileCheck, ChevronRight, Briefcase,
@@ -9,9 +9,37 @@ import advisory from '../../assets/advisory.jpg'
 import legalcompliance from '../../assets/legalcompliance.jpg'
 import partner from '../../assets/partner-selection.jpg'
 import CCC_Process_Overview from '../../assets/CCC_Process_Overview.png'
-import ImageWithZoom from '../../components/ImageWithZoom';
+import ImageZoomModal from '../../components/ImageZoomModal';
+import { FiZoomIn } from 'react-icons/fi';
 
 const Processes = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openZoomModal = (imageUrl) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const closeZoomModal = () => {
+    setSelectedImage(null);
+  };
+
+  const ImageWithZoom = ({ src, alt, className }) => (
+    <div className="relative group">
+      <img 
+        src={src} 
+        alt={alt} 
+        className={`${className} cursor-pointer`}
+        onClick={() => openZoomModal(src)}
+      />
+      <button
+        onClick={() => openZoomModal(src)}
+        className="absolute top-2 right-2 bg-white text-black rounded-full p-2 shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        <FiZoomIn size={20} />
+      </button>
+    </div>
+  );
+
   const selectionCriteria = [
     { text: "Subject matter expertise", icon: Brain },
     { text: "Data and IT infrastructure", icon: Settings },
@@ -347,6 +375,13 @@ const Processes = () => {
           </section>
         </div>
       </div>
+
+      <ImageZoomModal
+        isOpen={!!selectedImage}
+        onClose={closeZoomModal}
+        imageUrl={selectedImage}
+        altText="Zoomed image"
+      />
     </div>
   );
 };

@@ -21,7 +21,7 @@ export default function ProjectArchetypeHome() {
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <p className="text-gray-700 mb-4">
-            The Project Archetype Overview section provides a comprehensive introduction to the CCC Playbook application. Here you'll find information about why this playbook exists, what it aims to achieve, and how it serves as a crucial resource for the Community Cancer Collective initiative.
+            The Project Archetype Overview section provides a comprehensive introduction to the CCC Playbook application. Here you'll find information about why this playbook exists, what it aims to achieve, and how it serves as a crucial resource for the Community Cancer Collective (CCC) initiative.
           </p>
           <p className="text-gray-700">
             This digital platform has been designed to centralize all CCC-related information, ensuring consistent access to important documentation, processes, and guidelines. Through this systematic organization, we aim to enhance collaboration and drive better outcomes for community cancer care.

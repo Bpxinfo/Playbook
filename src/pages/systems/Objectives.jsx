@@ -32,7 +32,7 @@ const Objectives = () => {
             <h2 className="text-2xl text-red-800 mb-4">Scalability & Adaptation</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <p className="text-gray-700">
-                Most importantly, this systems framework transforms complex operational requirements into manageable, repeatable processes that support CCC's growth and adaptation. It creates a foundation that allows CCC to scale its operations efficiently, respond to emerging needs in the cancer care landscape, and maintain the highest standards of quality and compliance while supporting the initiative's goal of advancing cancer care in community settings.
+                Most importantly, this systems framework transforms complex operational requirements into manageable, repeatable processes that support CCC's growth and adaptation. It creates a foundation that allows CCC to scale its operations efficiently, respond to emerging needs in the cancer care landscape, and maintain the highest standards of quality and compliance while supporting the initiative's goal of advancing cancer care in the community setting.
               </p>
             </div>
           </section>

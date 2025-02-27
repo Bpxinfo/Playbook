@@ -22,7 +22,7 @@ const Stakeholders = () => {
     },
     {
       title: "Cross Functional Field Team",
-      description: "The Gilead field team includes, MVELs, MSLs, and KADs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.",
+      description: "The Gilead field team supporting the CCC includes the MVELs, MSLs, and KADs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.",
       icon: UserCheck,
       color: "bg-purple-50"
     },

@@ -91,7 +91,7 @@ const stakeholderData = {
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance (May 29, 2024)',
     priority: 'Review of CCC partnering plans and visit with external professionals',
     method: 'Review/discuss published data and approved plans with external professionals',
-    channels: 'Team meetings\nEmail\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)\nP alert'
+    channels: 'Team meetings\nEmail\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)'
   },
   'RWE': {
     description: 'RWE in Medical Development',

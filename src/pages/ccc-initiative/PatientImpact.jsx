@@ -101,7 +101,7 @@ const PatientImpact = () => {
             </h2>
             <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
               <p className="text-gray-700">
-                The Community Cancer Collective (CCC) is dedicated to making a meaningful difference in patients' lives through our community-focused initiatives. Our impact is measured not just in numbers, but in the improved quality of care and better outcomes for cancer patients in community settings.
+                The Community Cancer Collective (CCC) is dedicated to making a meaningful difference in patients' lives through our community-focused initiatives. Our impact is measured not just in numbers, but in the improved quality of care and better outcomes for cancer patients in the community setting.
               </p>
             </div>
           </section>

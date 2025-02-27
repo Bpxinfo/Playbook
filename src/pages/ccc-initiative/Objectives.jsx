@@ -8,7 +8,7 @@ const Objectives = () => {
   const unmetNeeds = [
     {
       title: "Advance Evidence-Based Solutions",
-      description: "Close the gap between clinical trial evidence and real-world implementation in community settings",
+      description: "Close the gap between clinical trial evidence and real-world implementation in the community setting",
       icon: LineChart,
       color: "bg-blue-50"
     },
@@ -60,7 +60,7 @@ const Objectives = () => {
             <div className="bg-white rounded-lg shadow p-6">
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg mb-4">
                 <p className="text-gray-700">
-                  The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in community settings. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions.
+                  The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in the community setting. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions.
                 </p>
               </div>
               <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">

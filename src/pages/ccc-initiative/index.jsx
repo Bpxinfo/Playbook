@@ -92,7 +92,7 @@ const CCCInitiativeHome = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">What is the Community Cancer Collective (CCC)?</h3>
-                <p className="text-gray-700">The CCC is a patient-focused initiative addressing care gaps for cancer patients in community settings. We work with key partners and oncology treatment sites nationwide to identify opportunities and implement innovative solutions.</p>
+                <p className="text-gray-700">The CCC is a patient-focused initiative addressing care gaps for cancer patients in the community setting. We work with key partners and oncology treatment sites nationwide to identify opportunities and implement innovative solutions.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">What are the three strategic pillars of CCC?</h3>

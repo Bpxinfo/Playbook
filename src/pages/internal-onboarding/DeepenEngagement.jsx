@@ -1,4 +1,5 @@
 import React from 'react';
+import { Target, BookOpen, ClipboardCheck, HeartPulse } from 'lucide-react';
 
 const DeepenEngagement = () => {
   return (
@@ -6,8 +7,11 @@ const DeepenEngagement = () => {
       <div className="max-w-4xl w-full">
         <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Deepen Engagement (2-4 months)</h1>
         <div className="space-y-8">
-          <section className="bg-white shadow-md rounded-lg p-6 text-left">
-            <h2 className="text-2xl text-red-800 mb-4">Increasing Responsibility</h2>
+          <section className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <Target className="w-8 h-8 text-red-800 mr-3" />
+              <h2 className="text-2xl text-red-800">Increasing Responsibility</h2>
+            </div>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>Lead and oversee more substantial milestone tasks or entire projects</li>
               <li>Leverage CCC resources and learnings to independently problem-solve</li>
@@ -15,8 +19,11 @@ const DeepenEngagement = () => {
             </ul>
           </section>
 
-          <section className="bg-white shadow-md rounded-lg p-6 text-left">
-            <h2 className="text-2xl text-red-800 mb-4">Knowledge Acquisition</h2>
+          <section className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <BookOpen className="w-8 h-8 text-red-800 mr-3" />
+              <h2 className="text-2xl text-red-800">Knowledge Acquisition</h2>
+            </div>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>Digest current roadmap, historical project data, and decisions</li>
               <li>Request targeted training on initiative-specific skills or knowledge</li>
@@ -25,8 +32,11 @@ const DeepenEngagement = () => {
             </ul>
           </section>
 
-          <section className="bg-white shadow-md rounded-lg p-6 text-left">
-            <h2 className="text-2xl text-red-800 mb-4">Progress Review</h2>
+          <section className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <ClipboardCheck className="w-8 h-8 text-red-800 mr-3" />
+              <h2 className="text-2xl text-red-800">Progress Review</h2>
+            </div>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>Weekly check-ins with supervisor</li>
               <li>Mid-point (2-week) review of integration progress</li>
@@ -34,8 +44,11 @@ const DeepenEngagement = () => {
             </ul>
           </section>
 
-          <section className="bg-white shadow-md rounded-lg p-6 text-left">
-            <h2 className="text-2xl text-red-800 mb-4">Capture Patient Impact</h2>
+          <section className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+            <div className="flex items-center mb-4">
+              <HeartPulse className="w-8 h-8 text-red-800 mr-3" />
+              <h2 className="text-2xl text-red-800">Capture Patient Impact</h2>
+            </div>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>Understand Value Creation through the Patient Impact Model</li>
               <li>Map activities and impacts across relevant projects</li>
