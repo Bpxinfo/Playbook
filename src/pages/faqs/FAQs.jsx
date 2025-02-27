@@ -15,13 +15,13 @@ const CCCFAQs = () => {
     },
     {
       question: "What are the three strategic pillars of CCC?",
-      answer: "The CCC is built on three strategic pillars:\n1. Generating Evidence: Close the gap between clinical trial evidence and real-world implementation in the community setting\n2. Addressing Disparities & Improving Health Equity: Focus on health equity by addressing specific care gaps in underserved regions\n3. Enabling Education for providers and patients: Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey",
+      answer: "The CCC is built on three strategic pillars:\n\n• Generating Evidence: Close the gap between clinical trial evidence and real-world implementation in the community setting\n\n• Addressing Disparities & Improving Health Equity: Focus on health equity by addressing specific care gaps in underserved regions\n\n• Enabling Education for providers and patients: Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey",
       icon: Target,
       color: "bg-green-50"
     },
     {
       question: "How does CCC select its partners?",
-      answer: "Partner selection follows objective criteria including:\n- Demonstrated expertise and experience in CCC focus areas\n- Commitment to community oncology care\n- Diversity across both major centers and community oncology institutions\n- Sufficient data and clinical infrastructure to support studies\n- Alignment with CCC objectives and strategic pillars\n\nImportantly, selection is not based on sales/revenue considerations and must be free from commercial influence.",
+      answer: "Partner selection follows objective criteria including:\n\n• Subject matter expertise\n\n• Has community presence\n\n• IT infrastructure\n\n• Clinical data infrastructure and research capabilities\n\n• Minimal scope of services offered\n\n• Practice type\n\n• Geographic reach / location\n\n• Willingness to partner with Gilead\n\n• Reputation\n\nImportantly, selection is not based on sales/revenue considerations and must be free from commercial influence.",
       icon: Users,
       color: "bg-purple-50"
     },
@@ -33,25 +33,25 @@ const CCCFAQs = () => {
     },
     {
       question: "What types of projects does CCC support?",
-      answer: "CCC supports various project types including:\n- Collaborative Studies (GRC/LRC): Research partnerships with external investigators or institutions\n- Investigator Sponsored Research (ISR): Studies initiated by external investigators\n- Evidence Generation Projects: Focusing on real-world implementation\n- Health Equity Initiatives: Addressing care gaps in underserved communities\n- Educational Programs: Supporting provider and patient education",
+      answer: "CCC supports various project types including:\n\n• Collaborative Studies (GRC/LRC): Research partnerships with external investigators or institutions\n\n• Investigator Sponsored Research (ISR): Studies initiated by external investigators\n\n• Evidence Generation Projects: Focusing on real-world implementation\n\n• Health Equity Initiatives: Addressing care gaps in underserved communities\n\n• Educational Programs: Supporting provider and patient education",
       icon: LineChart,
       color: "bg-pink-50"
     },
     {
       question: "How does CCC governance work?",
-      answer: "CCC governance includes:\n- CCC Leadership SteerCo: Provides strategic direction and oversight\n- Adjudication Committee: Reviews complex projects with representatives from Medical Affairs, Medical Governance, Legal, and Compliance\n- Advisory Council: Provides expert input while maintaining appropriate boundaries\n- Project Review Process: Includes both standard and complex project review pathways",
+      answer: "CCC governance includes:\n\n• CCC Leadership SteerCo: Provides strategic direction and oversight\n\n• Adjudication Committee: Reviews complex projects with representatives from Medical Affairs, Medical Governance, Legal, and Compliance\n\n• Project Review Process: Includes both standard and complex project review pathways",
       icon: Shield,
       color: "bg-orange-50"
     },
     {
       question: "What are CCC's key objectives?",
-      answer: "Key objectives include:\n- Advancing Evidence-Based Solutions in the community oncology setting\n- Reducing Disparities in Cancer Care\n- Enhancing Provider and Patient Education\n- Improving Cancer Care Delivery through collaboration\n- Supporting positive change for partners, communities, and patients\n- Developing capabilities that optimize quality of care for diverse oncology populations",
+      answer: "Key objectives include:\n\n• Advancing Evidence-Based Solutions in the community oncology setting\n\n• Reducing Disparities in Cancer Care\n\n• Enhancing Provider and Patient Education\n\n• Improving Cancer Care Delivery through collaboration\n\n• Supporting positive change for partners, communities, and patients\n\n• Developing capabilities that optimize quality of care for diverse oncology populations",
       icon: Goal,
       color: "bg-indigo-50"
     },
     {
       question: "How does CCC ensure compliance?",
-      answer: "CCC maintains compliance through:\n- Clear separation from commercial influence\n- Objective selection criteria for partners and projects\n- Structured review processes via the Adjudication Committee\n- Alignment with Gilead's existing policies and procedures\n- Regular oversight and monitoring\n- Documentation of business justification and approvals",
+      answer: "CCC maintains compliance through:\n\n• Clear separation from commercial influence\n\n• Objective selection criteria for partners and projects\n\n• Structured review processes via the Adjudication Committee\n\n• Alignment with Gilead's existing policies and procedures\n\n• Regular oversight and monitoring\n\n• Documentation of business justification and approvals",
       icon: Lock,
       color: "bg-red-50"
     },
@@ -101,8 +101,8 @@ const CCCFAQs = () => {
                 
                 <div className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0">
-                    {faq.answer.split('\\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="text-gray-700 mb-2">
+                    {faq.answer.split('\n').map((paragraph, pIndex) => (
+                      <p key={pIndex} className={`text-gray-700 ${paragraph.trim().startsWith('•') ? 'mt-3' : 'mb-2'}`}>
                         {paragraph}
                       </p>
                     ))}

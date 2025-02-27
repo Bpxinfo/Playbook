@@ -88,7 +88,7 @@ const stakeholderData = {
   },
   'Field Team': {
     description: 'KADs\nMSLs\nMVELs',
-    deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer collective (CCC) Legal & Compliance Guidance (May 29, 2024)',
+    deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance (May 29, 2024)',
     priority: 'Review of CCC partnering plans and visit with external professionals',
     method: 'Review/discuss published data and approved plans with external professionals',
     channels: 'Team meetings\nEmail\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)\nP alert'

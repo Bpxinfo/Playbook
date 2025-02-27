@@ -58,7 +58,7 @@ const HomePage = () => {
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <p className="text-gray-700 mb-4">
-              The Community Cancer Collective (CCC) Playbook serves as your comprehensive guide to our patient-focused initiative, designed to address gaps in care for cancer patients in non-academic settings. This digital resource centralizes all CCC-related information, processes, and guidelines to ensure consistent and effective execution of our mission.
+              The Community Cancer Collective (CCC) Playbook serves as your comprehensive guide to our patient-focused initiative, designed to address gaps in care for cancer patients treated in the community setting. This digital resource centralizes all CCC-related information, processes, and guidelines to ensure consistent and effective execution of our mission.
             </p>
             <p className="text-gray-700">
               Through our three strategic pillars - Generating Evidence, Addressing Disparities, and Enabling Education - we work to foster collaborations with treatment sites in the oncology community to make a meaningful impact on patient care and outcomes.

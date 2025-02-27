@@ -23,13 +23,13 @@ const InternalPlatforms = () => {
                   <tbody className="divide-y divide-gray-200">
                     <tr>
                       <td className="px-4 py-2 text-gray-700">GRC</td>
-                      <td className="px-4 py-2 text-gray-700">Shannon Dervin, Sr Dir GMA, GRC Chair<br />Contact = Emma Lee</td>
+                      <td className="px-4 py-2 text-gray-700">Shannon Dervin, Sr Dir GMA, GRC Chair<br /></td>
                       <td className="px-4 py-2 text-gray-700"></td>
                       <td className="px-4 py-2 text-gray-700">GRC</td>
                     </tr>
                     <tr>
                       <td className="px-4 py-2 text-gray-700">LRC</td>
-                      <td className="px-4 py-2 text-gray-700">Emma Lee, ED, PAQ, and co-LRC chair.</td>
+                      <td className="px-4 py-2 text-gray-700">Roy Koruth</td>
                       <td className="px-4 py-2 text-gray-700"></td>
                       <td className="px-4 py-2 text-gray-700">Implement objectives</td>
                     </tr>
@@ -47,8 +47,8 @@ const InternalPlatforms = () => {
                     </tr>
                     <tr>
                       <td className="px-4 py-2 text-gray-700">GOptics (Appian)</td>
-                      <td className="px-4 py-2 text-gray-700">Janet Fobes</td>
-                      <td className="px-4 py-2 text-gray-700">ISR Collaboration Platform → Study Concepts, Protocols</td>
+                      <td className="px-4 py-2 text-gray-700">Marina Karmanova</td>
+                      <td className="px-4 py-2 text-gray-700">ISR and collaborative studies platform → Study Concepts, Protocols</td>
                       <td className="px-4 py-2 text-gray-700"></td>
                     </tr>
                   </tbody>

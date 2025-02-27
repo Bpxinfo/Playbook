@@ -120,7 +120,7 @@ const CommunicationPath = () => {
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 3</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Executive Team</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership SteerCo </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">72 hours</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Critical Issues</td>
                     </tr>

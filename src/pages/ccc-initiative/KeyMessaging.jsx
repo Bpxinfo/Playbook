@@ -16,7 +16,7 @@ const KeyMessages = () => {
             <div className="space-y-4">
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  The CCC (Community Cancer Collective) is making progress towards developing complex, multi-stakeholder ecosystem projects that impact outcomes for patients with cancer and advance our presence in community oncology.
+                  The CCC (Community Cancer Collective) is making progress towards developing complex, multi-stakeholder ecosystem projects that impact outcomes for patients with cancer and advance our presence in the community oncology setting.
                 </p>
               </div>
               <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
