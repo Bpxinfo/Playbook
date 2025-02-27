@@ -55,23 +55,6 @@ const Objectives = () => {
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
               <Building className="w-6 h-6 mr-2" />
-              The Project Summary
-            </h2>
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="mb-8">
-                <ImageWithZoom 
-                  src={CCC_Overview} 
-                  alt="CCC Overview" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">CCC Overview Diagram</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
-              <Building className="w-6 h-6 mr-2" />
               CCC Overview
             </h2>
             <div className="bg-white rounded-lg shadow p-6">

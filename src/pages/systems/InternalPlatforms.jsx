@@ -46,7 +46,7 @@ const InternalPlatforms = () => {
                       <td className="px-4 py-2 text-gray-700">Jen Prokes (Main Point)</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-2 text-gray-700">GOptics (Appian)</td>
+                      <td className="px-4 py-2 text-gray-700">GOptics</td>
                       <td className="px-4 py-2 text-gray-700">Marina Karmanova</td>
                       <td className="px-4 py-2 text-gray-700">ISR and collaborative studies platform → Study Concepts, Protocols</td>
                       <td className="px-4 py-2 text-gray-700"></td>

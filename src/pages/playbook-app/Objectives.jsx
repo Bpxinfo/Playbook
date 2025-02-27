@@ -25,7 +25,7 @@ const Objectives = () => {
 
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl text-red-800 mb-4">Success Metrics</h2>
-          <ul className="list-decimal pl-6 space-y-3 text-gray-700">
+          <ul className="list-disc pl-6 space-y-3 text-gray-700">
             <li>Reduced time to find CCC-related information</li>
             <li>Increased consistency in CCC process execution</li>
             <li>Improved onboarding experience ratings</li>

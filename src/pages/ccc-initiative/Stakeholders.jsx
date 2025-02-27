@@ -13,7 +13,7 @@ const Stakeholders = () => {
     {
       title: "USMA Organization",
       description: [
-        "CCC is strategically aligned to the USMA Oncology strategic plan and POA.",
+        "The CCC is strategically aligned to the USMA Oncology strategic plan and POA.",
         "The CCC works hand in hand with the USMA Organization to identify and engage key external stakeholders involved in community oncology patient care and further the CCC initiatives.",
         "The USMA team needs to clearly and compliantly be able to articulate the CCC's mission and ongoing work to spread awareness of Gilead's willingness or support oncology patients."
       ],
@@ -22,7 +22,7 @@ const Stakeholders = () => {
     },
     {
       title: "Cross Functional Field Team",
-      description: "The Gilead field team includes KADs, MSL and MVELs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.",
+      description: "The Gilead field team includes, MVELs, MSLs, and KADs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.",
       icon: UserCheck,
       color: "bg-purple-50"
     },

@@ -60,11 +60,11 @@ const GlossaryOfTerms = () => {
     },
     {
       term: "MSL",
-      definition: "Medical Science Liaisons",
+      definition: "Medical Science Liaison",
     },
     {
       term: "MVEL",
-      definition: "Medical Value & Evidence Liaisons",
+      definition: "Medical Value & Evidence Liaison",
     },
     {
       term: "PAQ",

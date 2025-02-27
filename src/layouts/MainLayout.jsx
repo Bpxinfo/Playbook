@@ -64,11 +64,11 @@ const MainLayout = ({ children }) => {
           title: 'Internal Comms Plan',
           items: [
             'Objectives',
+            'Channels',
+            'Cadence',
             'CCC Stakeholders',
             'Strategies & Tactics',
             'Timeline',
-            'Channels',
-            'Cadence',
             'Key Communications'
           ]
         },
@@ -95,7 +95,7 @@ const MainLayout = ({ children }) => {
         'Deepen Engagement',
         'Full Integration',
         'Ongoing Support',
-        'External Links'
+        // 'External Links'
       ]
     },
     'processes': {
@@ -512,7 +512,7 @@ const MainLayout = ({ children }) => {
               <div key={key} className="mb-2">
                 <button
                   onClick={() => handleSectionClick(key)}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
+                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
                     isSectionSelected(key) 
                       ? 'bg-red-800 text-white' 
                       : 'bg-white text-black'
@@ -525,49 +525,39 @@ const MainLayout = ({ children }) => {
                     )}
                   </div>
                   {!isSidebarCollapsed && (
-                    expandedTopSection === key ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )
+                    <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
                   )}
                 </button>
                 
-                {expandedTopSection === key && !isSidebarCollapsed && (
-                  <>
-                    {hasSubsections(section) && (
-                      <div className="mt-2 ml-2">
-                        {section.subsections.map((subsection) => (
-                          <div key={subsection.id} className="mb-2">
-                            <button
-                              onClick={(e) => toggleSubSection(subsection.id, e)}
-                              className={`w-full flex items-center justify-between p-2 rounded-lg transition-colors ${
-                                isSectionSelected(`${key}/${subsection.id}`)
-                                  ? 'bg-red-800 text-white'
-                                  : 'bg-white text-black'
-                              } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
-                            >
-                              <span className="text-sm">{subsection.title}</span>
-                              {expandedSubSection === subsection.id ? (
-                                <ChevronUp className="w-4 h-4" />
-                              ) : (
-                                <ChevronDown className="w-4 h-4" />
-                              )}
-                            </button>
-                            
-                            {expandedSubSection === subsection.id && (
-                              renderSubsectionItems(section, key, subsection)
-                            )}
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedTopSection === key && !isSidebarCollapsed ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  {hasSubsections(section) && (
+                    <div className="mt-2 ml-2">
+                      {section.subsections.map((subsection) => (
+                        <div key={subsection.id} className="mb-2">
+                          <button
+                            onClick={(e) => toggleSubSection(subsection.id, e)}
+                            className={`w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300 ${
+                              isSectionSelected(`${key}/${subsection.id}`)
+                                ? 'bg-red-800 text-white'
+                                : 'bg-white text-black'
+                            } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
+                          >
+                            <span className="text-sm">{subsection.title}</span>
+                            <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedSubSection === subsection.id ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                            {renderSubsectionItems(section, key, subsection)}
                           </div>
-                        ))}
-                      </div>
-                    )}
-                    
-                    {section.items && !hasSubsections(section) && (
-                      renderSectionItems(section, key)
-                    )}
-                  </>
-                )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {section.items && !hasSubsections(section) && (
+                    renderSectionItems(section, key)
+                  )}
+                </div>
               </div>
             );
           })}

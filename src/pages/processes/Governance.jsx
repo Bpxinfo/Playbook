@@ -136,23 +136,22 @@ const ProcessesGovernance = () => {
             </div>
           </section>
 
-          {comingSoonSections.map((section, index) => {
-            const IconComponent = section.icon;
-            return (
-              <section key={index} className="bg-white rounded-lg shadow-lg p-6">
-                <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-                  <IconComponent className="w-6 h-6 mr-2" />
-                  {section.title}
-                </h2>
-                <div className={`${section.color} p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200`}>
-                  <h3 className="text-lg font-semibold text-red-800 mb-2 flex items-center">
-                    <Clock className="w-5 h-5 mr-2" />
-                    COMING SOON
-                  </h3>
-                </div>
-              </section>
-            );
-          })}
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Users2 className="w-6 h-6 mr-2" />
+              CCC Internal Stakeholders
+            </h2>
+            <div className="space-y-4">
+              <div className="bg-blue-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+                <ImageWithZoom 
+                  src={stakeholder} 
+                  alt="CCC Stakeholders" 
+                  className="w-full rounded-lg shadow-lg mb-4"
+                />
+                <p className="text-sm text-gray-500 text-center">Stakeholders</p>
+              </div>
+            </div>
+          </section>
 
           <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
@@ -160,23 +159,13 @@ const ProcessesGovernance = () => {
               CCC Leadership - SteerCo
             </h2>
             <div className="space-y-4">
-              <div className="grid grid-cols-1 gap-4">
-                <div className="bg-blue-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                  <ImageWithZoom 
-                    src={stakeholder} 
-                    alt="CCC Stakeholders" 
-                    className="w-full rounded-lg shadow-lg mb-4"
-                  />
-                  <p className="text-sm text-gray-500 text-center">Stakeholders</p>
-                </div>
-                <div className="bg-green-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                  <ImageWithZoom 
-                    src={leadership} 
-                    alt="Leadership SteerCo" 
-                    className="w-full rounded-lg shadow-lg mb-4"
-                  />
-                  <p className="text-sm text-gray-500 text-center">Leadership SteerCo</p>
-                </div>
+              <div className="bg-green-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+                <ImageWithZoom 
+                  src={leadership} 
+                  alt="Leadership SteerCo" 
+                  className="w-full rounded-lg shadow-lg mb-4"
+                />
+                <p className="text-sm text-gray-500 text-center">Leadership SteerCo</p>
               </div>
             </div>
           </section>
@@ -197,6 +186,24 @@ const ProcessesGovernance = () => {
               </div>
             </div>
           </section>
+
+          {comingSoonSections.map((section, index) => {
+            const IconComponent = section.icon;
+            return (
+              <section key={index} className="bg-white rounded-lg shadow-lg p-6">
+                <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+                  <IconComponent className="w-6 h-6 mr-2" />
+                  {section.title}
+                </h2>
+                <div className={`${section.color} p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200`}>
+                  <h3 className="text-lg font-semibold text-red-800 mb-2 flex items-center">
+                    <Clock className="w-5 h-5 mr-2" />
+                    COMING SOON
+                  </h3>
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
 

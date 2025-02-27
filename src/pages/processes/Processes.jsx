@@ -279,6 +279,72 @@ const Processes = () => {
               </div>
             </div>
           </section>
+
+          {/* Advisory Council Section */}
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Users2 className="w-6 h-6 mr-2" />
+              Advisory Council
+            </h2>
+            <div className="bg-gray-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+              <ImageWithZoom 
+                src={advisory} 
+                alt="Advisory Council" 
+                className="w-full rounded-lg shadow-lg mb-4"
+              />
+              <p className="text-sm text-gray-500 text-center">Advisory Council Structure</p>
+            </div>
+            <div className="mt-6 space-y-3">
+              {[
+                "The Advisory Council provides strategic guidance and expertise to help shape CCC initiatives",
+                "Members are selected based on their expertise in oncology, healthcare innovation, and community care",
+                "The council helps ensure CCC projects align with community needs and best practices",
+                "Regular meetings are held to review progress and provide recommendations"
+              ].map((text, index) => (
+                <div key={index} className="flex items-start">
+                  <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">{text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Partner Selection Section */}
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Network className="w-6 h-6 mr-2" />
+              Partner Selection Framework
+            </h2>
+            <div className="bg-gray-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+              <ImageWithZoom 
+                src={partner} 
+                alt="Partner Selection" 
+                className="w-full rounded-lg shadow-lg mb-4"
+              />
+              <p className="text-sm text-gray-500 text-center">Partner Selection Criteria and Process</p>
+            </div>
+            <div className="mt-6">
+              <div className="bg-blue-50 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                  <Target className="w-5 h-5 mr-2" />
+                  Selection Criteria
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectionCriteria.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
+                        <div className="bg-blue-50 p-2 rounded-full shadow-md">
+                          <IconComponent className="w-4 h-4 text-red-800" />
+                        </div>
+                        <span className="text-gray-700 ml-3">{item.text}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

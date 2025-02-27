@@ -136,16 +136,16 @@ const ComplianceGuidance = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Advisory Services</h2>
+          {/* <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Advisory Council</h2>
             <div className="bg-gray-50 p-4 rounded-lg">
               <ImageWithZoom 
                 src={advisory} 
-                alt="Advisory Services" 
+                alt="Advisory Council" 
                 className="w-full rounded-lg shadow-lg mb-4"
               />
             </div>
-          </section>
+          </section> */}
 
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Legal Compliance</h2>
@@ -158,7 +158,7 @@ const ComplianceGuidance = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-md p-6">
+          {/* <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Partner Selection</h2>
             <div className="bg-gray-50 p-4 rounded-lg">
               <ImageWithZoom 
@@ -167,7 +167,7 @@ const ComplianceGuidance = () => {
                 className="w-full rounded-lg shadow-lg mb-4"
               />
             </div>
-          </section>
+          </section> */}
         </div>
       </div>
     </div>

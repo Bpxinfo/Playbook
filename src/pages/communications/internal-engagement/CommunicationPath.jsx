@@ -90,7 +90,7 @@ const CommunicationPath = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Escalation Path</h3>
                     <p className="text-gray-700">
-                      Follow this escalation path for critical issues:
+                      Follow this escalation path for issues:
                     </p>
                   </div>
                 </div>

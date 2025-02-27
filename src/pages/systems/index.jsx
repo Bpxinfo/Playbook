@@ -53,8 +53,8 @@ const SystemsHome = () => {
       description: "Field planning and account management"
     },
     {
-      title: "GOptics (Appian)",
-      description: "ISR collaboration platform"
+      title: "GOptics",
+      description: "ISR / Collaborative Studies platform"
     },
     {
       title: "SteepRock",
@@ -76,7 +76,7 @@ const SystemsHome = () => {
               </h2>
             </div>
             <p className="text-gray-700 mb-4">
-              Our systems infrastructure combines digital and manual tools to support efficient CCC operations. This section provides comprehensive information about all systems used within the CCC initiative, including access procedures, best practices, and integration points.
+              Our systems infrastructure combines digital and manual tools to support efficient CCC operations. Here you'll find detailed documentation for all CCC systems, with step-by-step guides on how to access each tool, recommended usage practices, and information on how different systems work together. Whether you need access to a new platform or want to understand how systems connect, you'll find it here.
             </p>
           </section>
 

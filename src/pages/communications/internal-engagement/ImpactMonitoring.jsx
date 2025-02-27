@@ -180,7 +180,7 @@ const ImpactMonitoring = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-lg p-6">
+          {/* <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
               <Activity className="w-6 h-6 mr-2" />
               Performance Dashboard
@@ -218,7 +218,7 @@ const ImpactMonitoring = () => {
                 })}
               </div>
             </div>
-          </section>
+          </section> */}
 
           <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
