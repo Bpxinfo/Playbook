@@ -42,7 +42,7 @@ const StrategicPillars = () => {
             </h2>
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
               <p className="text-gray-700 mb-4">
-                To meet the CCC's objective in making impact for Community Patients, projects will focus attention on three key areas (the CCC strategic pillars):
+                To meet the CCC's objective in making impact for patients receiving their cancer care in the community setting, projects will focus attention on three key areas (the CCC strategic pillars):
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">

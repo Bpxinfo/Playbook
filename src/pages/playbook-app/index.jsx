@@ -17,7 +17,7 @@ export default function PlaybookOverviewHome() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <div className="mb-12">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Playbook App Overview</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Playbook Overview</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <p className="text-gray-700 mb-4">

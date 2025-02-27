@@ -137,13 +137,14 @@ const CommunicationPlanHome = () => {
                       <button
                         key={index}
                         onClick={() => navigate(subsection.path)}
-                        className={`${subsection.color} p-4 rounded-lg shadow hover:shadow-md transition-all group text-left`}
+                        className={`${subsection.color} p-4 rounded-lg shadow hover:shadow-md transition-all group text-left relative`}
                       >
                         <div className="flex items-center mb-2">
                           <SubIconComponent className="w-5 h-5 text-red-800 mr-2" />
                           <h3 className="text-lg font-semibold text-gray-800">{subsection.title}</h3>
                         </div>
-                        <p className="text-gray-600 text-sm">{subsection.description}</p>
+                        <p className="text-gray-600 text-sm pr-6">{subsection.description}</p>
+                        <ArrowRight className="w-4 h-4 text-red-800 absolute right-3 top-1/2 -translate-y-1/2" />
                       </button>
                     );
                   })}

@@ -6,10 +6,10 @@ const Breadcrumbs = () => {
   
   const pathConfig = {
     'playbook-app-overview': {
-      label: 'Playbook App Overview'
+      label: 'Playbook Overview'
     },
-    'ccc-initiative': {
-      label: 'CCC Initiative Overview'
+    'ccc-overview': {
+      label: 'CCC Overview'
     },
     'communications': {
       label: 'Communications'

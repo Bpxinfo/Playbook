@@ -6,29 +6,29 @@ const Stakeholders = () => {
   const stakeholderSections = [
     {
       title: "CCC Internal Stakeholders",
-      description: "The CCC Leadership SteerCo within Gilead will advise and endorse objectives for the Community Cancer Collective initiative. The leadership group needs clear and concise project updates to provide advice, prioritization and endorsement.",
+      description: "The CCC Leadership Steering Committee provides strategic guidance and oversight for the Community Cancer Collective initiative. They require regular, concise updates to make informed decisions on project priorities and approvals.",
       icon: Users,
       color: "bg-blue-50"
     },
     {
       title: "USMA Organization",
       description: [
-        "The CCC is strategically aligned to the USMA Oncology strategic plan and POA.",
-        "The CCC works hand in hand with the USMA Organization to identify and engage key external stakeholders involved in community oncology patient care and further the CCC initiatives.",
-        "The USMA team needs to clearly and compliantly be able to articulate the CCC's mission and ongoing work to spread awareness of Gilead's willingness or support oncology patients."
+        "The Community Cancer Collective aligns with USMA Oncology's strategic plan and Plan of Action.",
+        "We collaborate with USMA to identify and engage key stakeholders in community oncology care.",
+        "USMA team members communicate our mission to demonstrate Gilead's commitment to supporting oncology patients."
       ],
       icon: Building,
       color: "bg-green-50"
     },
     {
       title: "Cross Functional Field Team",
-      description: "The Gilead field team supporting the CCC includes the MVELs, MSLs, and KADs who establish and maintain relationships with physicians at academic institutions and clinics. They need clear topics and messaging to be successful in establishing and maintaining relationships with external professionals to execute projects that are aligned to the brand strategy.",
+      description: "Our field team consists of Medical Value Executive Liaisons (MVELs), Medical Science Liaisons (MSLs), and Key Account Directors (KADs). They build and maintain relationships with healthcare providers at academic institutions and clinics, delivering targeted messaging that aligns with our brand strategy.",
       icon: UserCheck,
       color: "bg-purple-50"
     },
     {
-      title: "Internal (Gilead) line-functions for project review",
-      description: "Line functions of different departments that contribute to review of RFPs. Line-functions work with USMA, as needed, depending on the project type. Gilead department(s) responsible for the CCC project will oversee CCC development under the strategic pillars. This includes the department's standard process for submission, review, approval.",
+      title: "Internal Review Departments",
+      description: "Various Gilead departments review and evaluate Request for Proposals (RFPs) in collaboration with USMA. These departments oversee project development within their strategic areas, managing the submission, review, and approval processes according to standard procedures.",
       icon: FileSpreadsheet,
       color: "bg-yellow-50"
     }

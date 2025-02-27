@@ -1,16 +1,29 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Book, Building, MessageSquare, UserPlus, Settings, Database, Layout } from 'lucide-react';
+import { 
+  Book, 
+  Building, 
+  MessageSquare, 
+  UserPlus, 
+  Settings, 
+  Database, 
+  Layout, 
+  ArrowRight,
+  Shield,
+  Folders,
+  BookOpen,
+  HelpCircle
+} from 'lucide-react';
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   const sections = [
     {
-      title: "Playbook App Overview",
+      title: "Playbook Overview",
       description: "Learn about the playbook's objectives and purpose",
       icon: Book,
-      path: "/playbook-app-overview",
+      path: "/playbook-overview",
       color: "bg-blue-50"
     },
     {
@@ -47,6 +60,34 @@ const HomePage = () => {
       icon: Database,
       path: "/systems",
       color: "bg-orange-50"
+    },
+    {
+      title: "Compliance Guidance",
+      description: "Understanding regulatory requirements and compliance protocols",
+      icon: Shield,
+      path: "/compliance",
+      color: "bg-indigo-50"
+    },
+    {
+      title: "Project Archetypes",
+      description: "Templates and frameworks for different project types",
+      icon: Folders,
+      path: "/project-archetypes",
+      color: "bg-teal-50"
+    },
+    {
+      title: "Glossary of Terms",
+      description: "Definitions of key terms and concepts",
+      icon: BookOpen,
+      path: "/glossary",
+      color: "bg-rose-50"
+    },
+    {
+      title: "FAQs",
+      description: "Common questions and detailed answers",
+      icon: HelpCircle,
+      path: "/faqs",
+      color: "bg-cyan-50"
     }
   ];
 
@@ -72,13 +113,14 @@ const HomePage = () => {
                 <button
                   key={index}
                   onClick={() => navigate(section.path)}
-                  className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left`}
+                  className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left relative`}
                 >
                   <div className="flex items-center mb-4">
                     <IconComponent className="w-6 h-6 text-red-800 mr-3" />
                     <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
                   </div>
-                  <p className="text-gray-600">{section.description}</p>
+                  <p className="text-gray-600 pr-6">{section.description}</p>
+                  <ArrowRight className="w-5 h-5 text-red-800 absolute right-4 top-1/2 -translate-y-1/2" />
                 </button>
               );
             })}
@@ -91,9 +133,10 @@ const HomePage = () => {
             </p>
             <button
               onClick={() => navigate('/feedback')}
-              className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+              className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors inline-flex items-center"
             >
               Submit Feedback
+              <ArrowRight className="w-4 h-4 ml-2" />
             </button>
           </section>
         </div>

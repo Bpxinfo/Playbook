@@ -38,20 +38,6 @@ const Objectives = () => {
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Objectives</h1>
         
         <div className="space-y-6">
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Target className="w-6 h-6 mr-2" />
-              CCC Overview
-            </h2>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <ImageWithZoom 
-                src={CCC_Overview} 
-                alt="CCC Overview" 
-                className="w-full rounded-lg shadow-lg mb-4"
-              />
-            </div>
-          </section>
-
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
               <Building className="w-6 h-6 mr-2" />
@@ -68,6 +54,20 @@ const Objectives = () => {
                   Gilead contributes to this mission by engaging in collaborative initiatives and facilitating communication among stakeholders to support and improve patient outcomes in community oncology care.
                 </p>
               </div>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              <Target className="w-6 h-6 mr-2" />
+              CCC Overview
+            </h2>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <ImageWithZoom 
+                src={CCC_Overview} 
+                alt="CCC Overview" 
+                className="w-full rounded-lg shadow-lg mb-4"
+              />
             </div>
           </section>
 
