@@ -89,6 +89,20 @@ const Objectives = () => {
 
           <section>
             <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
+              <Handshake className="w-6 h-6 mr-2" />
+              Partnership Approach
+            </h2>
+            <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  To achieve this goal, Gilead partners with community-focused institutions treating patients and nationwide support organizations to identify meaningful opportunities, develop community site capabilities, and execute impactful solutions for diverse oncology patient populations.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
               <Target className="w-6 h-6 mr-2" />
               Addressing Unmet Needs
             </h2>
@@ -105,20 +119,6 @@ const Objectives = () => {
                   </div>
                 );
               })}
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
-              <Handshake className="w-6 h-6 mr-2" />
-              Partnership Approach
-            </h2>
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  To achieve this goal, Gilead partners with community-focused institutions treating patients and nationwide support organizations to identify meaningful opportunities, develop community site capabilities, and execute impactful solutions for diverse oncology patient populations.
-                </p>
-              </div>
             </div>
           </section>
         </div>

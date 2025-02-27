@@ -89,29 +89,24 @@ export default function InternalOnboardingHome() {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="absolute left-8 top-8 bottom-8 w-px bg-gray-200 -z-10"></div>
-        <div className="grid grid-cols-1 gap-6">
-          {sections.map((section, index) => {
-            const IconComponent = section.icon;
-            return (
-              <button
-                key={index}
-                onClick={() => navigate(section.path)}
-                className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left ml-12 relative`}
-              >
-                <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center">
-                  <IconComponent className="w-5 h-5 text-red-800" />
-                </div>
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
-                  <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />
-                </div>
-                <p className="text-gray-600">{section.description}</p>
-              </button>
-            );
-          })}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {sections.map((section, index) => {
+          const IconComponent = section.icon;
+          return (
+            <button
+              key={index}
+              onClick={() => navigate(section.path)}
+              className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left relative`}
+            >
+              <div className="flex items-center mb-2">
+                <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+                <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+              </div>
+              <p className="text-gray-600 pr-6">{section.description}</p>
+              <ArrowRight className="w-5 h-5 text-red-800 absolute right-4 top-1/2 -translate-y-1/2" />
+            </button>
+          );
+        })}
       </div>
 
       <div className="mt-12 bg-gray-50 rounded-lg shadow-lg p-6">

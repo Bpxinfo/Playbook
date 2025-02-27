@@ -108,13 +108,13 @@ const CommunicationPath = () => {
                   <tbody className="divide-y divide-gray-200">
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 1</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Team Lead</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">24 hours</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Routine Issues</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 2</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Department Head</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">48 hours</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Complex Issues</td>
                     </tr>

@@ -69,7 +69,7 @@ const MainLayout = ({ children }) => {
             'CCC Stakeholders',
             'Strategies & Tactics',
             'Timeline',
-            'Key Communications'
+            // 'Key Communications'
           ]
         },
         {

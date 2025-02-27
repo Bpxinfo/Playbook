@@ -29,23 +29,21 @@ export default function PlaybookOverviewHome() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {sections.map((section, index) => {
           const IconComponent = section.icon;
           return (
             <button
               key={index}
               onClick={() => navigate(section.path)}
-              className="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left col-span-1 md:col-span-2 lg:col-span-3"
+              className={`bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left relative`}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
-                  <IconComponent className="w-6 h-6 text-red-800 mr-3" />
-                  <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
-                </div>
-                <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center mb-4">
+                <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+                <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
               </div>
-              <p className="text-gray-600">{section.description}</p>
+              <p className="text-gray-600 pr-6">{section.description}</p>
+              <ArrowRight className="w-5 h-5 text-red-800 absolute right-4 top-1/2 -translate-y-1/2" />
             </button>
           );
         })}
