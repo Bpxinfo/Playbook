@@ -58,10 +58,6 @@ const Objectives = () => {
           </section>
 
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Target className="w-6 h-6 mr-2" />
-              CCC Overview
-            </h2>
             <div className="bg-gray-50 p-4 rounded-lg">
               <ImageWithZoom 
                 src={CCC_Overview} 
