@@ -12,6 +12,22 @@ const CorePrinciples = () => {
         
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-md p-6">
+            <p className="text-gray-700 mb-6">
+              Building on our North Star - Elevating Partners to Impact Community Patients – the CCC seeks to accomplish our Strategic Pillars through the Core Principles that address each pillar.
+            </p>
+            
+            <h3 className="text-xl text-red-800 mb-4">Core Principles:</h3>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Address unmet patient needs</li>
+              <li>Enable community sites to better serve patients</li>
+              <li>Build trust within communities</li>
+              <li>Develop enabling education that is Right Sized, Personalized</li>
+              <li>Create intentional linkages between projects, data, and advocate voices</li>
+              <li>Support change opportunities that positively impact partners, communities, patients</li>
+            </ul>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Core Principles Overview</h2>
             <div className="bg-gray-50 p-4 rounded-lg">
               <ImageWithZoom 
