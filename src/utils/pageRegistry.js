@@ -133,8 +133,8 @@ export const pageRegistry = {
       component: () => import('@/pages/internal-onboarding/Immerse'),
       title: 'Immerse & Contribute'
     },
-    '/internal-onboarding/pre-integration-prep': {
-      component: () => import('@/pages/internal-onboarding/PrePrep'),
+    '/internal-onboarding/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
       title: 'Pre-Integration Prep'
     },
     '/internal-onboarding/external-links': {
