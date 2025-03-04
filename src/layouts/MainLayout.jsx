@@ -29,6 +29,13 @@ import useContentSearch from '../hooks/useContentSearch';
 import { performGlobalSearch } from '../utils/searchUtils';
 import TextSelectionComment from '../components/TextSelectionComment';
 
+// Add CSS for WebKit scrollbar hiding
+const scrollbarHideStyles = `
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const MainLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -43,6 +50,9 @@ const MainLayout = ({ children }) => {
   const searchRef = useRef(null);
   const isScrollingRef = useRef(false);
   const [expandedDropdown, setExpandedDropdown] = useState(null);
+  const navContainerRef = useRef(null);
+  const [navOverflow, setNavOverflow] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const navigationItems = {
     'playbook-overview': {
@@ -425,10 +435,12 @@ const MainLayout = ({ children }) => {
                       : 'text-black hover:bg-gray-100'
                   }`}
                   onClick={(e) => {
-                    // Prevent default navigation when clicking on the item
-                    e.preventDefault();
+                    // Remove the preventDefault to allow navigation
+                    // e.preventDefault();
                     // Toggle dropdown when clicking anywhere on the item
                     setExpandedDropdown(current => current === `${sectionKey}-${item.title}` ? null : `${sectionKey}-${item.title}`);
+                    // Navigate to the path
+                    navigate(path);
                   }}
                 >
                   <span>{item.title}</span>
@@ -589,8 +601,91 @@ const MainLayout = ({ children }) => {
     }, 1000);
   };
 
+  // Check if navigation is overflowing
+  const checkNavOverflow = () => {
+    if (navContainerRef.current) {
+      const { scrollHeight, clientHeight } = navContainerRef.current;
+      const hasOverflow = scrollHeight > clientHeight;
+      setNavOverflow(hasOverflow);
+    }
+  };
+
+  // Update scroll position and check button visibility
+  const updateScrollState = () => {
+    if (navContainerRef.current) {
+      const container = navContainerRef.current;
+      setScrollPosition(container.scrollTop);
+      
+      // Check if we're at the bottom
+      const isAtBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 5;
+      // This will be used in the render to determine button visibility
+    }
+  };
+
+  // Handle navigation scroll
+  const handleNavScroll = (direction) => {
+    if (navContainerRef.current) {
+      const container = navContainerRef.current;
+      const scrollAmount = 100; // Adjust scroll amount as needed
+      
+      if (direction === 'up') {
+        container.scrollTop -= scrollAmount;
+      } else {
+        container.scrollTop += scrollAmount;
+      }
+      
+      updateScrollState();
+    }
+  };
+
+  // Scroll to active section
+  const scrollToActiveSection = () => {
+    if (navContainerRef.current) {
+      const activeElement = navContainerRef.current.querySelector('.bg-red-800');
+      if (activeElement) {
+        // Calculate the position to scroll to (center the active element in the viewport)
+        const container = navContainerRef.current;
+        const containerHeight = container.clientHeight;
+        const elementTop = activeElement.offsetTop;
+        const elementHeight = activeElement.clientHeight;
+        
+        // Scroll to position that centers the element
+        const scrollPosition = elementTop - (containerHeight / 2) + (elementHeight / 2);
+        container.scrollTop = scrollPosition;
+        
+        // Update scroll position state
+        setScrollPosition(container.scrollTop);
+      }
+    }
+  };
+
+  // Update overflow status when sections expand/collapse
+  useEffect(() => {
+    checkNavOverflow();
+    // Scroll to active section after expanding
+    if (expandedTopSection || expandedSubSection) {
+      // Small delay to allow the DOM to update after expansion
+      setTimeout(scrollToActiveSection, 100);
+    }
+  }, [expandedTopSection, expandedSubSection, expandedDropdown, isSidebarCollapsed]);
+
+  // Check for overflow on initial render and window resize
+  useEffect(() => {
+    checkNavOverflow();
+    window.addEventListener('resize', checkNavOverflow);
+    return () => window.removeEventListener('resize', checkNavOverflow);
+  }, []);
+
+  // Scroll to active section on initial load
+  useEffect(() => {
+    scrollToActiveSection();
+  }, [location.pathname]);
+
   return (
     <div className="flex h-screen overflow-hidden">
+      {/* Add style tag for scrollbar hiding */}
+      <style>{scrollbarHideStyles}</style>
+      
       <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
         <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
           <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
@@ -611,7 +706,60 @@ const MainLayout = ({ children }) => {
           </button>
         </div>
         
-        <nav className="p-2 bg-white">
+        {/* Navigation scroll buttons - only show when overflow is detected */}
+        {navOverflow && !isSidebarCollapsed && (
+          <>
+            {/* Top scroll button and gradient */}
+            <div 
+              className={`absolute z-40 left-0 top-16 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
+                scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
+              }`}
+            ></div>
+            <button 
+              onClick={() => handleNavScroll('up')}
+              className={`absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md ${
+                scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
+              } transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800`}
+              aria-label="Scroll navigation up"
+            >
+              <ChevronUp className="w-5 h-5 text-red-800" />
+            </button>
+            
+            {/* Bottom scroll button and gradient */}
+            <div 
+              className={`absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300 ${
+                navContainerRef.current && 
+                (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                  ? 'opacity-0' 
+                  : 'opacity-100'
+              }`}
+            ></div>
+            <button 
+              onClick={() => handleNavScroll('down')}
+              className={`absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md ${
+                navContainerRef.current && 
+                (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                  ? 'opacity-0 pointer-events-none' 
+                  : 'opacity-90'
+              } transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800`}
+              aria-label="Scroll navigation down"
+            >
+              <ChevronDown className="w-5 h-5 text-red-800" />
+            </button>
+          </>
+        )}
+        
+        <nav 
+          ref={navContainerRef}
+          className="p-2 bg-white overflow-y-auto scrollbar-hide"
+          style={{ 
+            height: 'calc(100vh - 64px)',
+            scrollBehavior: 'smooth',
+            msOverflowStyle: 'none', /* IE and Edge */
+            scrollbarWidth: 'none' /* Firefox */
+          }}
+          onScroll={updateScrollState}
+        >
           {Object.entries(navigationItems).map(([key, section]) => {
             const SectionIcon = sectionConfig[key].icon;
             return (

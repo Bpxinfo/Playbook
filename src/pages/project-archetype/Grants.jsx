@@ -11,45 +11,45 @@ const Grants = () => {
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Grants</h2>
             
-            <div className="bg-gray-50 p-4 rounded-lg mb-6">
+            <div className="bg-gray-50 p-4 rounded-lg mb-6 text-black">
               <h3 className="text-xl font-semibold text-red-700 mb-3">General</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Description</h4>
-                  <p className="italic text-gray-600">[Pending official description]</p>
+              <div className="space-y-4 text-black">
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Description</h4>
+                  <p className="italic text-black">[Pending official description]</p>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-2">Examples</h4>
-                  <p className="italic text-gray-600">[Please add examples for this]</p>
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Examples</h4>
+                  <p className="italic text-black">[Please add examples for this]</p>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-2">Guidance</h4>
-                  <p>LINKs to COMPLIANCE, GOVERNANCE, SOPs</p>
-                  <ul className="list-disc pl-6 mt-2">
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Guidance</h4>
+                  <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p>
+                  <ul className="list-disc pl-6 mt-2 text-black">
                     <li>FRM-04327 Grant Approval Form (GAF)</li>
                     <li>FRM-07237 Notification of Acceptance of Grant Funding Request</li>
                     <li>FRM-07649 Educational Grant Letter</li>
                   </ul>
-                  <p className="mt-2 italic">[INSERT LINKS FROM PROCESS, GOV, COMPLIANCE section]</p>
+                  <p className="mt-2 italic text-black">[INSERT LINKS FROM PROCESS, GOV, COMPLIANCE section]</p>
                 </div>
               </div>
             </div>
 
             {/* iMed Activities */}
-            <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="bg-gray-50 p-4 rounded-lg text-black">
               <h3 className="text-xl font-semibold text-red-700 mb-3">iMed Activities</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Description</h4>
-                  <p>IMed activities (not supported through CCC, separate process, NEED LINK to redirect to)</p>
+              <div className="space-y-4 text-black">
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Description</h4>
+                  <p className="text-black">IMed activities (not supported through CCC, separate process, NEED LINK to redirect to)</p>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-2">Examples</h4>
-                  <p className="italic text-gray-600">[Please add examples for this]</p>
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Examples</h4>
+                  <p className="italic text-black">[Please add examples for this]</p>
                 </div>
-                <div>
-                  <h4 className="font-medium mb-2">Guidance</h4>
-                  <p>LINK: SYSTEMS {'->'} STEEPROCK</p>
+                <div className="text-black">
+                  <h4 className="font-medium mb-2 text-black">Guidance</h4>
+                  <p className="text-black">LINK: SYSTEMS {'->'} STEEPROCK</p>
                 </div>
               </div>
             </div>
