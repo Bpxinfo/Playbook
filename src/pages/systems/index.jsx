@@ -34,13 +34,13 @@ const SystemsHome = () => {
       icon: ClipboardList,
       color: "bg-green-50"
     },
-    {
-      title: "Links to Process",
-      description: "Quick access to system-related processes, guides, and documentation.",
-      path: "/systems/links-to-process",
-      icon: LinkIcon,
-      color: "bg-yellow-50"
-    }
+    // {
+    //   title: "Links to Process",
+    //   description: "Quick access to system-related processes, guides, and documentation.",
+    //   path: "/systems/links-to-process",
+    //   icon: LinkIcon,
+    //   color: "bg-yellow-50"
+    // }
   ];
 
   const systemHighlights = [
