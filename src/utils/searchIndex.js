@@ -20,6 +20,39 @@ class SearchIndex {
     return tempDiv.textContent || tempDiv.innerText || '';
   }
 
+  // Extract content and metadata from component data
+  extractContent(data) {
+    // Default values
+    let title = '';
+    let metadata = '';
+
+    // Try to extract title from data if it's an object with properties
+    if (data && typeof data === 'object') {
+      // Try to get title from common properties
+      title = data.title || data.name || '';
+      
+      // Try to extract metadata from description or summary
+      metadata = data.description || data.summary || data.content || '';
+      
+      // If no metadata found but data has a type property, use that
+      if (!metadata && data.type) {
+        metadata = `${data.type} component`;
+      }
+    }
+
+    // If data is a string, use it as title
+    if (typeof data === 'string') {
+      title = data;
+    }
+
+    // If we still don't have a title, extract from path
+    if (!title && data.path) {
+      title = this.generateBreadcrumb(data.path).split('>').pop().trim();
+    }
+
+    return { title, metadata };
+  }
+
   // Process content into searchable terms
   processContent(text) {
     return text.toLowerCase()
@@ -173,6 +206,17 @@ export const searchIndex = new SearchIndex();
 // Initialize search index with all pages
 export function initializeSearch(pages) {
   Object.entries(pages).forEach(([path, component]) => {
-    searchIndex.indexPage(path, component);
+    try {
+      searchIndex.indexPage(path, component);
+    } catch (error) {
+      console.warn(`Error indexing page ${path}:`, error);
+      // Fallback: Try to index with minimal data
+      if (error.toString().includes('extractContent is not a function')) {
+        console.log('Using fallback indexing for:', path);
+        const title = component.title || path.split('/').pop();
+        const metadata = component.metadata || '';
+        searchIndex.indexPageContent(path.toLowerCase(), `${title} ${metadata}`);
+      }
+    }
   });
 }

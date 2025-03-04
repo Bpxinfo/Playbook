@@ -98,7 +98,18 @@ function App() {
         const pages = await initializeSearchIndex();
         if (pages) {
           Object.entries(pages).forEach(([path, pageData]) => {
-            searchIndex.indexPage(path, pageData);
+            try {
+              searchIndex.indexPage(path, pageData);
+            } catch (error) {
+              console.warn(`Error indexing page ${path}:`, error);
+              // Fallback: Try to index with minimal data if extractContent fails
+              if (error.toString().includes('extractContent is not a function')) {
+                console.log('Using fallback indexing for:', path);
+                const title = pageData.title || path.split('/').pop();
+                const metadata = pageData.metadata || '';
+                searchIndex.indexPageContent(path.toLowerCase(), `${title} ${metadata}`);
+              }
+            }
           });
         }
       } catch (error) {
@@ -159,7 +170,7 @@ function App() {
           <Route path="/internal-onboarding/ccc-core-extended" element={<CCCCoreExtended />} />
           <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={<OnboardingChecklist />} />
           <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={<WelcomeOrientation />} />
-          <Route path="/internal-onboarding/ccc-core-extended/immerse-contribute" element={<ImmerseContribute />} />
+          <Route path="/internal-onboarding/ccc-core-extended/immerse,-contribute" element={<ImmerseContribute />} />
           <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={<DeepenEngagement />} />
           <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={<FullIntegration />} />
           
