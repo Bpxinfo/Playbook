@@ -18,7 +18,9 @@ import {
   BookOpen,
   Shield,
   Link as LinkIcon,
-  HelpCircle
+  HelpCircle,
+  ChevronRight,
+  ChevronLeft
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -40,6 +42,7 @@ const MainLayout = ({ children }) => {
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const searchRef = useRef(null);
   const isScrollingRef = useRef(false);
+  const [expandedDropdown, setExpandedDropdown] = useState(null);
 
   const navigationItems = {
     'playbook-overview': {
@@ -143,16 +146,23 @@ const MainLayout = ({ children }) => {
         // 'Project Operations'
       ]
     },
-    'projects-archetypes': {
+    'project-archetype': {
       title: 'Projects Archetypes',
       items: [
         'Objectives', 
-        'CORE Principles',
+        {
+          title: 'CORE Principles',
+          hasDropdown: true,
+          dropdownItems: [
+            'Collaborative Studies',
+            'ISRs',
+            'Fee For Service',
+            'Sponsorships',
+            'Grants'
+          ]
+        },
         'CCC Project Lifecycle',
-        'CCC Project Types'
-        // 'Global Funding Mechanisms Awareness',
-        // 'Nomenclature',
-        // 'Tracking Systems'
+        // 'CCC Project Types' // Removing this as it's being split into separate pages
         ]
     },
     'systems': {
@@ -202,9 +212,9 @@ const MainLayout = ({ children }) => {
       icon: Database,
       defaultRoute: '/systems'
     },
-    'projects-archetypes': {
+    'project-archetype': {
       icon: Layout,
-      defaultRoute: '/projects-archetypes'
+      defaultRoute: '/project-archetype'
     },
     'glossary': {
       icon: BookOpen,
@@ -319,6 +329,10 @@ const MainLayout = ({ children }) => {
     return section && 'subsections' in section && Array.isArray(section.subsections);
   };
 
+  const hasDropdown = (item) => {
+    return item && typeof item === 'object' && 'hasDropdown' in item && item.hasDropdown === true;
+  };
+
   const isSelected = (section, item, subsection = null) => {
     if (!section || !item) return false;
     const itemPath = getItemPath(section, item, subsection);
@@ -339,7 +353,13 @@ const MainLayout = ({ children }) => {
       return `/compliance#${anchorId}`;
     }
     
-    const itemSlug = item.toLowerCase().replace(/\s+/g, '-');
+    // Handle dropdown items
+    if (typeof item === 'object' && item.hasDropdown) {
+      const itemSlug = item.title.toLowerCase().replace(/\s+/g, '-');
+      return `/${section}/${itemSlug}`;
+    }
+    
+    const itemSlug = typeof item === 'string' ? item.toLowerCase().replace(/\s+/g, '-') : '';
     
     if (subsection) {
       const subsectionSlug = subsection.toLowerCase().replace(/\s+/g, '-');
@@ -388,6 +408,69 @@ const MainLayout = ({ children }) => {
   const renderSectionItems = (section, sectionKey) => (
     <div className="ml-4">
       {section.items.map((item) => {
+        // Check if item has dropdown
+        if (hasDropdown(item)) {
+          const path = getItemPath(sectionKey, item);
+          const isActive = location.pathname === path;
+          const isExpanded = expandedDropdown === `${sectionKey}-${item.title}`;
+          
+          return (
+            <div key={item.title} className="mb-1">
+              <div className="flex flex-col">
+                <Link
+                  to={path}
+                  className={`flex justify-between items-center p-2 text-sm rounded-lg transition-colors ${
+                    isActive
+                      ? 'bg-red-800 text-white hover:text-white'
+                      : 'text-black hover:bg-gray-100'
+                  }`}
+                  onClick={(e) => {
+                    // Prevent default navigation when clicking on the item
+                    e.preventDefault();
+                    // Toggle dropdown when clicking anywhere on the item
+                    setExpandedDropdown(current => current === `${sectionKey}-${item.title}` ? null : `${sectionKey}-${item.title}`);
+                  }}
+                >
+                  <span>{item.title}</span>
+                  <ChevronDown 
+                    className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setExpandedDropdown(current => current === `${sectionKey}-${item.title}` ? null : `${sectionKey}-${item.title}`);
+                    }}
+                  />
+                </Link>
+                
+                {isExpanded && (
+                  <div className="ml-4 mt-1">
+                    {item.dropdownItems.map(dropdownItem => {
+                      const dropdownItemSlug = dropdownItem.toLowerCase().replace(/\s+/g, '-');
+                      const dropdownPath = `/project-archetype/${dropdownItemSlug}`;
+                      const isDropdownActive = location.pathname === dropdownPath;
+                      
+                      return (
+                        <Link
+                          key={dropdownItem}
+                          to={dropdownPath}
+                          className={`block p-2 text-sm rounded-lg transition-colors ${
+                            isDropdownActive
+                              ? 'bg-red-800 text-white hover:text-white'
+                              : 'text-black hover:bg-gray-100'
+                          }`}
+                        >
+                          {dropdownItem}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        }
+        
+        // Regular item (no dropdown)
         const path = getItemPath(sectionKey, item);
         const isActive = location.pathname === path;
         return (

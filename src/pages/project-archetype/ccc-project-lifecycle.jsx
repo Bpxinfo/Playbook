@@ -19,9 +19,6 @@ const CCCProjectLifecycle = () => {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase relative">
           CCC Project Lifecycle
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-            <Target className="w-12 h-12 text-white bg-red-800 rounded-full p-2" />
-          </div>
         </h1>
 
         <div className="space-y-6 relative">
@@ -60,7 +57,6 @@ const CCCProjectLifecycle = () => {
                   clear focus.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -78,7 +74,6 @@ const CCCProjectLifecycle = () => {
                   outlining the project's scope and approach.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -96,7 +91,6 @@ const CCCProjectLifecycle = () => {
                   governance teams.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -114,7 +108,6 @@ const CCCProjectLifecycle = () => {
                   and regulatory expectations.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -131,7 +124,6 @@ const CCCProjectLifecycle = () => {
                   all parties involved are legally bound and aligned on responsibilities.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -148,7 +140,6 @@ const CCCProjectLifecycle = () => {
                   with plans, and meets quality standards. Regular updates are provided to stakeholders.
                 </p>
               </div>
-              <ArrowRight className="w-6 h-6 text-red-800 flex-shrink-0 mt-2" />
             </div>
           </section>
 
@@ -180,19 +171,15 @@ const CCCProjectLifecycle = () => {
             </p>
             <ul className="list-none space-y-3 text-gray-700">
               <li className="flex items-center gap-2">
-                <ArrowRight className="w-4 h-4 text-red-800 flex-shrink-0" />
                 Qualified CCC Concepts [ISR/Collaborative Studies, Aligned with CCC Criteria]
               </li>
               <li className="flex items-center gap-2">
-                <ArrowRight className="w-4 h-4 text-red-800 flex-shrink-0" />
                 Describe how the project aligns with the CCC Pillars
               </li>
               <li className="flex items-center gap-2">
-                <ArrowRight className="w-4 h-4 text-red-800 flex-shrink-0" />
                 Describe how the partner fits with the CCC Selection Criteria
               </li>
               <li className="flex items-center gap-2">
-                <ArrowRight className="w-4 h-4 text-red-800 flex-shrink-0" />
                 CCC Project Ideas, Draft Concepts are tracked by the CCC Team (
                 <a href="#!" className="text-blue-500 hover:text-blue-700 underline">
                   LINK

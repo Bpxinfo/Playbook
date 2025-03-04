@@ -78,6 +78,11 @@ const PAObjectives = lazy(() => import('@/pages/project-archetype/Objectives.jsx
 const CorePrinciples = lazy(() => import('@/pages/project-archetype/CorePrinciples.jsx'));
 const CCCProjectLifecycle = lazy(() => import('@/pages/project-archetype/ccc-project-lifecycle.jsx'));
 const CCCProjectTypes = lazy(() => import('@/pages/project-archetype/ProjectTypes.jsx'));
+const CollaborativeStudies = lazy(() => import('@/pages/project-archetype/CollaborativeStudies.jsx'));
+const ISR = lazy(() => import('@/pages/project-archetype/ISR.jsx'));
+const FeeForService = lazy(() => import('@/pages/project-archetype/FeeForService.jsx'));
+const Sponsorships = lazy(() => import('@/pages/project-archetype/Sponsorships.jsx'));
+const Grants = lazy(() => import('@/pages/project-archetype/Grants.jsx'));
 
 // Glossary
 const GlossaryOfTerms = lazy(() => import('@/pages/glossary/GlossaryOfTerms.jsx'));
@@ -199,11 +204,19 @@ function App() {
           <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
 
           {/*Project Archetype */}
-          <Route path="/projects-archetypes" element={<ProjectArchetypeHome />} />
-          <Route path="/projects-archetypes/objectives" element={<PAObjectives />} />
-          <Route path="/projects-archetypes/core-principles" element={<CorePrinciples />} />
-          <Route path="/projects-archetypes/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
-          <Route path="/projects-archetypes/ccc-project-types" element={<CCCProjectTypes />} />
+          <Route path="/project-archetype" element={<ProjectArchetypeHome />} />
+          <Route path="/project-archetype/objectives" element={<PAObjectives />} />
+          <Route path="/project-archetype/core-principles" element={<CorePrinciples />} />
+          <Route path="/project-archetype/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
+          <Route path="/project-archetype/ccc-project-types" element={<CCCProjectTypes />} />
+          
+          {/* New Project Archetype Pages */}
+          <Route path="/project-archetype/collaborative-studies" element={<CollaborativeStudies />} />
+          <Route path="/project-archetype/isrs" element={<ISR />} />
+          <Route path="/project-archetype/fee-for-service" element={<FeeForService />} />
+          <Route path="/project-archetype/sponsorships" element={<Sponsorships />} />
+          <Route path="/project-archetype/grants" element={<Grants />} />
+
           {/* Glossary of Terms */}
           <Route path="/glossary" element={<GlossaryOfTerms />} />
 

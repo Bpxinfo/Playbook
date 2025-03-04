@@ -127,20 +127,40 @@ const Breadcrumbs = () => {
       parent: 'systems'
     },
     // Projects Archetypes
-    'projects-archetypes': {
+    'project-archetype': {
       label: 'Projects Archetypes'
     },
     'core-principles': {
       label: 'CORE Principles',
-      parent: 'projects-archetypes'
+      parent: 'project-archetype'
     },
     'ccc-project-lifecycle': {
       label: 'CCC Project Lifecycle',
-      parent: 'projects-archetypes'
+      parent: 'project-archetype'
     },
     'ccc-project-types': {
       label: 'CCC Project Types',
-      parent: 'projects-archetypes'
+      parent: 'project-archetype'
+    },
+    'collaborative-studies': {
+      label: 'Collaborative Studies',
+      parent: 'core-principles'
+    },
+    'isrs': {
+      label: 'ISRs',
+      parent: 'core-principles'
+    },
+    'fee-for-service': {
+      label: 'Fee For Service',
+      parent: 'core-principles'
+    },
+    'sponsorships': {
+      label: 'Sponsorships',
+      parent: 'core-principles'
+    },
+    'grants': {
+      label: 'Grants',
+      parent: 'core-principles'
     },
     // Glossary
     'glossary': {

@@ -9,7 +9,7 @@ export default function ProjectArchetypeHome() {
     {
       title: "Objectives",
       description: "Understand the core objectives and goals of the CCC Playbook, including its purpose as a centralized knowledge base and key success metrics.",
-      path: "/playbook-app-overview/objectives",
+      path: "/project-archetype/objectives",
       icon: Book
     },
     {
@@ -21,13 +21,13 @@ export default function ProjectArchetypeHome() {
     {
       title: "CCC Project Lifecycle",
       description: "Learn about the different phases and stages of CCC projects, from inception to completion, ensuring consistent project delivery.",
-      path: "/project-archetype/project-lifecycle",
+      path: "/project-archetype/ccc-project-lifecycle",
       icon: Book
     },
     {
       title: "CCC Project Types",
       description: "Discover the various types of projects within the CCC initiative and understand their unique characteristics and requirements.",
-      path: "/project-archetype/project-types",
+      path: "/project-archetype/ccc-project-types",
       icon: Book
     }
   ];

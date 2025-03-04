@@ -33,7 +33,7 @@ const CCCFAQs = () => {
     },
     {
       question: "What types of projects does CCC support?",
-      answer: "CCC supports various project types including:\n\n• Collaborative Studies (GRC/LRC): Research partnerships with external investigators or institutions\n\n• Investigator Sponsored Research (ISR): Studies initiated by external investigators\n\n• Evidence Generation Projects: Focusing on real-world implementation\n\n• Health Equity Initiatives: Addressing care gaps in underserved communities\n\n• Educational Programs: Supporting provider and patient education\n\n📖 [Learn more in Project Types](/projects-archetypes)",
+      answer: "CCC supports various project types including:\n\n• Collaborative Studies (GRC/LRC): Research partnerships with external investigators or institutions\n\n• Investigator Sponsored Research (ISR): Studies initiated by external investigators\n\n• Evidence Generation Projects: Focusing on real-world implementation\n\n• Health Equity Initiatives: Addressing care gaps in underserved communities\n\n• Educational Programs: Supporting provider and patient education\n\n📖 [Learn more in Project Types](/project-archetype)",
       icon: LineChart,
       color: "bg-pink-50"
     },

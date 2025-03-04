@@ -190,7 +190,49 @@ export const pageRegistry = {
     '/systems/internal-platforms': {
       component: () => import('@/pages/systems/InternalPlatforms'),
       title: 'Internal Platforms'
-    }
+    },
+  
+    // Project Archetype
+    '/project-archetype': {
+      component: () => import('@/pages/project-archetype/index'),
+      title: 'Project Archetype Overview'
+    },
+    '/project-archetype/objectives': {
+      component: () => import('@/pages/project-archetype/Objectives'),
+      title: 'Project Archetype Objectives'
+    },
+    '/project-archetype/core-principles': {
+      component: () => import('@/pages/project-archetype/CorePrinciples'),
+      title: 'CORE Principles'
+    },
+    '/project-archetype/ccc-project-lifecycle': {
+      component: () => import('@/pages/project-archetype/ccc-project-lifecycle'),
+      title: 'CCC Project Lifecycle'
+    },
+    '/project-archetype/ccc-project-types': {
+      component: () => import('@/pages/project-archetype/ProjectTypes'),
+      title: 'CCC Project Types'
+    },
+    '/project-archetype/collaborative-studies': {
+      component: () => import('@/pages/project-archetype/CollaborativeStudies'),
+      title: 'Collaborative Studies'
+    },
+    '/project-archetype/isrs': {
+      component: () => import('@/pages/project-archetype/ISR'),
+      title: 'Investigator Sponsored Research (ISR)'
+    },
+    '/project-archetype/fee-for-service': {
+      component: () => import('@/pages/project-archetype/FeeForService'),
+      title: 'Fee For Service'
+    },
+    '/project-archetype/sponsorships': {
+      component: () => import('@/pages/project-archetype/Sponsorships'),
+      title: 'Sponsorships'
+    },
+    '/project-archetype/grants': {
+      component: () => import('@/pages/project-archetype/Grants'),
+      title: 'Grants'
+    },
   };
   
   export async function initializeSearchIndex() {
