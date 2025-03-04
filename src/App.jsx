@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from '@/layouts/MainLayout';
 import { initializeSearchIndex } from '@/utils/pageRegistry';
 import { searchIndex } from '@/utils/searchIndex';
@@ -51,6 +51,9 @@ const OnboardingChecklist = lazy(() => import('@/pages/internal-onboarding/Onboa
 const ExternalLinks = lazy(() => import('@/pages/internal-onboarding/ExternalLinks.jsx'));
 const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSupport.jsx'));
 const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation.jsx'));
+const CCCCoreExtended = lazy(() => import('@/pages/internal-onboarding/ccc-core-extended.jsx'));
+const CCCLeadershipSteerCo = lazy(() => import('@/pages/internal-onboarding/ccc-leadership-steerco.jsx'));
+const CCCFieldTeam = lazy(() => import('@/pages/internal-onboarding/ccc-field-team.jsx'));
 
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
@@ -143,14 +146,40 @@ function App() {
 
           {/* Internal Onboarding */}
           <Route path="/internal-onboarding" element={<InternalOnboardingHome />} />
+          
+          {/* Objectives */}
           <Route path="/internal-onboarding/objectives" element={<OnboardingObjectives />} />
-          <Route path="/internal-onboarding/deepen-engagement" element={<DeepenEngagement />} />
-          <Route path="/internal-onboarding/full-integration" element={<FullIntegration />} />
-          <Route path="/internal-onboarding/immerse,-contribute" element={<ImmerseContribute />} />
-          <Route path="/internal-onboarding/onboarding-checklist" element={<OnboardingChecklist />} />
-          <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
+          
+          {/* CCC Core & Extended */}
+          <Route path="/internal-onboarding/ccc-core-extended" element={<CCCCoreExtended />} />
+          <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={<OnboardingChecklist />} />
+          <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={<WelcomeOrientation />} />
+          <Route path="/internal-onboarding/ccc-core-extended/immerse-contribute" element={<ImmerseContribute />} />
+          <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={<DeepenEngagement />} />
+          <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={<FullIntegration />} />
+          
+          {/* CCC Leadership SteerCo */}
+          <Route path="/internal-onboarding/ccc-leadership-steerco" element={<CCCLeadershipSteerCo />} />
+          <Route path="/internal-onboarding/ccc-leadership-steerco/onboarding-checklist" element={<OnboardingChecklist />} />
+          <Route path="/internal-onboarding/ccc-leadership-steerco/welcome-orientation" element={<WelcomeOrientation />} />
+          
+          {/* CCC Field Team */}
+          <Route path="/internal-onboarding/ccc-field-team" element={<CCCFieldTeam />} />
+          <Route path="/internal-onboarding/ccc-field-team/onboarding-checklist" element={<OnboardingChecklist />} />
+          <Route path="/internal-onboarding/ccc-field-team/welcome-orientation" element={<WelcomeOrientation />} />
+          
+          {/* Ongoing Support */}
           <Route path="/internal-onboarding/ongoing-support" element={<OngoingSupport />} />
-          <Route path="/internal-onboarding/welcome-orientation" element={<WelcomeOrientation />} />
+          
+          {/* Legacy routes for backward compatibility */}
+          <Route path="/internal-onboarding/ccc-core-extended/objectives" element={<Navigate to="/internal-onboarding/objectives" replace />} />
+          <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={<Navigate to="/internal-onboarding/ongoing-support" replace />} />
+          <Route path="/internal-onboarding/deepen-engagement" element={<Navigate to="/internal-onboarding/ccc-core-extended/deepen-engagement" replace />} />
+          <Route path="/internal-onboarding/full-integration" element={<Navigate to="/internal-onboarding/ccc-core-extended/full-integration" replace />} />
+          <Route path="/internal-onboarding/immerse,-contribute" element={<Navigate to="/internal-onboarding/ccc-core-extended/immerse-contribute" replace />} />
+          <Route path="/internal-onboarding/onboarding-checklist" element={<Navigate to="/internal-onboarding/ccc-core-extended/onboarding-checklist" replace />} />
+          <Route path="/internal-onboarding/welcome-orientation" element={<Navigate to="/internal-onboarding/ccc-core-extended/welcome-orientation" replace />} />
+          <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
 
           {/* Processes */}
           <Route path="/processes" element={<ProcessesHome />} />

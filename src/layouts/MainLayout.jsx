@@ -89,13 +89,36 @@ const MainLayout = ({ children }) => {
       title: 'Internal Onboarding',
       items: [
         'Objectives',
-        'Onboarding Checklist',
-        'Welcome Orientation',
-        'Immerse, Contribute',
-        'Deepen Engagement',
-        'Full Integration',
-        'Ongoing Support',
-        // 'External Links'
+        'Ongoing Support'
+      ],
+      subsections: [
+        {
+          id: 'ccc-core-extended',
+          title: 'CCC Core & Extended',
+          items: [
+            'Onboarding Checklist',
+            'Welcome Orientation',
+            'Immerse, Contribute',
+            'Deepen Engagement',
+            'Full Integration',
+          ]
+        },
+        {
+          id: 'ccc-leadership-steerco',
+          title: 'CCC Leadership SteerCo',
+          items: [
+            'Onboarding Checklist',
+            'Welcome Orientation',
+          ]
+        },
+        {
+          id: 'ccc-field-team',
+          title: 'CCC Field Team',
+          items: [
+            'Onboarding Checklist',
+            'Welcome Orientation',
+          ]
+        }
       ]
     },
     'processes': {
@@ -530,6 +553,10 @@ const MainLayout = ({ children }) => {
                 </button>
                 
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedTopSection === key && !isSidebarCollapsed ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  {section.items && (
+                    renderSectionItems(section, key)
+                  )}
+                  
                   {hasSubsections(section) && (
                     <div className="mt-2 ml-2">
                       {section.subsections.map((subsection) => (
@@ -552,10 +579,6 @@ const MainLayout = ({ children }) => {
                         </div>
                       ))}
                     </div>
-                  )}
-                  
-                  {section.items && !hasSubsections(section) && (
-                    renderSectionItems(section, key)
                   )}
                 </div>
               </div>
