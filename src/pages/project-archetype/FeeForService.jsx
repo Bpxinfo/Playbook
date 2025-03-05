@@ -16,11 +16,11 @@ const FeeForService = () => {
               <div className="space-y-4 text-black">
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
-                  <p className="italic text-gray-600">[Pending official description from Sabrina]</p>
+                  <p className="italic text-gray-600">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="text-black">[To be added]</p>
+                  <p className="text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
