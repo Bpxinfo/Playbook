@@ -431,8 +431,8 @@ const MainLayout = ({ children }) => {
                   to={path}
                   className={`flex justify-between items-center p-2 text-sm rounded-lg transition-colors ${
                     isActive
-                      ? 'bg-red-800 text-white hover:text-white'
-                      : 'text-black hover:bg-gray-100'
+                      ? 'bg-red-700 text-white hover:text-white'
+                      : 'bg-white text-black hover:bg-gray-100'
                   }`}
                   onClick={(e) => {
                     // Remove the preventDefault to allow navigation
@@ -467,8 +467,8 @@ const MainLayout = ({ children }) => {
                           to={dropdownPath}
                           className={`block p-2 text-sm rounded-lg transition-colors ${
                             isDropdownActive
-                              ? 'bg-red-800 text-white hover:text-white'
-                              : 'text-black hover:bg-gray-100'
+                              ? 'bg-red-500 text-white hover:text-white'
+                              : 'bg-white text-black hover:bg-gray-100'
                           }`}
                         >
                           {dropdownItem}
@@ -492,8 +492,8 @@ const MainLayout = ({ children }) => {
                 to={path}
                 className={`block p-2 text-sm rounded-lg transition-colors ${
                   isActive
-                    ? 'bg-red-800 text-white hover:text-white'
-                    : 'text-black hover:bg-gray-100'
+                    ? 'bg-red-700 text-white hover:text-white'
+                    : 'bg-white text-black hover:bg-gray-100'
                 }`}
               >
                 {item}
@@ -501,7 +501,7 @@ const MainLayout = ({ children }) => {
             ) : (
               <button
                 onClick={() => getItemPath(sectionKey, item)}
-                className="block w-full text-left p-2 text-sm rounded-lg transition-colors text-black hover:bg-gray-100"
+                className="block w-full text-left p-2 text-sm rounded-lg transition-colors bg-white text-black hover:bg-gray-100"
               >
                 {item}
               </button>
@@ -521,7 +521,7 @@ const MainLayout = ({ children }) => {
             <div key={item} className="mb-1">
               <button
                 onClick={() => window.open('https://www.google.com', '_blank')}
-                className={`block w-full p-2 text-sm rounded-lg transition-colors text-black bg-white hover:bg-gray-100 text-left`}
+                className={`block w-full p-2 text-sm rounded-lg transition-colors bg-white text-black hover:bg-gray-100 text-left`}
               >
                 <span className="flex items-center">
                   {item}
@@ -541,8 +541,8 @@ const MainLayout = ({ children }) => {
               to={path}
               className={`block p-2 text-sm rounded-lg transition-colors ${
                 isActive
-                  ? 'bg-red-800 text-white hover:text-white'
-                  : 'text-black hover:bg-gray-100'
+                  ? 'bg-red-500 text-white hover:text-white'
+                  : 'bg-white text-black hover:bg-gray-100'
               }`}
             >
               {item}
@@ -768,14 +768,14 @@ const MainLayout = ({ children }) => {
                   onClick={() => handleSectionClick(key)}
                   className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
                     isSectionSelected(key) 
-                      ? 'bg-red-800 text-white' 
+                      ? 'bg-red-900 text-white' 
                       : 'bg-white text-black'
                   } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
                 >
                   <div className="flex items-center">
-                    {SectionIcon && <SectionIcon className="w-5 h-5" />}
+                    {SectionIcon && <SectionIcon className={`w-5 h-5 ${isSectionSelected(key) ? 'text-white' : 'text-red-800'}`} />}
                     {!isSidebarCollapsed && (
-                      <span className="text-sm ml-2">{section.title}</span>
+                      <span className="text-sm ml-2 font-medium">{section.title}</span>
                     )}
                   </div>
                   {!isSidebarCollapsed && (
@@ -796,7 +796,7 @@ const MainLayout = ({ children }) => {
                             onClick={(e) => toggleSubSection(subsection.id, e)}
                             className={`w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300 ${
                               isSectionSelected(`${key}/${subsection.id}`)
-                                ? 'bg-red-800 text-white'
+                                ? 'bg-red-700 text-white'
                                 : 'bg-white text-black'
                             } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
                           >
