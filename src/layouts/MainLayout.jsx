@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Home,
   Search,
@@ -20,7 +20,14 @@ import {
   Link as LinkIcon,
   HelpCircle,
   ChevronRight,
-  ChevronLeft
+  ChevronLeft,
+  Menu,
+  X,
+  ExternalLink,
+  Loader,
+  FileText,
+  Hash,
+  ListIcon
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -28,6 +35,7 @@ import { searchIndex } from '../utils/searchIndex';
 import useContentSearch from '../hooks/useContentSearch';
 import { performGlobalSearch } from '../utils/searchUtils';
 import TextSelectionComment from '../components/TextSelectionComment';
+import SearchDebug from '../components/SearchDebug';
 
 // Add CSS for WebKit scrollbar hiding
 const scrollbarHideStyles = `
@@ -252,12 +260,35 @@ const MainLayout = ({ children }) => {
     setSearchTerm(value);
     
     if (value.trim().length > 1) {
-      const { displayedResults, hiddenCount } = performLocalSearch(value.trim());
-      setSearchResults({
-        results: displayedResults,
-        hiddenCount
-      });
-      setShowSearchDropdown(true);
+      // Use our enhanced search functionality
+      console.log('MainLayout: Searching for', value.trim());
+      
+      // Ensure searchContent is available
+      if (typeof searchContent !== 'function') {
+        console.error('MainLayout: searchContent is not a function', searchContent);
+        return;
+      }
+      
+      try {
+        const results = performGlobalSearch(value.trim(), navigationItems, searchContent, 10);
+        console.log('MainLayout: Search results', results);
+        
+        if (Array.isArray(results)) {
+          setSearchResults({
+            results: results.slice(0, 5),
+            hiddenCount: results.length > 5 ? results.length - 5 : 0
+          });
+          setShowSearchDropdown(true);
+        } else {
+          console.error('MainLayout: Results are not an array', results);
+          setSearchResults({ results: [], hiddenCount: 0 });
+          setShowSearchDropdown(false);
+        }
+      } catch (error) {
+        console.error('MainLayout: Error performing search', error);
+        setSearchResults({ results: [], hiddenCount: 0 });
+        setShowSearchDropdown(false);
+      }
     } else {
       setSearchResults({ results: [], hiddenCount: 0 });
       setShowSearchDropdown(false);
@@ -896,11 +927,13 @@ const MainLayout = ({ children }) => {
                 placeholder="Search"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300 w-full"
+                aria-label="Search the playbook"
+                autoComplete="off"
               />
               <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
               {showSearchDropdown && (
-                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200">
+                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
                   {searchResults.results.length > 0 ? (
                     <>
                       {searchResults.results.map((result, index) => (
@@ -911,9 +944,11 @@ const MainLayout = ({ children }) => {
                           onClick={() => setShowSearchDropdown(false)}
                         >
                           <span className="font-medium text-red-800">{result.title}</span>
-                          <span className="text-sm text-gray-600 line-clamp-1">
-                            {result.excerpt}
-                          </span>
+                          {result.excerpt && (
+                            <span className="text-sm text-gray-600 line-clamp-1">
+                              {result.excerpt}
+                            </span>
+                          )}
                         </Link>
                       ))}
                       {searchResults.hiddenCount > 0 && (
@@ -922,7 +957,7 @@ const MainLayout = ({ children }) => {
                           className="w-full px-4 py-2 text-center bg-gray-50 text-sm text-red-800 border-t hover:bg-gray-100"
                           onClick={() => setShowSearchDropdown(false)}
                         >
-                          View {searchResults.hiddenCount} more results
+                          View all {searchResults.hiddenCount + searchResults.results.length} results
                         </Link>
                       )}
                     </>
@@ -963,6 +998,9 @@ const MainLayout = ({ children }) => {
         <span style={{ color: '#4D4D4D', fontSize: '14px' }}>Powered by</span>
         <img src="/bpxlogo.svg" alt="BPX Logo" style={{ height: '20px' }} />
       </div>
+
+      {/* Add search debug component */}
+      <SearchDebug />
     </div>
   );
 };

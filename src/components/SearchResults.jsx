@@ -1,13 +1,61 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, ArrowRight, Loader } from 'lucide-react';
+import { FileText, ArrowRight, Loader, Hash, FileTextIcon, ListIcon } from 'lucide-react';
+
+// Helper function to highlight matched text
+const HighlightedText = ({ text, searchTerm }) => {
+  if (!searchTerm || !text) return <span>{text}</span>;
+  
+  const normalizedSearchTerm = searchTerm.toLowerCase();
+  const normalizedText = text.toLowerCase();
+  const index = normalizedText.indexOf(normalizedSearchTerm);
+  
+  if (index === -1) return <span>{text}</span>;
+  
+  const before = text.substring(0, index);
+  const match = text.substring(index, index + searchTerm.length);
+  const after = text.substring(index + searchTerm.length);
+  
+  return (
+    <span>
+      {before}
+      <span className="bg-yellow-200 text-black font-medium">{match}</span>
+      {after}
+    </span>
+  );
+};
+
+// Get appropriate icon for result type
+const getResultIcon = (result) => {
+  // Check if the path contains a fragment identifier (heading)
+  if (result.path.includes('#')) {
+    return <Hash className="w-6 h-6 text-red-800" />;
+  }
+  
+  // Check if the excerpt mentions a list
+  if (result.excerpt && result.excerpt.toLowerCase().includes('list')) {
+    return <ListIcon className="w-6 h-6 text-red-800" />;
+  }
+  
+  // Default to document icon
+  return <FileText className="w-6 h-6 text-red-800" />;
+};
 
 const SearchResults = ({ results, searchTerm, isLoading }) => {
   const navigate = useNavigate();
 
   const handleResultClick = (path) => {
     if (path) {
-      navigate(path);
+      console.log('Navigating to:', path);
+      
+      // Make sure path starts with a slash
+      const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+      
+      // Remove any search parameters if present
+      const cleanPath = normalizedPath.split('?')[0];
+      
+      // Navigate to the cleaned path
+      navigate(cleanPath);
     }
   };
 
@@ -30,7 +78,7 @@ const SearchResults = ({ results, searchTerm, isLoading }) => {
   }
 
   return (
-    <div className="p-8">
+    <div className="bg-white rounded-lg shadow-md p-6">
       <h1 className="text-4xl font-light text-red-800 mb-8">Search Results</h1>
       <p className="text-gray-700 mb-6">
         Found {results.length} results for "{searchTerm}"
@@ -41,19 +89,19 @@ const SearchResults = ({ results, searchTerm, isLoading }) => {
           <button 
             key={index}
             onClick={() => handleResultClick(result.path)}
-            className="w-full text-left bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
+            className="w-full text-left bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start space-x-4">
               <div className="flex-shrink-0">
-                <FileText className="w-6 h-6 text-red-800" />
+                {getResultIcon(result)}
               </div>
               <div className="flex-grow">
                 <h2 className="text-lg font-semibold text-red-800 mb-2">
-                  {result.title}
+                  <HighlightedText text={result.title} searchTerm={searchTerm} />
                 </h2>
                 {result.excerpt && (
-                  <p className="text-gray-600 text-sm line-clamp-2">
-                    {result.excerpt}
+                  <p className="text-gray-600 text-sm mb-2">
+                    <HighlightedText text={result.excerpt} searchTerm={searchTerm} />
                   </p>
                 )}
                 {result.breadcrumb && (
@@ -62,15 +110,24 @@ const SearchResults = ({ results, searchTerm, isLoading }) => {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </div>
                 )}
+                {/* Show the path for debugging - can be removed in production */}
+                <div className="text-xs text-gray-400 mt-1 truncate">
+                  {result.path}
+                </div>
               </div>
             </div>
           </button>
         ))}
         
         {results.length === 0 && (
-          <p className="text-gray-600">
-            No results found for "{searchTerm}". Try different keywords or check your spelling.
-          </p>
+          <div className="text-center py-8">
+            <p className="text-gray-600 mb-2">
+              No results found for "{searchTerm}".
+            </p>
+            <p className="text-gray-500 text-sm">
+              Try different keywords, check your spelling, or use more general terms.
+            </p>
+          </div>
         )}
       </div>
     </div>

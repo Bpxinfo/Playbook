@@ -1,9 +1,29 @@
 // src/components/ContentIndexer.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import useContentSearch from '../hooks/useContentSearch';
+import { useLocation } from 'react-router-dom';
 
 const ContentIndexer = () => {
-  useContentSearch(); // Just use the hook to index content
+  const { indexCurrentPage, indexAllContent } = useContentSearch(); 
+  const location = useLocation();
+  
+  // Index all content on first load
+  useEffect(() => {
+    console.log('ContentIndexer: Initial indexing of all content');
+    indexAllContent();
+  }, []);
+  
+  // Re-index whenever the location changes
+  useEffect(() => {
+    console.log('ContentIndexer: Indexing for path', location.pathname);
+    // Small delay to ensure content is fully rendered
+    const indexTimer = setTimeout(() => {
+      indexCurrentPage();
+    }, 300);
+    
+    return () => clearTimeout(indexTimer);
+  }, [location.pathname, indexCurrentPage]);
+  
   return null; // This component doesn't render anything
 };
 
