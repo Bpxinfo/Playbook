@@ -36,6 +36,9 @@ import useContentSearch from '../hooks/useContentSearch';
 import { performGlobalSearch } from '../utils/searchUtils';
 import TextSelectionComment from '../components/TextSelectionComment';
 import SearchDebug from '../components/SearchDebug';
+import { Sidebar, SidebarBody, SidebarLink } from '../components/Sidebar';
+import { AnimatePresence, motion } from 'motion/react';
+import { cn } from '../lib/utils';
 
 // Add CSS for WebKit scrollbar hiding
 const scrollbarHideStyles = `
@@ -61,6 +64,9 @@ const MainLayout = ({ children }) => {
   const navContainerRef = useRef(null);
   const [navOverflow, setNavOverflow] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  
+  // New state for the new sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const navigationItems = {
     'playbook-overview': {
@@ -713,269 +719,299 @@ const MainLayout = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Add style tag for scrollbar hiding */}
-      <style>{scrollbarHideStyles}</style>
-      
-      <div className={`${isSidebarCollapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white shadow-lg relative transition-all duration-300`}>
-        <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center space-x-4">
-          <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <Home className="w-5 h-5 text-red-800" />
-            {!isSidebarCollapsed && (
-              <span className="ml-2 text-red-800 font-medium">CCC Playbook</span>
-            )}
+    <div className="min-h-screen bg-gray-50 relative">
+      {/* Top Navigation Bar - Keep it intact */}
+      <header className="py-3 px-4 bg-white border-b border-gray-200 sticky top-0 z-50 flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          {/* CCC Digital Playbook icon/link */}
+          <Link to="/" className="flex items-center">
+            <Home className="w-5 h-5 text-red-800 mr-2" />
+            <span className="text-xl font-semibold text-red-800">CCC Digital Playbook</span>
           </Link>
-          <button 
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="absolute z-50 -right-3 top-4 bg-white rounded-full p-1 shadow-md"
-          >
-            {isSidebarCollapsed ? (
-              <PanelLeftOpen className="w-5 h-5 text-gray-600" />
-            ) : (
-              <PanelLeftClose className="w-5 h-5 text-gray-600" />
-            )}
-          </button>
         </div>
         
-        {/* Navigation scroll buttons - only show when overflow is detected */}
-        {navOverflow && !isSidebarCollapsed && (
-          <>
-            {/* Top scroll button and gradient */}
-            <div 
-              className={`absolute z-40 left-0 top-16 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
-                scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
-              }`}
-            ></div>
-            <button 
-              onClick={() => handleNavScroll('up')}
-              className={`absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md ${
-                scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
-              } transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800`}
-              aria-label="Scroll navigation up"
-            >
-              <ChevronUp className="w-5 h-5 text-red-800" />
-            </button>
-            
-            {/* Bottom scroll button and gradient */}
-            <div 
-              className={`absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300 ${
-                navContainerRef.current && 
-                (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
-                  ? 'opacity-0' 
-                  : 'opacity-100'
-              }`}
-            ></div>
-            <button 
-              onClick={() => handleNavScroll('down')}
-              className={`absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md ${
-                navContainerRef.current && 
-                (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
-                  ? 'opacity-0 pointer-events-none' 
-                  : 'opacity-90'
-              } transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800`}
-              aria-label="Scroll navigation down"
-            >
-              <ChevronDown className="w-5 h-5 text-red-800" />
-            </button>
-          </>
-        )}
-        
-        <nav 
-          ref={navContainerRef}
-          className="p-2 bg-white overflow-y-auto scrollbar-hide"
-          style={{ 
-            height: 'calc(100vh - 64px)',
-            scrollBehavior: 'smooth',
-            msOverflowStyle: 'none', /* IE and Edge */
-            scrollbarWidth: 'none' /* Firefox */
-          }}
-          onScroll={updateScrollState}
-        >
-          {Object.entries(navigationItems).map(([key, section]) => {
-            const SectionIcon = sectionConfig[key].icon;
-            return (
-              <div key={key} className="mb-2">
-                <button
-                  onClick={() => handleSectionClick(key)}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-all duration-300 ${
-                    isSectionSelected(key) 
-                      ? 'bg-red-900 text-white' 
-                      : 'bg-white text-black'
-                  } ${!isSectionSelected(key) && 'hover:bg-gray-100'}`}
-                >
-                  <div className="flex items-center">
-                    {SectionIcon && <SectionIcon className={`w-5 h-5 ${isSectionSelected(key) ? 'text-white' : 'text-red-800'}`} />}
-                    {!isSidebarCollapsed && (
-                      <span className="text-sm ml-2 font-medium">{section.title}</span>
-                    )}
-                  </div>
-                  {!isSidebarCollapsed && (
-                    <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
-                  )}
-                </button>
-                
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedTopSection === key && !isSidebarCollapsed ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  {section.items && (
-                    renderSectionItems(section, key)
-                  )}
-                  
-                  {hasSubsections(section) && (
-                    <div className="mt-2 ml-2">
-                      {section.subsections.map((subsection) => (
-                        <div key={subsection.id} className="mb-2">
-                          <button
-                            onClick={(e) => toggleSubSection(subsection.id, e)}
-                            className={`w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300 ${
-                              isSectionSelected(`${key}/${subsection.id}`)
-                                ? 'bg-red-700 text-white'
-                                : 'bg-white text-black'
-                            } ${!isSectionSelected(`${key}/${subsection.id}`) && 'hover:bg-gray-100'}`}
-                          >
-                            <span className="text-sm">{subsection.title}</span>
-                            <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
-                          </button>
-                          
-                          <div className={`overflow-hidden transition-all duration-300 ease-in-out ${expandedSubSection === subsection.id ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                            {renderSubsectionItems(section, key, subsection)}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </nav>
-      </div>
+        {/* Center Navigation Links */}
+        <div className="flex items-center space-x-6">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC SharePoint
+          </a>
+          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC Roadmap
+          </a>
+          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+            CCC Teams
+          </a>
+        </div>
 
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="bg-white h-16 px-4 border-b shadow-sm flex justify-between items-center">
-          {/* Left-aligned group */}
-          <div className="flex items-center space-x-6">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC SharePoint
-            </a>
-            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Roadmap
-            </a>
-            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
-              CCC Teams
-            </a>
+        {/* Right-aligned group with Quick Links and Feedback dropdowns */}
+        <div className="flex items-center space-x-4">
+          <div className="relative group">
+            <button className="flex items-center text-red-800 hover:text-red-700 bg-white">
+              <LinkIcon className="w-4 h-4 mr-2" />
+              Quick Links
+              <ChevronDown className="w-4 h-4 ml-1" />
+            </button>
+            {/* Add invisible bridge to maintain hover */}
+            <div className="absolute w-full h-2 bg-transparent" />
+            <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+              <div className="py-2">
+                <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  FAQs
+                </Link>
+                <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <Shield className="w-4 h-4 mr-2" />
+                  Compliance Guidance
+                </Link>
+                <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <Database className="w-4 h-4 mr-2" />
+                  SOPs & Resources
+                </Link>
+              </div>
+            </div>
+          </div>
+          
+          <div className="relative group">
+            <button className="flex items-center text-red-800 hover:text-red-700 bg-white transition-colors">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Feedback
+              <ChevronDown className="w-4 h-4 ml-1" />
+            </button>
+            {/* Add invisible bridge to maintain hover */}
+            <div className="absolute w-full h-2 bg-transparent" />
+            <div className="absolute z-50 mt-0 w-48 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+              <div className="py-2">
+                <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <MessageSquare className="w-4 h-4 mr-2" />
+                  Leave Feedback
+                </Link>
+                <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  See All Feedback
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Right-aligned group */}
-          <div className="flex items-center space-x-4">
-            <div 
-              className="relative group"
-            >
-              <button className="flex items-center text-red-800 hover:text-red-700 bg-white">
-                <LinkIcon className="w-4 h-4 mr-2" />
-                Quick Links
-                <ChevronDown className="w-4 h-4 ml-1" />
-              </button>
-              {/* Add invisible bridge to maintain hover */}
-              <div className="absolute w-full h-2 bg-transparent" />
-              <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
-                <div className="py-2">
-                  <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <BookOpen className="w-4 h-4 mr-2" />
-                    FAQs
-                  </Link>
-                  <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <Shield className="w-4 h-4 mr-2" />
-                    Compliance Guidance
-                  </Link>
-                  <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <Database className="w-4 h-4 mr-2" />
-                    SOPs & Resources
-                  </Link>
-                </div>
+          {/* Search bar */}
+          <form 
+            onSubmit={navigateToSearchResults}
+            className="flex items-center"
+          >
+            <div className="relative w-64" ref={searchRef}>
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-gray-400" />
               </div>
-            </div>
-            <div className="relative group">
-              <button className="flex items-center text-red-800 hover:text-red-700 bg-white transition-colors">
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Feedback
-                <ChevronDown className="w-4 h-4 ml-1" />
-              </button>
-              {/* Add invisible bridge to maintain hover */}
-              <div className="absolute w-full h-2 bg-transparent" />
-              <div className="absolute z-50 mt-0 w-48 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
-                <div className="py-2">
-                  <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <MessageSquare className="w-4 h-4 mr-2" />
-                    Leave Feedback
-                  </Link>
-                  <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                    <BookOpen className="w-4 h-4 mr-2" />
-                    See All Feedback
-                  </a>
-                </div>
-              </div>
-            </div>
-            <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                navigateToSearchResults();
-              }} 
-              className="relative" 
-              ref={searchRef}
-            >
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="pl-10 pr-4 py-2 border rounded-lg bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-gray-300 w-full"
-                aria-label="Search the playbook"
-                autoComplete="off"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                onFocus={() => {
+                  if (searchTerm.trim().length > 1) {
+                    setShowSearchDropdown(true);
+                  }
+                }}
               />
-              <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
-              {showSearchDropdown && (
-                <div className="absolute z-50 w-full mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto">
-                  {searchResults.results.length > 0 ? (
-                    <>
-                      {searchResults.results.map((result, index) => (
-                        <Link
-                          key={index}
-                          to={result.path}
-                          className="w-full px-4 py-3 text-left hover:bg-gray-50 flex flex-col border-b last:border-b-0"
-                          onClick={() => setShowSearchDropdown(false)}
-                        >
-                          <span className="font-medium text-red-800">{result.title}</span>
-                          {result.excerpt && (
-                            <span className="text-sm text-gray-600 line-clamp-1">
-                              {result.excerpt}
-                            </span>
-                          )}
-                        </Link>
-                      ))}
-                      {searchResults.hiddenCount > 0 && (
-                        <Link
-                          to={`/search?q=${encodeURIComponent(searchTerm.trim())}`}
-                          className="w-full px-4 py-2 text-center bg-gray-50 text-sm text-red-800 border-t hover:bg-gray-100"
-                          onClick={() => setShowSearchDropdown(false)}
-                        >
-                          View all {searchResults.hiddenCount + searchResults.results.length} results
-                        </Link>
-                      )}
-                    </>
-                  ) : (
-                    <div className="px-4 py-3 text-gray-500">No matches found</div>
+              
+              {showSearchDropdown && searchResults.results.length > 0 && (
+                <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md z-50 max-h-96 overflow-y-auto border border-gray-200">
+                  {searchResults.results.map((result, idx) => (
+                    <Link
+                      key={`${result.path}-${idx}`}
+                      to={result.path}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-0"
+                      onClick={() => setShowSearchDropdown(false)}
+                    >
+                      <div className="font-medium">{result.title}</div>
+                      <div className="text-xs text-gray-500">{result.excerpt}</div>
+                    </Link>
+                  ))}
+                  
+                  {searchResults.hiddenCount > 0 && (
+                    <button
+                      onClick={navigateToSearchResults}
+                      className="block w-full px-4 py-2 text-sm text-center text-red-800 hover:bg-gray-100 font-medium"
+                    >
+                      See all {searchResults.hiddenCount + searchResults.results.length} results
+                    </button>
                   )}
                 </div>
               )}
-            </form>
-          </div>
+            </div>
+            <button
+              type="submit"
+              className="ml-2 p-2 rounded-md bg-red-800 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+            >
+              <Search className="h-4 w-4" />
+            </button>
+          </form>
         </div>
-        
-        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
-          <div className="container mx-auto px-6 py-8">
+      </header>
+
+      <div className="flex flex-1">
+        {/* New Sidebar Implementation */}
+        <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}>
+          <SidebarBody className="bg-white">
+            <nav 
+              ref={navContainerRef}
+              className={cn(
+                "p-2 overflow-y-auto scrollbar-hide",
+                !sidebarOpen && "flex flex-col items-center"
+              )}
+              style={{ 
+                height: 'calc(100vh - 64px)',
+                scrollBehavior: 'smooth',
+                msOverflowStyle: 'none', /* IE and Edge */
+                scrollbarWidth: 'none' /* Firefox */
+              }}
+              onScroll={updateScrollState}
+            >
+              {Object.entries(navigationItems).map(([key, section]) => {
+                const SectionIcon = sectionConfig[key].icon;
+                return (
+                  <div key={key} className={cn("mb-2", !sidebarOpen && "w-full flex justify-center")}>
+                    <button
+                      onClick={() => handleSectionClick(key)}
+                      className={cn(
+                        "flex items-center transition-all duration-300 rounded-lg",
+                        sidebarOpen ? "w-full justify-between p-3" : "p-2 justify-center",
+                        isSectionSelected(key) 
+                          ? 'bg-red-900 text-white' 
+                          : 'bg-white text-black hover:bg-gray-100'
+                      )}
+                    >
+                      <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
+                        {SectionIcon && (
+                          <SectionIcon className={cn("w-5 h-5", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
+                        )}
+                        <motion.span 
+                          animate={{
+                            display: sidebarOpen ? "inline-block" : "none",
+                            opacity: sidebarOpen ? 1 : 0,
+                          }}
+                          className="text-sm ml-2 font-medium"
+                        >
+                          {section.title}
+                        </motion.span>
+                      </div>
+                      {sidebarOpen && (
+                        <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
+                      )}
+                    </button>
+                    
+                    <AnimatePresence>
+                      {expandedTopSection === key && sidebarOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          {section.items && (
+                            renderSectionItems(section, key)
+                          )}
+                          
+                          {hasSubsections(section) && (
+                            <div className="mt-2 ml-2">
+                              {section.subsections.map((subsection) => (
+                                <div key={subsection.id} className="mb-2">
+                                  <button
+                                    onClick={(e) => toggleSubSection(subsection.id, e)}
+                                    className={cn(
+                                      "w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300",
+                                      isSectionSelected(`${key}/${subsection.id}`)
+                                        ? 'bg-red-700 text-white'
+                                        : 'bg-white text-black hover:bg-gray-100'
+                                    )}
+                                  >
+                                    <span className="text-sm">{subsection.title}</span>
+                                    <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
+                                  </button>
+                                  
+                                  <AnimatePresence>
+                                    {expandedSubSection === subsection.id && (
+                                      <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="overflow-hidden"
+                                      >
+                                        {renderSubsectionItems(section, key, subsection)}
+                                      </motion.div>
+                                    )}
+                                  </AnimatePresence>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </nav>
+            
+            {/* Add scroll buttons for navigation */}
+            {navOverflow && (
+              <>
+                {/* Top scroll button and gradient */}
+                <div 
+                  className={`absolute z-40 left-0 top-0 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
+                    scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
+                  }`}
+                ></div>
+                <button 
+                  onClick={() => handleNavScroll('up')}
+                  className={cn(
+                    "absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                    scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
+                  )}
+                  aria-label="Scroll navigation up"
+                >
+                  <ChevronUp className="w-5 h-5 text-red-800" />
+                </button>
+                
+                {/* Bottom scroll button and gradient */}
+                <div 
+                  className={cn(
+                    "absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300",
+                    navContainerRef.current && 
+                    (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                      ? 'opacity-0' 
+                      : 'opacity-100'
+                  )}
+                ></div>
+                <button 
+                  onClick={() => handleNavScroll('down')}
+                  className={cn(
+                    "absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                    navContainerRef.current && 
+                    (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                      ? 'opacity-0 pointer-events-none' 
+                      : 'opacity-90'
+                  )}
+                  aria-label="Scroll navigation down"
+                >
+                  <ChevronDown className="w-5 h-5 text-red-800" />
+                </button>
+              </>
+            )}
+          </SidebarBody>
+        </Sidebar>
+
+        {/* Main Content - Keep it intact */}
+        <main className="flex-1 p-6">
+          <div className="max-w-7xl mx-auto">
             <Breadcrumbs />
-            {children}
+            <div className="mt-4">
+              {children}
+            </div>
           </div>
-          <TextSelectionComment />
         </main>
       </div>
 
@@ -1001,6 +1037,11 @@ const MainLayout = ({ children }) => {
 
       {/* Add search debug component */}
       <SearchDebug />
+
+      {/* Styles */}
+      <style>
+        {scrollbarHideStyles}
+      </style>
     </div>
   );
 };
