@@ -76,8 +76,18 @@ export const performGlobalSearch = (query, navigationItems = {}, searchContent, 
   // Remove duplicates based on path
   const uniqueResults = deduplicateResults(combinedResults);
   
+  // Filter out any results that point to the search page itself
+  const filteredResults = uniqueResults.filter(result => {
+    if (!result || !result.path) return false;
+    
+    // Remove any result where the path is exactly '/search' or starts with '/search?'
+    return !(result.path === '/search' || result.path.startsWith('/search?'));
+  });
+  
+  console.log(`[performGlobalSearch] Filtered out ${uniqueResults.length - filteredResults.length} search page results`);
+  
   // Sort by relevance and limit results if needed
-  const finalResults = sortAndLimitResults(uniqueResults, query, maxResults);
+  const finalResults = sortAndLimitResults(filteredResults, query, maxResults);
   console.log(`[performGlobalSearch] Returning ${finalResults.length} final results`);
   
   return finalResults;

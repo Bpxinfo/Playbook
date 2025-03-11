@@ -41,6 +41,51 @@ const getResultIcon = (result) => {
   return <FileText className="w-6 h-6 text-red-800" />;
 };
 
+// Helper to extract a more descriptive title from the path
+const getDescriptiveTitle = (result) => {
+  // If we have a meaningful title that's not just "CCC Playbook", use it
+  if (result.title && 
+     !result.title.includes("CCC Playbook") && 
+     !result.title.toLowerCase().includes("playbook")) {
+    return result.title;
+  }
+  
+  // Otherwise extract from path
+  if (result.path) {
+    // Get the last segment of the path after removing any trailing slash
+    const pathWithoutTrailingSlash = result.path.endsWith('/') 
+      ? result.path.slice(0, -1) 
+      : result.path;
+    
+    // Split path and get the last meaningful segment
+    const pathParts = pathWithoutTrailingSlash
+      .split('/')
+      .filter(Boolean);
+    
+    if (pathParts.length > 0) {
+      // Get the last path segment and format it
+      const lastSegment = pathParts[pathParts.length - 1];
+      
+      // Handle fragment identifiers (e.g., #section-name)
+      if (lastSegment.startsWith('#')) {
+        return lastSegment.substring(1)
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+      }
+      
+      // Format the path segment into a readable title
+      return lastSegment
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    }
+  }
+  
+  // Fallback to original title or a default
+  return result.title || "Page";
+};
+
 const SearchResults = ({ results, searchTerm, isLoading }) => {
   const navigate = useNavigate();
 
@@ -97,7 +142,7 @@ const SearchResults = ({ results, searchTerm, isLoading }) => {
               </div>
               <div className="flex-grow">
                 <h2 className="text-lg font-semibold text-red-800 mb-2">
-                  <HighlightedText text={result.title} searchTerm={searchTerm} />
+                  <HighlightedText text={getDescriptiveTitle(result)} searchTerm={searchTerm} />
                 </h2>
                 {result.excerpt && (
                   <p className="text-gray-600 text-sm mb-2">
