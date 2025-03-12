@@ -726,7 +726,7 @@ const MainLayout = ({ children }) => {
           {/* CCC Digital Playbook icon/link */}
           <Link to="/" className="flex items-center">
             <Home className="w-5 h-5 text-red-800 mr-2" />
-            <span className="text-xl font-semibold text-red-800">CCC Digital Playbook</span>
+            <span className="text-xl font-semibold text-red-800">CCC Playbook</span>
           </Link>
         </div>
         
@@ -852,157 +852,159 @@ const MainLayout = ({ children }) => {
 
       <div className="flex flex-1">
         {/* New Sidebar Implementation */}
-        <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}>
-          <SidebarBody className="bg-white">
-            <nav 
-              ref={navContainerRef}
-              className={cn(
-                "p-2 overflow-y-auto scrollbar-hide",
-                !sidebarOpen && "flex flex-col items-center"
-              )}
-              style={{ 
-                height: 'calc(100vh - 64px)',
-                scrollBehavior: 'smooth',
-                msOverflowStyle: 'none', /* IE and Edge */
-                scrollbarWidth: 'none' /* Firefox */
-              }}
-              onScroll={updateScrollState}
-            >
-              {Object.entries(navigationItems).map(([key, section]) => {
-                const SectionIcon = sectionConfig[key].icon;
-                return (
-                  <div key={key} className={cn("mb-2", !sidebarOpen && "w-full flex justify-center")}>
-                    <button
-                      onClick={() => handleSectionClick(key)}
-                      className={cn(
-                        "flex items-center transition-all duration-300 rounded-lg",
-                        sidebarOpen ? "w-full justify-between p-3" : "p-2 justify-center",
-                        isSectionSelected(key) 
-                          ? 'bg-red-900 text-white' 
-                          : 'bg-white text-black hover:bg-gray-100'
-                      )}
-                    >
-                      <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
-                        {SectionIcon && (
-                          <SectionIcon className={cn("w-5 h-5", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
+        <div className="sticky top-[64px] h-[calc(100vh-64px)] z-40">
+          <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}>
+            <SidebarBody className="bg-white h-full">
+              <nav 
+                ref={navContainerRef}
+                className={cn(
+                  "p-2 overflow-y-auto scrollbar-hide",
+                  !sidebarOpen && "flex flex-col items-center"
+                )}
+                style={{ 
+                  height: 'calc(100vh - 64px)',
+                  scrollBehavior: 'smooth',
+                  msOverflowStyle: 'none', /* IE and Edge */
+                  scrollbarWidth: 'none' /* Firefox */
+                }}
+                onScroll={updateScrollState}
+              >
+                {Object.entries(navigationItems).map(([key, section]) => {
+                  const SectionIcon = sectionConfig[key].icon;
+                  return (
+                    <div key={key} className={cn("mb-2", !sidebarOpen && "w-full flex justify-center")}>
+                      <button
+                        onClick={() => handleSectionClick(key)}
+                        className={cn(
+                          "flex items-center transition-all duration-300 rounded-lg",
+                          sidebarOpen ? "w-full justify-between p-3" : "p-2 justify-center",
+                          isSectionSelected(key) 
+                            ? 'bg-red-900 text-white' 
+                            : 'bg-white text-black hover:bg-gray-100'
                         )}
-                        <motion.span 
-                          animate={{
-                            display: sidebarOpen ? "inline-block" : "none",
-                            opacity: sidebarOpen ? 1 : 0,
-                          }}
-                          className="text-sm ml-2 font-medium"
-                        >
-                          {section.title}
-                        </motion.span>
-                      </div>
-                      {sidebarOpen && (
-                        <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
-                      )}
-                    </button>
-                    
-                    <AnimatePresence>
-                      {expandedTopSection === key && sidebarOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          {section.items && (
-                            renderSectionItems(section, key)
+                      >
+                        <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
+                          {SectionIcon && (
+                            <SectionIcon className={cn("w-5 h-5", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
                           )}
-                          
-                          {hasSubsections(section) && (
-                            <div className="mt-2 ml-2">
-                              {section.subsections.map((subsection) => (
-                                <div key={subsection.id} className="mb-2">
-                                  <button
-                                    onClick={(e) => toggleSubSection(subsection.id, e)}
-                                    className={cn(
-                                      "w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300",
-                                      isSectionSelected(`${key}/${subsection.id}`)
-                                        ? 'bg-red-700 text-white'
-                                        : 'bg-white text-black hover:bg-gray-100'
-                                    )}
-                                  >
-                                    <span className="text-sm">{subsection.title}</span>
-                                    <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
-                                  </button>
-                                  
-                                  <AnimatePresence>
-                                    {expandedSubSection === subsection.id && (
-                                      <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="overflow-hidden"
-                                      >
-                                        {renderSubsectionItems(section, key, subsection)}
-                                      </motion.div>
-                                    )}
-                                  </AnimatePresence>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </nav>
-            
-            {/* Add scroll buttons for navigation */}
-            {navOverflow && (
-              <>
-                {/* Top scroll button and gradient */}
-                <div 
-                  className={`absolute z-40 left-0 top-0 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
-                    scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
-                  }`}
-                ></div>
-                <button 
-                  onClick={() => handleNavScroll('up')}
-                  className={cn(
-                    "absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
-                    scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
-                  )}
-                  aria-label="Scroll navigation up"
-                >
-                  <ChevronUp className="w-5 h-5 text-red-800" />
-                </button>
-                
-                {/* Bottom scroll button and gradient */}
-                <div 
-                  className={cn(
-                    "absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300",
-                    navContainerRef.current && 
-                    (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
-                      ? 'opacity-0' 
-                      : 'opacity-100'
-                  )}
-                ></div>
-                <button 
-                  onClick={() => handleNavScroll('down')}
-                  className={cn(
-                    "absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
-                    navContainerRef.current && 
-                    (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
-                      ? 'opacity-0 pointer-events-none' 
-                      : 'opacity-90'
-                  )}
-                  aria-label="Scroll navigation down"
-                >
-                  <ChevronDown className="w-5 h-5 text-red-800" />
-                </button>
-              </>
-            )}
-          </SidebarBody>
-        </Sidebar>
+                          <motion.span 
+                            animate={{
+                              display: sidebarOpen ? "inline-block" : "none",
+                              opacity: sidebarOpen ? 1 : 0,
+                            }}
+                            className="text-sm ml-2 font-medium"
+                          >
+                            {section.title}
+                          </motion.span>
+                        </div>
+                        {sidebarOpen && (
+                          <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
+                        )}
+                      </button>
+                      
+                      <AnimatePresence>
+                        {expandedTopSection === key && sidebarOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                          >
+                            {section.items && (
+                              renderSectionItems(section, key)
+                            )}
+                            
+                            {hasSubsections(section) && (
+                              <div className="mt-2 ml-2">
+                                {section.subsections.map((subsection) => (
+                                  <div key={subsection.id} className="mb-2">
+                                    <button
+                                      onClick={(e) => toggleSubSection(subsection.id, e)}
+                                      className={cn(
+                                        "w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300",
+                                        isSectionSelected(`${key}/${subsection.id}`)
+                                          ? 'bg-red-700 text-white'
+                                          : 'bg-white text-black hover:bg-gray-100'
+                                      )}
+                                    >
+                                      <span className="text-sm">{subsection.title}</span>
+                                      <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    
+                                    <AnimatePresence>
+                                      {expandedSubSection === subsection.id && (
+                                        <motion.div
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: "auto", opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          transition={{ duration: 0.3 }}
+                                          className="overflow-hidden"
+                                        >
+                                          {renderSubsectionItems(section, key, subsection)}
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </nav>
+              
+              {/* Add scroll buttons for navigation */}
+              {navOverflow && (
+                <>
+                  {/* Top scroll button and gradient */}
+                  <div 
+                    className={`absolute z-40 left-0 top-0 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
+                      scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  ></div>
+                  <button 
+                    onClick={() => handleNavScroll('up')}
+                    className={cn(
+                      "absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                      scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
+                    )}
+                    aria-label="Scroll navigation up"
+                  >
+                    <ChevronUp className="w-5 h-5 text-red-800" />
+                  </button>
+                  
+                  {/* Bottom scroll button and gradient */}
+                  <div 
+                    className={cn(
+                      "absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300",
+                      navContainerRef.current && 
+                      (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                        ? 'opacity-0' 
+                        : 'opacity-100'
+                    )}
+                  ></div>
+                  <button 
+                    onClick={() => handleNavScroll('down')}
+                    className={cn(
+                      "absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                      navContainerRef.current && 
+                      (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
+                        ? 'opacity-0 pointer-events-none' 
+                        : 'opacity-90'
+                    )}
+                    aria-label="Scroll navigation down"
+                  >
+                    <ChevronDown className="w-5 h-5 text-red-800" />
+                  </button>
+                </>
+              )}
+            </SidebarBody>
+          </Sidebar>
+        </div>
 
         {/* Main Content - Keep it intact */}
         <main className="flex-1 p-6">

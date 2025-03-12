@@ -37,11 +37,14 @@ export const Sidebar = ({
   children,
   open,
   setOpen,
-  animate
+  animate,
+  className
 }) => {
   return (
     (<SidebarProvider open={open} setOpen={setOpen} animate={animate}>
-      {children}
+      <div className={className}>
+        {children}
+      </div>
     </SidebarProvider>)
   );
 };

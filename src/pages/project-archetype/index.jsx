@@ -124,7 +124,7 @@ export default function ProjectArchetypeHome() {
       </div>
 
       <div className="mb-16">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">CORE Project Types</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">CCC Project Types</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {coreProjectTypes.map((projectType, index) => {
             const IconComponent = projectType.icon;
