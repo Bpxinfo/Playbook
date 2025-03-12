@@ -27,7 +27,9 @@ import {
   Loader,
   FileText,
   Hash,
-  ListIcon
+  ListIcon,
+  Lock,
+  Unlock
 } from 'lucide-react'; 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -65,8 +67,10 @@ const MainLayout = ({ children }) => {
   const [navOverflow, setNavOverflow] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   
-  // New state for the new sidebar
+  // New state for the sidebar
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  // New state for locking the sidebar
+  const [sidebarLocked, setSidebarLocked] = useState(false);
 
   const navigationItems = {
     'playbook-overview': {
@@ -853,13 +857,66 @@ const MainLayout = ({ children }) => {
       <div className="flex flex-1">
         {/* New Sidebar Implementation */}
         <div className="sticky top-[64px] h-[calc(100vh-64px)] z-40">
-          <Sidebar open={sidebarOpen} setOpen={setSidebarOpen}>
-            <SidebarBody className="bg-white h-full">
+          <Sidebar 
+            open={sidebarOpen} 
+            locked={sidebarLocked}
+            setOpen={(open) => {
+              // Only set sidebar open state if it's not locked or we're explicitly opening it
+              if (!sidebarLocked || open) {
+                setSidebarOpen(open);
+              }
+            }}
+          >
+            <SidebarBody className={cn(
+              "bg-white h-full transition-all duration-300",
+              sidebarLocked && "border-r-2 border-red-200"
+            )}>
+              {/* Lock button with tooltip */}
+              <div className={cn(
+                "absolute z-50 transition-all duration-300 group",
+                sidebarOpen ? "top-2 right-4" : "top-0 left-1/2 -translate-x-1/2" // Center at top when collapsed
+              )}>
+                <button
+                  onClick={() => {
+                    setSidebarLocked(!sidebarLocked);
+                    // If we're locking the sidebar, make sure it's open
+                    if (!sidebarLocked) {
+                      setSidebarOpen(true);
+                    }
+                  }}
+                  className={cn(
+                    "rounded-full transition-all shadow-sm hover:bg-gray-100",
+                    sidebarOpen 
+                      ? "p-1.5 bg-white" 
+                      : "p-2 mt-1.5 bg-white/90 backdrop-blur-sm", // Slightly larger when collapsed with translucent bg
+                    sidebarLocked ? 'ring-1 ring-red-400' : ''
+                  )}
+                  aria-label={sidebarLocked ? "Unlock sidebar" : "Lock sidebar"}
+                >
+                  {sidebarLocked ? (
+                    <Lock className={cn("text-red-800", sidebarOpen ? "w-4 h-4" : "w-5 h-5")} />
+                  ) : (
+                    <Unlock className={cn("text-gray-500", sidebarOpen ? "w-4 h-4" : "w-5 h-5")} />
+                  )}
+                </button>
+                
+                {/* Tooltip */}
+                <div className={cn(
+                  "absolute mt-2 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50",
+                  sidebarOpen ? "right-0 top-full w-48" : "left-1/2 top-full w-32 -translate-x-1/2"
+                )}>
+                  {sidebarLocked 
+                    ? "Sidebar is locked open" 
+                    : "Lock sidebar open"}
+                </div>
+              </div>
+              
               <nav 
                 ref={navContainerRef}
                 className={cn(
                   "p-2 overflow-y-auto scrollbar-hide",
-                  !sidebarOpen && "flex flex-col items-center"
+                  !sidebarOpen && "flex flex-col items-center",
+                  !sidebarOpen && "mt-7" // Add top margin when collapsed
                 )}
                 style={{ 
                   height: 'calc(100vh - 64px)',

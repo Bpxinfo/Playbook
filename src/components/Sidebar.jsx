@@ -19,7 +19,8 @@ export const SidebarProvider = ({
   children,
   open: openProp,
   setOpen: setOpenProp,
-  animate = true
+  animate = true,
+  locked = false
 }) => {
   const [openState, setOpenState] = useState(false);
 
@@ -27,7 +28,7 @@ export const SidebarProvider = ({
   const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
 
   return (
-    (<SidebarContext.Provider value={{ open, setOpen, animate: animate }}>
+    (<SidebarContext.Provider value={{ open, setOpen, animate: animate, locked }}>
       {children}
     </SidebarContext.Provider>)
   );
@@ -38,10 +39,11 @@ export const Sidebar = ({
   open,
   setOpen,
   animate,
+  locked,
   className
 }) => {
   return (
-    (<SidebarProvider open={open} setOpen={setOpen} animate={animate}>
+    (<SidebarProvider open={open} setOpen={setOpen} animate={animate} locked={locked}>
       <div className={className}>
         {children}
       </div>
@@ -61,7 +63,7 @@ export const DesktopSidebar = ({
   children,
   ...props
 }) => {
-  const { open, setOpen, animate } = useSidebar();
+  const { open, setOpen, animate, locked } = useSidebar();
   return (<>
     <motion.div
       className={cn(
@@ -73,7 +75,11 @@ export const DesktopSidebar = ({
         width: animate ? (open ? "300px" : "80px") : "300px",
       }}
       onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseLeave={() => {
+        if (!locked) {
+          setOpen(false);
+        }
+      }}
       {...props}>
       {children}
     </motion.div>
