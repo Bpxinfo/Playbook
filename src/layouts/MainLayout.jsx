@@ -1095,7 +1095,7 @@ const MainLayout = ({ children }) => {
       </div>
 
       {/* Add search debug component */}
-      <SearchDebug />
+      {/* <SearchDebug /> */}
 
       {/* Styles */}
       <style>
