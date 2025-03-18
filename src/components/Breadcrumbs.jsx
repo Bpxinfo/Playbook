@@ -144,23 +144,23 @@ const Breadcrumbs = () => {
     },
     'collaborative-studies': {
       label: 'Collaborative Studies',
-      parent: 'core-principles'
+      parent: 'project-archetype'
     },
     'isrs': {
       label: 'ISRs',
-      parent: 'core-principles'
+      parent: 'project-archetype'
     },
     'fee-for-service': {
       label: 'Fee For Service',
-      parent: 'core-principles'
+      parent: 'project-archetype'
     },
     'sponsorships': {
       label: 'Sponsorships',
-      parent: 'core-principles'
+      parent: 'project-archetype'
     },
     'grants': {
       label: 'Grants',
-      parent: 'core-principles'
+      parent: 'project-archetype'
     },
     // Glossary
     'glossary': {

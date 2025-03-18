@@ -35,15 +35,6 @@ export default function ProjectArchetypeHome() {
       icon: Layout
     },
     {
-      title: "CCC Project Lifecycle",
-      description: "Learn about the different phases and stages of CCC projects, from inception to completion, ensuring consistent project delivery.",
-      path: "/project-archetype/ccc-project-lifecycle",
-      icon: GitBranch
-    }
-  ];
-
-  const coreProjectTypes = [
-    {
       title: "Collaborative Studies",
       description: "Explore collaborative research initiatives that bring together multiple stakeholders to advance cancer care.",
       path: "/project-archetype/collaborative-studies",
@@ -72,6 +63,12 @@ export default function ProjectArchetypeHome() {
       description: "Learn about grant-based projects and how they contribute to advancing community cancer care initiatives.",
       path: "/project-archetype/grants",
       icon: Award
+    },
+    {
+      title: "CCC Project Lifecycle",
+      description: "Learn about the different phases and stages of CCC projects, from inception to completion, ensuring consistent project delivery.",
+      path: "/project-archetype/ccc-project-lifecycle",
+      icon: GitBranch
     }
   ];
 
@@ -126,12 +123,12 @@ export default function ProjectArchetypeHome() {
       <div className="mb-16">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">CCC Project Types</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreProjectTypes.map((projectType, index) => {
-            const IconComponent = projectType.icon;
+          {sections.map((section, index) => {
+            const IconComponent = section.icon;
             return (
               <button
                 key={index}
-                onClick={() => navigate(projectType.path)}
+                onClick={() => navigate(section.path)}
                 className={`${projectTypeColors[index]} p-6 rounded-lg shadow-md hover:shadow-xl transition-all group text-left relative overflow-hidden`}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full bg-white opacity-10"></div>
@@ -139,9 +136,9 @@ export default function ProjectArchetypeHome() {
                   <div className="p-3 rounded-full bg-white mr-4 shadow-sm">
                     <IconComponent className="w-6 h-6 text-red-800" />
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800">{projectType.title}</h2>
+                  <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
                 </div>
-                <p className="text-gray-600 pr-6 mb-4">{projectType.description}</p>
+                <p className="text-gray-600 pr-6 mb-4">{section.description}</p>
                 <div className="flex justify-end">
                   <div className="flex items-center text-red-800 font-medium group-hover:text-red-700">
                     <span className="mr-1">Learn more</span>

@@ -178,20 +178,14 @@ const MainLayout = ({ children }) => {
       title: 'Projects Archetypes',
       items: [
         'Objectives', 
-        {
-          title: 'CORE Principles',
-          hasDropdown: true,
-          dropdownItems: [
-            'Collaborative Studies',
-            'ISRs',
-            'Fee For Service',
-            'Sponsorships',
-            'Grants'
-          ]
-        },
-        'CCC Project Lifecycle',
-        // 'CCC Project Types' // Removing this as it's being split into separate pages
-        ]
+        'CORE Principles',
+        'Collaborative Studies',
+        'ISRs',
+        'Fee For Service',
+        'Sponsorships',
+        'Grants',
+        'CCC Project Lifecycle'
+      ]
     },
     'systems': {
       title: 'Systems',
