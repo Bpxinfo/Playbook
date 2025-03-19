@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.2",
     "@supabase/supabase-js": "^2.49.1",
     "@tabler/icons-react": "^3.31.0",
     "@tippyjs/react": "^4.2.6",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
     "fuse.js": "^7.1.0",

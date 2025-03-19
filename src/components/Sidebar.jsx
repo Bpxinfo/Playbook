@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const SidebarContext = createContext(undefined);
 
@@ -19,18 +20,24 @@ export const SidebarProvider = ({
   children,
   open: openProp,
   setOpen: setOpenProp,
-  animate = true,
-  locked = false
+  animate = true
 }) => {
-  const [openState, setOpenState] = useState(false);
+  const [openState, setOpenState] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   const open = openProp !== undefined ? openProp : openState;
   const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
 
   return (
-    (<SidebarContext.Provider value={{ open, setOpen, animate: animate, locked }}>
+    <SidebarContext.Provider value={{ 
+      open, 
+      setOpen, 
+      animate,
+      isHovered,
+      setIsHovered
+    }}>
       {children}
-    </SidebarContext.Provider>)
+    </SidebarContext.Provider>
   );
 };
 
@@ -39,15 +46,14 @@ export const Sidebar = ({
   open,
   setOpen,
   animate,
-  locked,
   className
 }) => {
   return (
-    (<SidebarProvider open={open} setOpen={setOpen} animate={animate} locked={locked}>
+    <SidebarProvider open={open} setOpen={setOpen} animate={animate}>
       <div className={className}>
         {children}
       </div>
-    </SidebarProvider>)
+    </SidebarProvider>
   );
 };
 
@@ -63,27 +69,68 @@ export const DesktopSidebar = ({
   children,
   ...props
 }) => {
-  const { open, setOpen, animate, locked } = useSidebar();
-  return (<>
-    <motion.div
-      className={cn(
-        "h-full py-4 hidden md:flex md:flex-col bg-white dark:bg-white w-[300px] shrink-0",
-        open ? "px-4" : "px-2",
-        className
+  const { open, setOpen, animate, isHovered, setIsHovered } = useSidebar();
+  
+  return (
+    <>
+      {/* Hover area for collapsed state */}
+      {!open && (
+        <div 
+          className="fixed left-0 top-[64px] h-[calc(100vh-64px)] w-1 z-50 hover:w-[250px] transition-all duration-300"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        />
       )}
-      animate={{
-        width: animate ? (open ? "300px" : "80px") : "300px",
-      }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => {
-        if (!locked) {
-          setOpen(false);
-        }
-      }}
-      {...props}>
-      {children}
-    </motion.div>
-  </>);
+      
+      {/* Expand arrow for collapsed state */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="fixed left-0 top-1/2 -translate-y-1/2 z-50 bg-white p-2 rounded-r-lg shadow-md hover:bg-gray-100 transition-colors"
+          aria-label="Expand sidebar"
+        >
+          <ChevronRight className="w-5 h-5 text-gray-600" />
+        </button>
+      )}
+
+      <motion.div
+        className={cn(
+          "h-full py-4 hidden md:flex md:flex-col bg-white dark:bg-white shrink-0 relative overflow-visible",
+          open ? "px-4" : "px-0 w-0",
+          className
+        )}
+        animate={{
+          width: animate ? (open ? "250px" : "0px") : "250px",
+        }}
+        transition={{
+          duration: 0.3,
+          ease: "easeInOut"
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        {...props}
+      >
+        {/* Collapse arrow */}
+        <button
+          onClick={() => setOpen(false)}
+          className={cn(
+            "absolute -right-3 top-1/2 -translate-y-1/2 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 transition-colors z-[999]",
+            !open && "hidden"
+          )}
+          aria-label="Collapse sidebar"
+        >
+          <ChevronLeft className="w-4 h-4 text-gray-600" />
+        </button>
+
+        <div className={cn(
+          "transition-all duration-300 relative",
+          !open && "opacity-0 invisible w-0"
+        )}>
+          {children}
+        </div>
+      </motion.div>
+    </>
+  );
 };
 
 export const MobileSidebar = ({
@@ -137,19 +184,27 @@ export const SidebarLink = ({
 }) => {
   const { open, animate } = useSidebar();
   return (
-    (<Link
+    <Link
       to={link.href}
-      className={cn("flex items-center justify-start gap-2 group/sidebar py-2", className)}
-      {...props}>
-      {link.icon}
-      <motion.span
-        animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
-          opacity: animate ? (open ? 1 : 0) : 1,
-        }}
-        className="text-black dark:text-black text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0">
+      className={cn(
+        "flex items-center justify-start gap-2 group/sidebar py-2 transition-all duration-300",
+        !open && "opacity-0 invisible w-0 overflow-hidden",
+        className
+      )}
+      {...props}
+    >
+      <div className={cn(
+        "transition-all duration-300",
+        !open && "opacity-0 invisible w-0"
+      )}>
+        {link.icon}
+      </div>
+      <span className={cn(
+        "text-black dark:text-black text-sm group-hover/sidebar:translate-x-1 transition-all duration-150 whitespace-pre",
+        !open && "opacity-0 invisible w-0"
+      )}>
         {link.label}
-      </motion.span>
-    </Link>)
+      </span>
+    </Link>
   );
 }; 

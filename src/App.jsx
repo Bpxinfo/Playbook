@@ -7,6 +7,7 @@ import ContentIndexer from '@/components/ContentIndexer';
 import { AuthProvider } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Login from '@/pages/Login';
+import Signup from '@/pages/Signup';
 import LandingPage from '@/components/LandingPage';
 
 // Lazy load all page components
@@ -107,6 +108,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route element={<MainLayout />}>
             <Route path="/ccc-playbook" element={<ProtectedRoute><PlaybookHome /></ProtectedRoute>} />
             <Route path="/playbook-overview" element={

@@ -3,19 +3,33 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { User, LogOut, Edit, ChevronDown, Save, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Modal } from './ui/modal';
+import SignupFormDemo from './signup-form-demo';
 
 const UserIcon = () => {
   const { user, isGuest, signOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: user?.user_metadata?.firstName || '',
-    lastName: user?.user_metadata?.lastName || '',
-    email: user?.email || ''
+    firstName: '',
+    lastName: '',
+    email: ''
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const dropdownRef = useRef(null);
+
+  // Update formData when user state changes
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.user_metadata?.firstName || '',
+        lastName: user.user_metadata?.lastName || '',
+        email: user.email || ''
+      });
+    }
+  }, [user]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -51,7 +65,8 @@ const UserIcon = () => {
   };
 
   const renderUserIcon = () => {
-    if (!user) {
+    // If user is not logged in and not a guest
+    if (!user && !isGuest) {
       return (
         <div className="flex items-center space-x-4">
           <Link
@@ -60,12 +75,12 @@ const UserIcon = () => {
           >
             Sign In
           </Link>
-          <Link
-            to="/signup"
+          <button
+            onClick={() => setIsSignupModalOpen(true)}
             className="text-sm font-medium text-white bg-red-800 px-3 py-1 rounded-md hover:bg-red-700"
           >
             Sign Up
-          </Link>
+          </button>
         </div>
       );
     }
@@ -77,7 +92,7 @@ const UserIcon = () => {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 focus:outline-none"
+          className="flex items-center space-x-2 focus:outline-none bg-white"
         >
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-800 to-red-600 flex items-center justify-center text-white font-medium hover:scale-110 transition-transform">
             {hasInitials ? initials : <User className="w-5 h-5" />}
@@ -99,16 +114,18 @@ const UserIcon = () => {
                   <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
                     Welcome, Guest
                   </div>
-                  <Link
-                    to="/signup"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setIsOpen(false)}
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsSignupModalOpen(true);
+                    }}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
                   >
                     Sign Up
-                  </Link>
+                  </button>
                   <Link
                     to="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-gray-700 bg-white"
                     onClick={() => setIsOpen(false)}
                   >
                     Log In with Account
@@ -118,64 +135,59 @@ const UserIcon = () => {
                       signOut();
                       setIsOpen(false);
                     }}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
                   >
                     End Guest Session
                   </button>
                 </>
               ) : (
                 <>
-                  <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
-                    Welcome, {formData.firstName} {formData.lastName}
-                  </div>
-                  
                   {isEditing ? (
-                    <form onSubmit={handleSubmit} className="px-4 py-2">
+                    <form onSubmit={handleSubmit} className="p-4">
+                      {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
+                      {success && <div className="text-green-500 text-sm mb-2">{success}</div>}
                       <div className="space-y-3">
                         <div>
-                          <label className="block text-xs font-medium text-gray-700">First Name</label>
+                          <label className="block text-sm font-medium text-gray-700">First Name</label>
                           <input
                             type="text"
                             value={formData.firstName}
                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 text-sm"
-                            required
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-gray-700">Last Name</label>
+                          <label className="block text-sm font-medium text-gray-700">Last Name</label>
                           <input
                             type="text"
                             value={formData.lastName}
                             onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 text-sm"
-                            required
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-gray-700">Email</label>
+                          <label className="block text-sm font-medium text-gray-700">Email</label>
                           <input
                             type="email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 text-sm"
-                            required
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
+                            disabled
                           />
                         </div>
                       </div>
-                      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-                      {success && <p className="mt-2 text-sm text-green-600">{success}</p>}
                       <div className="mt-4 flex justify-end space-x-2">
                         <button
                           type="button"
                           onClick={() => setIsEditing(false)}
-                          className="px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                          className="inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                         >
+                          <X className="w-4 h-4 mr-1" />
                           Cancel
                         </button>
                         <button
                           type="submit"
-                          className="px-3 py-1 text-sm text-white bg-red-800 rounded hover:bg-red-700 flex items-center"
+                          className="inline-flex items-center px-3 py-1 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-800 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                         >
                           <Save className="w-4 h-4 mr-1" />
                           Save
@@ -212,7 +224,18 @@ const UserIcon = () => {
     );
   };
 
-  return renderUserIcon();
+  return (
+    <>
+      {renderUserIcon()}
+      <Modal
+        isOpen={isSignupModalOpen}
+        onClose={() => setIsSignupModalOpen(false)}
+        title="Welcome to the CCC Playbook"
+      >
+        <SignupFormDemo onClose={() => setIsSignupModalOpen(false)} />
+      </Modal>
+    </>
+  );
 };
 
 export default UserIcon; 

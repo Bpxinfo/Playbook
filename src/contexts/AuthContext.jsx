@@ -72,10 +72,10 @@ export const AuthProvider = ({ children }) => {
         provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/ccc-playbook`,
+          scopes: 'email profile', // Use scopes, not queryParams.scope
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
-            scope: 'openid offline_access email profile'
           },
         }
       });

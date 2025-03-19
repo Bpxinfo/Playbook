@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import React from "react";
-import { AuroraBackground } from "./ui/aurora-background";
+import React, { useState } from "react";
+import { AuroraBackground } from "./ui/aurora-background.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Modal } from "./ui/modal";
+import SignupFormDemo from "./signup-form-demo";
 
 interface User {
   id: string;
@@ -17,15 +19,16 @@ interface AuthContextType {
   // Add other auth context properties as needed
 }
 
-export default function LandingPage() {
+const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth() as AuthContextType;
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
   const handleStartClick = () => {
     if (user) {
       navigate("/ccc-playbook");
     } else {
-      navigate("/login");
+      setIsSignupModalOpen(true);
     }
   };
 
@@ -54,6 +57,17 @@ export default function LandingPage() {
           Start Now
         </button>
       </motion.div>
+
+      {/* Signup Modal */}
+      <Modal
+        isOpen={isSignupModalOpen}
+        onClose={() => setIsSignupModalOpen(false)}
+        title="Welcome to the CCC Playbook"
+      >
+        <SignupFormDemo onClose={() => setIsSignupModalOpen(false)} />
+      </Modal>
     </AuroraBackground>
   );
-} 
+};
+
+export default LandingPage; 
