@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Book, ArrowRight } from 'lucide-react';
 
-export default function PlaybookOverviewHome() {
+export default function PlaybookHome() {
   const navigate = useNavigate();
 
   const sections = [
     {
       title: "Objectives",
       description: "Understand the core objectives and goals of the CCC Playbook, including its purpose as a centralized knowledge base and key success metrics.",
-      path: "/playbook-app-overview/objectives",
+      path: "/playbook-overview/objectives",
       icon: Book
     }
   ];

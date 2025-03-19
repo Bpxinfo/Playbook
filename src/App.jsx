@@ -4,6 +4,10 @@ import MainLayout from '@/layouts/MainLayout';
 import { initializeSearchIndex } from '@/utils/pageRegistry';
 import { searchIndex } from '@/utils/searchIndex';
 import ContentIndexer from '@/components/ContentIndexer';
+import { AuthProvider } from '@/contexts/AuthContext';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import Login from '@/pages/Login';
+import LandingPage from '@/components/LandingPage';
 
 // Lazy load all page components
 const HomePage = lazy(() => import('@/pages/index.jsx'));
@@ -12,7 +16,6 @@ const SearchPage = lazy(() => import('@/pages/SearchPage.jsx'));
 
 // Playbook app overview
 const PlaybookHome = lazy(() => import('@/pages/playbook-app/index.jsx'));
-const PlaybookOverview = lazy(() => import('@/pages/playbook-app/index.jsx'));
 const PlaybookObjectives = lazy(() => import('@/pages/playbook-app/Objectives.jsx'));
 
 // CCC Initiative Overview
@@ -93,152 +96,397 @@ const CCCFAQs = lazy(() => import('@/pages/faqs/FAQs.jsx'));
 function App() {
   useEffect(() => {
     const initSearch = async () => {
-      try {
-        // Initialize page content indexing
-        const pages = await initializeSearchIndex();
-        if (pages) {
-          Object.entries(pages).forEach(([path, pageData]) => {
-            try {
-              searchIndex.indexPage(path, pageData);
-            } catch (error) {
-              console.warn(`Error indexing page ${path}:`, error);
-              // Fallback: Try to index with minimal data if extractContent fails
-              if (error.toString().includes('extractContent is not a function')) {
-                console.log('Using fallback indexing for:', path);
-                const title = pageData.title || path.split('/').pop();
-                const metadata = pageData.metadata || '';
-                searchIndex.indexPageContent(path.toLowerCase(), `${title} ${metadata}`);
-              }
-            }
-          });
-        }
-      } catch (error) {
-        console.error('Error initializing search:', error);
-      }
+      await initializeSearchIndex();
     };
-  
     initSearch();
   }, []);
 
   return (
-    <MainLayout>
-      <ContentIndexer />
+    <AuthProvider>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          {/* Components*/}
-          <Route path="/feedback" element={<FeedbackForm />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<MainLayout />}>
+            <Route path="/ccc-playbook" element={<ProtectedRoute><PlaybookHome /></ProtectedRoute>} />
+            <Route path="/playbook-overview" element={
+              <ProtectedRoute>
+                <PlaybookHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/playbook-overview/objectives" element={
+              <ProtectedRoute>
+                <PlaybookObjectives />
+              </ProtectedRoute>
+            } />
 
-          {/* Playbook App Overview */}
-          <Route path="/playbook-overview" element={<PlaybookOverview />} />
-          <Route path="/playbook-overview/objectives" element={<PlaybookObjectives />} />
+            {/* CCC Initiative */}
+            <Route path="/ccc-overview" element={
+              <ProtectedRoute>
+                <CCCInitiativeHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/ccc-overview/objectives" element={
+              <ProtectedRoute>
+                <CCCOverview />
+              </ProtectedRoute>
+            } />
+            <Route path="/ccc-overview/strategic-pillars" element={
+              <ProtectedRoute>
+                <StrategicPillars />
+              </ProtectedRoute>
+            } />
+            <Route path="/ccc-overview/key-messaging" element={
+              <ProtectedRoute>
+                <KeyMessages />
+              </ProtectedRoute>
+            } />
+            <Route path="/ccc-overview/stakeholders" element={
+              <ProtectedRoute>
+                <Stakeholders />
+              </ProtectedRoute>
+            } />
+            <Route path="/ccc-overview/patient-impact" element={
+              <ProtectedRoute>
+                <PatientImpact />
+              </ProtectedRoute>
+            } />
 
-          {/* CCC Initiative */}
-          <Route path="/ccc-overview" element={<CCCInitiativeHome />} />
-          <Route path="/ccc-overview/objectives" element={<CCCOverview />} />
-          <Route path="/ccc-overview/strategic-pillars" element={<StrategicPillars />} />
-          <Route path="/ccc-overview/key-messaging" element={<KeyMessages />} />
-          <Route path="/ccc-overview/stakeholders" element={<Stakeholders />} />
-          <Route path="/ccc-overview/patient-impact" element={<PatientImpact />} />
+            {/* Communication Plan - Internal */}
+            <Route path="/communications" element={
+              <ProtectedRoute>
+                <CommunicationsHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan" element={
+              <ProtectedRoute>
+                <InternalCommsHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/objectives" element={
+              <ProtectedRoute>
+                <InternalObjectives />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/channels" element={
+              <ProtectedRoute>
+                <Channels />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/ccc-stakeholders" element={
+              <ProtectedRoute>
+                <CCCStakeholders />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/cadence" element={
+              <ProtectedRoute>
+                <Cadence />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/strategies-&-tactics" element={
+              <ProtectedRoute>
+                <StrategiesTactics />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-comms-plan/timeline" element={
+              <ProtectedRoute>
+                <Timeline />
+              </ProtectedRoute>
+            } />
 
+            {/* Communication Plan - Engagement */}
+            <Route path="/communications/internal-engagement/objectives" element={
+              <ProtectedRoute>
+                <EngagementObjectives />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-engagement" element={
+              <ProtectedRoute>
+                <CommEngHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-engagement/communication-path" element={
+              <ProtectedRoute>
+                <CommunicationPlan />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-engagement/impact-monitoring" element={
+              <ProtectedRoute>
+                <LeadershipSteerCoMonitoring />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-engagement/internal-engagement-strategies" element={
+              <ProtectedRoute>
+                <InternalEngagementStrategies />
+              </ProtectedRoute>
+            } />
+            <Route path="/communications/internal-engagement/internal-engagement-plan" element={
+              <ProtectedRoute>
+                <InternalEngagementPlan />
+              </ProtectedRoute>
+            } />
 
-          {/* Communication Plan - Internal */}
-          <Route path="/communications" element={<CommunicationsHome />} />
-          <Route path="/communications/internal-comms-plan" element={<InternalCommsHome />} />
-          <Route path="/communications/internal-comms-plan/objectives" element={<InternalObjectives />} />
-          <Route path="/communications/internal-comms-plan/channels" element={<Channels />} />
-          <Route path="/communications/internal-comms-plan/ccc-stakeholders" element={<CCCStakeholders />} />
-          <Route path="/communications/internal-comms-plan/cadence" element={<Cadence />} />
-          <Route path="/communications/internal-comms-plan/strategies-&-tactics" element={<StrategiesTactics />} />
-          <Route path="/communications/internal-comms-plan/timeline" element={<Timeline />} />
+            {/* Internal Onboarding */}
+            <Route path="/internal-onboarding" element={
+              <ProtectedRoute>
+                <InternalOnboardingHome />
+              </ProtectedRoute>
+            } />
+            
+            {/* Objectives */}
+            <Route path="/internal-onboarding/objectives" element={
+              <ProtectedRoute>
+                <OnboardingObjectives />
+              </ProtectedRoute>
+            } />
+            
+            {/* CCC Core & Extended */}
+            <Route path="/internal-onboarding/ccc-core-extended" element={
+              <ProtectedRoute>
+                <CCCCoreExtended />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={
+              <ProtectedRoute>
+                <OnboardingChecklist />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={
+              <ProtectedRoute>
+                <WelcomeOrientation />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/immerse,-contribute" element={
+              <ProtectedRoute>
+                <ImmerseContribute />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={
+              <ProtectedRoute>
+                <DeepenEngagement />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={
+              <ProtectedRoute>
+                <FullIntegration />
+              </ProtectedRoute>
+            } />
+            
+            {/* CCC Leadership SteerCo */}
+            <Route path="/internal-onboarding/ccc-leadership-steerco" element={
+              <ProtectedRoute>
+                <CCCLeadershipSteerCo />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-leadership-steerco/onboarding-checklist" element={
+              <ProtectedRoute>
+                <OnboardingChecklist />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-leadership-steerco/welcome-orientation" element={
+              <ProtectedRoute>
+                <WelcomeOrientation />
+              </ProtectedRoute>
+            } />
+            
+            {/* CCC Field Team */}
+            <Route path="/internal-onboarding/ccc-field-team" element={
+              <ProtectedRoute>
+                <CCCFieldTeam />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-field-team/onboarding-checklist" element={
+              <ProtectedRoute>
+                <OnboardingChecklist />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-field-team/welcome-orientation" element={
+              <ProtectedRoute>
+                <WelcomeOrientation />
+              </ProtectedRoute>
+            } />
+            
+            {/* Ongoing Support */}
+            <Route path="/internal-onboarding/ongoing-support" element={
+              <ProtectedRoute>
+                <OngoingSupport />
+              </ProtectedRoute>
+            } />
+            
+            {/* Legacy routes for backward compatibility */}
+            <Route path="/internal-onboarding/ccc-core-extended/objectives" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/objectives" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ongoing-support" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/deepen-engagement" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ccc-core-extended/deepen-engagement" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/full-integration" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ccc-core-extended/full-integration" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/immerse,-contribute" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ccc-core-extended/immerse-contribute" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/onboarding-checklist" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ccc-core-extended/onboarding-checklist" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/welcome-orientation" element={
+              <ProtectedRoute>
+                <Navigate to="/internal-onboarding/ccc-core-extended/welcome-orientation" replace />
+              </ProtectedRoute>
+            } />
+            <Route path="/internal-onboarding/external-links" element={
+              <ProtectedRoute>
+                <ExternalLinks />
+              </ProtectedRoute>
+            } />
 
-          {/* Communication Plan - Engagement */}
-          <Route path="/communications/internal-engagement/objectives" element={<EngagementObjectives />} />
-          <Route path="/communications/internal-engagement" element={<CommEngHome />} />
-          <Route path="/communications/internal-engagement/communication-path" element={<CommunicationPlan />} />
-          <Route path="/communications/internal-engagement/impact-monitoring" element={<LeadershipSteerCoMonitoring />} />
-          <Route path="/communications/internal-engagement/internal-engagement-strategies" element={<InternalEngagementStrategies />} />
-          <Route path="/communications/internal-engagement/internal-engagement-plan" element={<InternalEngagementPlan />} />
+            {/* Processes */}
+            <Route path="/processes" element={
+              <ProtectedRoute>
+                <ProcessesHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/processes/objectives" element={
+              <ProtectedRoute>
+                <ProcessesObjectives />
+              </ProtectedRoute>
+            } />
+            <Route path="/processes/processes" element={
+              <ProtectedRoute>
+                <Processes />
+              </ProtectedRoute>
+            } />
+            <Route path="/processes/governance" element={
+              <ProtectedRoute>
+                <ProcessesGovernance />
+              </ProtectedRoute>
+            } />
+            <Route path="/processes/sops-&-resources" element={
+              <ProtectedRoute>
+                <LinktoSGF />
+              </ProtectedRoute>
+            } />
 
-          {/* Internal Onboarding */}
-          <Route path="/internal-onboarding" element={<InternalOnboardingHome />} />
-          
-          {/* Objectives */}
-          <Route path="/internal-onboarding/objectives" element={<OnboardingObjectives />} />
-          
-          {/* CCC Core & Extended */}
-          <Route path="/internal-onboarding/ccc-core-extended" element={<CCCCoreExtended />} />
-          <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={<OnboardingChecklist />} />
-          <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={<WelcomeOrientation />} />
-          <Route path="/internal-onboarding/ccc-core-extended/immerse,-contribute" element={<ImmerseContribute />} />
-          <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={<DeepenEngagement />} />
-          <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={<FullIntegration />} />
-          
-          {/* CCC Leadership SteerCo */}
-          <Route path="/internal-onboarding/ccc-leadership-steerco" element={<CCCLeadershipSteerCo />} />
-          <Route path="/internal-onboarding/ccc-leadership-steerco/onboarding-checklist" element={<OnboardingChecklist />} />
-          <Route path="/internal-onboarding/ccc-leadership-steerco/welcome-orientation" element={<WelcomeOrientation />} />
-          
-          {/* CCC Field Team */}
-          <Route path="/internal-onboarding/ccc-field-team" element={<CCCFieldTeam />} />
-          <Route path="/internal-onboarding/ccc-field-team/onboarding-checklist" element={<OnboardingChecklist />} />
-          <Route path="/internal-onboarding/ccc-field-team/welcome-orientation" element={<WelcomeOrientation />} />
-          
-          {/* Ongoing Support */}
-          <Route path="/internal-onboarding/ongoing-support" element={<OngoingSupport />} />
-          
-          {/* Legacy routes for backward compatibility */}
-          <Route path="/internal-onboarding/ccc-core-extended/objectives" element={<Navigate to="/internal-onboarding/objectives" replace />} />
-          <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={<Navigate to="/internal-onboarding/ongoing-support" replace />} />
-          <Route path="/internal-onboarding/deepen-engagement" element={<Navigate to="/internal-onboarding/ccc-core-extended/deepen-engagement" replace />} />
-          <Route path="/internal-onboarding/full-integration" element={<Navigate to="/internal-onboarding/ccc-core-extended/full-integration" replace />} />
-          <Route path="/internal-onboarding/immerse,-contribute" element={<Navigate to="/internal-onboarding/ccc-core-extended/immerse-contribute" replace />} />
-          <Route path="/internal-onboarding/onboarding-checklist" element={<Navigate to="/internal-onboarding/ccc-core-extended/onboarding-checklist" replace />} />
-          <Route path="/internal-onboarding/welcome-orientation" element={<Navigate to="/internal-onboarding/ccc-core-extended/welcome-orientation" replace />} />
-          <Route path="/internal-onboarding/external-links" element={<ExternalLinks />} />
+            {/* Compliance */}
+            <Route path="/compliance" element={
+              <ProtectedRoute>
+                <ComplianceGuidance />
+              </ProtectedRoute>
+            } />
 
-          {/* Processes */}
-          <Route path="/processes" element={<ProcessesHome />} />
-          <Route path="/processes/objectives" element={<ProcessesObjectives />} />
-          <Route path="/processes/processes" element={<Processes />} />
-          <Route path="/processes/governance" element={<ProcessesGovernance />} />
-          <Route path="/processes/sops-&-resources" element={<LinktoSGF />} />
+            {/* Systems */}
+            <Route path="/systems" element={
+              <ProtectedRoute>
+                <SystemsHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/systems/objectives" element={
+              <ProtectedRoute>
+                <SystemsObjectives />
+              </ProtectedRoute>
+            } />
+            <Route path="/systems/internal-platforms" element={
+              <ProtectedRoute>
+                <InternalPlatforms />
+              </ProtectedRoute>
+            } />
+            <Route path="/systems/manual-systems" element={
+              <ProtectedRoute>
+                <ManualSystems />
+              </ProtectedRoute>
+            } />
+            <Route path="/systems/links-to-process" element={
+              <ProtectedRoute>
+                <LinkstoProcess />
+              </ProtectedRoute>
+            } />
 
-          {/* Compliance */}
-          <Route path="/compliance" element={<ComplianceGuidance />} />
+            {/* Project Archetype */}
+            <Route path="/project-archetype" element={
+              <ProtectedRoute>
+                <ProjectArchetypeHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/objectives" element={
+              <ProtectedRoute>
+                <PAObjectives />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/core-principles" element={
+              <ProtectedRoute>
+                <CorePrinciples />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/ccc-project-lifecycle" element={
+              <ProtectedRoute>
+                <CCCProjectLifecycle />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/ccc-project-types" element={
+              <ProtectedRoute>
+                <CCCProjectTypes />
+              </ProtectedRoute>
+            } />
+            
+            {/* New Project Archetype Pages */}
+            <Route path="/project-archetype/collaborative-studies" element={
+              <ProtectedRoute>
+                <CollaborativeStudies />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/isrs" element={
+              <ProtectedRoute>
+                <ISR />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/fee-for-service" element={
+              <ProtectedRoute>
+                <FeeForService />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/sponsorships" element={
+              <ProtectedRoute>
+                <Sponsorships />
+              </ProtectedRoute>
+            } />
+            <Route path="/project-archetype/grants" element={
+              <ProtectedRoute>
+                <Grants />
+              </ProtectedRoute>
+            } />
 
-          {/* Systems */}
-          <Route path="/systems" element={<SystemsHome />} />
-          <Route path="/systems/objectives" element={<SystemsObjectives />} />
-          <Route path="/systems/internal-platforms" element={<InternalPlatforms />} />
-          <Route path="/systems/manual-systems" element={<ManualSystems />} />
-          <Route path="/systems/links-to-process" element={<LinkstoProcess />} />
+            {/* Glossary of Terms */}
+            <Route path="/glossary" element={
+              <ProtectedRoute>
+                <GlossaryOfTerms />
+              </ProtectedRoute>
+            } />
 
-          {/*Project Archetype */}
-          <Route path="/project-archetype" element={<ProjectArchetypeHome />} />
-          <Route path="/project-archetype/objectives" element={<PAObjectives />} />
-          <Route path="/project-archetype/core-principles" element={<CorePrinciples />} />
-          <Route path="/project-archetype/ccc-project-lifecycle" element={<CCCProjectLifecycle />} />
-          <Route path="/project-archetype/ccc-project-types" element={<CCCProjectTypes />} />
-          
-          {/* New Project Archetype Pages */}
-          <Route path="/project-archetype/collaborative-studies" element={<CollaborativeStudies />} />
-          <Route path="/project-archetype/isrs" element={<ISR />} />
-          <Route path="/project-archetype/fee-for-service" element={<FeeForService />} />
-          <Route path="/project-archetype/sponsorships" element={<Sponsorships />} />
-          <Route path="/project-archetype/grants" element={<Grants />} />
-
-          {/* Glossary of Terms */}
-          <Route path="/glossary" element={<GlossaryOfTerms />} />
-
-          {/* FAQs */}
-          <Route path="/faqs" element={<CCCFAQs />} />
-
-          {/* Default route */}
-          <Route path="/" element={<HomePage />} />
+            {/* FAQs */}
+            <Route path="/faqs" element={
+              <ProtectedRoute>
+                <CCCFAQs />
+              </ProtectedRoute>
+            } />
+          </Route>
         </Routes>
       </Suspense>
-    </MainLayout>
+    </AuthProvider>
   );
 }
 

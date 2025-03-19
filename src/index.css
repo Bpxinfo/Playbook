@@ -17,6 +17,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure form elements have black text */
+input, textarea {
+  color: #213547;
+}
+
 html, body, #root {
   width: 100%;
   height: 100%;

@@ -32,7 +32,7 @@ import {
   Unlock,
   Folders
 } from 'lucide-react'; 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { searchIndex } from '../utils/searchIndex';
 import useContentSearch from '../hooks/useContentSearch';
@@ -1065,7 +1065,7 @@ const MainLayout = ({ children }) => {
           <div className="max-w-7xl mx-auto">
             <Breadcrumbs />
             <div className="mt-4">
-              {children}
+              <Outlet />
             </div>
           </div>
         </main>

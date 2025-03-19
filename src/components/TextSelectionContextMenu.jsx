@@ -29,11 +29,11 @@ const TextSelectionContextMenu = () => {
   };
 
   const handleContextMenu = (e) => {
-    e.preventDefault();
     const selection = window.getSelection();
     const text = selection.toString().trim();
 
     if (text) {
+      e.preventDefault();
       setSelectedText(text);
       setMenuPosition({ x: e.clientX, y: e.clientY });
       setShowMenu(true);
