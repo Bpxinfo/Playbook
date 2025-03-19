@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
-            scope: 'email profile'
+            scope: 'openid offline_access email profile'
           },
         }
       });
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
           redirectTo: `${window.location.origin}/ccc-playbook`,
           queryParams: {
             response_type: 'code',
-            scope: 'openid offline_access'
+            scope: 'openid offline_access email profile'
           },
         }
       });
