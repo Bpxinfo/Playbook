@@ -97,11 +97,8 @@ export const AuthProvider = ({ children }) => {
         provider: 'azure',
         options: {
           redirectTo: `${window.location.origin}/ccc-playbook`,
-          queryParams: {
-            response_type: 'code',
-            scope: 'openid offline_access email profile'
-          },
-        }
+          scopes: 'openid offline_access email profile', // Use scopes instead of queryParams.scope
+        },
       });
       if (error) {
         console.error('Microsoft sign in error:', error);

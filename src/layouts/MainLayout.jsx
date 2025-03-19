@@ -43,6 +43,7 @@ import { Sidebar, SidebarBody, SidebarLink } from '../components/Sidebar';
 import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '../lib/utils';
 import TextSelectionContextMenu from '../components/TextSelectionContextMenu';
+import UserIcon from '../components/UserIcon';
 
 // Add CSS for WebKit scrollbar hiding
 const scrollbarHideStyles = `
@@ -848,6 +849,11 @@ const MainLayout = ({ children }) => {
               <Search className="h-4 w-4" />
             </button>
           </form>
+
+          {/* Add UserIcon component */}
+          <div className="ml-4">
+            <UserIcon />
+          </div>
         </div>
       </header>
 
