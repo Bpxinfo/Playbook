@@ -16,11 +16,17 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Only check Supabase session if not in guest mode
     if (!isGuest) {
-      supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log('Checking Supabase session...');
+      supabase.auth.getSession().then(({ data: { session }, error }) => {
+        if (error) {
+          console.error('Error getting session:', error);
+          return;
+        }
         console.log('Auth session:', session);
         setUser(session?.user ?? null);
         // If we have a user session, ensure guest mode is disabled
         if (session?.user) {
+          console.log('User session found, disabling guest mode');
           setIsGuest(false);
           localStorage.removeItem('isGuest');
         }
@@ -33,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         setUser(session?.user ?? null);
         // If we have a user session, ensure guest mode is disabled
         if (session?.user) {
+          console.log('User session found during state change, disabling guest mode');
           setIsGuest(false);
           localStorage.removeItem('isGuest');
         }
@@ -41,6 +48,7 @@ export const AuthProvider = ({ children }) => {
       return () => subscription.unsubscribe();
     } else {
       // If in guest mode, just set loading to false
+      console.log('In guest mode, skipping session check');
       setLoading(false);
     }
   }, [isGuest]);
@@ -59,6 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     try {
+      console.log('Starting Google sign in process...');
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -66,6 +75,7 @@ export const AuthProvider = ({ children }) => {
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
+            scope: 'email profile'
           },
         }
       });
@@ -82,13 +92,14 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithMicrosoft = async () => {
     try {
+      console.log('Starting Microsoft sign in process...');
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'azure',
         options: {
           redirectTo: `${window.location.origin}/ccc-playbook`,
           queryParams: {
-            access_type: 'offline',
-            prompt: 'consent',
+            response_type: 'code',
+            scope: 'openid offline_access'
           },
         }
       });
