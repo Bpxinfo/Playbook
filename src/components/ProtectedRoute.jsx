@@ -26,11 +26,11 @@ export default function ProtectedRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  // If user is authenticated and trying to access login page, redirect to home
+  // If user is authenticated and trying to access login page, redirect to ccc-playbook
   if (isAuthenticated && window.location.pathname === '/login') {
     return <Navigate to="/ccc-playbook" replace />;
   }
 
-  // User is authenticated or is a guest, render the protected content
+  // User is authenticated (or is a guest), render the protected content
   return children;
 } 

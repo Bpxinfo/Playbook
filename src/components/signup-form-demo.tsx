@@ -60,11 +60,26 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
 
       if (signUpError) throw signUpError;
 
-      // If signup is successful, close modal and navigate to home
+      // Sign in immediately after successful signup
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (signInError) throw signInError;
+
+      // If signup and signin are successful, close modal and navigate to ccc-playbook
       onClose();
       navigate("/ccc-playbook");
     } catch (err: any) {
-      setError(err.message || "An error occurred during signup");
+      // Handle specific error cases
+      if (err.message.includes('email already registered')) {
+        setError("This email is already registered. Please sign in instead.");
+      } else if (err.message.includes('password')) {
+        setError("Password must be at least 6 characters long.");
+      } else {
+        setError(err.message || "An error occurred during signup");
+      }
     } finally {
       setLoading(false);
     }
@@ -86,6 +101,17 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
 
   return (
     <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black flex flex-col items-center">
+      <div className="w-full flex justify-start mb-4">
+        <button
+          onClick={() => navigate('/login')}
+          className="text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-neutral-100 flex items-center gap-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Login
+        </button>
+      </div>
       <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
         Welcome to the CCC Playbook
       </h2>

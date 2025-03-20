@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     if (!session?.user) return;
     
     try {
+      // First check if profile exists
       const { data: existingProfile, error: fetchError } = await supabase
         .from('profiles')
         .select()
@@ -36,37 +37,44 @@ export const AuthProvider = ({ children }) => {
         `${session.user.user_metadata?.firstName || ''} ${session.user.user_metadata?.lastName || ''}`.trim() || // From our form
         session.user.email?.split('@')[0]; // Fallback to email username
 
-      // Only update if there are actual changes
-      if (!existingProfile || 
-          existingProfile.display_name !== displayName || 
-          existingProfile.email !== session.user.email || 
-          existingProfile.avatar_url !== (session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture)) {
-        
-        const updates = {
-          id: session.user.id,
-          email: session.user.email,
-          display_name: displayName,
-          avatar_url: session.user.user_metadata?.avatar_url || 
-                     session.user.user_metadata?.picture || 
-                     null,
-          updated_at: new Date().toISOString(),
-        };
-
-        if (!existingProfile) {
-          // If profile doesn't exist, include created_at and role
-          updates.created_at = new Date().toISOString();
-          updates.role = 'user';
-        }
-
-        const { error: upsertError } = await supabase
+      // If profile doesn't exist, create it
+      if (!existingProfile) {
+        const { error: insertError } = await supabase
           .from('profiles')
-          .upsert(updates, { 
-            onConflict: 'id',
-            returning: 'minimal' // Don't need to return the row
-          });
+          .insert([
+            {
+              id: session.user.id,
+              email: session.user.email,
+              display_name: displayName,
+              avatar_url: session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+            }
+          ]);
 
-        if (upsertError) {
-          console.error('Error upserting profile:', upsertError);
+        if (insertError) {
+          console.error('Error creating profile:', insertError);
+          return;
+        }
+      } else if (
+        existingProfile.display_name !== displayName || 
+        existingProfile.email !== session.user.email || 
+        existingProfile.avatar_url !== (session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture)
+      ) {
+        // Update profile if there are changes
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({
+            display_name: displayName,
+            email: session.user.email,
+            avatar_url: session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', session.user.id);
+
+        if (updateError) {
+          console.error('Error updating profile:', updateError);
+          return;
         }
       }
     } catch (error) {
@@ -108,7 +116,7 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/ccc-playbook`,
+          redirectTo: `${window.location.origin}`,
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
@@ -132,7 +140,7 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'azure',
         options: {
-          redirectTo: `${window.location.origin}/ccc-playbook`,
+          redirectTo: `${window.location.origin}`,
           scopes: 'openid email profile',
           queryParams: {
             access_type: 'offline',
