@@ -21,7 +21,7 @@ export default function ProjectArchetypeHome() {
     'bg-gradient-to-br from-orange-50 to-orange-100 border-l-4 border-orange-500',
   ];
 
-  const sections = [
+  const mainSections = [
     {
       title: "Objectives",
       description: "Understand the core objectives and goals of the CCC Projects, including their purpose and key success metrics.",
@@ -34,6 +34,15 @@ export default function ProjectArchetypeHome() {
       path: "/project-archetype/core-principles",
       icon: Layout
     },
+    {
+      title: "CCC Project Lifecycle",
+      description: "Learn about the different phases and stages of CCC projects, from inception to completion, ensuring consistent project delivery.",
+      path: "/project-archetype/ccc-project-lifecycle",
+      icon: GitBranch
+    }
+  ];
+
+  const projectTypes = [
     {
       title: "Collaborative Studies",
       description: "Explore collaborative research initiatives that bring together multiple stakeholders to advance cancer care.",
@@ -63,12 +72,6 @@ export default function ProjectArchetypeHome() {
       description: "Learn about grant-based projects and how they contribute to advancing community cancer care initiatives.",
       path: "/project-archetype/grants",
       icon: Award
-    },
-    {
-      title: "CCC Project Lifecycle",
-      description: "Learn about the different phases and stages of CCC projects, from inception to completion, ensuring consistent project delivery.",
-      path: "/project-archetype/ccc-project-lifecycle",
-      icon: GitBranch
     }
   ];
 
@@ -92,7 +95,7 @@ export default function ProjectArchetypeHome() {
       <div className="mb-16">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">Main Sections</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {sections.map((section, index) => {
+          {mainSections.map((section, index) => {
             const IconComponent = section.icon;
             return (
               <button
@@ -123,7 +126,7 @@ export default function ProjectArchetypeHome() {
       <div className="mb-16">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">CCC Project Types</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sections.map((section, index) => {
+          {projectTypes.map((section, index) => {
             const IconComponent = section.icon;
             return (
               <button

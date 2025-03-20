@@ -110,10 +110,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route element={<MainLayout />}>
-            <Route path="/ccc-playbook" element={<ProtectedRoute><PlaybookHome /></ProtectedRoute>} />
+            <Route path="/ccc-playbook" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
             <Route path="/playbook-overview" element={
               <ProtectedRoute>
-                <PlaybookHome />
+                <HomePage />
               </ProtectedRoute>
             } />
             <Route path="/playbook-overview/objectives" element={

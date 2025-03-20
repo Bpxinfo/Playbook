@@ -30,18 +30,6 @@ const PAObjectives = () => {
               communities, and develops right-sized, personalized education.
             </p>
           </section>
-
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Governance & Execution</h2>
-            <p className="text-gray-700">
-              The framework's emphasis on structured project lifecycles, clear governance mechanisms, and 
-              comprehensive SOPs ensures that each CCC initiative not only meets its immediate objectives but 
-              also contributes to broader strategic goals. Through systematic oversight via the CCC Adjudication 
-              Committee and established operational guidelines, the framework promotes effective project execution 
-              while maintaining the flexibility to create intentional linkages between projects, data, and 
-              advocate voices, ultimately supporting positive change for partners, communities, and patients.
-            </p>
-          </section>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ export default function ProtectedRoute({ children }) {
   // Add debugging
   console.log('ProtectedRoute state:', { user, isGuest, loading });
 
+  // Show loading spinner while checking authentication
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -19,9 +20,15 @@ export default function ProtectedRoute({ children }) {
   const isAuthenticated = user !== null || isGuest === true;
   console.log('Is authenticated:', isAuthenticated);
 
-  if (!isAuthenticated) {
-    console.log('Redirecting to login...');
+  // If not authenticated and not loading, redirect to login
+  if (!isAuthenticated && !loading) {
+    console.log('Not authenticated, redirecting to login...');
     return <Navigate to="/login" replace />;
+  }
+
+  // If user is authenticated and trying to access login page, redirect to home
+  if (isAuthenticated && window.location.pathname === '/login') {
+    return <Navigate to="/ccc-playbook" replace />;
   }
 
   // User is authenticated or is a guest, render the protected content

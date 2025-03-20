@@ -36,7 +36,7 @@ const LandingPage = () => {
         </div>
         <button 
           onClick={handleStartClick}
-          className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-8 py-3 text-lg font-semibold hover:opacity-90 transition-opacity"
+          className="bg-white dark:bg-black rounded-full w-fit text-black dark:text-white px-8 py-3 text-lg font-semibold hover:opacity-90 transition-opacity"
         >
           Start Now
         </button>

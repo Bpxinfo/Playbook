@@ -1,15 +1,17 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
+import { cn } from '../../lib/utils';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
+  sidebarOpen?: boolean;
 }
 
-export function Modal({ isOpen, onClose, children, title }: ModalProps) {
+export function Modal({ isOpen, onClose, children, title, sidebarOpen = true }: ModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -25,12 +27,16 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
           
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed left-1/2 top-[10%] -translate-x-1/2 z-50 w-full max-w-md"
-          >
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className={cn(
+                "fixed top-[10%] z-50 w-full max-w-md",
+                sidebarOpen ? "left-[calc(50%-125px)] -translate-x-1/2" : "left-1/2 -translate-x-1/2"
+              )}
+            >
+
             <div className="bg-white dark:bg-black rounded-2xl shadow-xl relative">
               {/* Close button */}
               <button

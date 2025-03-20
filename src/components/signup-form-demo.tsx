@@ -85,7 +85,7 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
   };
 
   return (
-    <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
+    <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black flex flex-col items-center">
       <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
         Welcome to the CCC Playbook
       </h2>

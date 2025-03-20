@@ -5,6 +5,7 @@ import { User, LogOut, Edit, ChevronDown, Save, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Modal } from './ui/modal';
 import SignupFormDemo from './signup-form-demo';
+import { supabase } from '../lib/supabaseClient';
 
 const UserIcon = () => {
   const { user, isGuest, signOut } = useAuth();
@@ -14,22 +15,40 @@ const UserIcon = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    displayName: ''
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const dropdownRef = useRef(null);
 
-  // Update formData when user state changes
+  // Fetch user profile when user state changes
   useEffect(() => {
     if (user) {
       setFormData({
         firstName: user.user_metadata?.firstName || '',
         lastName: user.user_metadata?.lastName || '',
-        email: user.email || ''
+        email: user.email || '',
+        displayName: user.user_metadata?.full_name || user.email?.split('@')[0] || ''
       });
+
+      // Fetch additional profile data
+      supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single()
+        .then(({ data: profile, error }) => {
+          if (!error && profile) {
+            setFormData(prev => ({
+              ...prev,
+              displayName: profile.display_name || prev.displayName
+            }));
+          }
+        })
+        .catch(console.error);
     }
-  }, [user]);
+  }, [user?.id]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -50,18 +69,55 @@ const UserIcon = () => {
     setSuccess('');
 
     try {
-      // Here you would call your updateUser function
-      // For now, we'll just simulate a successful update
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const displayName = `${formData.firstName} ${formData.lastName}`.trim() || user.email.split('@')[0];
+
+      // Update both profile and user metadata in parallel
+      const [profileResult, userResult] = await Promise.all([
+        supabase
+          .from('profiles')
+          .upsert({
+            id: user.id,
+            display_name: displayName,
+            updated_at: new Date().toISOString()
+          })
+          .select()
+          .single(),
+        
+        supabase.auth.updateUser({
+          data: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            full_name: displayName
+          }
+        })
+      ]);
+
+      if (profileResult.error) throw profileResult.error;
+      if (userResult.error) throw userResult.error;
+
+      // Update local state with the returned data
+      setFormData(prev => ({
+        ...prev,
+        displayName: profileResult.data.display_name
+      }));
+
       setSuccess('Profile updated successfully!');
+      
+      // Close edit mode immediately
       setIsEditing(false);
+      setIsOpen(false);
     } catch (err) {
       setError('Failed to update profile. Please try again.');
+      console.error('Error updating profile:', err);
     }
   };
 
-  const getInitials = (firstName, lastName) => {
-    return `${(firstName?.[0] || '').toUpperCase()}${(lastName?.[0] || '').toUpperCase()}`;
+  const getInitials = () => {
+    if (formData.displayName) {
+      const nameParts = formData.displayName.split(' ');
+      return nameParts.map(part => part[0]).join('').toUpperCase();
+    }
+    return '';
   };
 
   const renderUserIcon = () => {
@@ -85,8 +141,9 @@ const UserIcon = () => {
       );
     }
 
-    const initials = getInitials(formData.firstName, formData.lastName);
+    const initials = getInitials();
     const hasInitials = initials.length > 0;
+    const displayName = formData.displayName || 'Guest';
 
     return (
       <div className="relative" ref={dropdownRef}>
@@ -107,19 +164,19 @@ const UserIcon = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200"
             >
               {isGuest ? (
-                <>
-                  <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
-                    Welcome, Guest
+                <div className="py-1">
+                  <div className="px-4 py-2 text-sm text-gray-900 font-medium border-b border-gray-100">
+                    Guest User
                   </div>
                   <button
                     onClick={() => {
                       setIsOpen(false);
                       setIsSignupModalOpen(true);
                     }}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
                   >
                     Sign Up
                   </button>
@@ -135,13 +192,16 @@ const UserIcon = () => {
                       signOut();
                       setIsOpen(false);
                     }}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
                   >
                     End Guest Session
                   </button>
-                </>
+                </div>
               ) : (
-                <>
+                <div className="py-1">
+                  <div className="px-4 py-2 text-sm text-gray-900 font-medium border-b border-gray-100">
+                    {formData.displayName || user?.email?.split('@')[0] || 'User'}
+                  </div>
                   {isEditing ? (
                     <form onSubmit={handleSubmit} className="p-4">
                       {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
@@ -152,8 +212,15 @@ const UserIcon = () => {
                           <input
                             type="text"
                             value={formData.firstName}
-                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
+                            onChange={(e) => {
+                              const newFirstName = e.target.value;
+                              setFormData(prev => ({
+                                ...prev,
+                                firstName: newFirstName,
+                                displayName: `${newFirstName} ${prev.lastName}`.trim() || prev.email.split('@')[0]
+                              }));
+                            }}
+                            className="mt-1 block w-full rounded-md border-gray-300 bg-gray-100 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
                           />
                         </div>
                         <div>
@@ -161,18 +228,15 @@ const UserIcon = () => {
                           <input
                             type="text"
                             value={formData.lastName}
-                            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700">Email</label>
-                          <input
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
-                            disabled
+                            onChange={(e) => {
+                              const newLastName = e.target.value;
+                              setFormData(prev => ({
+                                ...prev,
+                                lastName: newLastName,
+                                displayName: `${prev.firstName} ${newLastName}`.trim() || prev.email.split('@')[0]
+                              }));
+                            }}
+                            className="mt-1 block w-full rounded-md border-gray-300 bg-gray-100 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
                           />
                         </div>
                       </div>
@@ -198,7 +262,7 @@ const UserIcon = () => {
                     <>
                       <button
                         onClick={() => setIsEditing(true)}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white flex items-center"
                       >
                         <Edit className="w-4 h-4 mr-2" />
                         Edit Profile
@@ -208,14 +272,14 @@ const UserIcon = () => {
                           signOut();
                           setIsOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white flex items-center"
                       >
                         <LogOut className="w-4 h-4 mr-2" />
                         Sign Out
                       </button>
                     </>
                   )}
-                </>
+                </div>
               )}
             </motion.div>
           )}
@@ -231,6 +295,7 @@ const UserIcon = () => {
         isOpen={isSignupModalOpen}
         onClose={() => setIsSignupModalOpen(false)}
         title="Welcome to the CCC Playbook"
+        sidebarOpen={true}
       >
         <SignupFormDemo onClose={() => setIsSignupModalOpen(false)} />
       </Modal>

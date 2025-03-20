@@ -63,6 +63,7 @@ const LandingPage = () => {
         isOpen={isSignupModalOpen}
         onClose={() => setIsSignupModalOpen(false)}
         title="Welcome to the CCC Playbook"
+        sidebarOpen={false}
       >
         <SignupFormDemo onClose={() => setIsSignupModalOpen(false)} />
       </Modal>
