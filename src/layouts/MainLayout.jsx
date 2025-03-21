@@ -414,13 +414,15 @@ const MainLayout = ({ children }) => {
 
   // Section handling functions
   const handleSectionClick = (key) => {
+    // Always navigate to the section's default route
     if (key === 'compliance') {
       navigate('/compliance');  // Navigate to landing page for compliance section
     } else {
       navigate(sectionConfig[key].defaultRoute);
     }
     
-    if (!isSidebarCollapsed) {
+    // Only toggle expansion if sidebar is open
+    if (sidebarOpen) {
       setExpandedTopSection(current => current === key ? null : key);
       setExpandedSubSection(null);
     }
@@ -864,7 +866,7 @@ const MainLayout = ({ children }) => {
         {/* Sidebar Container */}
         <div className={cn(
           "fixed top-[64px] left-0 h-[calc(100vh-64px)] z-40 transition-all duration-300",
-          sidebarOpen ? "w-[250px]" : "w-0"
+          sidebarOpen ? "w-[280px]" : "w-12"
         )}>
           <Sidebar 
             open={sidebarOpen} 
@@ -895,7 +897,7 @@ const MainLayout = ({ children }) => {
                         onClick={() => handleSectionClick(key)}
                         className={cn(
                           "flex items-center transition-all duration-300 rounded-lg",
-                          sidebarOpen ? "w-full justify-between p-3" : "p-2 justify-center",
+                          sidebarOpen ? "w-full justify-between p-3" : "w-12 h-12 p-2 justify-center",
                           isSectionSelected(key) 
                             ? 'bg-red-900 text-white' 
                             : 'bg-white text-black hover:bg-gray-100'
@@ -903,17 +905,19 @@ const MainLayout = ({ children }) => {
                       >
                         <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
                           {SectionIcon && (
-                            <SectionIcon className={cn("w-5 h-5", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
+                            <SectionIcon className={cn("w-6 h-6", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
                           )}
-                          <motion.span 
-                            animate={{
-                              display: sidebarOpen ? "inline-block" : "none",
-                              opacity: sidebarOpen ? 1 : 0,
-                            }}
-                            className="text-sm ml-2 font-medium"
-                          >
-                            {section.title}
-                          </motion.span>
+                          {sidebarOpen && (
+                            <motion.span 
+                              animate={{
+                                display: "inline-block",
+                                opacity: 1,
+                              }}
+                              className="text-sm ml-2 font-medium"
+                            >
+                              {section.title}
+                            </motion.span>
+                          )}
                         </div>
                         {sidebarOpen && (
                           <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
@@ -1027,7 +1031,7 @@ const MainLayout = ({ children }) => {
         {/* Main Content */}
         <main className={cn(
           "flex-1 p-6 transition-all duration-300",
-          sidebarOpen ? "md:ml-[250px]" : "md:ml-0"
+          sidebarOpen ? "md:ml-[280px]" : "md:ml-0"
         )}>
           <div className="max-w-7xl mx-auto">
             <Breadcrumbs />

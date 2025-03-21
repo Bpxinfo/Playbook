@@ -76,7 +76,7 @@ export const DesktopSidebar = ({
       {/* Hover area for collapsed state */}
       {!open && (
         <div 
-          className="fixed left-0 top-[64px] h-[calc(100vh-64px)] w-1 z-50 hover:w-[250px] transition-all duration-300"
+          className="fixed left-0 top-[84px] h-[calc(100vh-84px)] w-12 z-40 transition-all duration-300 pointer-events-none"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         />
@@ -86,21 +86,21 @@ export const DesktopSidebar = ({
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 z-50 bg-white p-2 rounded-r-lg shadow-md hover:bg-gray-100 transition-colors"
+          className="fixed left-0 top-[84px] z-50 bg-red-800 p-2 rounded-r-lg shadow-md hover:bg-red-700 transition-colors"
           aria-label="Expand sidebar"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
+          <ChevronRight className="w-5 h-5 text-white" />
         </button>
       )}
 
       <motion.div
         className={cn(
-          "h-full py-4 hidden md:flex md:flex-col bg-white dark:bg-white shrink-0 relative overflow-visible",
-          open ? "px-4" : "px-0 w-0",
+          "h-[calc(100vh-84px)] mt-5 py-4 hidden md:flex md:flex-col bg-white dark:bg-white shrink-0 relative overflow-visible",
+          open ? "px-4" : "px-0 w-12",
           className
         )}
         animate={{
-          width: animate ? (open ? "250px" : "0px") : "250px",
+          width: animate ? (open ? "280px" : "48px") : "280px",
         }}
         transition={{
           duration: 0.3,
@@ -114,17 +114,17 @@ export const DesktopSidebar = ({
         <button
           onClick={() => setOpen(false)}
           className={cn(
-            "absolute -right-3 top-1/2 -translate-y-1/2 bg-white p-1.5 rounded-full shadow-md hover:bg-gray-100 transition-colors z-[999]",
+            "absolute -right-3 top-4 bg-red-800 p-1.5 rounded-full shadow-md hover:bg-red-700 transition-colors z-[999]",
             !open && "hidden"
           )}
           aria-label="Collapse sidebar"
         >
-          <ChevronLeft className="w-4 h-4 text-gray-600" />
+          <ChevronLeft className="w-4 h-4 text-white" />
         </button>
 
         <div className={cn(
-          "transition-all duration-300 relative",
-          !open && "opacity-0 invisible w-0"
+          "transition-all duration-300 relative w-full",
+          !open && "opacity-100 visible"
         )}>
           {children}
         </div>

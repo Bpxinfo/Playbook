@@ -231,80 +231,106 @@ export const AuthProvider = ({ children }) => {
   // Modify the auth state change handler
   useEffect(() => {
     console.log('Checking Supabase session...');
-    let mounted = true;
+    let isMounted = true;
+    let isAuthenticating = false;
 
     const initializeAuth = async () => {
+      if (isAuthenticating) return;
+      
       try {
+        isAuthenticating = true;
         setLoading(true);
         const { data: { session }, error } = await supabase.auth.getSession();
         
-        if (!mounted) return;
+        if (!isMounted) return;
 
         if (error) {
           console.error('Error getting session:', error);
-          setLoading(false);
+          if (isMounted) {
+            setLoading(false);
+          }
           return;
         }
 
         console.log('Auth session:', session);
         if (session?.user) {
           console.log('User session found, disabling guest mode');
-          setUser(session.user);
-          setIsGuest(false);
-          localStorage.removeItem('isGuest');
+          if (isMounted) {
+            setUser(session.user);
+            setIsGuest(false);
+            localStorage.removeItem('isGuest');
+          }
           await syncUserProfile(session);
         } else if (!isGuest) {
-          setUser(null);
+          if (isMounted) {
+            setUser(null);
+          }
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
-        setUser(null);
+        if (isMounted) {
+          setUser(null);
+        }
       } finally {
-        if (mounted) {
+        if (isMounted) {
           setLoading(false);
         }
+        isAuthenticating = false;
       }
     };
 
     initializeAuth();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (!mounted) return;
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!isMounted) return;
 
       try {
-        console.log('Auth state change:', { event: _event, session });
+        console.log('Auth state change:', { event, session });
 
         if (session?.user) {
           console.log('User session found during state change, disabling guest mode');
-          setUser(session.user);
-          setIsGuest(false);
-          localStorage.removeItem('isGuest');
+          if (isMounted) {
+            setUser(session.user);
+            setIsGuest(false);
+            localStorage.removeItem('isGuest');
+          }
           await syncUserProfile(session);
-          // Only navigate if this is a sign-in event
-          if (_event === 'SIGNED_IN') {
+          
+          // Only navigate if this is a sign-in event and not already on the target page
+          if (event === 'SIGNED_IN' && window.location.pathname !== '/ccc-playbook') {
             navigate('/ccc-playbook', { replace: true });
           }
-        } else if (_event === 'SIGNED_OUT') {
+        } else if (event === 'SIGNED_OUT') {
           console.log('Handling SIGNED_OUT event');
-          setUser(null);
-          setIsGuest(false);
-          localStorage.removeItem('isGuest');
-          setLoading(false);
-          // Force a hard redirect to clear all state
-          window.location.replace('/');
+          if (isMounted) {
+            setUser(null);
+            setIsGuest(false);
+            localStorage.removeItem('isGuest');
+            setLoading(false);
+          }
+          
+          // Only redirect if not already on the home page
+          if (window.location.pathname !== '/') {
+            window.location.replace('/');
+          }
         } else {
-          setUser(null);
-          setLoading(false);
+          if (isMounted) {
+            setUser(null);
+            setLoading(false);
+          }
         }
       } catch (error) {
         console.error('Error in auth state change:', error);
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     });
 
     return () => {
-      mounted = false;
-      subscription.unsubscribe();
+      console.log('Cleaning up auth effect');
+      isMounted = false;
+      subscription?.unsubscribe?.();
     };
   }, [navigate, isGuest]);
 

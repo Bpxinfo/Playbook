@@ -34,7 +34,7 @@ const Objectives = () => {
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Objectives</h1>
         
         <div className="space-y-6">
@@ -64,22 +64,6 @@ const Objectives = () => {
                 alt="CCC Overview" 
                 className="w-full rounded-lg shadow-lg mb-4"
               />
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl text-red-800 mb-4 text-center flex items-center justify-center">
-              <Target className="w-6 h-6 mr-2" />
-              Three Strategic Pillars
-            </h2>
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <ImageWithZoom 
-                  src={StrategicPillars} 
-                  alt="Strategic Pillars" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-              </div>
             </div>
           </section>
 
