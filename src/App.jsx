@@ -67,7 +67,11 @@ const ProcessesGovernance = lazy(() => import('@/pages/processes/Governance.jsx'
 const LinktoSGF = lazy(() => import('@/pages/processes/RandD.jsx'));
 
 // Compliance
+const ComplianceHome = lazy(() => import('@/pages/compliance/index.jsx'));
 const ComplianceGuidance = lazy(() => import('@/pages/compliance/ComplianceGuidance.jsx'));
+const ComplianceDocumentation = lazy(() => import('@/pages/compliance/documentation.jsx'));
+const ComplianceRiskManagement = lazy(() => import('@/pages/compliance/risk-management.jsx'));
+const ComplianceTraining = lazy(() => import('@/pages/compliance/training.jsx'));
 
 // Systems
 const SystemsHome = lazy(() => import('@/pages/systems/index.jsx'));
@@ -387,7 +391,27 @@ function App() {
             {/* Compliance */}
             <Route path="/compliance" element={
               <ProtectedRoute>
+                <ComplianceHome />
+              </ProtectedRoute>
+            } />
+            <Route path="/compliance/ComplianceGuidance" element={
+              <ProtectedRoute>
                 <ComplianceGuidance />
+              </ProtectedRoute>
+            } />
+            <Route path="/compliance/documentation" element={
+              <ProtectedRoute>
+                <ComplianceDocumentation />
+              </ProtectedRoute>
+            } />
+            <Route path="/compliance/risk-management" element={
+              <ProtectedRoute>
+                <ComplianceRiskManagement />
+              </ProtectedRoute>
+            } />
+            <Route path="/compliance/training" element={
+              <ProtectedRoute>
+                <ComplianceTraining />
               </ProtectedRoute>
             } />
 

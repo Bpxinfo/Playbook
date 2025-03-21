@@ -4,7 +4,7 @@ import { MessageSquare, Star, Target, Eye, AlertCircle, ArrowRight } from 'lucid
 const KeyMessages = () => {
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Key Messages</h1>
 
         <div className="space-y-6">

@@ -169,10 +169,7 @@ const MainLayout = ({ children }) => {
         'Key Compliance Principles',
         'Compliance Requirements',
         'Resources and Support',
-        'CCC Independence',
-        // 'CCC Strategy Development',
-        // 'Project Proposals & Approvals',
-        // 'Project Operations'
+        'CCC Independence'
       ]
     },
     'project-archetype': {
@@ -393,10 +390,10 @@ const MainLayout = ({ children }) => {
   const getItemPath = (section, item, subsection = null) => {
     if (!section || !item) return '/';
     
-    // Special handling for compliance section anchors
+    // Special handling for compliance section
     if (section === 'compliance') {
       const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
-      return `/compliance#${anchorId}`;
+      return `/compliance/ComplianceGuidance#${anchorId}`;
     }
     
     // Handle dropdown items
@@ -417,7 +414,11 @@ const MainLayout = ({ children }) => {
 
   // Section handling functions
   const handleSectionClick = (key) => {
-    navigate(sectionConfig[key].defaultRoute);
+    if (key === 'compliance') {
+      navigate('/compliance');  // Navigate to landing page for compliance section
+    } else {
+      navigate(sectionConfig[key].defaultRoute);
+    }
     
     if (!isSidebarCollapsed) {
       setExpandedTopSection(current => current === key ? null : key);
