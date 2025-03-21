@@ -113,8 +113,10 @@ export default function InternalOnboardingHome() {
               onClick={() => navigate(section.path)}
               className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left relative`}
             >
-              <div className="flex items-center mb-2">
-                <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+              <div className="flex items-center mb-4">
+                <div className="bg-white p-3 rounded-full shadow-md mr-3">
+                  <IconComponent className="w-6 h-6 text-red-800" />
+                </div>
                 <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
               </div>
               <p className="text-gray-600 pr-6">{section.description}</p>
@@ -134,8 +136,10 @@ export default function InternalOnboardingHome() {
               onClick={() => navigate(section.path)}
               className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left relative`}
             >
-              <div className="flex items-center mb-2">
-                <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+              <div className="flex items-center mb-4">
+                <div className="bg-white p-3 rounded-full shadow-md mr-3">
+                  <IconComponent className="w-6 h-6 text-red-800" />
+                </div>
                 <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
               </div>
               <p className="text-gray-600 pr-6">{section.description}</p>

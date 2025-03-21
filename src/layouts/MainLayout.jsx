@@ -143,10 +143,7 @@ const MainLayout = ({ children }) => {
       title: 'Compliance Guidance',
       items: [
         'Overview',
-        'Key Compliance Principles',
-        'Compliance Requirements',
         'Resources and Support',
-        'CCC Independence'
       ]
     },
     'project-archetype': {
@@ -165,7 +162,7 @@ const MainLayout = ({ children }) => {
       title: 'Systems',
       items: [
         'Internal Platforms',
-        'Manual Systems',
+        //'Manual Systems',
         // 'Links to Process'
       ]
     },
@@ -368,7 +365,7 @@ const MainLayout = ({ children }) => {
     // Special handling for compliance section
     if (section === 'compliance') {
       const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
-      return `/compliance/ComplianceGuidance#${anchorId}`;
+      return `/compliance/guidance#${anchorId}`;
     }
     
     // Handle dropdown items
@@ -814,7 +811,7 @@ const MainLayout = ({ children }) => {
                   {searchResults.hiddenCount > 0 && (
                     <button
                       onClick={navigateToSearchResults}
-                      className="block w-full px-4 py-2 text-sm text-center text-red-800 hover:bg-gray-100 font-medium"
+                      className="block w-full px-4 py-2 text-sm text-center text-red-800 bg-white font-medium"
                     >
                       See all {searchResults.hiddenCount + searchResults.results.length} results
                     </button>

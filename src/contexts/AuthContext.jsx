@@ -167,6 +167,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setIsGuest(false);
       localStorage.removeItem('isGuest');
+      sessionStorage.removeItem('isGuest');
       setLoading(false);
       
       if (!isGuest) {
@@ -210,6 +211,20 @@ export const AuthProvider = ({ children }) => {
 
   const continueAsGuest = () => {
     try {
+      // Check if we're already in guest mode
+      const currentGuestState = localStorage.getItem('isGuest') === 'true';
+      if (currentGuestState) {
+        console.log('Already in guest mode, redirecting...');
+        window.location.replace('/ccc-playbook');
+        return;
+      }
+
+      const password = prompt('Please enter the guest password:');
+      if (password !== 'admin123') {
+        alert('Incorrect password. Please try again.');
+        return;
+      }
+      
       console.log('Continuing as guest...');
       
       // Clear any existing auth state first

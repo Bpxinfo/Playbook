@@ -43,7 +43,9 @@ const ProcessesHome = () => {
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center mb-4">
-              <Settings className="w-8 h-8 text-red-800 mr-4" />
+              <div className="bg-white p-3 rounded-full shadow-md mr-4">
+                <Settings className="w-8 h-8 text-red-800" />
+              </div>
               <h2 className="text-2xl font-semibold text-gray-800">
                 Process Framework Overview
               </h2>
@@ -65,7 +67,7 @@ const ProcessesHome = () => {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center">
-                      <div className="bg-white p-2 rounded-lg shadow-sm mr-4">
+                      <div className="bg-white p-3 rounded-full shadow-md mr-4">
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
                       <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>

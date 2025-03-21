@@ -22,20 +22,13 @@ export const pageRegistry = {
       component: () => import('@/pages/playbook-app/index'),
       title: 'Playbook Overview'
     },
-    '/playbook-app-overview/objectives': {
-      component: () => import('@/pages/playbook-app/Objectives'),
-      title: 'Playbook Objectives'
-    },
   
     // CCC Initiative
     '/ccc-initiative': {
       component: () => import('@/pages/ccc-initiative/index'),
       title: 'CCC Initiative Overview'
     },
-    '/ccc-initiative/objectives-and-ccc-overview': {
-      component: () => import('@/pages/ccc-initiative/Objectives'),
-      title: 'CCC Overview & Objectives'
-    },
+
     '/ccc-initiative/strategic-pillars': {
       component: () => import('@/pages/ccc-initiative/StrategicPillars'),
       title: 'Strategic Pillars'
@@ -56,70 +49,23 @@ export const pageRegistry = {
     },
   
     // Communication Plan - Internal
-    '/communications/internal-comms-plan': {
-      component: () => import('@/pages/communications/internal-comms-plan/InternalIndex'),
-      title: 'Internal Communications'
-    },
-    '/communications/internal-comms-plan/objectives': {
-      component: () => import('@/pages/communications/internal-comms-plan/Objectives'),
-      title: 'Objectives'
-    },
-    '/communications/internal-comms-plan/ccc-communications': {
-      component: () => import('@/pages/communications/internal-comms-plan/Channels'),
+    '/communications/channels': {
+      component: () => import('@/pages/communications/Channels'),
       title: 'Channels'
     },
-    '/communications/internal-comms-plan/ccc-stakeholders': {
-      component: () => import('@/pages/communications/internal-comms-plan/CCCStakeholders'),
+    '/communications/ccc-stakeholders': {
+      component: () => import('@/pages/communications/CCCStakeholders'),
       title: 'CCC Stakeholders'
     },
-    '/communications/internal-comms-plan/communication-streams': {
-      component: () => import('@/pages/communications/internal-comms-plan/Cadence'),
+    '/communications/cadence': {
+      component: () => import('@/pages/communications/Cadence'),
       title: 'Cadence'
     },
-    '/communications/internal-comms-plan/strategies-&-tactics': {
-      component: () => import('@/pages/communications/internal-comms-plan/StrategiesNTactics'),
-      title: 'Strategies & Tactics'
-    },
-    '/communications/internal-comms-plan/timeline': {
-      component: () => import('@/pages/communications/internal-comms-plan/Timeline'),
-      title: 'Timeline'
-    },
   
-    // Communication Plan - Engagement
-    '/communications/internal-engagement': {
-      component: () => import('@/pages/communications/internal-engagement/EngIndex'),
-      title: 'Internal Engagement'
-    },
-    '/communications/internal-engagement/objectives': {
-      component: () => import('@/pages/communications/internal-engagement/Objectives'),
-      title: 'Objectives'
-    },
-    '/communications/internal-engagement/communication-path': {
-      component: () => import('@/pages/communications/internal-engagement/CommunicationPath'),
-      title: 'Communication Path'
-    },
-    '/communications/internal-engagement/impact-monitoring': {
-      component: () => import('@/pages/communications/internal-engagement/ImpactMonitoring'),
-      title: 'Impact Monitoring'
-    },
-    '/communications/internal-engagement/internal-engagement-strategies': {
-      component: () => import('@/pages/communications/internal-engagement/InternalEngagementStrategies'),
-      title: 'Internal Engagement Strategies'
-    },
-    '/communications/internal-engagement/internal-engagement-plan': {
-      component: () => import('@/pages/communications/internal-engagement/InternalEngagementPlan'),
-      title: 'Internal Engagement Plan'
-    },
-  
-
     // Internal Onboarding
     '/internal-onboarding': {
       component: () => import('@/pages/internal-onboarding/index'),
       title: 'Internal Onboarding'
-    },
-    '/internal-onboarding/objectives': {
-      component: () => import('@/pages/internal-onboarding/Objectives'),
-      title: 'Onboarding Objectives'
     },
     '/internal-onboarding/deepen-engagement': {
       component: () => import('@/pages/internal-onboarding/DeepenEngagement'),
@@ -155,10 +101,6 @@ export const pageRegistry = {
       component: () => import('@/pages/processes/index'),
       title: 'Processes Overview'
     },
-    '/processes/objectives': {
-      component: () => import('@/pages/processes/Objectives'),
-      title: 'Process Objectives'
-    },
     '/processes/processes': {
       component: () => import('@/pages/processes/Processes'),
       title: 'Processes'
@@ -174,6 +116,10 @@ export const pageRegistry = {
   
     // Compliance
     '/compliance': {
+      component: () => import('@/pages/compliance/index'),
+      title: 'Compliance Overview'
+    },
+    '/compliance/guidance': {
       component: () => import('@/pages/compliance/ComplianceGuidance'),
       title: 'Compliance Guidance'
     },
@@ -183,10 +129,7 @@ export const pageRegistry = {
       component: () => import('@/pages/systems/index'),
       title: 'Systems Overview'
     },
-    '/systems/objectives': {
-      component: () => import('@/pages/systems/Objectives'),
-      title: 'Systems Objectives'
-    },
+
     '/systems/internal-platforms': {
       component: () => import('@/pages/systems/InternalPlatforms'),
       title: 'Internal Platforms'
@@ -196,10 +139,6 @@ export const pageRegistry = {
     '/project-archetype': {
       component: () => import('@/pages/project-archetype/index'),
       title: 'Project Archetype Overview'
-    },
-    '/project-archetype/objectives': {
-      component: () => import('@/pages/project-archetype/Objectives'),
-      title: 'Project Archetype Objectives'
     },
     '/project-archetype/core-principles': {
       component: () => import('@/pages/project-archetype/CorePrinciples'),

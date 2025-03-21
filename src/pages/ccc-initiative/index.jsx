@@ -63,7 +63,9 @@ const CCCInitiativeHome = () => {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center">
-                      <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+                      <div className="bg-white p-3 rounded-full shadow-md mr-3">
+                        <IconComponent className="w-6 h-6 text-red-800" />
+                      </div>
                       <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
                     </div>
                     <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />

@@ -70,7 +70,7 @@ const CommunicationPlanHome = () => {
             <h2 className="text-2xl text-red-800 mb-4">Core Objectives</h2>
             <div className="space-y-4">
               <p className="text-gray-700">
-                The CCC communication objectives aim to ensure clear, consistent, and timely information flow that supports stakeholder engagement, cross-functional collaboration, and organizational alignment. By establishing clear channels, fostering transparency, and encouraging active participation, the framework strengthens relationships across teams. Guided by principles of clarity, consistency, timeliness, relevance, accessibility, and transparency, CCC’s communication approach ensures stakeholders stay informed, engaged, and aligned with the initiative’s goals.              </p>
+                The CCC communication objectives aim to ensure clear, consistent, and timely information flow that supports stakeholder engagement, cross-functional collaboration, and organizational alignment. By establishing clear channels, fostering transparency, and encouraging active participation, the framework strengthens relationships across teams. Guided by principles of clarity, consistency, timeliness, relevance, accessibility, and transparency, CCC's communication approach ensures stakeholders stay informed, engaged, and aligned with the initiative's goals.              </p>
             </div>
           </section>
 
@@ -79,7 +79,9 @@ const CommunicationPlanHome = () => {
             return (
               <section key={key} className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
-                  <IconComponent className="w-6 h-6 text-red-800 mr-3" />
+                  <div className="bg-white p-3 rounded-full shadow-md mr-3">
+                    <IconComponent className="w-6 h-6 text-red-800" />
+                  </div>
                   <h2 className="text-2xl text-red-800">{section.title}</h2>
                 </div>
                 <p className="text-gray-700 mb-6">{section.description}</p>
@@ -94,7 +96,9 @@ const CommunicationPlanHome = () => {
                         className={`${subsection.color} p-4 rounded-lg shadow hover:shadow-md transition-all group text-left relative`}
                       >
                         <div className="flex items-center mb-2">
-                          <SubIconComponent className="w-5 h-5 text-red-800 mr-2" />
+                          <div className="bg-white p-3 rounded-full shadow-md mr-2">
+                            <SubIconComponent className="w-5 h-5 text-red-800" />
+                          </div>
                           <h3 className="text-lg font-semibold text-gray-800">{subsection.title}</h3>
                         </div>
                         <p className="text-gray-600 text-sm pr-6">{subsection.description}</p>

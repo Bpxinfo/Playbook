@@ -16,7 +16,7 @@ const ComplianceHome = () => {
     {
       title: "Compliance Guidelines",
       description: "Essential guidelines and requirements for maintaining regulatory compliance across all operations.",
-      path: "/compliance/ComplianceGuidance",
+      path: "/compliance/guidance",
       icon: Shield,
       color: "bg-blue-50"
     },
@@ -51,7 +51,6 @@ const ComplianceHome = () => {
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center mb-4">
-              <CheckCircle className="w-8 h-8 text-red-800 mr-4" />
               <h2 className="text-2xl font-semibold text-gray-800">
                 Compliance Framework
               </h2>
@@ -75,7 +74,7 @@ const ComplianceHome = () => {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center">
-                      <div className="bg-white p-2 rounded-lg shadow-sm mr-4">
+                      <div className="bg-white p-3 rounded-full shadow-md mr-4">
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
                       <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
@@ -90,12 +89,12 @@ const ComplianceHome = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Quick Reference</h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Source Reference</h2>
               <p className="text-gray-700 mb-4">
                 Start with the Compliance Guidelines section to understand our compliance framework, then explore specific areas based on your needs. The Training & Resources section is essential for all team members.
               </p>
               <button
-                onClick={() => navigate('/compliance/ComplianceGuidance')}
+                onClick={() => navigate('/compliance/guidance')}
                 className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 Start Here
