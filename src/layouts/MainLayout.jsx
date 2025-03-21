@@ -142,7 +142,7 @@ const MainLayout = ({ children }) => {
     'compliance': {
       title: 'Compliance Guidance',
       items: [
-        'Overview',
+        // 'Overview',
         'Resources and Support',
       ]
     },

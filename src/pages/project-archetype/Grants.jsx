@@ -16,11 +16,11 @@ const Grants = () => {
               <div className="space-y-4 text-black">
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
-                  <p className="italic text-black">[Pending official description]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Please add examples for this]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
@@ -30,7 +30,7 @@ const Grants = () => {
                     <li>FRM-07237 Notification of Acceptance of Grant Funding Request</li>
                     <li>FRM-07649 Educational Grant Letter</li>
                   </ul>
-                  <p className="mt-2 italic text-black">[INSERT LINKS FROM PROCESS, GOV, COMPLIANCE section]</p>
+                  <p className="mt-2 italic text-black">[Coming Soon]</p>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@ const Grants = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Please add examples for this]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>

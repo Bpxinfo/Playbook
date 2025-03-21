@@ -22,7 +22,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="text-black">[To be added]</p>
+                  <p className="text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
@@ -30,7 +30,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Steeprock Submission Process</h4>
-                  <p className="italic text-black">[Pending official description]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                   <p className="mt-2 text-black">Guidance: LINK: SYSTEMS {'->'} STEEPROCK</p>
                 </div>
               </div>
@@ -43,11 +43,11 @@ const Sponsorships = () => {
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
                   <p className="text-black">Corporate Sponsorships {'->'} outside of CCC&apos;s purview</p>
-                  <p className="italic text-black">[Pending official description]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="text-black">[To be added]</p>
+                  <p className="text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
@@ -55,7 +55,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Steeprock Submission Process</h4>
-                  <p className="italic text-black">[Pending official description]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                   <p className="mt-2 text-black">Guidance: LINK: SYSTEMS {'->'} STEEPROCK</p>
                 </div>
               </div>
