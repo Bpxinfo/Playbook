@@ -47,21 +47,8 @@ const CCCInitiativeHome = () => {
           <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4">Objectives & Mission</h2>
             <div className="space-y-4">
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in the community setting. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions.
-                </p>
-              </div>
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  Gilead contributes to this mission by engaging in collaborative initiatives and facilitating communication among stakeholders to support and improve patient outcomes in community oncology care.
-                </p>
-              </div>
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  To achieve this goal, Gilead partners with community-focused institutions treating patients and nationwide support organizations to identify meaningful opportunities, develop community site capabilities, and execute impactful solutions for diverse oncology patient populations.
-                </p>
-              </div>
+                  The Community Cancer Collective (CCC) is a patient-focused initiative dedicated to addressing care gaps for cancer patients in community settings. To achieve this mission, Gilead partners with community-based institutions and national support organizations to identify opportunities, strengthen site capabilities, and deliver impactful solutions for diverse oncology populations. Through collaborative initiatives and open stakeholder communication, Gilead supports improved outcomes in community oncology care.                </p>
             </div>
           </section>
 

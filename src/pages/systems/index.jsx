@@ -62,10 +62,8 @@ const SystemsHome = () => {
               </h2>
             </div>
             <div className="space-y-4">
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
                   The systems framework is the operational backbone of the Community Cancer Collective (CCC), integrating platforms, workflows, and governance mechanisms to manage projects, ensure regulatory compliance, and support collaboration. Through structures like the GRC and LRC, it streamlines approvals, documentation, and decision-making while maintaining integrity and consistency. By transforming complex operations into repeatable processes, the framework enables CCC to scale efficiently, adapt to emerging needs, and uphold its mission to advance community-based cancer care.                </p>
-              </div>
             </div>
           </section>
 

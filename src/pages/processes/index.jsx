@@ -49,10 +49,8 @@ const ProcessesHome = () => {
               </h2>
             </div>
             <div className="space-y-4">
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
                   The processes, governance, and compliance framework provides a strong operational foundation for the CCC, ensuring seamless execution, regulatory adherence, and risk management. By integrating operational processes, oversight mechanisms, and compliance guidance, it establishes clear accountability, streamlines decision-making, and fosters a culture of integrity. Emphasizing transparency, proactive risk management, and continuous improvement, the framework enables CCC to scale effectively and adapt to evolving patient needs, treatment landscapes, and operational complexities.                </p>
-              </div>
             </div>
           </section>
 

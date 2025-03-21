@@ -97,10 +97,8 @@ export default function InternalOnboardingHome() {
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl text-red-800 mb-4">Program Overview</h2>
           <div className="space-y-4">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
               <p className="text-gray-700">
                 The integration program accelerates the onboarding of high-potential CCC Project Leaders, aligning them quickly with strategic goals to maximize impact from day one. Spanning six phases—from pre-integration to ongoing support—it guides leaders through a structured, year-long journey of growth, engagement, and contribution. Emphasizing hands-on experience, strategic responsibilities, and external collaboration, the program develops self-driven leaders who become key drivers of innovation and community impact.              </p>
-            </div>
           </div>
         </div>
       </div>

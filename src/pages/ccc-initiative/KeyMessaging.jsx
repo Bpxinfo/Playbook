@@ -14,16 +14,8 @@ const KeyMessages = () => {
               Overview
             </h2>
             <div className="space-y-4">
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  The CCC (Community Cancer Collective) is making progress towards developing complex, multi-stakeholder ecosystem projects that impact outcomes for patients with cancer and advance our presence in the community oncology setting.
-                </p>
-              </div>
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  Partnerships facilitate participation in projects that meaningfully improve cancer care in the community and develop the community site's capabilities to address patient needs within their community.
-                </p>
-              </div>
+              <p className="text-gray-700">
+                The Community Cancer Collective (CCC) is advancing complex, multi-stakeholder projects to improve cancer outcomes and strengthen its role in community oncology. Through strategic partnerships, CCC drives impactful initiatives that enhance local cancer care and build site capabilities to better meet patient needs.                </p>
             </div>
           </section>
 
