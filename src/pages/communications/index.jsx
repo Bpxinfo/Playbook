@@ -70,35 +70,7 @@ const CommunicationPlanHome = () => {
             <h2 className="text-2xl text-red-800 mb-4">Core Objectives</h2>
             <div className="space-y-4">
               <p className="text-gray-700">
-                Our communication objectives are designed to ensure clear, consistent, and effective information flow throughout the CCC initiative. These objectives guide our approach to stakeholder engagement and organizational alignment.
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>Establish clear communication channels and protocols</li>
-                <li>Ensure timely dissemination of critical information</li>
-                <li>Foster transparency and open dialogue</li>
-                <li>Support cross-functional collaboration</li>
-                <li>Drive engagement and participation</li>
-                <li>Create a collaborative environment that encourages active participation</li>
-                <li>Build strong relationships between teams and departments</li>
-              </ul>
-            </div>
-          </section>
-
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Communication Principles</h2>
-            <div className="space-y-4">
-              <p className="text-gray-700">
-                Our communication approach is guided by the following core principles:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                <li>Clarity: Messages are clear, concise, and easily understood</li>
-                <li>Consistency: Information is consistent across all channels</li>
-                <li>Timeliness: Updates are provided promptly and regularly</li>
-                <li>Relevance: Content is tailored to stakeholder needs</li>
-                <li>Accessibility: Information is easily accessible to all stakeholders</li>
-                <li>Transparency: Open and honest communication about progress and challenges</li>
-                <li>Engagement: Active participation and feedback from stakeholders</li>
-              </ul>
+                The CCC communication objectives aim to ensure clear, consistent, and timely information flow that supports stakeholder engagement, cross-functional collaboration, and organizational alignment. By establishing clear channels, fostering transparency, and encouraging active participation, the framework strengthens relationships across teams. Guided by principles of clarity, consistency, timeliness, relevance, accessibility, and transparency, CCC’s communication approach ensures stakeholders stay informed, engaged, and aligned with the initiative’s goals.              </p>
             </div>
           </section>
 

@@ -99,18 +99,7 @@ export default function InternalOnboardingHome() {
           <div className="space-y-4">
             <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
               <p className="text-gray-700">
-                The objective of this comprehensive integration program is to accelerate the onboarding of high-potential CCC Project Leaders into a community patient mission-driven initiative, ensuring their rapid alignment with strategic goals and maximizing their impact from day one. Through a structured, year-long journey, the program systematically transforms new entrants into fully integrated, high-performing contributors and ambassadors for the initiative.
-              </p>
-            </div>
-            <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
-              <p className="text-gray-700">
-                This meticulously designed framework encompasses six key phases: pre-integration preparation, initial orientation, immersive contribution, deepened engagement, full integration, and ongoing support. Each phase is carefully crafted to build upon the previous, fostering a self-driven approach to leadership development while simultaneously advancing the initiative's objectives.
-              </p>
-            </div>
-            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-              <p className="text-gray-700">
-                The program's emphasis on hands-on experience, strategic responsibility allocation, and external engagement ensures that participants not only assimilate into their roles but also emerge as catalysts for innovation and growth within the organization.
-              </p>
+                The integration program accelerates the onboarding of high-potential CCC Project Leaders, aligning them quickly with strategic goals to maximize impact from day one. Spanning six phases—from pre-integration to ongoing support—it guides leaders through a structured, year-long journey of growth, engagement, and contribution. Emphasizing hands-on experience, strategic responsibilities, and external collaboration, the program develops self-driven leaders who become key drivers of innovation and community impact.              </p>
             </div>
           </div>
         </div>

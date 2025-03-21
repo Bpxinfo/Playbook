@@ -64,18 +64,7 @@ const SystemsHome = () => {
             <div className="space-y-4">
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  The systems framework serves as the operational backbone of the Community Cancer Collective (CCC) initiative, providing the essential infrastructure needed to coordinate and execute its mission effectively. These systems are generally involved with CCC through projects, administration and general activities (e.g. processes). By integrating diverse platforms, workflows, and processes, this framework enables CCC to manage complex projects, maintain regulatory compliance, and facilitate collaboration across multiple stakeholders.
-                </p>
-              </div>
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  Through structured governance mechanisms like the Global Review Committee (GRC) and Local Review Committee (LRC), the systems framework safeguards the integrity of CCC's work while expediting decision-making processes. It provides clear pathways for project approvals, document management, and regulatory compliance, reducing operational friction and enabling teams to focus on their core objectives. The framework's emphasis on transparent documentation and standardized processes helps protect both the initiative's interests and its stakeholders by maintaining consistent standards across all activities.
-                </p>
-              </div>
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  Most importantly, this systems framework transforms complex operational requirements into manageable, repeatable processes that support CCC's growth and adaptation. It creates a foundation that allows CCC to scale its operations efficiently, respond to emerging needs in the cancer care landscape, and maintain the highest standards of quality and compliance while supporting the initiative's goal of advancing cancer care in the community setting.
-                </p>
+                  The systems framework is the operational backbone of the Community Cancer Collective (CCC), integrating platforms, workflows, and governance mechanisms to manage projects, ensure regulatory compliance, and support collaboration. Through structures like the GRC and LRC, it streamlines approvals, documentation, and decision-making while maintaining integrity and consistency. By transforming complex operations into repeatable processes, the framework enables CCC to scale efficiently, adapt to emerging needs, and uphold its mission to advance community-based cancer care.                </p>
               </div>
             </div>
           </section>

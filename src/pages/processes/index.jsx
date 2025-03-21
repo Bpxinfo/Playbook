@@ -51,18 +51,7 @@ const ProcessesHome = () => {
             <div className="space-y-4">
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  The objective of this comprehensive processes, governance, and compliance framework is to establish a robust operational foundation for the CCC initiative, ensuring seamless execution while maintaining the highest standards of regulatory adherence and risk management. By implementing a structured approach to governance, the framework creates clear lines of accountability, streamlines decision-making processes, and fosters a culture of compliance that protects both the initiative's integrity and its stakeholders' interests.
-                </p>
-              </div>
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  This integrated framework orchestrates the cross functional interactions of three critical pillars: operational processes that drive day-to-day activities, governance mechanisms that ensure proper oversight and control, and compliance guidance that safeguard against regulatory risks. Each pillar is designed to complement and reinforce the others, creating a dynamic system that adapts to changing requirements while maintaining operational excellence and legal, compliance and regulatory conformity.
-                </p>
-              </div>
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-                <p className="text-gray-700">
-                  The framework's emphasis on transparent documentation, clear accountability structures, and proactive risk management ensures that the CCC initiative not only meets its current obligations but is also positioned to scale effectively and respond to emerging complexities. Through systematic monitoring and regular review cycles, the framework promotes continuous improvement while maintaining the agility necessary to address evolving patient needs, treatment landscapes and operational demands.
-                </p>
+                  The processes, governance, and compliance framework provides a strong operational foundation for the CCC, ensuring seamless execution, regulatory adherence, and risk management. By integrating operational processes, oversight mechanisms, and compliance guidance, it establishes clear accountability, streamlines decision-making, and fosters a culture of integrity. Emphasizing transparency, proactive risk management, and continuous improvement, the framework enables CCC to scale effectively and adapt to evolving patient needs, treatment landscapes, and operational complexities.                </p>
               </div>
             </div>
           </section>

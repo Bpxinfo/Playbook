@@ -80,14 +80,10 @@ export default function ProjectArchetypeHome() {
           <div className="space-y-6">
             <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
               <p className="text-gray-700">
-                The objective of this comprehensive project archetypes framework is to establish clear pathways and guidelines for managing diverse initiatives within the CCC, ensuring each project type aligns with core principles while maintaining operational excellence and regulatory compliance. By implementing a structured approach to project categorization and governance, the framework creates distinct processes for collaborative studies, fee for service projects, sponsorships, and grants, while fostering adherence to CCC's North Star of elevating partners to impact community patients.
+              The CCC project archetypes framework streamlines the management of four key initiative types—collaborative studies, fee-for-service projects, sponsorships, and grants—by providing clear guidelines that ensure alignment with core principles, operational excellence, and regulatory compliance. Each archetype supports CCC’s mission to elevate partners and improve community patient impact through structured governance, community trust-building, and tailored education.
               </p>
             </div>
-            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
-              <p className="text-gray-700">
-                This integrated framework orchestrates the management of four critical project types: collaborative studies that generate evidence through GRC/LRC oversight, fee for service projects that deliver individual services, sponsorships that support medical and corporate initiatives, and grants that enable community impact. Each archetype is designed to complement CCC's core principles, creating a dynamic system that enables community sites to better serve patients, builds trust within communities, and develops right-sized, personalized education.
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
