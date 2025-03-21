@@ -3,10 +3,18 @@ import React from "react";
 import { AuroraBackground } from "./ui/aurora-background.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { FlipWords } from "./ui/flip-words";
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+
+  const words = [
+    "elevate partners",
+    "impact community patients",
+    "educate patients and providers",
+    "improve access and health equity"
+  ];
 
   const handleStartClick = () => {
     if (user) {
@@ -28,11 +36,13 @@ const LandingPage = () => {
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
-        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-          Welcome to CCC Playbook
+        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center flex flex-col">
+          <span>Welcome to</span>
+          <span>Community Cancer Collective</span>
+          <span>Playbook</span>
         </div>
-        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-          Your comprehensive guide to success
+        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4 flex items-center">
+          Your comprehensive guide to&nbsp;<FlipWords words={words} />
         </div>
         <button 
           onClick={handleStartClick}
