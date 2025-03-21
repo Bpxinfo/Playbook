@@ -7,7 +7,6 @@ export default function ProjectArchetypeHome() {
 
   // Color palette for main sections
   const mainSectionColors = [
-    'bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-blue-500',
     'bg-gradient-to-br from-purple-50 to-purple-100 border-l-4 border-purple-500',
     'bg-gradient-to-br from-green-50 to-green-100 border-l-4 border-green-500',
   ];
@@ -22,12 +21,6 @@ export default function ProjectArchetypeHome() {
   ];
 
   const mainSections = [
-    {
-      title: "Objectives",
-      description: "Understand the core objectives and goals of the CCC Projects, including their purpose and key success metrics.",
-      path: "/project-archetype/objectives",
-      icon: Book
-    },
     {
       title: "CORE Principles",
       description: "Explore the fundamental CORE principles that guide our approach to community cancer care and shape our project methodologies.",
@@ -83,18 +76,25 @@ export default function ProjectArchetypeHome() {
         </h1>
         
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8 border border-gray-100">
-          <p className="text-gray-700 mb-4 text-lg leading-relaxed">
-            The Project Archetypes section provides a comprehensive introduction to the different types of projects within the Community Cancer Collective (CCC) initiative. Here you'll find information about project objectives, guiding principles, and the project lifecycle.
-          </p>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            This section has been designed to help you understand the various project types and methodologies used within the CCC, ensuring consistent implementation and successful outcomes for community cancer care initiatives.
-          </p>
+          <h2 className="text-2xl text-red-800 mb-6">Framework Overview</h2>
+          <div className="space-y-6">
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+              <p className="text-gray-700">
+                The objective of this comprehensive project archetypes framework is to establish clear pathways and guidelines for managing diverse initiatives within the CCC, ensuring each project type aligns with core principles while maintaining operational excellence and regulatory compliance. By implementing a structured approach to project categorization and governance, the framework creates distinct processes for collaborative studies, fee for service projects, sponsorships, and grants, while fostering adherence to CCC's North Star of elevating partners to impact community patients.
+              </p>
+            </div>
+            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+              <p className="text-gray-700">
+                This integrated framework orchestrates the management of four critical project types: collaborative studies that generate evidence through GRC/LRC oversight, fee for service projects that deliver individual services, sponsorships that support medical and corporate initiatives, and grants that enable community impact. Each archetype is designed to complement CCC's core principles, creating a dynamic system that enables community sites to better serve patients, builds trust within communities, and develops right-sized, personalized education.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="mb-16">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6 pb-2 border-b-2 border-red-200 inline-block">Main Sections</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {mainSections.map((section, index) => {
             const IconComponent = section.icon;
             return (

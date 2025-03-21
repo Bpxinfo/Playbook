@@ -76,12 +76,10 @@ const MainLayout = ({ children }) => {
   const navigationItems = {
     'playbook-overview': {
       title: 'Playbook Overview',
-      items: ['Objectives']
     },
     'ccc-overview': {
       title: 'CCC Overview',
       items: [
-        'Objectives',
         'Strategic Pillars',
         'Key Messaging',
         'Stakeholders',
@@ -90,37 +88,17 @@ const MainLayout = ({ children }) => {
     },
     'communications': {
       title: 'Communications',
-      subsections: [
-        {
-          id: 'internal-comms-plan',
-          title: 'Internal Comms Plan',
-          items: [
-            'Objectives',
-            'Channels',
-            'Cadence',
-            'CCC Stakeholders',
-            'Strategies & Tactics',
-            'Timeline',
-            // 'Key Communications'
-          ]
-        },
-        {
-          id: 'internal-engagement',
-          title: 'Internal Engagement',
-          items: [
-            'Objectives',
-            'Communication Path',
-            'Internal Engagement Strategies',
-            'Internal Engagement Plan',
-            'Impact Monitoring'
-          ]
-        }
+      items: [
+        'Channels',
+        'Cadence',
+        'CCC Stakeholders',
+        'Communication Path',
+        'Internal Engagement Strategies'
       ]
     },
     'internal-onboarding': {
       title: 'Internal Onboarding',
       items: [
-        'Objectives',
         'Ongoing Support'
       ],
       subsections: [
@@ -156,7 +134,6 @@ const MainLayout = ({ children }) => {
     'processes': {
       title: 'Processes & Governance',
       items: [
-        'Objectives',
         'Processes',
         'Governance',
         'SOPs & Resources'
@@ -175,7 +152,6 @@ const MainLayout = ({ children }) => {
     'project-archetype': {
       title: 'Projects Archetypes',
       items: [
-        'Objectives', 
         'CORE Principles',
         'Collaborative Studies',
         'ISRs',
@@ -188,7 +164,6 @@ const MainLayout = ({ children }) => {
     'systems': {
       title: 'Systems',
       items: [
-        'Objectives',
         'Internal Platforms',
         'Manual Systems',
         // 'Links to Process'

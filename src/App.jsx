@@ -17,10 +17,8 @@ const SearchPage = lazy(() => import('@/pages/SearchPage.jsx'));
 
 // Playbook app overview
 const PlaybookHome = lazy(() => import('@/pages/playbook-app/index.jsx'));
-const PlaybookObjectives = lazy(() => import('@/pages/playbook-app/Objectives.jsx'));
 
 // CCC Initiative Overview
-const CCCOverview = lazy(() => import('@/pages/ccc-initiative/Objectives.jsx'));
 const KeyMessages = lazy(() => import('@/pages/ccc-initiative/KeyMessaging.jsx'));
 const Stakeholders = lazy(() => import('@/pages/ccc-initiative/Stakeholders.jsx'));
 const StrategicPillars = lazy(() => import('@/pages/ccc-initiative/StrategicPillars.jsx'));
@@ -30,24 +28,14 @@ const PatientImpact = lazy(() => import('@/pages/ccc-initiative/PatientImpact.js
 
 // Communication Plan
 const CommunicationsHome = lazy(() => import('@/pages/communications/index.jsx'));
-const InternalCommsHome = lazy(() => import('@/pages/communications/internal-comms-plan/InternalIndex.jsx'));
-const InternalObjectives = lazy(() => import('@/pages/communications/internal-comms-plan/Objectives.jsx'));
-const Channels = lazy(() => import('@/pages/communications/internal-comms-plan/Channels.jsx'));
-const CCCStakeholders = lazy(() => import('@/pages/communications/internal-comms-plan/CCCStakeholders.jsx'));
-const Cadence = lazy(() => import('@/pages/communications/internal-comms-plan/Cadence.jsx'));
-const StrategiesTactics = lazy(() => import('@/pages/communications/internal-comms-plan/StrategiesNTactics.jsx'));
-const Timeline = lazy(() => import('@/pages/communications/internal-comms-plan/Timeline.jsx'));
-
-const EngagementObjectives = lazy(() => import('@/pages/communications/internal-engagement/Objectives.jsx'));
-const CommEngHome = lazy(() => import('@/pages/communications/internal-engagement/EngIndex.jsx'));
-const CommunicationPlan = lazy(() => import('@/pages/communications/internal-engagement/CommunicationPath.jsx'));
-const LeadershipSteerCoMonitoring = lazy(() => import('@/pages/communications/internal-engagement/ImpactMonitoring.jsx'));
-const InternalEngagementStrategies = lazy(() => import('@/pages/communications/internal-engagement/InternalEngagementStrategies.jsx'));
-const InternalEngagementPlan = lazy(() => import('@/pages/communications/internal-engagement/InternalEngagementPlan.jsx'));
+const Channels = lazy(() => import('@/pages/communications/Channels.jsx'));
+const Cadence = lazy(() => import('@/pages/communications/Cadence.jsx'));
+const CCCStakeholders = lazy(() => import('@/pages/communications/CCCStakeholders.jsx'));
+const CommunicationPath = lazy(() => import('@/pages/communications/CommunicationPath.jsx'));
+const InternalEngagementStrategies = lazy(() => import('@/pages/communications/InternalEngagementStrategies.jsx'));
 
 // Onboarding
 const InternalOnboardingHome = lazy(() => import('@/pages/internal-onboarding/index.jsx'));
-const OnboardingObjectives = lazy(() => import('@/pages/internal-onboarding/Objectives.jsx'));
 const DeepenEngagement = lazy(() => import('@/pages/internal-onboarding/DeepenEngagement.jsx'));
 const FullIntegration = lazy(() => import('@/pages/internal-onboarding/FullIntegration.jsx'));
 const ImmerseContribute = lazy(() => import('@/pages/internal-onboarding/Immerse.jsx'));
@@ -61,7 +49,6 @@ const CCCFieldTeam = lazy(() => import('@/pages/internal-onboarding/ccc-field-te
 
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
-const ProcessesObjectives = lazy(() => import('@/pages/processes/Objectives.jsx'));
 const Processes = lazy(() => import('@/pages/processes/Processes.jsx'));
 const ProcessesGovernance = lazy(() => import('@/pages/processes/Governance.jsx'));
 const LinktoSGF = lazy(() => import('@/pages/processes/RandD.jsx'));
@@ -72,14 +59,12 @@ const ComplianceGuidance = lazy(() => import('@/pages/compliance/ComplianceGuida
 
 // Systems
 const SystemsHome = lazy(() => import('@/pages/systems/index.jsx'));
-const SystemsObjectives = lazy(() => import('@/pages/systems/Objectives.jsx'));
 const InternalPlatforms = lazy(() => import('@/pages/systems/InternalPlatforms.jsx'));
 const ManualSystems = lazy(() => import('@/pages/systems/ManualSystems.jsx'));
 const LinkstoProcess = lazy(() => import('@/pages/systems/LinkstoProcess.jsx'));
 
 // Project Archetype
 const ProjectArchetypeHome = lazy(() => import('@/pages/project-archetype/index.jsx'));
-const PAObjectives = lazy(() => import('@/pages/project-archetype/Objectives.jsx'));
 const CorePrinciples = lazy(() => import('@/pages/project-archetype/CorePrinciples.jsx'));
 const CCCProjectLifecycle = lazy(() => import('@/pages/project-archetype/ccc-project-lifecycle.jsx'));
 const CCCProjectTypes = lazy(() => import('@/pages/project-archetype/ProjectTypes.jsx'));
@@ -112,14 +97,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route element={<MainLayout />}>
             <Route path="/ccc-playbook" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+            <Route path="/search" element={<ProtectedRoute><SearchPage /></ProtectedRoute>} />
             <Route path="/playbook-overview" element={
               <ProtectedRoute>
                 <HomePage />
-              </ProtectedRoute>
-            } />
-            <Route path="/playbook-overview/objectives" element={
-              <ProtectedRoute>
-                <PlaybookObjectives />
               </ProtectedRoute>
             } />
 
@@ -127,11 +108,6 @@ function App() {
             <Route path="/ccc-overview" element={
               <ProtectedRoute>
                 <CCCInitiativeHome />
-              </ProtectedRoute>
-            } />
-            <Route path="/ccc-overview/objectives" element={
-              <ProtectedRoute>
-                <CCCOverview />
               </ProtectedRoute>
             } />
             <Route path="/ccc-overview/strategic-pillars" element={
@@ -155,77 +131,35 @@ function App() {
               </ProtectedRoute>
             } />
 
-            {/* Communication Plan - Internal */}
+            {/* Communication Plan */}
             <Route path="/communications" element={
               <ProtectedRoute>
                 <CommunicationsHome />
               </ProtectedRoute>
             } />
-            <Route path="/communications/internal-comms-plan" element={
-              <ProtectedRoute>
-                <InternalCommsHome />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-comms-plan/objectives" element={
-              <ProtectedRoute>
-                <InternalObjectives />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-comms-plan/channels" element={
+            <Route path="/communications/channels" element={
               <ProtectedRoute>
                 <Channels />
               </ProtectedRoute>
             } />
-            <Route path="/communications/internal-comms-plan/ccc-stakeholders" element={
-              <ProtectedRoute>
-                <CCCStakeholders />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-comms-plan/cadence" element={
+            <Route path="/communications/cadence" element={
               <ProtectedRoute>
                 <Cadence />
               </ProtectedRoute>
             } />
-            <Route path="/communications/internal-comms-plan/strategies-&-tactics" element={
+            <Route path="/communications/ccc-stakeholders" element={
               <ProtectedRoute>
-                <StrategiesTactics />
+                <CCCStakeholders />
               </ProtectedRoute>
             } />
-            <Route path="/communications/internal-comms-plan/timeline" element={
+            <Route path="/communications/communication-path" element={
               <ProtectedRoute>
-                <Timeline />
+                <CommunicationPath />
               </ProtectedRoute>
             } />
-
-            {/* Communication Plan - Engagement */}
-            <Route path="/communications/internal-engagement/objectives" element={
-              <ProtectedRoute>
-                <EngagementObjectives />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-engagement" element={
-              <ProtectedRoute>
-                <CommEngHome />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-engagement/communication-path" element={
-              <ProtectedRoute>
-                <CommunicationPlan />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-engagement/impact-monitoring" element={
-              <ProtectedRoute>
-                <LeadershipSteerCoMonitoring />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-engagement/internal-engagement-strategies" element={
+            <Route path="/communications/internal-engagement-strategies" element={
               <ProtectedRoute>
                 <InternalEngagementStrategies />
-              </ProtectedRoute>
-            } />
-            <Route path="/communications/internal-engagement/internal-engagement-plan" element={
-              <ProtectedRoute>
-                <InternalEngagementPlan />
               </ProtectedRoute>
             } />
 
@@ -235,13 +169,7 @@ function App() {
                 <InternalOnboardingHome />
               </ProtectedRoute>
             } />
-            
-            {/* Objectives */}
-            <Route path="/internal-onboarding/objectives" element={
-              <ProtectedRoute>
-                <OnboardingObjectives />
-              </ProtectedRoute>
-            } />
+          
             
             {/* CCC Core & Extended */}
             <Route path="/internal-onboarding/ccc-core-extended" element={
@@ -316,12 +244,7 @@ function App() {
               </ProtectedRoute>
             } />
             
-            {/* Legacy routes for backward compatibility */}
-            <Route path="/internal-onboarding/ccc-core-extended/objectives" element={
-              <ProtectedRoute>
-                <Navigate to="/internal-onboarding/objectives" replace />
-              </ProtectedRoute>
-            } />
+
             <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={
               <ProtectedRoute>
                 <Navigate to="/internal-onboarding/ongoing-support" replace />
@@ -364,11 +287,6 @@ function App() {
                 <ProcessesHome />
               </ProtectedRoute>
             } />
-            <Route path="/processes/objectives" element={
-              <ProtectedRoute>
-                <ProcessesObjectives />
-              </ProtectedRoute>
-            } />
             <Route path="/processes/processes" element={
               <ProtectedRoute>
                 <Processes />
@@ -403,11 +321,6 @@ function App() {
                 <SystemsHome />
               </ProtectedRoute>
             } />
-            <Route path="/systems/objectives" element={
-              <ProtectedRoute>
-                <SystemsObjectives />
-              </ProtectedRoute>
-            } />
             <Route path="/systems/internal-platforms" element={
               <ProtectedRoute>
                 <InternalPlatforms />
@@ -428,11 +341,6 @@ function App() {
             <Route path="/project-archetype" element={
               <ProtectedRoute>
                 <ProjectArchetypeHome />
-              </ProtectedRoute>
-            } />
-            <Route path="/project-archetype/objectives" element={
-              <ProtectedRoute>
-                <PAObjectives />
               </ProtectedRoute>
             } />
             <Route path="/project-archetype/core-principles" element={

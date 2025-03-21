@@ -4,14 +4,10 @@ import {
   MessageSquare, 
   Target, 
   Users, 
-  Clock,
-  Radio,
   Share2,
   Goal,
   GitCommit,
   Layout,
-  UserCheck,
-  LineChart,
   ArrowRight 
 } from 'lucide-react';
 
@@ -19,96 +15,46 @@ const CommunicationPlanHome = () => {
   const navigate = useNavigate();
 
   const sections = {
-    internal: {
-      title: "Internal Communications",
-      description: "Strategies and frameworks for internal stakeholder communication",
+    communications: {
+      title: "Communications",
+      description: "Core communication objectives, principles, and engagement framework",
       color: "bg-blue-100",
-      icon: Radio,
+      icon: MessageSquare,
       subsections: [
         {
-          title: "Objectives",
-          description: "Core goals and targets for internal communication",
-          path: "/communications/internal-comms-plan/objectives",
-          icon: Goal,
-          color: "bg-blue-50"
-        },
-        {
           title: "CCC Stakeholders",
-          description: "Key internal stakeholders and their communication needs",
-          path: "/communications/internal-comms-plan/ccc-stakeholders",
+          description: "Key stakeholders and their communication needs",
+          path: "/communications/ccc-stakeholders",
           icon: Users,
-          color: "bg-blue-50"
-        },
-        {
-          title: "Strategies & Tactics",
-          description: "Implementation approaches for effective communication",
-          path: "/communications/internal-comms-plan/strategies-&-tactics",
-          icon: Target,
-          color: "bg-blue-50"
-        },
-        {
-          title: "Timeline",
-          description: "Communication rollout schedule and milestones",
-          path: "/communications/internal-comms-plan/timeline",
-          icon: Clock,
           color: "bg-blue-50"
         },
         {
           title: "Channels",
           description: "Communication channels and their usage",
-          path: "/communications/internal-comms-plan/channels",
+          path: "/communications/channels",
           icon: Share2,
           color: "bg-blue-50"
         },
         {
           title: "Cadence",
           description: "Different message passing systems and flows",
-          path: "/communications/internal-comms-plan/cadence",
+          path: "/communications/cadence",
           icon: GitCommit,
           color: "bg-blue-50"
-        }
-      ]
-    },
-    engagement: {
-      title: "Internal Engagement",
-      description: "Framework for internal stakeholder engagement and feedback",
-      color: "bg-green-100",
-      icon: Layout,
-      subsections: [
-        {
-          title: "Objectives",
-          description: "Goals and targets for stakeholder engagement",
-          path: "/communications/internal-engagement/objectives",
-          icon: Goal,
-          color: "bg-green-50"
         },
         {
           title: "Communication Path",
           description: "Structured approach to stakeholder communication",
-          path: "/communications/internal-engagement/communication-path",
+          path: "/communications/communication-path",
           icon: GitCommit,
-          color: "bg-green-50"
+          color: "bg-blue-50"
         },
         {
           title: "Internal Engagement Strategies",
           description: "Methods to enhance stakeholder participation",
-          path: "/communications/internal-engagement/internal-engagement-strategies",
+          path: "/communications/internal-engagement-strategies",
           icon: Target,
-          color: "bg-green-50"
-        },
-        {
-          title: "Internal Engagement Plan",
-          description: "Systems for collecting and acting on feedback",
-          path: "/communications/internal-engagement/internal-engagement-plan",
-          icon: UserCheck,
-          color: "bg-green-50"
-        },
-        {
-          title: "Impact Monitoring",
-          description: "Tracking and measuring engagement effectiveness",
-          path: "/communications/internal-engagement/impact-monitoring",
-          icon: LineChart,
-          color: "bg-green-50"
+          color: "bg-blue-50"
         }
       ]
     }
@@ -116,10 +62,46 @@ const CommunicationPlanHome = () => {
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Communications</h1>
 
         <div className="space-y-6">
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Core Objectives</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Our communication objectives are designed to ensure clear, consistent, and effective information flow throughout the CCC initiative. These objectives guide our approach to stakeholder engagement and organizational alignment.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Establish clear communication channels and protocols</li>
+                <li>Ensure timely dissemination of critical information</li>
+                <li>Foster transparency and open dialogue</li>
+                <li>Support cross-functional collaboration</li>
+                <li>Drive engagement and participation</li>
+                <li>Create a collaborative environment that encourages active participation</li>
+                <li>Build strong relationships between teams and departments</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-red-800 mb-4">Communication Principles</h2>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Our communication approach is guided by the following core principles:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                <li>Clarity: Messages are clear, concise, and easily understood</li>
+                <li>Consistency: Information is consistent across all channels</li>
+                <li>Timeliness: Updates are provided promptly and regularly</li>
+                <li>Relevance: Content is tailored to stakeholder needs</li>
+                <li>Accessibility: Information is easily accessible to all stakeholders</li>
+                <li>Transparency: Open and honest communication about progress and challenges</li>
+                <li>Engagement: Active participation and feedback from stakeholders</li>
+              </ul>
+            </div>
+          </section>
+
           {Object.entries(sections).map(([key, section]) => {
             const IconComponent = section.icon;
             return (
@@ -130,7 +112,7 @@ const CommunicationPlanHome = () => {
                 </div>
                 <p className="text-gray-700 mb-6">{section.description}</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {section.subsections.map((subsection, index) => {
                     const SubIconComponent = subsection.icon;
                     return (
@@ -152,6 +134,27 @@ const CommunicationPlanHome = () => {
               </section>
             );
           })}
+
+          <section className="bg-gray-50 rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Need Help?</h2>
+            <p className="text-gray-700 mb-4">
+              If you need guidance on which section to explore first, we recommend starting with the Objectives to understand our core communication goals.
+            </p>
+            <div className="flex gap-4">
+              <button
+                onClick={() => navigate('/feedback')}
+                className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Submit Feedback
+              </button>
+              <button
+                onClick={() => navigate('/')}
+                className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Back to Main Menu
+              </button>
+            </div>
+          </section>
         </div>
       </div>
     </div>

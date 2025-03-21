@@ -106,16 +106,21 @@ const SearchResults = ({ results, searchTerm, isLoading }) => {
 
   if (isLoading) {
     return (
-      <div className="p-8 flex items-center justify-center">
-        <Loader className="w-6 h-6 animate-spin text-red-800 mr-2" />
-        <span>Searching...</span>
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="flex items-center justify-center space-x-2">
+          <Loader className="w-6 h-6 animate-spin text-red-800" />
+          <span className="text-gray-700">Searching...</span>
+        </div>
+        <p className="text-center text-gray-500 mt-4">
+          Please wait while we search through the content...
+        </p>
       </div>
     );
   }
 
   if (!searchTerm) {
     return (
-      <div className="p-8">
+      <div className="bg-white rounded-lg shadow-md p-6">
         <h1 className="text-4xl font-light text-red-800 mb-8">Search Results</h1>
         <p className="text-gray-700">Please enter a search term to begin.</p>
       </div>

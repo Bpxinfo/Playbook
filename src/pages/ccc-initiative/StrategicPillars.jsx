@@ -28,7 +28,7 @@ const StrategicPillars = () => {
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase flex items-center justify-center">
           <Target className="w-8 h-8 mr-3" />
           Strategic Pillars

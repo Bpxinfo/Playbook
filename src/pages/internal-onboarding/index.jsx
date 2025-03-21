@@ -22,13 +22,6 @@ export default function InternalOnboardingHome() {
 
   const teamSections = [
     {
-      title: "Objectives",
-      description: "Understand the goals and expected outcomes of our comprehensive integration program.",
-      path: "/internal-onboarding/objectives",
-      icon: Target,
-      color: "bg-blue-50"
-    },
-    {
       title: "CCC Core & Extended",
       description: "Comprehensive onboarding program for core team members and extended collaborators.",
       path: "/internal-onboarding/ccc-core-extended",
@@ -97,17 +90,29 @@ export default function InternalOnboardingHome() {
   ];
 
   return (
-    <div className="p-4 max-w-4xl mx-auto">
+    <div className="p-4 max-w-7xl mx-auto">
       <div className="mb-12">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Internal Onboarding</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <p className="text-gray-700 mb-4">
-            Our Internal Onboarding program is designed to transform new team members into fully integrated, high-performing contributors to the CCC initiative. This systematic, year-long journey ensures proper alignment with our strategic goals while maximizing impact from day one.
-          </p>
-          <p className="text-gray-700">
-            Each phase of the onboarding journey builds upon the previous, creating a comprehensive learning experience that combines hands-on practice with strategic understanding of the CCC mission.
-          </p>
+          <h2 className="text-2xl text-red-800 mb-4">Program Overview</h2>
+          <div className="space-y-4">
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+              <p className="text-gray-700">
+                The objective of this comprehensive integration program is to accelerate the onboarding of high-potential CCC Project Leaders into a community patient mission-driven initiative, ensuring their rapid alignment with strategic goals and maximizing their impact from day one. Through a structured, year-long journey, the program systematically transforms new entrants into fully integrated, high-performing contributors and ambassadors for the initiative.
+              </p>
+            </div>
+            <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+              <p className="text-gray-700">
+                This meticulously designed framework encompasses six key phases: pre-integration preparation, initial orientation, immersive contribution, deepened engagement, full integration, and ongoing support. Each phase is carefully crafted to build upon the previous, fostering a self-driven approach to leadership development while simultaneously advancing the initiative's objectives.
+              </p>
+            </div>
+            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+              <p className="text-gray-700">
+                The program's emphasis on hands-on experience, strategic responsibility allocation, and external engagement ensures that participants not only assimilate into their roles but also emerge as catalysts for innovation and growth within the organization.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -156,7 +161,7 @@ export default function InternalOnboardingHome() {
       <div className="mt-12 bg-gray-50 rounded-lg shadow-lg p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Getting Started</h2>
         <p className="text-gray-700 mb-4">
-          Start with the Objectives section to understand the program's goals. Then select the appropriate team onboarding program based on your role. For CCC Core & Extended team members, proceed through each phase sequentially.
+          Select the appropriate team onboarding program based on your role. For CCC Core & Extended team members, proceed through each phase sequentially.
         </p>
         <div className="flex gap-4">
           <button

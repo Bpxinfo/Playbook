@@ -14,13 +14,6 @@ const SystemsHome = () => {
 
   const sections = [
     {
-      title: "Objectives",
-      description: "Understand the purpose and goals of our digital and manual systems infrastructure.",
-      path: "/systems/objectives",
-      icon: Target,
-      color: "bg-blue-50"
-    },
-    {
       title: "Internal Platforms",
       description: "Overview of all digital platforms, tools, and applications used in CCC operations.",
       path: "/systems/internal-platforms",
@@ -33,14 +26,7 @@ const SystemsHome = () => {
       path: "/systems/manual-systems",
       icon: ClipboardList,
       color: "bg-green-50"
-    },
-    // {
-    //   title: "Links to Process",
-    //   description: "Quick access to system-related processes, guides, and documentation.",
-    //   path: "/systems/links-to-process",
-    //   icon: LinkIcon,
-    //   color: "bg-yellow-50"
-    // }
+    }
   ];
 
   const systemHighlights = [
@@ -64,7 +50,7 @@ const SystemsHome = () => {
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Systems</h1>
         
         <div className="space-y-6">
@@ -72,12 +58,26 @@ const SystemsHome = () => {
             <div className="flex items-center mb-4">
               <Database className="w-8 h-8 text-red-800 mr-4" />
               <h2 className="text-2xl font-semibold text-gray-800">
-                Systems Overview
+                Systems Framework Overview
               </h2>
             </div>
-            <p className="text-gray-700 mb-4">
-              Our systems infrastructure combines digital and manual tools to support efficient CCC operations. Here you'll find detailed documentation for all CCC systems, with step-by-step guides on how to access each tool, recommended usage practices, and information on how different systems work together. Whether you need access to a new platform or want to understand how systems connect, you'll find it here.
-            </p>
+            <div className="space-y-4">
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  The systems framework serves as the operational backbone of the Community Cancer Collective (CCC) initiative, providing the essential infrastructure needed to coordinate and execute its mission effectively. These systems are generally involved with CCC through projects, administration and general activities (e.g. processes). By integrating diverse platforms, workflows, and processes, this framework enables CCC to manage complex projects, maintain regulatory compliance, and facilitate collaboration across multiple stakeholders.
+                </p>
+              </div>
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  Through structured governance mechanisms like the Global Review Committee (GRC) and Local Review Committee (LRC), the systems framework safeguards the integrity of CCC's work while expediting decision-making processes. It provides clear pathways for project approvals, document management, and regulatory compliance, reducing operational friction and enabling teams to focus on their core objectives. The framework's emphasis on transparent documentation and standardized processes helps protect both the initiative's interests and its stakeholders by maintaining consistent standards across all activities.
+                </p>
+              </div>
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  Most importantly, this systems framework transforms complex operational requirements into manageable, repeatable processes that support CCC's growth and adaptation. It creates a foundation that allows CCC to scale its operations efficiently, respond to emerging needs in the cancer care landscape, and maintain the highest standards of quality and compliance while supporting the initiative's goal of advancing cancer care in the community setting.
+                </p>
+              </div>
+            </div>
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -116,7 +116,7 @@ const SystemsHome = () => {
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">System Access & Support</h2>
             <p className="text-gray-700 mb-4">
-              For access to any CCC systems or technical support, please review the Digital Systems section first. If you need additional assistance or have specific questions, use the feedback form to reach our support team.
+              For access to any CCC systems or technical support, please review the Internal Platforms section first. If you need additional assistance or have specific questions, use the feedback form to reach our support team.
             </p>
             <div className="flex gap-4">
               <button

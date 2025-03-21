@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Settings,
-  Target,
   GitBranch,
   Shield,
   FileText,
@@ -13,13 +12,6 @@ const ProcessesHome = () => {
   const navigate = useNavigate();
 
   const sections = [
-    {
-      title: "Objectives",
-      description: "Understand the goals and framework of our processes, governance, and compliance structure.",
-      path: "/processes/objectives",
-      icon: Target,
-      color: "bg-blue-50"
-    },
     {
       title: "Processes & Governance",
       description: "Comprehensive overview of operational processes and governance frameworks.",
@@ -45,7 +37,7 @@ const ProcessesHome = () => {
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Processes & Governance</h1>
         
         <div className="space-y-6">
@@ -53,15 +45,26 @@ const ProcessesHome = () => {
             <div className="flex items-center mb-4">
               <Settings className="w-8 h-8 text-red-800 mr-4" />
               <h2 className="text-2xl font-semibold text-gray-800">
-                Operational Framework
+                Process Framework Overview
               </h2>
             </div>
-            <p className="text-gray-700 mb-4">
-              This section outlines our comprehensive framework for process management, governance structures, and operational guidelines. It provides the foundation for consistent, compliant, and effective execution of CCC initiatives.
-            </p>
-            <p className="text-gray-700">
-              Our structured approach ensures that all activities align with regulatory requirements while maintaining operational efficiency and supporting our mission to improve community cancer care.
-            </p>
+            <div className="space-y-4">
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  The objective of this comprehensive processes, governance, and compliance framework is to establish a robust operational foundation for the CCC initiative, ensuring seamless execution while maintaining the highest standards of regulatory adherence and risk management. By implementing a structured approach to governance, the framework creates clear lines of accountability, streamlines decision-making processes, and fosters a culture of compliance that protects both the initiative's integrity and its stakeholders' interests.
+                </p>
+              </div>
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  This integrated framework orchestrates the cross functional interactions of three critical pillars: operational processes that drive day-to-day activities, governance mechanisms that ensure proper oversight and control, and compliance guidance that safeguard against regulatory risks. Each pillar is designed to complement and reinforce the others, creating a dynamic system that adapts to changing requirements while maintaining operational excellence and legal, compliance and regulatory conformity.
+                </p>
+              </div>
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  The framework's emphasis on transparent documentation, clear accountability structures, and proactive risk management ensures that the CCC initiative not only meets its current obligations but is also positioned to scale effectively and respond to emerging complexities. Through systematic monitoring and regular review cycles, the framework promotes continuous improvement while maintaining the agility necessary to address evolving patient needs, treatment landscapes and operational demands.
+                </p>
+              </div>
+            </div>
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -92,10 +95,10 @@ const ProcessesHome = () => {
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Quick Reference</h2>
               <p className="text-gray-700 mb-4">
-                Start with the Objectives section to understand our process framework, then explore specific areas based on your needs. The Compliance Guidance section is essential for all team members.
+                Start with the Processes & Governance section to understand our operational framework, then explore specific areas based on your needs. The Compliance Guidance section is essential for all team members.
               </p>
               <button
-                onClick={() => navigate('/processes/objectives')}
+                onClick={() => navigate('/processes/processes-&-governance')}
                 className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 Start Here

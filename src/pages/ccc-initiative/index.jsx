@@ -1,18 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Building, Target, MessageSquare, Users, BookText, ArrowRight, HelpCircle, Heart } from 'lucide-react';
+import { Target, MessageSquare, Users, BookText, ArrowRight, HelpCircle, Heart } from 'lucide-react';
+import CCC_Overview from '../../assets/CCC_Overview.jpg';
+import ImageWithZoom from '../../components/ImageWithZoom';
 
 const CCCInitiativeHome = () => {
   const navigate = useNavigate();
 
   const sections = [
-    {
-      title: "Objectives",
-      description: "Learn about our mission to address gaps in care for patients in non-academic settings through community collaboration.",
-      path: "/ccc-overview/objectives",
-      icon: Building,
-      color: "bg-blue-50"
-    },
     {
       title: "Strategic Pillars",
       description: "Explore our three key focus areas: Generating Evidence, Addressing Disparities, and Enabling Education.",
@@ -41,28 +36,33 @@ const CCCInitiativeHome = () => {
       icon: Heart,
       color: "bg-pink-50"
     },
-    {
-      title: "FAQs",
-      description: "Find answers to commonly asked questions about the CCC Initiative.",
-      path: "/ccc-overview/faqs",
-      icon: HelpCircle,
-      color: "bg-orange-50"
-    }
   ];
 
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">CCC Overview</h1>
         
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
-            <p className="text-gray-700 mb-4">
-              The Community Cancer Collective (CCC) is a transformative initiative focused on improving cancer care in the community setting. By fostering collaborations with treatment sites nationwide, we work to bridge care gaps and enhance patient outcomes through evidence-based approaches.
-            </p>
-            <p className="text-gray-700">
-              This section provides a comprehensive overview of the CCC initiative, including our strategic framework, key messages, and the diverse stakeholders who contribute to our mission of elevating community cancer care.
-            </p>
+            <h2 className="text-2xl text-red-800 mb-4">Objectives & Mission</h2>
+            <div className="space-y-4">
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  The Community Cancer Collective (CCC) is a patient-focused initiative addressing care gaps for cancer patients in the community setting. By bringing together key partners and collaborating with oncology treatment sites nationwide, we identify impactful opportunities and implement innovative solutions.
+                </p>
+              </div>
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  Gilead contributes to this mission by engaging in collaborative initiatives and facilitating communication among stakeholders to support and improve patient outcomes in community oncology care.
+                </p>
+              </div>
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg">
+                <p className="text-gray-700">
+                  To achieve this goal, Gilead partners with community-focused institutions treating patients and nationwide support organizations to identify meaningful opportunities, develop community site capabilities, and execute impactful solutions for diverse oncology patient populations.
+                </p>
+              </div>
+            </div>
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,31 +88,20 @@ const CCCInitiativeHome = () => {
           </div>
 
           <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold text-red-800 mb-6">Frequently Asked Questions</h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">What is the Community Cancer Collective (CCC)?</h3>
-                <p className="text-gray-700">The CCC is a patient-focused initiative addressing care gaps for cancer patients in the community setting. We work with key partners and oncology treatment sites nationwide to identify opportunities and implement innovative solutions.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">What are the three strategic pillars of CCC?</h3>
-                <p className="text-gray-700">The CCC focuses on three key areas: Generating Evidence, Addressing Disparities & Improving Health Equity, and Enabling Education for Providers and Patients.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">How does CCC select its partners?</h3>
-                <p className="text-gray-700">Partners are selected based on objective criteria including demonstrated expertise, experience in CCC focus areas, and commitment to community oncology care. Selection ensures diversity across both major centers and community oncology institutions.</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">How can I get involved with CCC projects?</h3>
-                <p className="text-gray-700">CCC projects are open to qualified sites through our RFP program via GOptics, posted on AskGilead.com. Projects are selected based on alignment with CCC objectives, strategic pillars, and scientific merit.</p>
-              </div>
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <ImageWithZoom 
+                src={CCC_Overview} 
+                alt="CCC Overview" 
+                className="w-full rounded-lg shadow-lg mb-4"
+              />
             </div>
           </section>
+ 
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Getting Started</h2>
             <p className="text-gray-700 mb-4">
-              We recommend starting with the Objectives and CCC Overview to gain a foundational understanding of our initiative, followed by exploring our Strategic Pillars to learn about our key focus areas.
+              We recommend starting with the Strategic Pillars to understand our key focus areas, followed by exploring Key Messaging to learn about our mission and vision.
             </p>
             <div className="flex gap-4">
               <button

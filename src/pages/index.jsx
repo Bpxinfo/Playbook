@@ -20,13 +20,6 @@ const HomePage = () => {
 
   const sections = [
     {
-      title: "Playbook Overview",
-      description: "Learn about the playbook's objectives and purpose",
-      icon: Book,
-      path: "/playbook-overview",
-      color: "bg-blue-50"
-    },
-    {
       title: "CCC Overview",
       description: "Understand our mission, vision, and strategic pillars",
       icon: Building,

@@ -4,7 +4,7 @@ import { Target, BookOpen, ClipboardCheck, HeartPulse } from 'lucide-react';
 const DeepenEngagement = () => {
   return (
     <div className="p-4 flex justify-center">
-      <div className="max-w-4xl w-full">
+      <div className="max-w-7xl w-full">
         <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Deepen Engagement (2-4 months)</h1>
         <div className="space-y-8">
           <section className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">

@@ -3,7 +3,7 @@ import { BookOpen, Users, Target } from 'lucide-react';
 
 const OngoingSupport = () => {
   return (
-    <div className="p-4 mx-auto max-w-4xl">
+    <div className="p-4 max-w-7xl mx-auto">
       <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Ongoing Support</h1>
       
       <div className="space-y-8">

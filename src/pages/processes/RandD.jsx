@@ -164,7 +164,7 @@ const LinktoSGF = () => {
 
       <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">SOPs & Resources</h1>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
           {Object.entries(documents).map(([key, docs]) => (
             <button

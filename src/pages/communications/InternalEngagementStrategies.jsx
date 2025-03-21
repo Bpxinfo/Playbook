@@ -4,7 +4,7 @@ import { Target, Users, Workflow, Trophy, BarChart3, Layers, BookOpen, Puzzle } 
 const InternalEngagementStrategies = () => {
   return (
     <div className="p-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Internal Engagement Strategies</h1>
 
         <div className="space-y-6">
