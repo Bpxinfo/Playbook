@@ -400,6 +400,14 @@ const MainLayout = ({ children }) => {
     }
   };
 
+  // Add effect to clear expanded sections when sidebar is collapsed
+  useEffect(() => {
+    if (!sidebarOpen) {
+      setExpandedTopSection(null);
+      setExpandedSubSection(null);
+    }
+  }, [sidebarOpen]);
+
   const toggleTopSection = (sectionKey) => {
     if (isSidebarCollapsed) {
       setIsSidebarCollapsed(false);

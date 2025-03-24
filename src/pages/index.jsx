@@ -48,13 +48,6 @@ const HomePage = () => {
       color: "bg-pink-50"
     },
     {
-      title: "Systems",
-      description: "Explore our digital and manual systems",
-      icon: Database,
-      path: "/systems",
-      color: "bg-orange-50"
-    },
-    {
       title: "Compliance Guidance",
       description: "Understanding regulatory requirements and compliance protocols",
       icon: Shield,
@@ -67,6 +60,13 @@ const HomePage = () => {
       icon: Folders,
       path: "/project-archetypes",
       color: "bg-teal-50"
+    },
+    {
+      title: "Systems",
+      description: "Explore our digital and manual systems",
+      icon: Database,
+      path: "/systems",
+      color: "bg-orange-50"
     },
     {
       title: "Glossary of Terms",

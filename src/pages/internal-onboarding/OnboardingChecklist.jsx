@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Settings, ExternalLink } from 'lucide-react';
+import CheckboxItem from '../../components/CheckboxItem';
 
 const PreIntegrationPrep = () => {
   return (
@@ -12,35 +13,32 @@ const PreIntegrationPrep = () => {
             <BookOpen className="w-8 h-8 text-red-800 mr-3" />
             <h2 className="text-2xl text-red-800">Background Information</h2>
           </div>
-          <ul className="list-decimal pl-6 space-y-3 text-gray-700">
+          <ul className="pl-6 space-y-3 text-gray-700">
             <li className="space-y-2">Playbook Review
-              <ul className="list-disc pl-6 mt-2">
-                <li className="flex items-center gap-2">
-                  <span>Initiative goals and objectives</span>
-                  <ExternalLink className="w-4 h-4 text-blue-600" />
+              <ul className="pl-6 mt-2 space-y-2">
+                <li>
+                  <CheckboxItem id="background-1-1" text="Initiative goals and objectives" />
                 </li>
-                <li className="flex items-center gap-2">
-                  <span>Current status and achievements</span>
-                  <ExternalLink className="w-4 h-4 text-blue-600" />
+                <li>
+                  <CheckboxItem id="background-1-2" text="Current status and achievements" />
                 </li>
-                <li className="flex items-center gap-2">
-                  <span>Key stakeholders and team structure</span>
-                  <ExternalLink className="w-4 h-4 text-blue-600" />
+                <li>
+                  <CheckboxItem id="background-1-3" text="Key stakeholders and team structure" />
                 </li>
               </ul>
             </li>
             <li className="space-y-2">Function-specific orientation
-              <ul className="list-disc pl-6 mt-2">
-                <li>Tailored orientation for different roles/groups</li>
+              <ul className="pl-6 mt-2 space-y-2">
+                <li>
+                  <CheckboxItem id="background-2-1" text="Tailored orientation for different roles/groups" />
+                </li>
               </ul>
             </li>
-            <li className="flex items-center gap-2">
-              <span>Relevant project summaries, examples, and support resources</span>
-              <ExternalLink className="w-4 h-4 text-blue-600" />
+            <li>
+              <CheckboxItem id="background-3" text="Relevant project summaries, examples, and support resources" />
             </li>
-            <li className="flex items-center gap-2">
-              <span>Process OverviewCC</span>
-              <ExternalLink className="w-4 h-4 text-blue-600" />
+            <li>
+              <CheckboxItem id="background-4" text="Process OverviewCC" />
             </li>
           </ul>
         </section>
@@ -50,20 +48,19 @@ const PreIntegrationPrep = () => {
             <Settings className="w-8 h-8 text-red-800 mr-3" />
             <h2 className="text-2xl text-red-800">Logistics</h2>
           </div>
-          <ul className="list-decimal pl-6 space-y-3 text-gray-700">
-            <li className="flex items-center gap-2">
-              <span>Systems, request for necessary access rights and accounts</span>
-              <ExternalLink className="w-4 h-4 text-blue-600" />
+          <ul className="pl-6 space-y-3 text-gray-700">
+            <li>
+              <CheckboxItem id="logistics-1" text="Systems, request for necessary access rights and accounts" />
             </li>
-            <li className="flex items-center gap-2">
-              <span>Sign up for relevant CCC meetings</span>
-              <ExternalLink className="w-4 h-4 text-blue-600" />
+            <li>
+              <CheckboxItem id="logistics-2" text="Sign up for relevant CCC meetings" />
             </li>
-            <li className="flex items-center gap-2">
-              <span>Add proposed content for relevant agendas</span>
-              <ExternalLink className="w-4 h-4 text-blue-600" />
+            <li>
+              <CheckboxItem id="logistics-3" text="Add proposed content for relevant agendas" />
             </li>
-            <li>Introduce new members to key team members</li>
+            <li>
+              <CheckboxItem id="logistics-4" text="Introduce new members to key team members" />
+            </li>
           </ul>
         </section>
       </div>

@@ -274,17 +274,34 @@ export const AuthProvider = ({ children }) => {
             setUser(session.user);
             setIsGuest(false);
             localStorage.removeItem('isGuest');
+            // Ensure loading is set to false after session is processed
+            setLoading(false);
           }
           await syncUserProfile(session);
-        } else if (!isGuest) {
-          if (isMounted) {
-            setUser(null);
+        } else {
+          // Check if guest mode is active
+          const storedGuestState = localStorage.getItem('isGuest') === 'true';
+          if (storedGuestState) {
+            console.log('No user session but guest mode is active');
+            if (isMounted) {
+              setIsGuest(true);
+              setUser(null);
+              setLoading(false);
+            }
+          } else {
+            console.log('No user session and not in guest mode');
+            if (isMounted) {
+              setUser(null);
+              setIsGuest(false);
+              setLoading(false);
+            }
           }
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
         if (isMounted) {
           setUser(null);
+          setLoading(false);
         }
       } finally {
         if (isMounted) {

@@ -152,13 +152,22 @@ const Processes = () => {
                 <UserCheck className="w-5 h-5 mr-2" />
                 Partner & Project Selection
               </h3>
-              <div className="mb-8">
-                <ImageWithZoom 
-                  src={partner} 
-                  alt="CCC Overview" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">CCC Partner Selection Criteria</p>
+              <div className="mb-8 bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold mb-4 text-gray-900">CCC Partner Selection Criteria</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">The areas and subsets of criteria were informed by the explicit objectives of the CCC</p>
+                  </div>
+                  <div className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">The criteria were selected as proxies to evaluate an organization's capabilities to execute research initiatives related to the CCC's three strategic pillars</p>
+                  </div>
+                  <div className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                    <p className="text-gray-700">Criteria related to practice type and geography were included to represent variation in community oncology and generalizability of candidate studies</p>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-6">
@@ -334,43 +343,6 @@ const Processes = () => {
                   <p className="text-gray-700">{text}</p>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* Partner Selection Section */}
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Network className="w-6 h-6 mr-2" />
-              Partner Selection Framework
-            </h2>
-            <div className="bg-gray-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-              <ImageWithZoom 
-                src={partner} 
-                alt="Partner Selection" 
-                className="w-full rounded-lg shadow-lg mb-4"
-              />
-              <p className="text-sm text-gray-500 text-center">Partner Selection Criteria and Process</p>
-            </div>
-            <div className="mt-6">
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                  <Target className="w-5 h-5 mr-2" />
-                  Selection Criteria
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {selectionCriteria.map((item, index) => {
-                    const IconComponent = item.icon;
-                    return (
-                      <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
-                        <div className="bg-blue-50 p-2 rounded-full shadow-md">
-                          <IconComponent className="w-4 h-4 text-red-800" />
-                        </div>
-                        <span className="text-gray-700 ml-3">{item.text}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
           </section>
         </div>

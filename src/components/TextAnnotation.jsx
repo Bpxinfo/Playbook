@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { supabase } from '../lib/supabaseClient';
+import { useAuth } from '../contexts/AuthContext';
 
 // Component for text annotation with feedback and question functionality
-function TextAnnotation({ pageId, content, currentUser }) {
+function TextAnnotation({ pageId, content }) {
+  const { user, isGuest } = useAuth();
   const [comments, setComments] = useState([]);
   const [selectionRange, setSelectionRange] = useState(null);
   const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
@@ -37,6 +39,11 @@ function TextAnnotation({ pageId, content, currentUser }) {
   // Handle text selection and menu positioning
   useEffect(() => {
     const handleMouseUp = () => {
+      // Only allow comments for authenticated users who are not guests
+      if (!user || isGuest) {
+        return;
+      }
+
       const sel = window.getSelection();
       if (sel && sel.toString().trim().length > 0) {
         const range = sel.getRangeAt(0);
@@ -56,11 +63,11 @@ function TextAnnotation({ pageId, content, currentUser }) {
 
     document.addEventListener("mouseup", handleMouseUp);
     return () => document.removeEventListener("mouseup", handleMouseUp);
-  }, []);
+  }, [user, isGuest]); // Add user and isGuest to dependencies
 
   // Create a new comment
   const addComment = async (type) => {
-    if (!selectionRange) return;
+    if (!selectionRange || !user || isGuest) return;
     
     const selectedText = selectionRange.toString();
     const title = window.prompt(`Enter a short title for your ${type}:`);
@@ -76,7 +83,7 @@ function TextAnnotation({ pageId, content, currentUser }) {
       body,
       type,
       status: "open",
-      user_id: currentUser.id,
+      user_id: user.id,
       pos_top: menuPos.top,
       pos_left: menuPos.left,
       created_at: new Date().toISOString()
@@ -105,11 +112,13 @@ function TextAnnotation({ pageId, content, currentUser }) {
 
   // Resolve a comment and optionally add an admin answer
   const resolveComment = async (commentId, answer = null) => {
+    if (!user || isGuest) return;
+
     const updateData = {
       status: "resolved",
       ...(answer && { answer }),
       resolved_at: new Date().toISOString(),
-      resolved_by: currentUser.id
+      resolved_by: user.id
     };
 
     const { error } = await supabase
@@ -166,7 +175,7 @@ function TextAnnotation({ pageId, content, currentUser }) {
                 <h3 className="font-bold text-lg mb-2">{comment.title}</h3>
                 <p className="text-gray-700 mb-4">{comment.body}</p>
                 
-                {comment.type === "question" && currentUser.role === "admin" && (
+                {comment.type === "question" && user && !isGuest && (
                   <div className="mb-4">
                     <textarea
                       className="w-full p-2 border rounded"
@@ -185,7 +194,7 @@ function TextAnnotation({ pageId, content, currentUser }) {
                   </div>
                 )}
 
-                {currentUser.role === "admin" && (
+                {user && !isGuest && (
                   <button
                     className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2"
                     onClick={() => resolveComment(comment.id)}

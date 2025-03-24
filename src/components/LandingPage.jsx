@@ -13,7 +13,8 @@ const LandingPage = () => {
     "elevate partners",
     "impact community patients",
     "educate patients and providers",
-    "improve access and health equity"
+    "improve access and health equity",
+    "Generate evidence for patients"
   ];
 
   const handleStartClick = () => {

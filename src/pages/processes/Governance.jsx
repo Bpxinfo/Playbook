@@ -177,12 +177,46 @@ const ProcessesGovernance = () => {
             </h2>
             <div className="space-y-4">
               <div className="bg-purple-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                <ImageWithZoom 
-                  src={adjud} 
-                  alt="Adjudication Model" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">Adjudication Model</p>
+                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                  The CCC adjudication and governance process involves a new structure - the CCC Adjudication Committee
+                </h3>
+                <p className="text-gray-700 mb-6">
+                  This committee has a very narrowly scoped purpose
+                </p>
+                
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-red-800 mb-3">Purpose:</h4>
+                  <p className="text-gray-700 mb-4">For candidate initiatives (projects or project topics):</p>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                      <p className="text-gray-700"><span className="font-semibold">Division Determination:</span> To determine the appropriate division (i.e., Medical vs. Commercial) within Gilead to route candidate initiatives for evaluation for potential execution</p>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                      <p className="text-gray-700"><span className="font-semibold">Mapping Initiatives:</span> To map candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e., ISR, grants, etc.)</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-blue-50 rounded-lg shadow p-6">
+                  <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                    <AlertTriangle className="w-5 h-5 mr-2" />
+                    Examples of what is{" "}<span className="font-bold">out of scope</span>{" "}for this committee:
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                      <p className="text-gray-700">Prioritizing the merits of candidate projects/project ideas</p>
+                    </div>
+                    <div className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
+                      <p className="text-gray-700">Working through issues involving project execution and operations (which will be done either per existing Gilead policies, procedures and processes, or otherwise during project execution with support from relevant functions)</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>

@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const TextSelectionComment = () => {
+  const { user, isGuest } = useAuth();
   const [selectedText, setSelectedText] = useState('');
   const [comment, setComment] = useState('');
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -29,6 +31,11 @@ const TextSelectionComment = () => {
   };
 
   const handleMouseUp = () => {
+    // Only allow comments for authenticated users who are not guests
+    if (!user || isGuest) {
+      return;
+    }
+
     const selection = window.getSelection();
     const text = selection.toString().trim();
 
@@ -70,16 +77,15 @@ const TextSelectionComment = () => {
       const formattedDescription = `Selected Text: "${selectedText}"\n\nComment: ${comment}`;
       
       const feedbackData = {
-        name: 'Anonymous User',
-        email: 'anonymous@feedback.internal',
+        name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'Anonymous User',
+        email: user.email || 'anonymous@feedback.internal',
         section: getCurrentSection(),
         request_type: 'inline-comment',
         description: formattedDescription,
         submitted_at: new Date().toISOString(),
-        // Add status field with default value
         status: 'pending',
-        // Add source field to identify comment origin
-        source: 'inline-comment-tool'
+        source: 'inline-comment-tool',
+        user_id: user.id
       };
 
       console.log('Attempting to submit feedback:', feedbackData);
@@ -133,7 +139,7 @@ const TextSelectionComment = () => {
       document.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [user, isGuest]); // Add user and isGuest to dependencies
 
   if (!showPopup) return null;
 

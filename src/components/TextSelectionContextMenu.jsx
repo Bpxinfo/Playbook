@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { MessageSquare, X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const TextSelectionContextMenu = () => {
+  const { user, isGuest } = useAuth();
   const [selectedText, setSelectedText] = useState('');
   const [comment, setComment] = useState('');
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -29,6 +31,11 @@ const TextSelectionContextMenu = () => {
   };
 
   const handleContextMenu = (e) => {
+    // Only allow comments for authenticated users who are not guests
+    if (!user || isGuest) {
+      return;
+    }
+
     const selection = window.getSelection();
     const text = selection.toString().trim();
 
@@ -54,14 +61,15 @@ const TextSelectionContextMenu = () => {
     setIsSubmitting(true);
     try {
       const feedbackData = {
-        name: 'Anonymous User',
-        email: 'anonymous@feedback.internal',
+        name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'Anonymous User',
+        email: user.email || 'anonymous@feedback.internal',
         section: getCurrentSection(),
         request_type: 'inline-comment',
         description: `Selected Text: "${selectedText}"\n\nComment: ${comment}`,
         submitted_at: new Date().toISOString(),
         status: 'pending',
-        source: 'context-menu-comment'
+        source: 'context-menu-comment',
+        user_id: user.id
       };
 
       const { data, error: supabaseError } = await supabase
@@ -111,7 +119,7 @@ const TextSelectionContextMenu = () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [user, isGuest]); // Add user and isGuest to dependencies
 
   if (!showMenu) return null;
 

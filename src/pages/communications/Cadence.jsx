@@ -31,7 +31,6 @@ const Cadence = () => {
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Responsible</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Link(s)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -41,7 +40,6 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead, Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Proposals, Concepts</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="5">Monthly</td>
@@ -49,35 +47,30 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Dashboard</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Live Project Status, Milestones, Risks/Issues</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Spotlights</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Email / Mini Article / SP Blog Update</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Lead(s)</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project and Partner Updates</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC LT Core Team</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead(s)</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Updates on Governance, Next Steps</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Alignment Meetings</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Updates (Milestone, Spend)</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Spotlights</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Teams (+/- email)</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Lead(s)</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Updates</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Teams</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="4">Quarterly</td>
@@ -85,21 +78,18 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Core Team</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Agenda Driven Updates</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gilead Internal Stakeholders</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Newsletter</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Core Team + Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Spotlights, Updates, etc</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Governance: GLRC</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Proposals</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" colSpan="5">Meeting/Program Review</td>
@@ -110,7 +100,6 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Senior Leadership Meetings</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC LT</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Updates, Overview, Budget, Highlights</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="2">Ad Hoc</td>
@@ -118,14 +107,12 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Playbook Training</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Playbook</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Internal Functions</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Internal Roadshow</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Update Slides</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"></td>
                     </tr>
                   </tbody>
                 </table>
