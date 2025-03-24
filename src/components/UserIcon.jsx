@@ -25,11 +25,17 @@ const UserIcon = () => {
   // Fetch user profile when user state changes
   useEffect(() => {
     if (user) {
+      // Check for first and last name in different possible formats
+      const firstName = user.user_metadata?.first_name || user.user_metadata?.firstName || '';
+      const lastName = user.user_metadata?.last_name || user.user_metadata?.lastName || '';
+      
       setFormData({
-        firstName: user.user_metadata?.firstName || '',
-        lastName: user.user_metadata?.lastName || '',
+        firstName: firstName,
+        lastName: lastName,
         email: user.email || '',
-        displayName: user.user_metadata?.full_name || user.email?.split('@')[0] || ''
+        displayName: firstName && lastName 
+          ? `${firstName} ${lastName}`.trim() 
+          : user.user_metadata?.full_name || user.user_metadata?.name || user.email?.split('@')[0] || ''
       });
 
       // Fetch additional profile data

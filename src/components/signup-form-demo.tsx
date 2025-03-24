@@ -122,7 +122,7 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
           <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
+            <Label htmlFor="firstname" className="text-neutral-800 dark:text-neutral-200">First name</Label>
             <Input 
               id="firstname" 
               name="firstname"
@@ -131,10 +131,11 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
               value={formData.firstname}
               onChange={handleChange}
               required
+              className="shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
             />
           </LabelInputContainer>
           <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
+            <Label htmlFor="lastname" className="text-neutral-800 dark:text-neutral-200">Last name</Label>
             <Input 
               id="lastname" 
               name="lastname"
@@ -143,11 +144,12 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
               value={formData.lastname}
               onChange={handleChange}
               required
+              className="shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
             />
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
+          <Label htmlFor="email" className="text-neutral-800 dark:text-neutral-200">Email Address</Label>
           <Input 
             id="email" 
             name="email"
@@ -156,10 +158,11 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
             value={formData.email}
             onChange={handleChange}
             required
+            className="shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
           />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password" className="text-neutral-800 dark:text-neutral-200">Password</Label>
           <Input 
             id="password" 
             name="password"
@@ -168,6 +171,7 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
             value={formData.password}
             onChange={handleChange}
             required
+            className="shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"
           />
         </LabelInputContainer>
 

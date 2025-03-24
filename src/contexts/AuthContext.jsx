@@ -30,12 +30,25 @@ export const AuthProvider = ({ children }) => {
         return;
       }
 
-      // Get display name from various possible sources
-      const displayName = 
-        session.user.user_metadata?.full_name || // From OAuth providers
-        session.user.user_metadata?.name || // From some OAuth providers
-        `${session.user.user_metadata?.firstName || ''} ${session.user.user_metadata?.lastName || ''}`.trim() || // From our form
-        session.user.email?.split('@')[0]; // Fallback to email username
+      // Get display name prioritizing first_name and last_name fields
+      let displayName;
+      
+      // First try to get first_name and last_name from user_metadata
+      const firstName = session.user.user_metadata?.first_name || session.user.user_metadata?.firstName || '';
+      const lastName = session.user.user_metadata?.last_name || session.user.user_metadata?.lastName || '';
+      
+      if (firstName || lastName) {
+        // Use combined first and last name if either exists
+        displayName = `${firstName} ${lastName}`.trim();
+      } else {
+        // Fall back to other metadata sources if first/last name not available
+        displayName = 
+          session.user.user_metadata?.full_name || // From OAuth providers
+          session.user.user_metadata?.name || // From some OAuth providers
+          session.user.email?.split('@')[0]; // Fallback to email username
+      }
+
+      console.log('Setting display name:', displayName);
 
       // If profile doesn't exist, create it
       if (!existingProfile) {
@@ -141,10 +154,11 @@ export const AuthProvider = ({ children }) => {
         provider: 'azure',
         options: {
           redirectTo: `${window.location.origin}`,
-          scopes: 'openid email profile',
+          scopes: 'openid email profile User.Read',
           queryParams: {
             access_type: 'offline',
             prompt: 'consent',
+            response_type: 'code',
           },
         }
       });
@@ -155,6 +169,27 @@ export const AuthProvider = ({ children }) => {
       console.log('Microsoft sign in initiated:', data);
     } catch (error) {
       console.error('Microsoft sign in failed:', error);
+      throw error;
+    }
+  };
+
+  const signInWithEmail = async (email, password) => {
+    try {
+      console.log('Starting email sign in process...');
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      
+      if (error) {
+        console.error('Email sign in error:', error);
+        throw error;
+      }
+      
+      console.log('Email sign in successful:', data);
+      return data;
+    } catch (error) {
+      console.error('Email sign in failed:', error);
       throw error;
     }
   };
@@ -372,12 +407,24 @@ export const AuthProvider = ({ children }) => {
     loading,
     signInWithGoogle,
     signInWithMicrosoft,
+    signInWithEmail,
     signOut,
     continueAsGuest
   };
 
   return (
-    <AuthContext.Provider value={authValue}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isGuest,
+        loading,
+        signInWithGoogle,
+        signInWithMicrosoft,
+        signInWithEmail,
+        signOut,
+        continueAsGuest
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
