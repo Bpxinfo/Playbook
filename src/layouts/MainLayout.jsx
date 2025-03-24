@@ -44,6 +44,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '../lib/utils';
 import TextSelectionContextMenu from '../components/TextSelectionContextMenu';
 import UserIcon from '../components/UserIcon';
+import ThemeToggle from '../components/ThemeToggle';
 
 // Add CSS for WebKit scrollbar hiding
 const scrollbarHideStyles = `
@@ -451,7 +452,7 @@ const MainLayout = ({ children }) => {
                   className={`flex justify-between items-center p-2 text-sm rounded-lg transition-colors ${
                     isActive
                       ? 'bg-red-700 text-white hover:text-white'
-                      : 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                   onClick={(e) => {
                     // Remove the preventDefault to allow navigation
@@ -487,7 +488,7 @@ const MainLayout = ({ children }) => {
                           className={`block p-2 text-sm rounded-lg transition-colors ${
                             isDropdownActive
                               ? 'bg-red-500 text-white hover:text-white'
-                              : 'bg-white text-black hover:bg-gray-100'
+                              : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                           }`}
                         >
                           {dropdownItem}
@@ -512,7 +513,7 @@ const MainLayout = ({ children }) => {
                 className={`block p-2 text-sm rounded-lg transition-colors ${
                   isActive
                     ? 'bg-red-700 text-white hover:text-white'
-                    : 'bg-white text-black hover:bg-gray-100'
+                    : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 {item}
@@ -520,7 +521,7 @@ const MainLayout = ({ children }) => {
             ) : (
               <button
                 onClick={() => getItemPath(sectionKey, item)}
-                className="block w-full text-left p-2 text-sm rounded-lg transition-colors bg-white text-black hover:bg-gray-100"
+                className="block w-full text-left p-2 text-sm rounded-lg transition-colors bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 {item}
               </button>
@@ -540,7 +541,7 @@ const MainLayout = ({ children }) => {
             <div key={item} className="mb-1">
               <button
                 onClick={() => window.open('https://www.google.com', '_blank')}
-                className={`block w-full p-2 text-sm rounded-lg transition-colors bg-white text-black hover:bg-gray-100 text-left`}
+                className={`block w-full p-2 text-sm rounded-lg transition-colors bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 text-left`}
               >
                 <span className="flex items-center">
                   {item}
@@ -561,7 +562,7 @@ const MainLayout = ({ children }) => {
               className={`block p-2 text-sm rounded-lg transition-colors ${
                 isActive
                   ? 'bg-red-500 text-white hover:text-white'
-                  : 'bg-white text-black hover:bg-gray-100'
+                  : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
               {item}
@@ -705,27 +706,27 @@ const MainLayout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 bg-white relative">
+    <div className="min-h-screen bg-[#e8e8e8] dark:bg-[#212121] relative">
       <TextSelectionContextMenu />
       {/* Top Navigation Bar - Keep it intact */}
-      <header className="py-3 px-4 bg-white border-b border-gray-200 sticky top-0 z-50 flex items-center justify-between">
+      <header className="py-3 px-4 bg-white dark:bg-[#333333] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 flex items-center justify-between">
         <div className="flex items-center space-x-4 bg-white">
           {/* CCC Digital Playbook icon/link */}
-          <button onClick={handleLogoClick} className="flex items-center bg-white">
-            <Home className="w-5 h-5 text-red-800 mr-2" />
-            <span className="text-xl font-semibold text-red-800">CCC Playbook</span>
+          <button onClick={handleLogoClick} className="flex items-center bg-white dark:bg-[#333333]">
+            <Home className="w-5 h-5 text-red-800 dark:text-white mr-2" />
+            <span className="text-xl font-semibold text-red-800 dark:text-white">CCC Playbook</span>
           </button>
         </div>
         
         {/* Center Navigation Links */}
         <div className="flex items-center space-x-6">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
             CCC SharePoint
           </a>
-          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
             CCC Roadmap
           </a>
-          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 hover:underline">
+          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
             CCC Teams
           </a>
         </div>
@@ -733,24 +734,24 @@ const MainLayout = ({ children }) => {
         {/* Right-aligned group with Quick Links and Feedback dropdowns */}
         <div className="flex items-center space-x-4">
           <div className="relative group">
-            <button className="flex items-center text-red-800 hover:text-red-700 bg-white">
+            <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333]">
               <LinkIcon className="w-4 h-4 mr-2" />
               Quick Links
               <ChevronDown className="w-4 h-4 ml-1" />
             </button>
             {/* Add invisible bridge to maintain hover */}
             <div className="absolute w-full h-2 bg-transparent" />
-            <div className="absolute z-50 mt-0 w-64 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+            <div className="absolute z-50 mt-0 w-64 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
               <div className="py-2">
-                <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <BookOpen className="w-4 h-4 mr-2" />
                   FAQs
                 </Link>
-                <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <Shield className="w-4 h-4 mr-2" />
                   Compliance Guidance
                 </Link>
-                <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <Database className="w-4 h-4 mr-2" />
                   SOPs & Resources
                 </Link>
@@ -759,20 +760,20 @@ const MainLayout = ({ children }) => {
           </div>
           
           <div className="relative group">
-            <button className="flex items-center text-red-800 hover:text-red-700 bg-white transition-colors">
+            <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333] transition-colors">
               <MessageSquare className="w-4 h-4 mr-2" />
               Feedback
               <ChevronDown className="w-4 h-4 ml-1" />
             </button>
             {/* Add invisible bridge to maintain hover */}
             <div className="absolute w-full h-2 bg-transparent" />
-            <div className="absolute z-50 mt-0 w-48 bg-white rounded-lg shadow-lg border border-gray-200 invisible group-hover:visible">
+            <div className="absolute z-50 mt-0 w-48 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
               <div className="py-2">
-                <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <MessageSquare className="w-4 h-4 mr-2" />
                   Leave Feedback
                 </Link>
-                <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <BookOpen className="w-4 h-4 mr-2" />
                   See All Feedback
                 </a>
@@ -794,7 +795,7 @@ const MainLayout = ({ children }) => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 text-black rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 text-black rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
                 onFocus={() => {
                   if (searchTerm.trim().length > 1) {
                     setShowSearchDropdown(true);
@@ -803,23 +804,23 @@ const MainLayout = ({ children }) => {
               />
               
               {showSearchDropdown && searchResults.results.length > 0 && (
-                <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md z-50 max-h-96 overflow-y-auto border border-gray-200">
+                <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md z-50 max-h-96 overflow-y-auto border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                   {searchResults.results.map((result, idx) => (
                     <Link
                       key={`${result.path}-${idx}`}
                       to={result.path}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-0"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-0 dark:text-white dark:hover:bg-gray-700 dark:border-gray-700"
                       onClick={() => setShowSearchDropdown(false)}
                     >
                       <div className="font-medium">{result.title}</div>
-                      <div className="text-xs text-gray-500">{result.excerpt}</div>
+                      <div className="text-xs text-gray-500 dark:text-white dark:opacity-70">{result.excerpt}</div>
                     </Link>
                   ))}
                   
                   {searchResults.hiddenCount > 0 && (
                     <button
                       onClick={navigateToSearchResults}
-                      className="block w-full px-4 py-2 text-sm text-center text-red-800 bg-white font-medium"
+                      className="block w-full px-4 py-2 text-sm text-center text-red-800 bg-white font-medium dark:bg-gray-800 dark:text-white"
                     >
                       See all {searchResults.hiddenCount + searchResults.results.length} results
                     </button>
@@ -829,11 +830,16 @@ const MainLayout = ({ children }) => {
             </div>
             <button
               type="submit"
-              className="ml-2 p-2 rounded-md bg-red-800 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="ml-2 p-2 rounded-md bg-red-800 dark:bg-red-700 text-white hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
             >
-              <Search className="h-4 w-4" />
+              <Search className="h-4 w-4 text-white" />
             </button>
           </form>
+
+          {/* Theme Toggle */}
+          <div className="ml-4">
+            <ThemeToggle />
+          </div>
 
           {/* Add UserIcon component */}
           <div className="ml-4">
@@ -853,7 +859,7 @@ const MainLayout = ({ children }) => {
             setOpen={setSidebarOpen}
             animate={true}
           >
-            <SidebarBody className="bg-white h-full transition-all duration-300">
+            <SidebarBody className="bg-white dark:bg-[#333333] h-full transition-all duration-300">
               <nav 
                 ref={navContainerRef}
                 className={cn(
@@ -880,12 +886,12 @@ const MainLayout = ({ children }) => {
                           sidebarOpen ? "w-full justify-between p-3" : "w-12 h-12 p-2 justify-center",
                           isSectionSelected(key) 
                             ? 'bg-red-900 text-white' 
-                            : 'bg-white text-black hover:bg-gray-100'
+                            : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                         )}
                       >
                         <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
                           {SectionIcon && (
-                            <SectionIcon className={cn("w-6 h-6", isSectionSelected(key) ? 'text-white' : 'text-red-800')} />
+                            <SectionIcon className={cn("w-6 h-6", isSectionSelected(key) ? 'text-white' : 'text-red-800 dark:text-white')} />
                           )}
                           {sidebarOpen && (
                             <motion.span 
@@ -927,7 +933,7 @@ const MainLayout = ({ children }) => {
                                         "w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300",
                                         isSectionSelected(`${key}/${subsection.id}`)
                                           ? 'bg-red-700 text-white'
-                                          : 'bg-white text-black hover:bg-gray-100'
+                                          : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                                       )}
                                     >
                                       <span className="text-sm">{subsection.title}</span>
@@ -964,25 +970,25 @@ const MainLayout = ({ children }) => {
                 <>
                   {/* Top scroll button and gradient */}
                   <div 
-                    className={`absolute z-40 left-0 top-0 w-full h-12 bg-gradient-to-b from-white to-transparent pointer-events-none transition-opacity duration-300 ${
+                    className={`absolute z-40 left-0 top-0 w-full h-12 bg-gradient-to-b from-white dark:from-[#333333] to-transparent pointer-events-none transition-opacity duration-300 ${
                       scrollPosition <= 5 ? 'opacity-0' : 'opacity-100'
                     }`}
                   ></div>
                   <button 
                     onClick={() => handleNavScroll('up')}
                     className={cn(
-                      "absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                      "absolute z-50 left-1/2 transform -translate-x-1/2 top-[4.5rem] bg-white dark:bg-[#333333] rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-800",
                       scrollPosition <= 5 ? 'opacity-0 pointer-events-none' : 'opacity-90'
                     )}
                     aria-label="Scroll navigation up"
                   >
-                    <ChevronUp className="w-5 h-5 text-red-800" />
+                    <ChevronUp className="w-5 h-5 text-red-800 dark:text-white" />
                   </button>
                   
                   {/* Bottom scroll button and gradient */}
                   <div 
                     className={cn(
-                      "absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-300",
+                      "absolute z-40 left-0 bottom-0 w-full h-12 bg-gradient-to-t from-white dark:from-[#333333] to-transparent pointer-events-none transition-opacity duration-300",
                       navContainerRef.current && 
                       (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
                         ? 'opacity-0' 
@@ -992,7 +998,7 @@ const MainLayout = ({ children }) => {
                   <button 
                     onClick={() => handleNavScroll('down')}
                     className={cn(
-                      "absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-800",
+                      "absolute z-50 left-1/2 transform -translate-x-1/2 bottom-4 bg-white dark:bg-[#333333] rounded-full p-1.5 shadow-md transition-opacity hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-800",
                       navContainerRef.current && 
                       (navContainerRef.current.scrollHeight - navContainerRef.current.scrollTop - navContainerRef.current.clientHeight < 5)
                         ? 'opacity-0 pointer-events-none' 
@@ -1000,7 +1006,7 @@ const MainLayout = ({ children }) => {
                     )}
                     aria-label="Scroll navigation down"
                   >
-                    <ChevronDown className="w-5 h-5 text-red-800" />
+                    <ChevronDown className="w-5 h-5 text-red-800 dark:text-white" />
                   </button>
                 </>
               )}
@@ -1010,7 +1016,7 @@ const MainLayout = ({ children }) => {
 
         {/* Main Content */}
         <main className={cn(
-          "flex-1 p-6 transition-all duration-300",
+          "flex-1 p-6 transition-all duration-300 bg-[#e8e8e8] dark:bg-[#212121]",
           sidebarOpen ? "md:ml-[280px]" : "md:ml-0"
         )}>
           <div className="max-w-7xl mx-auto">
@@ -1031,14 +1037,16 @@ const MainLayout = ({ children }) => {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          background: 'white',
+          background: 'var(--bg-color, white)',
           padding: '8px 12px',
           borderRadius: '8px',
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
           zIndex: 1000,
+          '--bg-color': document.documentElement.classList.contains('dark') ? '#333333' : 'white',
         }}
+        className="dark:bg-[#333333] bg-white"
       >
-        <span style={{ color: '#4D4D4D', fontSize: '14px' }}>Powered by</span>
+        <span style={{ color: 'var(--text-color, #4D4D4D)', fontSize: '14px' }} className="dark:text-white">Powered by</span>
         <img src="/bpxlogo.svg" alt="BPX Logo" style={{ height: '20px' }} />
       </div>
 
