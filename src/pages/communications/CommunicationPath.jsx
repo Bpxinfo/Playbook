@@ -82,55 +82,6 @@ const CommunicationPath = () => {
           </section>
 
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Escalation Process</h2>
-            <div className="space-y-4">
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg mb-4">
-                <div className="flex items-start gap-4">
-                  <GitBranch className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Escalation Path</h3>
-                    <p className="text-gray-700">
-                      Follow this escalation path for issues:
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Level</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Response Time</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Issues</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 1</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Lead</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">24 hours</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Routine Issues</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 2</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">48 hours</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Complex Issues</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Level 3</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership SteerCo </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">72 hours</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Critical Issues</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Documentation Requirements</h2>
             <div className="space-y-4">
               <div className="bg-teal-50 border-l-4 border-teal-400 p-4 rounded-lg">

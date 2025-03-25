@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Settings,
   GitBranch,
-  Shield,
   FileText,
   ArrowRight 
 } from 'lucide-react';
@@ -13,18 +12,18 @@ const ProcessesHome = () => {
 
   const sections = [
     {
-      title: "Processes & Governance",
-      description: "Comprehensive overview of operational processes and governance frameworks.",
-      path: "/processes/processes-&-governance",
+      title: "Processes",
+      description: "Comprehensive overview of operational processes and workflows.",
+      path: "/processes/processes",
       icon: GitBranch,
       color: "bg-purple-50"
     },
     {
-      title: "Compliance Guidance",
-      description: "Essential guidelines and requirements for maintaining regulatory compliance.",
-      path: "/processes/compliance-guidance",
-      icon: Shield,
-      color: "bg-green-50"
+      title: "Governance",
+      description: "Access to governance frameworks and oversight mechanisms.",
+      path: "/processes/governance",
+      icon: Settings,
+      color: "bg-blue-50"
     },
     {
       title: "SOPs & Resources",

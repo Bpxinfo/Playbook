@@ -79,7 +79,7 @@ export default function ProjectArchetypeHome() {
           <h2 className="text-2xl text-red-800 mb-6">Framework Overview</h2>
           <div className="space-y-6">
               <p className="text-gray-700">
-              The CCC project archetypes framework streamlines the management of four key initiative types—collaborative studies, fee-for-service projects, sponsorships, and grants—by providing clear guidelines that ensure alignment with core principles, operational excellence, and regulatory compliance. Each archetype supports CCC’s mission to elevate partners and improve community patient impact through structured governance, community trust-building, and tailored education.
+              The CCC project archetypes framework streamlines the management of four key initiative types—collaborative studies, fee-for-service projects, sponsorships, and grants—by providing clear guidelines that ensure alignment with core principles, operational excellence, and regulatory compliance. Each archetype supports CCC's mission to elevate partners and improve community patient impact through structured governance, community trust-building, and tailored education.
               </p>
 
           </div>
@@ -99,16 +99,16 @@ export default function ProjectArchetypeHome() {
               >
                 <div className="absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full bg-white opacity-10"></div>
                 <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-full bg-white mr-4 shadow-sm">
+                  <div className="p-3 rounded-full bg-white mr-4 shadow-lg hover:shadow-xl transition-shadow">
                     <IconComponent className="w-6 h-6 text-red-800" />
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+                  <h2 className="text-xl font-semibold text-gray-800 dark:text-black">{section.title}</h2>
                 </div>
-                <p className="text-gray-600 pr-6 mb-4">{section.description}</p>
+                <p className="text-gray-600 dark:text-black pr-6 mb-4">{section.description}</p>
                 <div className="flex justify-end">
                   <div className="flex items-center text-red-800 font-medium group-hover:text-red-700">
-                    <span className="mr-1">Learn more</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    <span className="mr-1 dark:text-gray-800">Learn more</span>
+                    <ArrowRight className="w-4 h-4 dark:text-gray-800 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </button>
@@ -130,16 +130,16 @@ export default function ProjectArchetypeHome() {
               >
                 <div className="absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 rounded-full bg-white opacity-10"></div>
                 <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-full bg-white mr-4 shadow-sm">
+                  <div className="p-3 rounded-full bg-white mr-4 shadow-lg hover:shadow-xl transition-shadow">
                     <IconComponent className="w-6 h-6 text-red-800" />
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+                  <h2 className="text-xl font-semibold text-gray-800 dark:text-black">{section.title}</h2>
                 </div>
-                <p className="text-gray-600 pr-6 mb-4">{section.description}</p>
+                <p className="text-gray-600 dark:text-black pr-6 mb-4">{section.description}</p>
                 <div className="flex justify-end">
                   <div className="flex items-center text-red-800 font-medium group-hover:text-red-700">
-                    <span className="mr-1">Learn more</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    <span className="mr-1 dark:text-gray-800">Learn more</span>
+                    <ArrowRight className="w-4 h-4 dark:text-gray-800 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </button>
@@ -149,8 +149,8 @@ export default function ProjectArchetypeHome() {
       </div>
 
       <div className="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg shadow-lg p-8 border border-gray-100">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Looking for Something Specific?</h2>
-        <p className="text-gray-700 mb-6">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-black mb-4">Looking for Something Specific?</h2>
+        <p className="text-gray-700 dark:text-black mb-6">
           This section will expand as we continue to develop and refine the playbook. If you have suggestions for additional content or sections that would be helpful, please use the feedback form to let us know.
         </p>
         <div className="flex flex-wrap gap-4">

@@ -93,8 +93,20 @@ const MainLayout = ({ children }) => {
         'Channels',
         'Cadence',
         'CCC Stakeholders',
-        'Communication Path',
-        'Internal Engagement Strategies'
+        // 'Communication Path',
+        // 'Internal Engagement Strategies'
+      ]
+    },
+    'project-archetype': {
+      title: 'Projects Archetypes',
+      items: [
+        'CORE Principles',
+        'Collaborative Studies',
+        'ISRs',
+        'Fee For Service',
+        'Sponsorships',
+        'Grants',
+        'CCC Project Lifecycle'
       ]
     },
     'internal-onboarding': {
@@ -104,14 +116,22 @@ const MainLayout = ({ children }) => {
       ],
       subsections: [
         {
-          id: 'ccc-core-extended',
-          title: 'CCC Core & Extended',
+          id: 'ccc-core',
+          title: 'CCC Core',
           items: [
             'Onboarding Checklist',
             'Welcome Orientation',
             'Immerse, Contribute',
             'Deepen Engagement',
             'Full Integration',
+          ]
+        },
+        {
+          id: 'ccc-extended',
+          title: 'CCC Extended',
+          items: [
+            'Onboarding Checklist',
+            'Welcome Orientation',
           ]
         },
         {
@@ -124,12 +144,20 @@ const MainLayout = ({ children }) => {
         },
         {
           id: 'ccc-field-team',
-          title: 'CCC Field Team',
+          title: 'Field Team',
           items: [
             'Onboarding Checklist',
             'Welcome Orientation',
           ]
-        }
+        }, 
+        {
+          id: 'project-leads',
+          title: 'Project Leads',
+          items: [
+            'Onboarding Checklist',
+            'Welcome Orientation',
+          ]
+        },
       ]
     },
     'processes': {
@@ -147,18 +175,7 @@ const MainLayout = ({ children }) => {
         'Resources and Support',
       ]
     },
-    'project-archetype': {
-      title: 'Projects Archetypes',
-      items: [
-        'CORE Principles',
-        'Collaborative Studies',
-        'ISRs',
-        'Fee For Service',
-        'Sponsorships',
-        'Grants',
-        'CCC Project Lifecycle'
-      ]
-    },
+
     'systems': {
       title: 'Systems',
       items: [
@@ -720,7 +737,7 @@ const MainLayout = ({ children }) => {
         
         {/* Center Navigation Links */}
         <div className="flex items-center space-x-6">
-          <a href="#" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
+          <a href="https://gileadconnect.sharepoint.com/sites/MA-US-Oncology" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
             CCC SharePoint
           </a>
           <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">

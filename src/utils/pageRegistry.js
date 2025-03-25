@@ -67,33 +67,69 @@ export const pageRegistry = {
       component: () => import('@/pages/internal-onboarding/index'),
       title: 'Internal Onboarding'
     },
-    '/internal-onboarding/deepen-engagement': {
-      component: () => import('@/pages/internal-onboarding/DeepenEngagement'),
-      title: 'Deepen Engagement'
+    '/internal-onboarding/ccc-core/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
+      title: 'Onboarding Checklist'
     },
-    '/internal-onboarding/full-integration': {
-      component: () => import('@/pages/internal-onboarding/FullIntegration'),
-      title: 'Full Integration'
+    '/internal-onboarding/ccc-core/welcome-orientation': {
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
+      title: 'Welcome Orientation'
     },
-    '/internal-onboarding/immerse,-contribute': {
+    '/internal-onboarding/ccc-core/immerse-contribute': {
       component: () => import('@/pages/internal-onboarding/Immerse'),
       title: 'Immerse & Contribute'
     },
-    '/internal-onboarding/onboarding-checklist': {
-      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
-      title: 'Pre-Integration Prep'
+    '/internal-onboarding/ccc-core/deepen-engagement': {
+      component: () => import('@/pages/internal-onboarding/DeepenEngagement'),
+      title: 'Deepen Engagement'
     },
-    '/internal-onboarding/external-links': {
-      component: () => import('@/pages/internal-onboarding/ExternalLinks'),
-      title: 'External Links'
+    '/internal-onboarding/ccc-core/full-integration': {
+      component: () => import('@/pages/internal-onboarding/FullIntegration'),
+      title: 'Full Integration'
+    },
+    '/internal-onboarding/ccc-extended/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
+      title: 'Onboarding Checklist'
+    },
+    '/internal-onboarding/ccc-extended/welcome-orientation': {
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
+      title: 'Welcome Orientation'
+    },
+    '/internal-onboarding/ccc-leadership-steerco': {
+      component: () => import('@/pages/internal-onboarding/ccc-leadership-steerco'),
+      title: 'CCC Leadership SteerCo'
+    },
+    '/internal-onboarding/ccc-leadership-steerco/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
+      title: 'Onboarding Checklist'
+    },
+    '/internal-onboarding/ccc-leadership-steerco/welcome-orientation': {
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
+      title: 'Welcome Orientation'
+    },
+    '/internal-onboarding/ccc-field-team': {
+      component: () => import('@/pages/internal-onboarding/ccc-field-team'),
+      title: 'CCC Field Team'
+    },
+    '/internal-onboarding/ccc-field-team/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
+      title: 'Onboarding Checklist'
+    },
+    '/internal-onboarding/ccc-field-team/welcome-orientation': {
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
+      title: 'Welcome Orientation'
+    },
+    '/internal-onboarding/project-leads/onboarding-checklist': {
+      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
+      title: 'Onboarding Checklist'
+    },
+    '/internal-onboarding/project-leads/welcome-orientation': {
+      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
+      title: 'Welcome Orientation'
     },
     '/internal-onboarding/ongoing-support': {
       component: () => import('@/pages/internal-onboarding/OngoingSupport'),
       title: 'Ongoing Support'
-    },
-    '/internal-onboarding/welcome-orientation': {
-      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
-      title: 'Welcome Orientation'
     },
   
     // Processes

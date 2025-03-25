@@ -44,9 +44,9 @@ const OnboardingChecklist = lazy(() => import('@/pages/internal-onboarding/Onboa
 const ExternalLinks = lazy(() => import('@/pages/internal-onboarding/ExternalLinks.jsx'));
 const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSupport.jsx'));
 const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation.jsx'));
-const CCCCoreExtended = lazy(() => import('@/pages/internal-onboarding/ccc-core-extended.jsx'));
 const CCCLeadershipSteerCo = lazy(() => import('@/pages/internal-onboarding/ccc-leadership-steerco.jsx'));
 const CCCFieldTeam = lazy(() => import('@/pages/internal-onboarding/ccc-field-team.jsx'));
+// const ProjectLeads = lazy(() => import('@/pages/internal-onboarding/project-leads.jsx'));
 
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
@@ -171,37 +171,43 @@ function App() {
                   <InternalOnboardingHome />
                 </ProtectedRoute>
               } />
-            
               
-              {/* CCC Core & Extended */}
-              <Route path="/internal-onboarding/ccc-core-extended" element={
-                <ProtectedRoute>
-                  <CCCCoreExtended />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={
+              {/* CCC Core */}
+              <Route path="/internal-onboarding/ccc-core/onboarding-checklist" element={
                 <ProtectedRoute>
                   <OnboardingChecklist />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={
+              <Route path="/internal-onboarding/ccc-core/welcome-orientation" element={
                 <ProtectedRoute>
                   <WelcomeOrientation />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-core-extended/immerse,-contribute" element={
+              <Route path="/internal-onboarding/ccc-core/immerse,-contribute" element={
                 <ProtectedRoute>
                   <ImmerseContribute />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={
+              <Route path="/internal-onboarding/ccc-core/deepen-engagement" element={
                 <ProtectedRoute>
                   <DeepenEngagement />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={
+              <Route path="/internal-onboarding/ccc-core/full-integration" element={
                 <ProtectedRoute>
                   <FullIntegration />
+                </ProtectedRoute>
+              } />
+              
+              {/* CCC Extended */}
+              <Route path="/internal-onboarding/ccc-extended/onboarding-checklist" element={
+                <ProtectedRoute>
+                  <OnboardingChecklist />
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/ccc-extended/welcome-orientation" element={
+                <ProtectedRoute>
+                  <WelcomeOrientation />
                 </ProtectedRoute>
               } />
               
@@ -239,13 +245,24 @@ function App() {
                 </ProtectedRoute>
               } />
               
+              {/* Project Leads */}
+              <Route path="/internal-onboarding/project-leads/onboarding-checklist" element={
+                <ProtectedRoute>
+                  <OnboardingChecklist />
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/project-leads/welcome-orientation" element={
+                <ProtectedRoute>
+                  <WelcomeOrientation />
+                </ProtectedRoute>
+              } />
+              
               {/* Ongoing Support */}
               <Route path="/internal-onboarding/ongoing-support" element={
                 <ProtectedRoute>
                   <OngoingSupport />
                 </ProtectedRoute>
               } />
-              
 
               <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={
                 <ProtectedRoute>

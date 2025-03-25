@@ -42,20 +42,20 @@ const CommunicationPlanHome = () => {
           icon: GitCommit,
           color: "bg-blue-50"
         },
-        {
-          title: "Communication Path",
-          description: "Structured approach to stakeholder communication",
-          path: "/communications/communication-path",
-          icon: GitCommit,
-          color: "bg-blue-50"
-        },
-        {
-          title: "Internal Engagement Strategies",
-          description: "Methods to enhance stakeholder participation",
-          path: "/communications/internal-engagement-strategies",
-          icon: Target,
-          color: "bg-blue-50"
-        }
+        // {
+        //   title: "Communication Path",
+        //   description: "Structured approach to stakeholder communication",
+        //   path: "/communications/communication-path",
+        //   icon: GitCommit,
+        //   color: "bg-blue-50"
+        // },
+        // {
+        //   title: "Internal Engagement Strategies",
+        //   description: "Methods to enhance stakeholder participation",
+        //   path: "/communications/internal-engagement-strategies",
+        //   icon: Target,
+        //   color: "bg-blue-50"
+        // }
       ]
     }
   };
@@ -86,7 +86,7 @@ const CommunicationPlanHome = () => {
                 </div>
                 <p className="text-gray-700 mb-6">{section.description}</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {section.subsections.map((subsection, index) => {
                     const SubIconComponent = subsection.icon;
                     return (

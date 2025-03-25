@@ -66,32 +66,80 @@ const Breadcrumbs = () => {
     'internal-onboarding': {
       label: 'Internal Onboarding'
     },
-    'pre-integration-prep': {
-      label: 'Pre-Integration Prep',
+    'ccc-core': {
+      label: 'CCC Core',
       parent: 'internal-onboarding'
     },
-    'welcome-orientation': {
+    'ccc-core/onboarding-checklist': {
+      label: 'Onboarding Checklist',
+      parent: 'ccc-core'
+    },
+    'ccc-core/welcome-orientation': {
       label: 'Welcome Orientation',
-      parent: 'internal-onboarding'
+      parent: 'ccc-core'
     },
-    'immerse,-contribute': {
-      label: 'Immerse, Contribute',
-      parent: 'internal-onboarding'
+    'ccc-core/immerse-contribute': {
+      label: 'Immerse & Contribute',
+      parent: 'ccc-core'
     },
-    'deepen-engagement': {
+    'ccc-core/deepen-engagement': {
       label: 'Deepen Engagement',
+      parent: 'ccc-core'
+    },
+    'ccc-core/full-integration': {
+      label: 'Full Integration',
+      parent: 'ccc-core'
+    },
+    'ccc-extended': {
+      label: 'CCC Extended',
       parent: 'internal-onboarding'
     },
-    'full-integration': {
-      label: 'Full Integration',
+    'ccc-extended/onboarding-checklist': {
+      label: 'Onboarding Checklist',
+      parent: 'ccc-extended'
+    },
+    'ccc-extended/welcome-orientation': {
+      label: 'Welcome Orientation',
+      parent: 'ccc-extended'
+    },
+    'ccc-leadership-steerco': {
+      label: 'CCC Leadership SteerCo',
       parent: 'internal-onboarding'
+    },
+    'ccc-leadership-steerco/onboarding-checklist': {
+      label: 'Onboarding Checklist',
+      parent: 'ccc-leadership-steerco'
+    },
+    'ccc-leadership-steerco/welcome-orientation': {
+      label: 'Welcome Orientation',
+      parent: 'ccc-leadership-steerco'
+    },
+    'ccc-field-team': {
+      label: 'CCC Field Team',
+      parent: 'internal-onboarding'
+    },
+    'ccc-field-team/onboarding-checklist': {
+      label: 'Onboarding Checklist',
+      parent: 'ccc-field-team'
+    },
+    'ccc-field-team/welcome-orientation': {
+      label: 'Welcome Orientation',
+      parent: 'ccc-field-team'
+    },
+    'project-leads': {
+      label: 'Project Leads',
+      parent: 'internal-onboarding'
+    },
+    'project-leads/onboarding-checklist': {
+      label: 'Onboarding Checklist',
+      parent: 'project-leads'
+    },
+    'project-leads/welcome-orientation': {
+      label: 'Welcome Orientation',
+      parent: 'project-leads'
     },
     'ongoing-support': {
       label: 'Ongoing Support',
-      parent: 'internal-onboarding'
-    },
-    'external-links': {
-      label: 'External Links',
       parent: 'internal-onboarding'
     },
     // Processes

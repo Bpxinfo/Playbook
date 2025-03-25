@@ -35,16 +35,12 @@ const SystemsHome = () => {
       description: "Governance and regulatory compliance systems"
     },
     {
-      title: "G360 (Veeva)",
-      description: "Field planning and account management"
-    },
-    {
       title: "GOptics",
       description: "ISR / Collaborative Studies platform"
     },
     {
       title: "SteepRock",
-      description: "Grants and sponsorships portal"
+      description: "Grants and medical sponsorships portal"
     }
   ];
 
@@ -73,7 +69,7 @@ const SystemsHome = () => {
             {systemHighlights.map((highlight, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow">
                 <h3 className="text-lg font-semibold text-red-800 mb-2">{highlight.title}</h3>
-                <p className="text-sm text-gray-600">{highlight.description}</p>
+                <p className="text-sm text-gray-600 dark:text-white">{highlight.description}</p>
               </div>
             ))}
           </div>
@@ -92,19 +88,19 @@ const SystemsHome = () => {
                       <div className="bg-white p-3 rounded-full shadow-md mr-4">
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
-                      <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+                      <h2 className="text-xl font-semibold text-gray-800 dark:text-black">{section.title}</h2>
                     </div>
                     <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <p className="text-gray-600 ml-16">{section.description}</p>
+                  <p className="text-gray-600 dark:text-black ml-16">{section.description}</p>
                 </button>
               );
             })}
           </div>
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">System Access & Support</h2>
-            <p className="text-gray-700 mb-4">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-black mb-4">System Access & Support</h2>
+            <p className="text-gray-700 dark:text-black mb-4">
               For access to any CCC systems or technical support, please review the Internal Platforms section first. If you need additional assistance or have specific questions, use the feedback form to reach our support team.
             </p>
             <div className="flex gap-4">

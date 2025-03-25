@@ -75,19 +75,6 @@ const CollaborativeStudies = () => {
               </div>
             </div>
           </section>
-
-          {/* Partner Selection Section */}
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Partner Selection Process</h2>
-            <div className="bg-gray-50 p-4 rounded-lg text-black">
-              <ImageWithZoom 
-                src={partnerSelection} 
-                alt="Partner Selection Process" 
-                className="w-full rounded-lg shadow-lg mb-4"
-              />
-              <p className="text-sm text-gray-500 text-center">Partner Selection Overview</p>
-            </div>
-          </section>
         </div>
       </div>
     </div>
