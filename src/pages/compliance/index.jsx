@@ -94,7 +94,7 @@ const ComplianceHome = () => {
                 Start with the Compliance Guidelines section to understand our compliance framework, then explore specific areas based on your needs. The Training & Resources section is essential for all team members.
               </p>
               <button
-                onClick={() => navigate('/compliance/guidance')}
+                onClick={() => window.open('https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents', '_blank')}
                 className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 Start Here

@@ -31,10 +31,6 @@ const SystemsHome = () => {
 
   const systemHighlights = [
     {
-      title: "GRC & LRC",
-      description: "Governance and regulatory compliance systems"
-    },
-    {
       title: "GOptics",
       description: "ISR / Collaborative Studies platform"
     },

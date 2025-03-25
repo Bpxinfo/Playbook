@@ -46,12 +46,12 @@ const ISR = () => {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="bg-gray-50 p-4 rounded-lg text-black">
                 <h3 className="text-xl font-semibold text-red-700 mb-3">Prospective Data Collection</h3>
-                <p className="text-black">Governance: GRC LINK</p>
+                <p className="text-black">Governance: <a href="https://gileadconnect.sharepoint.com/sites/MA-Research" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GRC</a></p>
               </div>
               
               <div className="bg-gray-50 p-4 rounded-lg text-black">
                 <h3 className="text-xl font-semibold text-red-700 mb-3">Retrospective Data Collection</h3>
-                <p className="text-black">Governance: LRC LINK</p>
+                <p className="text-black">Governance: <a href="https://urldefense.com/v3/__https:/gilead-grants.steeprockinc.com/__;!!Dq7g1IpY!nrwatrpXlZjK5wiGSuYdO4ggRNFl8bLqLlYG8kz3-l_IIFkyEAb2oMpQA67Nf7g9BNtuag9kfxT0CrDVOxh0OXx9-Lxwg1U$" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">LRC</a></p>
               </div>
             </div>
 
@@ -63,14 +63,6 @@ const ISR = () => {
                   <p className="text-black">Adjudication Committee</p>
                 </div>
                 
-                <div className="text-black">
-                  <h4 className="font-medium mb-2 text-black">LinkS</h4>
-                  <ul className="list-disc pl-6 text-black">
-                    <li>LINK TO COMPLIANCE</li>
-                    <li>LINK TO GOVERNANCE</li>
-                    <li>LINK to SOP LIST</li>
-                  </ul>
-                </div>
               </div>
             </div>
           </section>

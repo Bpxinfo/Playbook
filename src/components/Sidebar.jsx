@@ -81,17 +81,6 @@ export const DesktopSidebar = ({
           onMouseLeave={() => setIsHovered(false)}
         />
       )}
-      
-      {/* Expand arrow for collapsed state */}
-      {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="fixed left-0 top-[84px] z-50 bg-red-800 p-2 rounded-r-lg shadow-md hover:bg-red-700 transition-colors"
-          aria-label="Expand sidebar"
-        >
-          <ChevronRight className="w-5 h-5 text-white" />
-        </button>
-      )}
 
       <motion.div
         className={cn(
@@ -110,22 +99,21 @@ export const DesktopSidebar = ({
         onMouseLeave={() => setIsHovered(false)}
         {...props}
       >
-        {/* Collapse arrow */}
+        {/* Collapse/Expand arrow - always visible */}
         <button
-          onClick={() => setOpen(false)}
-          className={cn(
-            "absolute -right-3 top-4 bg-red-800 p-1.5 rounded-full shadow-md hover:bg-red-700 transition-colors z-[999]",
-            !open && "hidden"
-          )}
-          aria-label="Collapse sidebar"
+          onClick={() => setOpen(!open)}
+          className="absolute -right-3 top-[68px] bg-red-800 p-1.5 rounded-full shadow-md hover:bg-red-700 transition-colors z-[999]"
+          aria-label={open ? "Collapse sidebar" : "Expand sidebar"}
         >
-          <ChevronLeft className="w-4 h-4 text-white" />
+          <motion.div
+            animate={{ rotate: open ? 0 : 180 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronLeft className="w-4 h-4 text-white" />
+          </motion.div>
         </button>
 
-        <div className={cn(
-          "transition-all duration-300 relative w-full",
-          !open && "opacity-100 visible"
-        )}>
+        <div className="relative w-full">
           {children}
         </div>
       </motion.div>
@@ -188,23 +176,25 @@ export const SidebarLink = ({
       to={link.href}
       className={cn(
         "flex items-center justify-start gap-2 group/sidebar py-2 transition-all duration-300",
-        !open && "opacity-0 invisible w-0 overflow-hidden",
         className
       )}
       {...props}
     >
-      <div className={cn(
-        "transition-all duration-300",
-        !open && "opacity-0 invisible w-0"
-      )}>
+      <div className="flex-shrink-0">
         {link.icon}
       </div>
-      <span className={cn(
-        "text-black dark:text-black text-sm group-hover/sidebar:translate-x-1 transition-all duration-150 whitespace-pre",
-        !open && "opacity-0 invisible w-0"
-      )}>
+      <motion.span 
+        className={cn(
+          "text-black dark:text-black text-sm group-hover/sidebar:translate-x-1 transition-all duration-150 whitespace-pre",
+          !open && "hidden"
+        )}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{ duration: 0.3 }}
+      >
         {link.label}
-      </span>
+      </motion.span>
     </Link>
   );
 }; 

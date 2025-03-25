@@ -22,7 +22,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="text-black">[Coming Soon]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
@@ -47,7 +47,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="text-black">[Coming Soon]</p>
+                  <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>

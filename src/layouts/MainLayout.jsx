@@ -764,10 +764,15 @@ const MainLayout = ({ children }) => {
                   <BookOpen className="w-4 h-4 mr-2" />
                   FAQs
                 </Link>
-                <Link to="/compliance" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                <a 
+                  href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
                   <Shield className="w-4 h-4 mr-2" />
                   Compliance Guidance
-                </Link>
+                </a>
                 <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <Database className="w-4 h-4 mr-2" />
                   SOPs & Resources
@@ -868,7 +873,7 @@ const MainLayout = ({ children }) => {
       <div className="flex flex-1">
         {/* Sidebar Container */}
         <div className={cn(
-          "fixed top-[64px] left-0 h-[calc(100vh-64px)] z-40 transition-all duration-300",
+          "fixed top-0 left-0 h-screen z-40 transition-all duration-300",
           sidebarOpen ? "w-[280px]" : "w-12"
         )}>
           <Sidebar 
@@ -886,6 +891,7 @@ const MainLayout = ({ children }) => {
                 )}
                 style={{ 
                   height: 'calc(100vh - 64px)',
+                  marginTop: '64px',
                   scrollBehavior: 'smooth',
                   msOverflowStyle: 'none',
                   scrollbarWidth: 'none'
@@ -906,16 +912,16 @@ const MainLayout = ({ children }) => {
                             : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                         )}
                       >
-                        <div className={cn("flex items-center", !sidebarOpen && "justify-center")}>
+                        <div className="flex items-center">
                           {SectionIcon && (
                             <SectionIcon className={cn("w-6 h-6", isSectionSelected(key) ? 'text-white' : 'text-red-800 dark:text-white')} />
                           )}
                           {sidebarOpen && (
                             <motion.span 
-                              animate={{
-                                display: "inline-block",
-                                opacity: 1,
-                              }}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3 }}
                               className="text-sm ml-2 font-medium"
                             >
                               {section.title}
@@ -923,7 +929,14 @@ const MainLayout = ({ children }) => {
                           )}
                         </div>
                         {sidebarOpen && (
-                          <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
+                          <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedTopSection === key ? 'rotate-180' : ''}`} />
+                          </motion.div>
                         )}
                       </button>
                       
