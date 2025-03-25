@@ -726,146 +726,148 @@ const MainLayout = ({ children }) => {
     <div className="min-h-screen bg-[#e8e8e8] dark:bg-[#212121] relative">
       <TextSelectionContextMenu />
       {/* Top Navigation Bar - Keep it intact */}
-      <header className="py-3 px-4 bg-white dark:bg-[#333333] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 flex items-center justify-between">
-        <div className="flex items-center space-x-4 bg-white">
-          {/* CCC Digital Playbook icon/link */}
-          <button onClick={handleLogoClick} className="flex items-center bg-white dark:bg-[#333333]">
-            <Home className="w-5 h-5 text-red-800 dark:text-white mr-2" />
-            <span className="text-xl font-semibold text-red-800 dark:text-white">CCC Playbook</span>
-          </button>
-        </div>
-        
-        {/* Center Navigation Links */}
-        <div className="flex items-center space-x-6">
-          <a href="https://gileadconnect.sharepoint.com/sites/MA-US-Oncology" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
-            CCC SharePoint
-          </a>
-          <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
-            CCC Roadmap
-          </a>
-          <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
-            CCC Teams
-          </a>
-        </div>
-
-        {/* Right-aligned group with Quick Links and Feedback dropdowns */}
-        <div className="flex items-center space-x-4">
-          <div className="relative group">
-            <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333]">
-              <LinkIcon className="w-4 h-4 mr-2" />
-              Quick Links
-              <ChevronDown className="w-4 h-4 ml-1" />
+      <header className="w-full py-3 bg-white dark:bg-[#333333] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+        <div className="flex items-center justify-between px-4 w-full min-w-0">
+          <div className="flex items-center space-x-4 bg-white dark:bg-[#333333] min-w-0">
+            {/* CCC Digital Playbook icon/link */}
+            <button onClick={handleLogoClick} className="flex items-center bg-white dark:bg-[#333333]">
+              <Home className="w-5 h-5 text-red-800 dark:text-white mr-2" />
+              <span className="text-xl font-semibold text-red-800 dark:text-white">CCC Playbook</span>
             </button>
-            {/* Add invisible bridge to maintain hover */}
-            <div className="absolute w-full h-2 bg-transparent" />
-            <div className="absolute z-50 mt-0 w-64 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
-              <div className="py-2">
-                <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                  <BookOpen className="w-4 h-4 mr-2" />
-                  FAQs
-                </Link>
-                <a 
-                  href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <Shield className="w-4 h-4 mr-2" />
-                  Compliance Guidance
-                </a>
-                <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                  <Database className="w-4 h-4 mr-2" />
-                  SOPs & Resources
-                </Link>
-              </div>
-            </div>
           </div>
           
-          <div className="relative group">
-            <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333] transition-colors">
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Feedback
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </button>
-            {/* Add invisible bridge to maintain hover */}
-            <div className="absolute w-full h-2 bg-transparent" />
-            <div className="absolute z-50 mt-0 w-48 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
-              <div className="py-2">
-                <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  Leave Feedback
-                </Link>
-                <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                  <BookOpen className="w-4 h-4 mr-2" />
-                  See All Feedback
-                </a>
-              </div>
-            </div>
+          {/* Center Navigation Links */}
+          <div className="flex items-center space-x-6">
+            <a href="https://gileadconnect.sharepoint.com/sites/MA-US-Oncology" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
+              CCC SharePoint
+            </a>
+            <a href="https://gileaddevops.atlassian.net/jira/software/projects/CCC/boards/573/timeline" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
+              CCC Roadmap
+            </a>
+            <a href="https://teams.microsoft.com/l/team/19%3AltiB9AjmIpw_32CWiItBDE2BpBaQkBrp9J0XfjfMeek1%40thread.tacv2/conversations?groupId=d82c53b9-2336-4e94-99da-b0ecb26ab3dc&tenantId=a5a8bcaa-3292-41e6-b735-5e8b21f4dbfd" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
+              CCC Teams
+            </a>
           </div>
 
-          {/* Search bar */}
-          <form 
-            onSubmit={navigateToSearchResults}
-            className="flex items-center"
-          >
-            <div className="relative w-64" ref={searchRef}>
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-4 w-4 text-gray-400" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 text-black rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
-                onFocus={() => {
-                  if (searchTerm.trim().length > 1) {
-                    setShowSearchDropdown(true);
-                  }
-                }}
-              />
-              
-              {showSearchDropdown && searchResults.results.length > 0 && (
-                <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md z-50 max-h-96 overflow-y-auto border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                  {searchResults.results.map((result, idx) => (
-                    <Link
-                      key={`${result.path}-${idx}`}
-                      to={result.path}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-0 dark:text-white dark:hover:bg-gray-700 dark:border-gray-700"
-                      onClick={() => setShowSearchDropdown(false)}
-                    >
-                      <div className="font-medium">{result.title}</div>
-                      <div className="text-xs text-gray-500 dark:text-white dark:opacity-70">{result.excerpt}</div>
-                    </Link>
-                  ))}
-                  
-                  {searchResults.hiddenCount > 0 && (
-                    <button
-                      onClick={navigateToSearchResults}
-                      className="block w-full px-4 py-2 text-sm text-center text-red-800 bg-white font-medium dark:bg-gray-800 dark:text-white"
-                    >
-                      See all {searchResults.hiddenCount + searchResults.results.length} results
-                    </button>
-                  )}
+          {/* Right-aligned group with Quick Links and Feedback dropdowns */}
+          <div className="flex items-center space-x-4">
+            <div className="relative group">
+              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333]">
+                <LinkIcon className="w-4 h-4 mr-2" />
+                Quick Links
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+              {/* Add invisible bridge to maintain hover */}
+              <div className="absolute w-full h-2 bg-transparent" />
+              <div className="absolute z-50 mt-0 w-64 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
+                <div className="py-2">
+                  <Link to="/faqs" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    FAQs
+                  </Link>
+                  <a 
+                    href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <Shield className="w-4 h-4 mr-2" />
+                    Compliance Guidance
+                  </a>
+                  <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Database className="w-4 h-4 mr-2" />
+                    SOPs & Resources
+                  </Link>
                 </div>
-              )}
+              </div>
             </div>
-            <button
-              type="submit"
-              className="ml-2 p-2 rounded-md bg-red-800 dark:bg-red-700 text-white hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+            
+            <div className="relative group">
+              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333] transition-colors">
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Feedback
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </button>
+              {/* Add invisible bridge to maintain hover */}
+              <div className="absolute w-full h-2 bg-transparent" />
+              <div className="absolute z-50 mt-0 w-48 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 invisible group-hover:visible">
+                <div className="py-2">
+                  <Link to="/feedback" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Leave Feedback
+                  </Link>
+                  <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    See All Feedback
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Search bar */}
+            <form 
+              onSubmit={navigateToSearchResults}
+              className="flex items-center"
             >
-              <Search className="h-4 w-4 text-white" />
-            </button>
-          </form>
+              <div className="relative w-64" ref={searchRef}>
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-4 w-4 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 text-black rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:placeholder-gray-400"
+                  onFocus={() => {
+                    if (searchTerm.trim().length > 1) {
+                      setShowSearchDropdown(true);
+                    }
+                  }}
+                />
+                
+                {showSearchDropdown && searchResults.results.length > 0 && (
+                  <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md z-50 max-h-96 overflow-y-auto border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                    {searchResults.results.map((result, idx) => (
+                      <Link
+                        key={`${result.path}-${idx}`}
+                        to={result.path}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-b border-gray-100 last:border-0 dark:text-white dark:hover:bg-gray-700 dark:border-gray-700"
+                        onClick={() => setShowSearchDropdown(false)}
+                      >
+                        <div className="font-medium">{result.title}</div>
+                        <div className="text-xs text-gray-500 dark:text-white dark:opacity-70">{result.excerpt}</div>
+                      </Link>
+                    ))}
+                    
+                    {searchResults.hiddenCount > 0 && (
+                      <button
+                        onClick={navigateToSearchResults}
+                        className="block w-full px-4 py-2 text-sm text-center text-red-800 bg-white font-medium dark:bg-gray-800 dark:text-white"
+                      >
+                        See all {searchResults.hiddenCount + searchResults.results.length} results
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+              <button
+                type="submit"
+                className="ml-2 p-2 rounded-md bg-red-800 dark:bg-red-700 text-white hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                <Search className="h-4 w-4 text-white" />
+              </button>
+            </form>
 
-          {/* Theme Toggle */}
-          <div className="ml-4">
-            <ThemeToggle />
-          </div>
+            {/* Theme Toggle */}
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
 
-          {/* Add UserIcon component */}
-          <div className="ml-4">
-            <UserIcon />
+            {/* Add UserIcon component */}
+            <div className="ml-4">
+              <UserIcon />
+            </div>
           </div>
         </div>
       </header>

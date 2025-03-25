@@ -26,8 +26,8 @@ const Cadence = () => {
                 <table className="min-w-full bg-white">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cadence</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Audience</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cadence</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Responsible</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
@@ -35,15 +35,15 @@ const Cadence = () => {
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="1">Biweekly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Adjudication Committee</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="1">Biweekly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead, Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Proposals, Concepts</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="5">Monthly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="5">Monthly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Dashboard</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Live Project Status, Milestones, Risks/Issues</td>
@@ -73,8 +73,8 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Updates</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="4">Quarterly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Ext Team</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="4">Quarterly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Core Team</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Agenda Driven Updates</td>
@@ -92,18 +92,18 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Proposals</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" colSpan="5">Meeting/Program Review</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" colSpan="4">Meeting/Program Review</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="1">Yearly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership Team</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="1">Yearly</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Senior Leadership Meetings</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC LT</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Updates, Overview, Budget, Highlights</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="2">Ad Hoc</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Extended Team</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="2">Ad Hoc</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Playbook Training</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Playbook</td>
