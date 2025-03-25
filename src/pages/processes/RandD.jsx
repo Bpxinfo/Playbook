@@ -95,7 +95,7 @@ const DocumentLink = ({ doc }) => {
       <a
         href={doc.url}
         onClick={handleClick}
-        className="flex items-center justify-between p-3 bg-white rounded-lg border hover:bg-gray-50 transition-colors group"
+        className="flex items-center justify-between p-3 bg-white rounded-lg border transition-colors"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -103,15 +103,15 @@ const DocumentLink = ({ doc }) => {
           {getIconForType(doc.type)}
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-medium text-gray-700 group-hover:text-red-800">{doc.id}</span>
+              <span className="font-medium text-gray-700">{doc.id}</span>
               <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${getTypeColor(doc.type)}`}>
                 {doc.type}
               </span>
             </div>
-            <p className="text-sm text-gray-600 group-hover:text-gray-900">{doc.title}</p>
+            <p className="text-sm text-gray-600">{doc.title}</p>
           </div>
         </div>
-        <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-red-800 flex-shrink-0" />
+        <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0" />
       </a>
     </div>
   );
@@ -122,7 +122,7 @@ const DocumentSection = ({ title, docs, isExpanded, onToggle }) => {
     <div className="mb-6">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition-colors"
+        className="w-full flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm transition-colors"
       >
         <div className="flex items-center gap-2">
           <div className={`transform transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}>
@@ -170,7 +170,7 @@ const LinktoSGF = () => {
             <button
               key={key}
               onClick={() => toggleSection(key)}
-              className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center hover:bg-gray-50 transition-colors cursor-pointer"
+              className="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center bg-gray-50 transition-colors cursor-pointer"
             >
               <p className="font-medium text-gray-900">{categoryNames[key]}</p>
               <p className="text-2xl font-bold text-red-800">{docs.length}</p>

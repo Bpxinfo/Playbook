@@ -99,7 +99,7 @@ const HomePage = () => {
             </p>
           </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 dark:text-black">
             {sections.map((section, index) => {
               const IconComponent = section.icon;
               return (
@@ -112,7 +112,7 @@ const HomePage = () => {
                     <div className="bg-white p-3 rounded-full shadow-md mr-3">
                       <IconComponent className="w-6 h-6 text-red-800" />
                     </div>
-                    <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+                    <h2 className="text-xl font-semibold text-gray-800 dark:text-black">{section.title}</h2>
                   </div>
                   <p className="text-gray-600 pr-6">{section.description}</p>
                   <ArrowRight className="w-5 h-5 text-red-800 absolute right-4 top-1/2 -translate-y-1/2" />
@@ -122,8 +122,8 @@ const HomePage = () => {
           </div>
 
           <section className="bg-red-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-red-800 mb-4">Need Help?</h2>
-            <p className="text-gray-700 mb-4">
+            <h2 className="text-xl font-semibold text-red-800 mb-4 dark:text-black">Need Help?</h2>
+            <p className="text-gray-700 mb-4 dark:text-black">
               If you have any questions or need to provide feedback about the CCC Playbook, our team is here to help.
             </p>
             <button

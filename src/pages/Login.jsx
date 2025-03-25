@@ -1,10 +1,11 @@
 import { useAuth } from '../contexts/AuthContext';
 import { TypewriterEffectSmooth } from '../components/ui/typewriter-effect';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { cn } from '../lib/utils';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Add BottomGradient component
 const BottomGradient = () => {
@@ -30,12 +31,17 @@ const LabelInputContainer = ({
 
 export default function Login() {
   const { signInWithMicrosoft, continueAsGuest, signInWithEmail } = useAuth();
+  const { forceLightMode, forceDarkMode } = useTheme();
   const navigate = useNavigate();
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    forceDarkMode();
+  }, [forceDarkMode]);
 
   const words = [
     {
@@ -67,11 +73,21 @@ export default function Login() {
     
     try {
       await signInWithEmail(email, password);
+      forceLightMode();
       navigate('/ccc-playbook');
     } catch (err) {
       setError(err.message || 'Failed to sign in');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleMicrosoftSignIn = async () => {
+    try {
+      await signInWithMicrosoft();
+      forceLightMode();
+    } catch (err) {
+      setError(err.message || 'Failed to sign in with Microsoft');
     }
   };
 
@@ -143,7 +159,7 @@ export default function Login() {
         ) : (
           <div className="space-y-4">
             <button
-              onClick={signInWithMicrosoft}
+              onClick={handleMicrosoftSignIn}
               className="group/btn relative flex items-center justify-center w-full px-4 py-2 space-x-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700"
             >
               <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">

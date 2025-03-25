@@ -1,13 +1,19 @@
 import { motion } from "motion/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { AuroraBackground } from "./ui/aurora-background.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { FlipWords } from "./ui/flip-words";
+import { useTheme } from "../contexts/ThemeContext";
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { forceDarkMode } = useTheme();
+
+  useEffect(() => {
+    forceDarkMode();
+  }, [forceDarkMode]);
 
   const words = [
     "elevate partners",

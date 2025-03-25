@@ -88,7 +88,7 @@ const CCCInitiativeHome = () => {
  
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Getting Started</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Getting Started</h2>
             <p className="text-gray-700 mb-4">
               We recommend starting with the Strategic Pillars to understand our key focus areas, followed by exploring Key Messaging to learn about our mission and vision.
             </p>

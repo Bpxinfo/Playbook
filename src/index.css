@@ -95,7 +95,7 @@ body:not(.dark) {
 
 /* Dark mode specific overrides */
 .dark button.bg-white {
-  background-color: #333333;
+  background-color: #2a2a2a;
   color: #ffffff;
 }
 
@@ -104,11 +104,15 @@ body:not(.dark) {
 }
 
 .dark button.hover\:bg-gray-100:hover {
-  background-color: #333333;
+  background-color: #2a2a2a;
 }
 
 .dark .bg-white {
-  background-color: #333333;
+  background-color: #2a2a2a;
+}
+
+.dark .bg-gray-50 {
+  background-color: #2a2a2a;
 }
 
 .dark .border-gray-200 {
@@ -135,12 +139,16 @@ body:not(.dark) {
 
 /* Ensure section headers are white in dark mode */
 .dark h1,
-.dark h2,
 .dark h3,
 .dark h4,
 .dark h5,
 .dark h6 {
   color: #ffffff;
+}
+
+/* Make h2 headers black in dark mode */
+.dark h2 {
+  color: #000000;
 }
 
 .dark .hover\:bg-gray-100:hover {

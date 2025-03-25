@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from './ThemeContext';
 
 const AuthContext = createContext({});
 
@@ -13,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   });
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { forceLightMode } = useTheme();
 
   const syncUserProfile = async (session) => {
     if (!session?.user) return;
@@ -245,37 +247,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const continueAsGuest = () => {
-    try {
-      // Check if we're already in guest mode
-      const currentGuestState = localStorage.getItem('isGuest') === 'true';
-      if (currentGuestState) {
-        console.log('Already in guest mode, redirecting...');
-        window.location.replace('/ccc-playbook');
-        return;
-      }
-
-      const password = prompt('Please enter the guest password:');
-      if (password !== 'admin123') {
-        alert('Incorrect password. Please try again.');
-        return;
-      }
-      
-      console.log('Continuing as guest...');
-      
-      // Clear any existing auth state first
-      setUser(null);
-      setIsGuest(true);
-      localStorage.clear();
-      sessionStorage.clear();
-      localStorage.setItem('isGuest', 'true');
-      
-      // Force a hard redirect to clear all state
-      window.location.replace('/ccc-playbook');
-    } catch (error) {
-      console.error('Error during guest mode transition:', error);
-      // Even if there's an error, try to redirect
-      window.location.replace('/ccc-playbook');
-    }
+    setIsGuest(true);
+    forceLightMode();
   };
 
   // Modify the auth state change handler

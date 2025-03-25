@@ -7,20 +7,33 @@ import { Target, LineChart, Users2, BookOpen, ChevronRight, Lightbulb } from 'lu
 const StrategicPillars = () => {
   const pillars = [
     {
-      title: "Generating Evidence",
-      description: "Close the gap between clinical trial evidence and real-world implementation in the community setting",
+      title: "Evidence Generation",
+      description: "Address gaps between evidence generated in clinical trials and implementation in the real-world community setting",
+      priorityAreas: [
+        "Adoption of new treatments",
+        "Patient access to guideline concordant care",
+        "Patient experiences on treatment"
+      ],
       icon: LineChart,
       color: "bg-blue-50"
     },
     {
-      title: "Addressing Disparities, Improving Health Equity",
-      description: "Focus on health equity by addressing specific care gaps in underserved regions",
+      title: "Health Equity & Disparities",
+      description: "Address care gaps identified in the SE community setting with the potential to scale to other regions in the US",
+      priorityAreas: [
+        "Understand impact of care coordination and patient navigation with community stakeholders",
+        "Understand impact and relationship of social determinants of health (SDOH) on cancer care equity"
+      ],
       icon: Users2,
       color: "bg-green-50"
     },
     {
-      title: "Enabling Education for Providers and Patients",
-      description: "Support innovative approaches to empower providers with education and improve patient understanding of their treatment journey",
+      title: "Provider & Patient Education",
+      description: "Support improvements in cancer care delivery through novel approaches to provider education and patient empowerment",
+      priorityAreas: [
+        "Identify practical ways to improve/optimize clinician education and real-time decision support",
+        "Help create a common language between clinicians and patients regarding the impact of outcome measures"
+      ],
       icon: BookOpen,
       color: "bg-purple-50"
     }
@@ -40,9 +53,20 @@ const StrategicPillars = () => {
               <Lightbulb className="w-6 h-6 mr-2" />
               Overview
             </h2>
-              <p className="text-gray-700 mb-4">
-                To meet the CCC's objective in making impact for patients receiving their cancer care in the community setting, projects will focus attention on three key areas (the CCC strategic pillars):
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-red-800 p-6 rounded-lg">
+                <h3 className="text-xl text-white font-semibold mb-3">Mission:</h3>
+                <p className="text-white">
+                  Bring together key partners to improve the lives of patients receiving their cancer care in the community
+                </p>
+              </div>
+              <div className="bg-red-800 p-6 rounded-lg">
+                <h3 className="text-xl text-white font-semibold mb-3">Vision:</h3>
+                <p className="text-white">
+                  Effectively collaborate and partner with organizations across the country to identify impactful opportunities and implement innovative solutions
+                </p>
+              </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               {pillars.map((pillar, index) => {
                 const IconComponent = pillar.icon;
@@ -53,39 +77,25 @@ const StrategicPillars = () => {
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{pillar.title}</h3>
-                    <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">{pillar.description}</p>
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2">{pillar.title}</h2>
+                    <div className="flex items-start mb-4">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">{pillar.description}</p>
+                    </div>
+                    <div className="mt-4">
+                      <h3 className="text-md font-semibold text-gray-800 mb-2 dark:text-black">Priority Areas:</h3>
+                      <ul className="list-none space-y-2">
+                        {pillar.priorityAreas.map((area, idx) => (
+                          <li key={idx} className="flex items-start">
+                            <ChevronRight className="w-4 h-4 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                            <span className="text-sm text-gray-700 dark:text-black">{area}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 );
               })}
-            </div>
-          </section>
-
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Target className="w-6 h-6 mr-2" />
-              Strategic Framework
-            </h2>
-            <div className="space-y-6">
-              <div className="bg-gray-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                <ImageWithZoom 
-                  src={s1} 
-                  alt="Strategic Pillar 1" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center font-medium">Strategic Pillars Framework - Part 1</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                <ImageWithZoom 
-                  src={s2} 
-                  alt="Strategic Pillar 2" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center font-medium">Strategic Pillars Framework - Part 2</p>
-              </div>
             </div>
           </section>
         </div>

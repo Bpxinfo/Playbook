@@ -103,7 +103,7 @@ export default function InternalOnboardingHome() {
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Onboarding Programs</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6 dark:text-white">Onboarding Programs</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
         {teamSections.map((section, index) => {
           const IconComponent = section.icon;
@@ -126,7 +126,7 @@ export default function InternalOnboardingHome() {
         })}
       </div>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">CCC Core & Extended Onboarding Phases</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6 dark:text-white">CCC Core & Extended Onboarding Phases</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {coreSections.map((section, index) => {
           const IconComponent = section.icon;
@@ -150,7 +150,7 @@ export default function InternalOnboardingHome() {
       </div>
 
       <div className="mt-12 bg-gray-50 rounded-lg shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Getting Started</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Getting Started</h2>
         <p className="text-gray-700 mb-4">
           Select the appropriate team onboarding program based on your role. For CCC Core & Extended team members, proceed through each phase sequentially.
         </p>

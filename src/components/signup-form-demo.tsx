@@ -9,6 +9,7 @@ import {
 import { supabase } from "../lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface AuthContextType {
   signInWithMicrosoft: () => Promise<void>;
@@ -21,6 +22,7 @@ interface SignupFormDemoProps {
 export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
   const navigate = useNavigate();
   const { signInWithMicrosoft } = useAuth() as AuthContextType;
+  const { forceLightMode } = useTheme();
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -66,7 +68,8 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
 
       if (signInError) throw signInError;
 
-      // If signup and signin are successful, close modal and navigate to ccc-playbook
+      // Force light mode and navigate
+      forceLightMode();
       onClose();
       navigate("/ccc-playbook");
     } catch (err: any) {
@@ -86,6 +89,7 @@ export default function SignupFormDemo({ onClose }: SignupFormDemoProps) {
   const handleSocialSignup = async (provider: 'microsoft') => {
     try {
       await signInWithMicrosoft();
+      forceLightMode();
       // Close modal after successful social signup
       onClose();
     } catch (err: any) {
