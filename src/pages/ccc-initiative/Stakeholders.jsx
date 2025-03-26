@@ -54,22 +54,22 @@ const Stakeholders = () => {
                   <section.icon className="w-6 h-6 text-red-800" />
                 </div>
                 <div className="flex-1">
-                  <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+                  <h2 className="text-2xl text-red-800 mb-4 flex items-center dark:text-black">
                     {section.title}
                   </h2>
                   {Array.isArray(section.description) ? (
                     <div className="space-y-3">
                       {section.description.map((desc, i) => (
                         <div key={i} className="flex items-start">
-                          <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                          <p className="text-gray-700">{desc}</p>
+                          <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                          <p className="text-gray-700 dark:text-black">{desc}</p>
                         </div>
                       ))}
                     </div>
                   ) : (
                     <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">{section.description}</p>
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">{section.description}</p>
                     </div>
                   )}
                 </div>

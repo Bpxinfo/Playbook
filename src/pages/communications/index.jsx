@@ -99,7 +99,7 @@ const CommunicationPlanHome = () => {
                           <div className="bg-white p-3 rounded-full shadow-md mr-2">
                             <SubIconComponent className="w-5 h-5 text-red-800" />
                           </div>
-                          <h3 className="text-lg font-semibold text-gray-800">{subsection.title}</h3>
+                          <h2 className="text-lg font-semibold text-gray-800">{subsection.title}</h2>
                         </div>
                         <p className="text-gray-600 text-sm pr-6">{subsection.description}</p>
                         <ArrowRight className="w-4 h-4 text-red-800 absolute right-3 top-1/2 -translate-y-1/2" />
@@ -112,7 +112,7 @@ const CommunicationPlanHome = () => {
           })}
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Need Help?</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Need Help?</h2>
             <p className="text-gray-700 mb-4">
               If you need guidance on which section to explore first, we recommend starting with the Objectives to understand our core communication goals.
             </p>

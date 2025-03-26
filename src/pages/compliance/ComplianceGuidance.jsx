@@ -56,10 +56,10 @@ const ComplianceGuidance = () => {
             <div className="space-y-4">
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+                  <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1 dark:text-black" />
                   <div>
-                    <h3 className="font-medium text-gray-800 mb-2">Important Compliance Notes</h3>
-                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <h3 className="font-medium text-gray-800 mb-2 dark:text-black">Important Compliance Notes</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-black">
                       <li>All CCC activities must comply with applicable laws, regulations, and company policies</li>
                       <li>Consult Legal/Compliance for guidance on specific activities or questions</li>
                       <li>Document decisions and maintain records of compliance reviews</li>
@@ -76,10 +76,10 @@ const ComplianceGuidance = () => {
             <div className="space-y-4">
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <div className="flex items-start gap-4">
-                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 dark:text-black" />
                   <div>
-                    <h3 className="font-medium text-gray-800 mb-2">General Requirements</h3>
-                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <h3 className="font-medium text-gray-800 mb-2 dark:text-black">General Requirements</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-black">
                       <li>Follow established processes and procedures</li>
                       <li>Maintain appropriate documentation</li>
                       <li>Ensure transparency in decision-making</li>
@@ -91,10 +91,10 @@ const ComplianceGuidance = () => {
 
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
                 <div className="flex items-start gap-4">
-                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 dark:text-black" />
                   <div>
-                    <h3 className="font-medium text-gray-800 mb-2">Project-Specific Requirements</h3>
-                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    <h3 className="font-medium text-gray-800 mb-2 dark:text-black">Project-Specific Requirements</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-black">
                       <li>Obtain necessary approvals before project initiation</li>
                       <li>Follow project governance framework</li>
                       <li>Maintain project documentation</li>

@@ -100,7 +100,7 @@ const PatientImpact = () => {
               Overview
             </h2>
             <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
-              <p className="text-gray-700">
+              <p className="text-gray-700 dark:text-black">
                 The Community Cancer Collective (CCC) is dedicated to making a meaningful difference in patients' lives through our community-focused initiatives. Our impact is measured by the improved quality of care and better outcomes for cancer patients in the community setting.
               </p>
             </div>
@@ -121,8 +121,8 @@ const PatientImpact = () => {
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{area.title}</h3>
-                    <p className="text-gray-700">{area.description}</p>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2 dark:text-black">{area.title}</h3>
+                    <p className="text-gray-700 dark:text-black">{area.description}</p>
                   </div>
                 );
               })}
@@ -143,13 +143,13 @@ const PatientImpact = () => {
                       <div className="bg-white p-2 rounded-full shadow-md">
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-800 ml-3">{metric.title}</h3>
+                      <h2 className="text-xl font-semibold text-gray-800 ml-3 ">{metric.title}</h2>
                     </div>
                     <ul className="space-y-2">
                       {metric.items.map((item, i) => (
                         <li key={i} className="flex items-start">
-                          <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                          <span className="text-gray-700">{item}</span>
+                          <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                          <span className="text-gray-700 dark:text-black">{item}</span>
                         </li>
                       ))}
                     </ul>

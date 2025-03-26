@@ -51,7 +51,7 @@ const SystemsHome = () => {
               <div className="bg-white p-3 rounded-full shadow-md mr-4">
                 <Database className="w-8 h-8 text-red-800" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-800">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
                 Systems Framework Overview
               </h2>
             </div>
@@ -95,8 +95,8 @@ const SystemsHome = () => {
           </div>
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-black mb-4">System Access & Support</h2>
-            <p className="text-gray-700 dark:text-black mb-4">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">System Access & Support</h2>
+            <p className="text-gray-700 dark:text-white mb-4">
               For access to any CCC systems or technical support, please review the Internal Platforms section first. If you need additional assistance or have specific questions, use the feedback form to reach our support team.
             </p>
             <div className="flex gap-4">

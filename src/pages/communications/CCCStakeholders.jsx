@@ -145,17 +145,17 @@ const CCCStakeholders = () => {
           <table className="min-w-full table-auto border-collapse text-sm text-gray-700">
             <thead className="bg-gray-100">
               <tr>
-                <th className="border px-4 py-2 text-left font-medium">CCC Groups</th>
-                <th className="border px-4 py-2 text-left font-medium">Description</th>
-                <th className="border px-4 py-2 text-left font-medium">Deliverable [Receive / Provide]</th>
-                <th className="border px-4 py-2 text-left font-medium">Priority</th>
-                <th className="border px-4 py-2 text-left font-medium">Method Communication</th>
-                <th className="border px-4 py-2 text-left font-medium">Communication Channels</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">CCC Groups</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Description</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Deliverable [Receive / Provide]</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Priority</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Method Communication</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Communication Channels</th>
               </tr>
             </thead>
             <tbody>
               {stakeholderGroups[selectedGroup].stakeholders.map((stakeholder) => (
-                <tr key={stakeholder} className="hover:bg-gray-50">
+                <tr key={stakeholder} className="hover:bg-gray-50 dark:hover:bg-transparent">
                   <td className="border px-4 py-2 font-medium">{stakeholder}</td>
                   <td className="border px-4 py-2 whitespace-pre-line">{stakeholderData[stakeholder].description}</td>
                   <td className="border px-4 py-2 whitespace-pre-line">{stakeholderData[stakeholder].deliverable}</td>

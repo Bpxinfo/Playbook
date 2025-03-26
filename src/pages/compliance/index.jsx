@@ -51,7 +51,7 @@ const ComplianceHome = () => {
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center mb-4">
-              <h2 className="text-2xl font-semibold text-gray-800">
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
                 Compliance Framework
               </h2>
             </div>
@@ -89,7 +89,7 @@ const ComplianceHome = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Source Reference</h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Source Reference</h2>
               <p className="text-gray-700 mb-4">
                 Start with the Compliance Guidelines section to understand our compliance framework, then explore specific areas based on your needs. The Training & Resources section is essential for all team members.
               </p>
@@ -102,7 +102,7 @@ const ComplianceHome = () => {
             </section>
 
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Need Help?</h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Need Help?</h2>
               <p className="text-gray-700 mb-4">
                 If you have questions about compliance requirements or need clarification on any guidelines, please submit feedback or contact your compliance officer.
               </p>

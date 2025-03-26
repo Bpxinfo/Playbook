@@ -139,8 +139,8 @@ const Processes = () => {
                   "A formal request for proposal (\"RFP\") process may be publicly advertised in order to solicit CCC project proposals. Note: The RFP must be reviewed and approved by Legal in advance of release and abide by all guidance in the RFP policy",
                 ].map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>
@@ -153,19 +153,19 @@ const Processes = () => {
                 Partner Selection Framework
               </h3>
               <div className="mb-8 bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold mb-4 text-gray-900">CCC Partner Selection Criteria</h4>
+                <h2 className="font-semibold mb-4 text-gray-900 dark:text-black">CCC Partner Selection Criteria</h2>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">The areas and subsets of criteria were informed by the explicit objectives of the CCC</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">The areas and subsets of criteria were informed by the explicit objectives of the CCC</p>
                   </div>
                   <div className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">The criteria were selected as proxies to evaluate an organization's capabilities to execute research initiatives related to the CCC's three strategic pillars</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">The criteria were selected as proxies to evaluate an organization's capabilities to execute research initiatives related to the CCC's three strategic pillars</p>
                   </div>
                   <div className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">Criteria related to practice type and geography were included to represent variation in community oncology and generalizability of candidate studies</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">Criteria related to practice type and geography were included to represent variation in community oncology and generalizability of candidate studies</p>
                   </div>
                 </div>
               </div>
@@ -181,7 +181,7 @@ const Processes = () => {
                           <div className="bg-white p-2 rounded-full shadow-md">
                             <IconComponent className="w-4 h-4 text-red-800" />
                           </div>
-                          <span className="text-gray-700 ml-3">{item.text}</span>
+                          <span className="text-gray-700 ml-3 dark:text-black">{item.text}</span>
                         </div>
                       );
                     })}
@@ -189,15 +189,15 @@ const Processes = () => {
                 </div>
 
                 <div className="bg-yellow-50 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-4 text-gray-900 flex items-center">
-                    <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600" />
+                  <h4 className="font-semibold mb-4 text-gray-900 flex items-center dark:text-black">
+                    <AlertTriangle className="w-5 h-5 mr-2 text-yellow-600 " />
                     CCC project and partner selection is subject to the following limitations:
                   </h4>
                   <div className="space-y-3">
                     {projectLimitations.map((text, index) => (
                       <div key={index} className="flex items-start">
-                        <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                        <p className="text-gray-700">{text}</p>
+                        <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                        <p className="text-gray-700 dark:text-black">{text}</p>
                       </div>
                     ))}
                   </div>
@@ -207,18 +207,18 @@ const Processes = () => {
 
             {/* Review Process */}
             <div className="bg-indigo-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Shield className="w-5 h-5 mr-2 dark:text-black" />
                 Review & Approval Process
               </h3>
-              <p className="text-gray-700 mb-4">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.</p>
+              <p className="text-gray-700 mb-4 dark:text-black">Once CCC projects have been routed to the appropriate department (e.g., Medical Affairs, Managed Markets, Marketing, Public Affairs, etc.) the primary Gilead department(s) responsible for the CCC project will oversee all operations of the CCC project.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {processSteps.map((step, index) => {
                   const IconComponent = step.icon;
                   return (
                     <div key={index} className="flex items-center bg-white p-3 rounded-lg shadow-sm">
                       <div className="bg-indigo-50 p-2 rounded-full shadow-md">
-                        <IconComponent className="w-4 h-4 text-red-800" />
+                        <IconComponent className="w-4 h-4 text-red-800 dark:text-black" />
                       </div>
                       <span className="text-gray-700 ml-3">{step.text}</span>
                     </div>
@@ -229,11 +229,11 @@ const Processes = () => {
 
             {/* Adjudication Committee */}
             <div className="bg-purple-50 rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Shield className="w-5 h-5 mr-2 dark:text-black" />
                 Adjudication Committee
               </h3>
-              <p className="text-gray-700 mb-4">The CCC Adjudication Committee will review Complex Projects and include representatives from Medical Affairs, Medical Governance, Legal, and Compliance. No one from the Commercial organization, including Managed Markets, will sit on the Adjudication Committee.</p>
+              <p className="text-gray-700 mb-4 dark:text-black">The CCC Adjudication Committee will review Complex Projects and include representatives from Medical Affairs, Medical Governance, Legal, and Compliance. No one from the Commercial organization, including Managed Markets, will sit on the Adjudication Committee.</p>
               <div className="space-y-3">
                 {[
                   "They fit within the CCC's objectives and strategic pillars.",
@@ -241,8 +241,8 @@ const Processes = () => {
                   "If initially approved, route the CCC project to the appropriate functional department for further respective review and approval."
                 ].map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>
@@ -257,15 +257,15 @@ const Processes = () => {
 
             {/* Project Tracking */}
             <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <LineChart className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <LineChart className="w-5 h-5 mr-2 dark:text-black" />
                 Project Tracking & Monitoring
               </h3>
               <div className="space-y-3">
                 {projectTracking.map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>
@@ -273,15 +273,15 @@ const Processes = () => {
 
             {/* Impact Measurement */}
             <div className="bg-green-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Target className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Target className="w-5 h-5 mr-2 dark:text-black" />
                 Impact Documentation & Measurement
               </h3>
               <div className="space-y-3">
                 {impactMeasurement.map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>
@@ -289,8 +289,8 @@ const Processes = () => {
 
             {/* External Interaction Guidelines */}
             <div className="bg-red-50 rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <AlertTriangle className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <AlertTriangle className="w-5 h-5 mr-2 dark:text-black" />
                 External Interaction Guidelines
               </h3>
               <div className="mb-8">
@@ -309,8 +309,8 @@ const Processes = () => {
                   "All CCC materials require appropriate internal review approval (MRC or PRC) before customer use"
                 ].map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>

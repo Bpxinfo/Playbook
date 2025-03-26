@@ -108,7 +108,7 @@ const DocumentLink = ({ doc }) => {
                 {doc.type}
               </span>
             </div>
-            <p className="text-sm text-gray-600">{doc.title}</p>
+            <p className="text-sm text-gray-600 dark:text-white">{doc.title}</p>
           </div>
         </div>
         <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0" />

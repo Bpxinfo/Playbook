@@ -382,7 +382,8 @@ const MainLayout = ({ children }) => {
     
     // Special handling for compliance section
     if (section === 'compliance') {
-      const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
+      // const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
+      const anchorId = 'overview';
       return `/compliance/guidance#${anchorId}`;
     }
     

@@ -97,8 +97,8 @@ const ProcessesGovernance = () => {
             
             {/* Expert Advisors */}
             <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Brain className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Brain className="w-5 h-5 mr-2 dark:text-black" />
                 CCC Expert Advisors
               </h3>
               <div className="space-y-3">
@@ -108,8 +108,8 @@ const ProcessesGovernance = () => {
                   "While Expert Advisors may provide input on operational aspects of complex CCC projects, they should maintain limited influence over broader CCC project design and selection decisions"
                 ].map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black ">{text}</p>
                   </div>
                 ))}
               </div>
@@ -117,8 +117,8 @@ const ProcessesGovernance = () => {
 
             {/* Internal Collaboration */}
             <div className="bg-green-50 rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                <Network className="w-5 h-5 mr-2" />
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Network className="w-5 h-5 mr-2 dark:text-black" />
                 Internal Collaboration
               </h3>
               <div className="space-y-3">
@@ -128,8 +128,8 @@ const ProcessesGovernance = () => {
                   "For clarity, Gilead's Sales organization must not be involved in CCC internal collaboration and strategy development meetings"
                 ].map((text, index) => (
                   <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{text}</p>
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
                   </div>
                 ))}
               </div>
@@ -177,43 +177,43 @@ const ProcessesGovernance = () => {
             </h2>
             <div className="space-y-4">
               <div className="bg-purple-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
                   The CCC adjudication and governance process involves a new structure - the CCC Adjudication Committee
                 </h3>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-700 mb-6 dark:text-black">
                   This committee has a very narrowly scoped purpose
                 </p>
                 
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-red-800 mb-3">Purpose:</h4>
-                  <p className="text-gray-700 mb-4">For candidate initiatives (projects or project topics):</p>
+                  <h4 className="text-lg font-semibold text-red-800 mb-3 dark:text-black">Purpose:</h4>
+                  <p className="text-gray-700 mb-4 dark:text-black">For candidate initiatives (projects or project topics):</p>
                   
                   <div className="space-y-3">
                     <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700"><span className="font-semibold">Division Determination:</span> To determine the appropriate division (i.e., Medical vs. Commercial) within Gilead to route candidate initiatives for evaluation for potential execution</p>
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black"><span className="font-semibold">Division Determination:</span> To determine the appropriate division (i.e., Medical vs. Commercial) within Gilead to route candidate initiatives for evaluation for potential execution</p>
                     </div>
                     
                     <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700"><span className="font-semibold">Mapping Initiatives:</span> To map candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e., ISR, grants, etc.)</p>
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black"><span className="font-semibold">Mapping Initiatives:</span> To map candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e., ISR, grants, etc.)</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="bg-blue-50 rounded-lg shadow p-6">
-                  <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
-                    <AlertTriangle className="w-5 h-5 mr-2" />
-                    Examples of what is{" "}<span className="font-bold">out of scope</span>{" "}for this committee:
+                  <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                    <AlertTriangle className="w-5 h-5 mr-2 dark:text-black" />
+                    Examples of what is out of scope for this committee:
                   </h4>
                   <div className="space-y-3">
                     <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">Prioritizing the merits of candidate projects/project ideas</p>
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">Prioritizing the merits of candidate projects/project ideas</p>
                     </div>
                     <div className="flex items-start">
-                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">Working through issues involving project execution and operations (which will be done either per existing Gilead policies, procedures and processes, or otherwise during project execution with support from relevant functions)</p>
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">Working through issues involving project execution and operations (which will be done either per existing Gilead policies, procedures and processes, or otherwise during project execution with support from relevant functions)</p>
                     </div>
                   </div>
                 </div>
@@ -230,8 +230,8 @@ const ProcessesGovernance = () => {
                   {section.title}
                 </h2>
                 <div className={`${section.color} p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200`}>
-                  <h3 className="text-lg font-semibold text-red-800 mb-2 flex items-center">
-                    <Clock className="w-5 h-5 mr-2" />
+                  <h3 className="text-lg font-semibold text-red-800 mb-2 flex items-center dark:text-black">
+                    <Clock className="w-5 h-5 mr-2 dark:text-black" />
                     COMING SOON
                   </h3>
                 </div>
