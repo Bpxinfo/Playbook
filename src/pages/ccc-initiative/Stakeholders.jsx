@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import stakeholder from '../../assets/stakeholder.jpg';
 import { Users, Building, UserCheck, FileSpreadsheet, Network, ChevronRight } from 'lucide-react';
+import leadership from '../../assets/leadership.jpg'
+import ImageZoomModal from '../../components/ImageZoomModal';
+import { FiZoomIn } from 'react-icons/fi';
+
+const ImageWithZoom = ({ src, alt, className }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <div className="relative group cursor-pointer" onClick={() => setIsModalOpen(true)}>
+        <img src={src} alt={alt} className={className} />
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+          <FiZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" size={24} />
+        </div>
+      </div>
+      <ImageZoomModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        imageUrl={src}
+        altText={alt}
+      />
+    </>
+  );
+};
 
 const Stakeholders = () => {
   const stakeholderSections = [
@@ -90,6 +114,22 @@ const Stakeholders = () => {
               />
             </div>
           </section>
+
+          <section className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+              CCC Leadership - SteerCo
+            </h2>
+            <div className="space-y-4">
+              <div className="bg-green-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+                <ImageWithZoom 
+                  src={leadership} 
+                  alt="Leadership SteerCo" 
+                  className="w-full rounded-lg shadow-lg mb-4"
+                />
+                <p className="text-sm text-gray-500 text-center">Leadership SteerCo</p>
+              </div>
+            </div>
+            </section>
         </div>
       </div>
     </div>

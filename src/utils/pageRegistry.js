@@ -67,6 +67,10 @@ export const pageRegistry = {
       component: () => import('@/pages/internal-onboarding/index'),
       title: 'Internal Onboarding'
     },
+    '/internal-onboarding/combined': {
+      component: () => import('@/pages/internal-onboarding/CombinedOnboarding'),
+      title: 'CCC Core Onboarding'
+    },
     '/internal-onboarding/ccc-core/onboarding-checklist': {
       component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
       title: 'Onboarding Checklist'

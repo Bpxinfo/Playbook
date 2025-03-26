@@ -40,12 +40,6 @@ const InternalPlatforms = () => {
                       <td className="px-4 py-2 text-black dark:text-gray-200"></td>
                     </tr>
                     <tr className="dark:bg-gray-900">
-                      <td className="px-4 py-2 text-black dark:text-gray-200">G360 (Veeva)</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Jen Prokes (Lead)<br />(Gene Felber = Acct planning)</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Field Planning</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Jen Prokes (Main Point)</td>
-                    </tr>
-                    <tr className="dark:bg-gray-900">
                       <td className="px-4 py-2 text-black dark:text-gray-200">GOptics</td>
                       <td className="px-4 py-2 text-black dark:text-gray-200">Marina Karmanova</td>
                       <td className="px-4 py-2 text-black dark:text-gray-200">ISR and collaborative studies platform → Study Concepts, Protocols</td>

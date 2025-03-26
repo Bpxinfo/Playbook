@@ -46,6 +46,7 @@ const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSup
 const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation.jsx'));
 const CCCLeadershipSteerCo = lazy(() => import('@/pages/internal-onboarding/ccc-leadership-steerco.jsx'));
 const CCCFieldTeam = lazy(() => import('@/pages/internal-onboarding/ccc-field-team.jsx'));
+const CombinedOnboarding = lazy(() => import('@/pages/internal-onboarding/CombinedOnboarding.jsx'));
 // const ProjectLeads = lazy(() => import('@/pages/internal-onboarding/project-leads.jsx'));
 
 // Processes
@@ -169,6 +170,13 @@ function App() {
               <Route path="/internal-onboarding" element={
                 <ProtectedRoute>
                   <InternalOnboardingHome />
+                </ProtectedRoute>
+              } />
+              
+              {/* Combined Onboarding Page */}
+              <Route path="/internal-onboarding/combined" element={
+                <ProtectedRoute>
+                  <CombinedOnboarding />
                 </ProtectedRoute>
               } />
               

@@ -15,7 +15,7 @@ const PreIntegrationPrep = () => {
           </div>
           <ul className="pl-6 space-y-3 text-gray-700">
             <li className="space-y-2">Playbook Review
-              <ul className="pl-6 mt-2 space-y-2">
+              <ul className="space-y-2">
                 <li>
                   <CheckboxItem id="background-1-1" text="Initiative goals and objectives" />
                 </li>
@@ -28,7 +28,7 @@ const PreIntegrationPrep = () => {
               </ul>
             </li>
             <li className="space-y-2">Function-specific orientation
-              <ul className="pl-6 mt-2 space-y-2">
+              <ul className="space-y-2">
                 <li>
                   <CheckboxItem id="background-2-1" text="Tailored orientation for different roles/groups" />
                 </li>

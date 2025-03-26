@@ -119,11 +119,11 @@ const MainLayout = ({ children }) => {
           id: 'ccc-core',
           title: 'CCC Core',
           items: [
-            'Onboarding Checklist',
-            'Welcome Orientation',
-            'Immerse, Contribute',
-            'Deepen Engagement',
-            'Full Integration',
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/combined#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/combined#welcome-orientation' },
+            { title: 'Immerse, Contribute', path: '/internal-onboarding/combined#immerse-contribute' },
+            { title: 'Deepen Engagement', path: '/internal-onboarding/combined#deepen-engagement' },
+            { title: 'Full Integration', path: '/internal-onboarding/combined#full-integration' },
           ]
         },
         {
@@ -374,6 +374,15 @@ const MainLayout = ({ children }) => {
 
   const isSectionSelected = (path) => {
     if (!path) return false;
+    
+    // Special case for internal-onboarding section
+    if (path === 'internal-onboarding') {
+      // Check if current path is under any of the core/extended subsections
+      return location.pathname.startsWith(`/${path}`) || 
+             location.pathname.includes('/ccc-core/') ||
+             location.pathname.includes('/ccc-extended/');
+    }
+    
     return location.pathname.startsWith(`/${path}`);
   };
 
@@ -408,6 +417,16 @@ const MainLayout = ({ children }) => {
     // Always navigate to the section's default route
     if (key === 'compliance') {
       navigate('/compliance');  // Navigate to landing page for compliance section
+    } else if (key === 'internal-onboarding') {
+      // For internal onboarding, expand the section if it contains the current path
+      const shouldExpand = location.pathname.includes('/ccc-core/') || 
+                          location.pathname.includes('/ccc-extended/') ||
+                          location.pathname.startsWith('/internal-onboarding');
+      if (shouldExpand) {
+        setExpandedTopSection(current => current === key ? null : key);
+      } else {
+        navigate(sectionConfig[key].defaultRoute);
+      }
     } else {
       navigate(sectionConfig[key].defaultRoute);
     }
@@ -552,11 +571,11 @@ const MainLayout = ({ children }) => {
 
   const renderSubsectionItems = (section, sectionKey, subsection) => (
     <div className="ml-4">
-      {subsection.items.map((item) => {
+      {subsection.items.map((item, index) => {
         // Special case for Key Communications
         if (item === 'Key Communications' && sectionKey === 'communications' && subsection.id === 'internal-comms-plan') {
           return (
-            <div key={item} className="mb-1">
+            <div key={`${subsection.id}-${item}-${index}`} className="mb-1">
               <button
                 onClick={() => window.open('https://www.google.com', '_blank')}
                 className={`block w-full p-2 text-sm rounded-lg transition-colors bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 text-left`}
@@ -570,21 +589,59 @@ const MainLayout = ({ children }) => {
           );
         }
 
-        // Normal case for other items
+        // Handle items that are objects with title and path
+        if (typeof item === 'object' && item.title && item.path) {
+          const isActive = location.pathname === item.path.split('#')[0] && location.hash === '#' + item.path.split('#')[1];
+          return (
+            <div key={`${subsection.id}-${item.title}-${index}`} className="mb-1">
+              <Link
+                to={item.path}
+                className={`block p-2 text-sm rounded-lg transition-colors ${
+                  isActive
+                    ? 'bg-red-500 text-white hover:text-white'
+                    : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+                onClick={(e) => {
+                  // Allow default navigation
+                  setTimeout(() => {
+                    const targetId = item.path.split('#')[1];
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                      targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }}
+              >
+                {item.title}
+              </Link>
+            </div>
+          );
+        }
+
+        // Handle regular string items (backwards compatibility)
         const path = getItemPath(sectionKey, item, subsection.id);
         const isActive = location.pathname === path;
         return (
-          <div key={item} className="mb-1">
-            <Link
-              to={path}
-              className={`block p-2 text-sm rounded-lg transition-colors ${
-                isActive
-                  ? 'bg-red-500 text-white hover:text-white'
-                  : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-            >
-              {item}
-            </Link>
+          <div key={`${subsection.id}-${item}-${index}`} className="mb-1">
+            {path ? (
+              <Link
+                to={path}
+                className={`block p-2 text-sm rounded-lg transition-colors ${
+                  isActive
+                    ? 'bg-red-500 text-white hover:text-white'
+                    : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                {item}
+              </Link>
+            ) : (
+              <button
+                onClick={() => getItemPath(sectionKey, item)}
+                className="block w-full text-left p-2 text-sm rounded-lg transition-colors bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {item}
+              </button>
+            )}
           </div>
         );
       })}
@@ -912,7 +969,7 @@ const MainLayout = ({ children }) => {
                           sidebarOpen ? "w-full justify-between p-3" : "w-12 h-12 p-2 justify-center",
                           isSectionSelected(key) 
                             ? 'bg-red-900 text-white' 
-                            : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                            : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-black dark:text-white'
                         )}
                       >
                         <div className="flex items-center">
@@ -966,7 +1023,7 @@ const MainLayout = ({ children }) => {
                                         "w-full flex items-center justify-between p-2 rounded-lg transition-all duration-300",
                                         isSectionSelected(`${key}/${subsection.id}`)
                                           ? 'bg-red-700 text-white'
-                                          : 'bg-white dark:bg-[#333333] text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
+                                          : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-black dark:text-white'
                                       )}
                                     >
                                       <span className="text-sm">{subsection.title}</span>
