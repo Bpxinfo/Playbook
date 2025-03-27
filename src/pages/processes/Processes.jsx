@@ -95,7 +95,7 @@ const Processes = () => {
           <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
               <Workflow className="w-6 h-6 mr-2" />
-              Process Map & Governance Model
+              CCC Project Lifecycle
             </h2>
             <div className="space-y-4">
               <div className="bg-blue-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
@@ -106,22 +106,7 @@ const Processes = () => {
                 />
                 <p className="text-sm text-gray-500 text-center">Process Flow Diagram</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  { text: "GRC - Global Research Committee", icon: Building },
-                  { text: "LRC - Local Research Committee", icon: Users2 }
-                ].map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <div key={index} className="flex items-center bg-gray-50 p-3 rounded-lg shadow-sm">
-                      <div className="bg-white p-2 rounded-full shadow-md">
-                        <IconComponent className="w-4 h-4 text-red-800" />
-                      </div>
-                      <span className="text-gray-700 ml-3">{item.text}</span>
-                    </div>
-                  );
-                })}
-              </div>
+              
             </div>
           </section>
 
@@ -250,40 +235,42 @@ const Processes = () => {
           </section>
 
           <section id="project-operations" className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
+            <h2 className="text-2xl text-red-800 mb-6 flex items-center">
               <Settings className="w-6 h-6 mr-2" />
               Project Operations
             </h2>
 
-            {/* Project Tracking */}
-            <div className="bg-blue-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
-                <LineChart className="w-5 h-5 mr-2 dark:text-black" />
-                Project Tracking & Monitoring
-              </h3>
-              <div className="space-y-3">
-                {projectTracking.map((text, index) => (
-                  <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
-                    <p className="text-gray-700 dark:text-black">{text}</p>
-                  </div>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {/* Project Tracking */}
+              <div className="bg-blue-50 rounded-lg shadow p-6">
+                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                  <LineChart className="w-5 h-5 mr-2 dark:text-black" />
+                  Project Tracking & Monitoring
+                </h3>
+                <div className="space-y-3">
+                  {projectTracking.map((text, index) => (
+                    <div key={index} className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">{text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Impact Measurement */}
-            <div className="bg-green-50 rounded-lg shadow p-6 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
-                <Target className="w-5 h-5 mr-2 dark:text-black" />
-                Impact Documentation & Measurement
-              </h3>
-              <div className="space-y-3">
-                {impactMeasurement.map((text, index) => (
-                  <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
-                    <p className="text-gray-700 dark:text-black">{text}</p>
-                  </div>
-                ))}
+              {/* Impact Measurement */}
+              <div className="bg-green-50 rounded-lg shadow p-6">
+                <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                  <Target className="w-5 h-5 mr-2 dark:text-black" />
+                  Impact Documentation & Measurement
+                </h3>
+                <div className="space-y-3">
+                  {impactMeasurement.map((text, index) => (
+                    <div key={index} className="flex items-start">
+                      <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                      <p className="text-gray-700 dark:text-black">{text}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

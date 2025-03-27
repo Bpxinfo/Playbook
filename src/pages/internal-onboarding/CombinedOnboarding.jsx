@@ -19,14 +19,16 @@ const CombinedOnboarding = () => {
                 <h2 className="text-2xl text-red-800">Background Information</h2>
               </div>
               <ul className="pl-6 space-y-3 text-gray-700">
-                <li className="space-y-2">Playbook Review
+                <li>
+                  <h3 className="font-medium mb-2">Playbook Review</h3>
                   <ul className="space-y-2">
                     <li><CheckboxItem id="background-1-1" text="Initiative goals and objectives" /></li>
                     <li><CheckboxItem id="background-1-2" text="Current status and achievements" /></li>
                     <li><CheckboxItem id="background-1-3" text="Key stakeholders and team structure" /></li>
                   </ul>
                 </li>
-                <li className="space-y-2">Function-specific orientation
+                <li>
+                  <h3 className="font-medium mb-2">Function-specific orientation</h3>
                   <ul className="space-y-2">
                     <li><CheckboxItem id="background-2-1" text="Tailored orientation for different roles/groups" /></li>
                   </ul>

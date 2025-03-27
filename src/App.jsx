@@ -44,10 +44,12 @@ const OnboardingChecklist = lazy(() => import('@/pages/internal-onboarding/Onboa
 const ExternalLinks = lazy(() => import('@/pages/internal-onboarding/ExternalLinks.jsx'));
 const OngoingSupport = lazy(() => import('@/pages/internal-onboarding/OngoingSupport.jsx'));
 const WelcomeOrientation = lazy(() => import('@/pages/internal-onboarding/WelcomeOrientation.jsx'));
-const CCCLeadershipSteerCo = lazy(() => import('@/pages/internal-onboarding/ccc-leadership-steerco.jsx'));
-const CCCFieldTeam = lazy(() => import('@/pages/internal-onboarding/ccc-field-team.jsx'));
-const CombinedOnboarding = lazy(() => import('@/pages/internal-onboarding/CombinedOnboarding.jsx'));
-// const ProjectLeads = lazy(() => import('@/pages/internal-onboarding/project-leads.jsx'));
+const CCCCore = lazy(() => import('@/pages/internal-onboarding/CombinedOnboarding.jsx'));
+const ProjectLeads = lazy(() => import('@/pages/internal-onboarding/CombinedOnboarding.jsx'));
+const CCCExtended = lazy(() => import('@/pages/internal-onboarding/OWCombined.jsx'));
+const CCCLeadershipSteerCo = lazy(() => import('@/pages/internal-onboarding/OWCombined.jsx'));
+const FieldTeam = lazy(() => import('@/pages/internal-onboarding/OWCombined.jsx'));
+
 
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
@@ -67,7 +69,6 @@ const LinkstoProcess = lazy(() => import('@/pages/systems/LinkstoProcess.jsx'));
 
 // Project Archetype
 const ProjectArchetypeHome = lazy(() => import('@/pages/project-archetype/index.jsx'));
-const CorePrinciples = lazy(() => import('@/pages/project-archetype/CorePrinciples.jsx'));
 const CCCProjectLifecycle = lazy(() => import('@/pages/project-archetype/ccc-project-lifecycle.jsx'));
 const CCCProjectTypes = lazy(() => import('@/pages/project-archetype/ProjectTypes.jsx'));
 const CollaborativeStudies = lazy(() => import('@/pages/project-archetype/CollaborativeStudies.jsx'));
@@ -173,39 +174,13 @@ function App() {
                 </ProtectedRoute>
               } />
               
-              {/* Combined Onboarding Page */}
-              <Route path="/internal-onboarding/combined" element={
+              {/* CCC Core Onboarding Page */}
+              <Route path="/internal-onboarding/ccc-core" element={
                 <ProtectedRoute>
-                  <CombinedOnboarding />
+                  <CCCCore />
                 </ProtectedRoute>
               } />
               
-              {/* CCC Core */}
-              <Route path="/internal-onboarding/ccc-core/onboarding-checklist" element={
-                <ProtectedRoute>
-                  <OnboardingChecklist />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-core/welcome-orientation" element={
-                <ProtectedRoute>
-                  <WelcomeOrientation />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-core/immerse,-contribute" element={
-                <ProtectedRoute>
-                  <ImmerseContribute />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-core/deepen-engagement" element={
-                <ProtectedRoute>
-                  <DeepenEngagement />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-core/full-integration" element={
-                <ProtectedRoute>
-                  <FullIntegration />
-                </ProtectedRoute>
-              } />
               
               {/* CCC Extended */}
               <Route path="/internal-onboarding/ccc-extended/onboarding-checklist" element={
@@ -225,45 +200,38 @@ function App() {
                   <CCCLeadershipSteerCo />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-leadership-steerco/onboarding-checklist" element={
+
+              {/* CCC Extended */}
+              <Route path="/internal-onboarding/ccc-extended" element={
                 <ProtectedRoute>
-                  <OnboardingChecklist />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/ccc-leadership-steerco/welcome-orientation" element={
-                <ProtectedRoute>
-                  <WelcomeOrientation />
+                  <CCCExtended />
                 </ProtectedRoute>
               } />
               
               {/* CCC Field Team */}
-              <Route path="/internal-onboarding/ccc-field-team" element={
+              <Route path="/internal-onboarding/field-team" element={
                 <ProtectedRoute>
-                  <CCCFieldTeam />
+                  <FieldTeam />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-field-team/onboarding-checklist" element={
+              <Route path="/internal-onboarding/field-team/onboarding-checklist" element={
                 <ProtectedRoute>
                   <OnboardingChecklist />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/ccc-field-team/welcome-orientation" element={
+              <Route path="/internal-onboarding/field-team/welcome-orientation" element={
                 <ProtectedRoute>
                   <WelcomeOrientation />
                 </ProtectedRoute>
               } />
               
-              {/* Project Leads */}
-              <Route path="/internal-onboarding/project-leads/onboarding-checklist" element={
+              {/* Project Leads Onboarding Page */}
+              <Route path="/internal-onboarding/project-leads" element={
                 <ProtectedRoute>
-                  <OnboardingChecklist />
+                  <ProjectLeads />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/project-leads/welcome-orientation" element={
-                <ProtectedRoute>
-                  <WelcomeOrientation />
-                </ProtectedRoute>
-              } />
+            
               
               {/* Ongoing Support */}
               <Route path="/internal-onboarding/ongoing-support" element={
@@ -368,11 +336,6 @@ function App() {
               <Route path="/project-archetype" element={
                 <ProtectedRoute>
                   <ProjectArchetypeHome />
-                </ProtectedRoute>
-              } />
-              <Route path="/project-archetype/core-principles" element={
-                <ProtectedRoute>
-                  <CorePrinciples />
                 </ProtectedRoute>
               } />
               <Route path="/project-archetype/ccc-project-lifecycle" element={

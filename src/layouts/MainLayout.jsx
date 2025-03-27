@@ -100,13 +100,12 @@ const MainLayout = ({ children }) => {
     'project-archetype': {
       title: 'Projects Archetypes',
       items: [
-        'CORE Principles',
+        'CCC Project Lifecycle',
         'Collaborative Studies',
         'ISRs',
         'Fee For Service',
         'Sponsorships',
         'Grants',
-        'CCC Project Lifecycle'
       ]
     },
     'internal-onboarding': {
@@ -119,11 +118,11 @@ const MainLayout = ({ children }) => {
           id: 'ccc-core',
           title: 'CCC Core',
           items: [
-            { title: 'Onboarding Checklist', path: '/internal-onboarding/combined#onboarding-checklist' },
-            { title: 'Welcome Orientation', path: '/internal-onboarding/combined#welcome-orientation' },
-            { title: 'Immerse, Contribute', path: '/internal-onboarding/combined#immerse-contribute' },
-            { title: 'Deepen Engagement', path: '/internal-onboarding/combined#deepen-engagement' },
-            { title: 'Full Integration', path: '/internal-onboarding/combined#full-integration' },
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-core#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-core#welcome-orientation' },
+            { title: 'Immerse, Contribute', path: '/internal-onboarding/ccc-core#immerse-contribute' },
+            { title: 'Deepen Engagement', path: '/internal-onboarding/ccc-core#deepen-engagement' },
+            { title: 'Full Integration', path: '/internal-onboarding/ccc-core#full-integration' },
           ]
         },
         {
@@ -143,7 +142,7 @@ const MainLayout = ({ children }) => {
           ]
         },
         {
-          id: 'ccc-field-team',
+          id: 'field-team',
           title: 'Field Team',
           items: [
             'Onboarding Checklist',
@@ -154,8 +153,11 @@ const MainLayout = ({ children }) => {
           id: 'project-leads',
           title: 'Project Leads',
           items: [
-            'Onboarding Checklist',
-            'Welcome Orientation',
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/project-leads#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/project-leads#welcome-orientation' },
+            { title: 'Immerse, Contribute', path: '/internal-onboarding/project-leads#immerse-contribute' },
+            { title: 'Deepen Engagement', path: '/internal-onboarding/project-leads#deepen-engagement' },
+            { title: 'Full Integration', path: '/internal-onboarding/project-leads#full-integration' },
           ]
         },
       ]
@@ -414,19 +416,9 @@ const MainLayout = ({ children }) => {
 
   // Section handling functions
   const handleSectionClick = (key) => {
-    // Always navigate to the section's default route
+    // Always navigate to the section's default route first
     if (key === 'compliance') {
       navigate('/compliance');  // Navigate to landing page for compliance section
-    } else if (key === 'internal-onboarding') {
-      // For internal onboarding, expand the section if it contains the current path
-      const shouldExpand = location.pathname.includes('/ccc-core/') || 
-                          location.pathname.includes('/ccc-extended/') ||
-                          location.pathname.startsWith('/internal-onboarding');
-      if (shouldExpand) {
-        setExpandedTopSection(current => current === key ? null : key);
-      } else {
-        navigate(sectionConfig[key].defaultRoute);
-      }
     } else {
       navigate(sectionConfig[key].defaultRoute);
     }
@@ -456,6 +448,14 @@ const MainLayout = ({ children }) => {
 
   const toggleSubSection = (subsectionKey, e) => {
     e.stopPropagation();
+    
+    // Navigate to the subsection page
+    // Using the current expandedTopSection to determine the parent section
+    if (expandedTopSection) {
+      navigate(`/${expandedTopSection}/${subsectionKey}`);
+    }
+    
+    // Toggle the expanded state
     setExpandedSubSection(current => current === subsectionKey ? null : subsectionKey);
   };
 
@@ -795,7 +795,7 @@ const MainLayout = ({ children }) => {
           </div>
           
           {/* Center Navigation Links */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 flex-grow ml-32">
             <a href="https://gileadconnect.sharepoint.com/sites/MA-US-Oncology" target="_blank" rel="noopener noreferrer" className="text-red-800 dark:text-white hover:underline">
               CCC SharePoint
             </a>
@@ -810,7 +810,7 @@ const MainLayout = ({ children }) => {
           {/* Right-aligned group with Quick Links and Feedback dropdowns */}
           <div className="flex items-center space-x-4">
             <div className="relative group">
-              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333]">
+              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white">
                 <LinkIcon className="w-4 h-4 mr-2" />
                 Quick Links
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -841,7 +841,7 @@ const MainLayout = ({ children }) => {
             </div>
             
             <div className="relative group">
-              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white bg-white dark:bg-[#333333] transition-colors">
+              <button className="flex items-center text-red-800 dark:text-white hover:text-red-700 dark:hover:text-white transition-colors">
                 <MessageSquare className="w-4 h-4 mr-2" />
                 Feedback
                 <ChevronDown className="w-4 h-4 ml-1" />
@@ -988,7 +988,7 @@ const MainLayout = ({ children }) => {
                             </motion.span>
                           )}
                         </div>
-                        {sidebarOpen && (
+                        {sidebarOpen && (section.items || hasSubsections(section)) && (
                           <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}

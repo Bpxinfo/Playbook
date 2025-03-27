@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { 
   Settings, Network, Shield, FileText, AlertTriangle, 
   Users2, Building, Target, ChevronRight, Workflow,
-  Clock, Activity, Brain
+  Clock, Activity, Brain, ExternalLink
 } from 'lucide-react';
 import CCC_Process_Overview from '../../assets/CCC_Process_Overview.png'
 import governance_model from '../../assets/governance_model.png'
 import stakeholder from '../../assets/stakeholder.jpg'
-import leadership from '../../assets/leadership.jpg'
+
 import adjud from '../../assets/adjud.jpg'
 import advisory from '../../assets/advisory.jpg'
 import ImageZoomModal from '../../components/ImageZoomModal';
@@ -71,7 +71,39 @@ const ProcessesGovernance = () => {
           <Shield className="w-8 h-8 mr-3" />
           Governance
         </h1>
-        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          {[
+            { 
+              text: "GRC - Global Research Committee", 
+              icon: Building,
+              url: "https://gileadconnect.sharepoint.com/sites/MA-Research" 
+            },
+            { 
+              text: "LRC - Local Research Committee", 
+              icon: Users2,
+              url: "https://gileadconnect.sharepoint.com/sites/MA-Research" 
+            }
+          ].map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <a
+                key={index}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between bg-white hover:bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 transition-all duration-200 group cursor-pointer"
+              >
+                <div className="flex items-center">
+                  <div className="bg-red-800 p-2 rounded-full">
+                    <IconComponent className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-gray-700 ml-3 font-medium">{item.text}</span>
+                </div>
+                <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-red-800 transition-colors duration-200" />
+              </a>
+            );
+          })}
+        </div>
         <div className="space-y-6">
           <section id="ccc-strategy-development" className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
@@ -121,22 +153,6 @@ const ProcessesGovernance = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <Users2 className="w-6 h-6 mr-2" />
-              CCC Internal Stakeholders
-            </h2>
-            <div className="space-y-4">
-              <div className="bg-blue-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
-                <ImageWithZoom 
-                  src={stakeholder} 
-                  alt="CCC Stakeholders" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">Stakeholders</p>
-              </div>
-            </div>
-          </section>
 
 
           <section className="bg-white rounded-lg shadow-lg p-6">

@@ -73,11 +73,13 @@ export default function Login() {
     
     try {
       await signInWithEmail(email, password);
+      
+      // Don't manually navigate here - let the auth context handle it
+      // This avoids race conditions during authentication state changes
       forceLightMode();
-      navigate('/ccc-playbook');
     } catch (err) {
+      console.error('Login error:', err);
       setError(err.message || 'Failed to sign in');
-    } finally {
       setLoading(false);
     }
   };
@@ -85,9 +87,22 @@ export default function Login() {
   const handleMicrosoftSignIn = async () => {
     try {
       await signInWithMicrosoft();
+      // Let the OAuth redirect and auth context handle navigation
       forceLightMode();
     } catch (err) {
+      console.error('Microsoft sign in error:', err);
       setError(err.message || 'Failed to sign in with Microsoft');
+    }
+  };
+
+  const handleGuestAccess = async () => {
+    try {
+      await continueAsGuest();
+      // The continueAsGuest function already handles navigation
+      forceLightMode();
+    } catch (err) {
+      console.error('Guest access error:', err);
+      setError(err.message || 'Failed to continue as guest');
     }
   };
 
@@ -198,7 +213,7 @@ export default function Login() {
             </button>
 
             <button
-              onClick={continueAsGuest}
+              onClick={handleGuestAccess}
               className="group/btn relative w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-zinc-800 dark:text-white dark:border-zinc-700 dark:hover:bg-zinc-700"
             >
               Continue as Guest

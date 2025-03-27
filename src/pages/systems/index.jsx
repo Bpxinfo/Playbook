@@ -61,11 +61,16 @@ const SystemsHome = () => {
             </div>
           </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {systemHighlights.map((highlight, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow">
-                <h3 className="text-lg font-semibold text-red-800 mb-2">{highlight.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-white">{highlight.description}</p>
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                <div className="flex items-center mb-4">
+                  <div className="bg-white p-3 rounded-full shadow-md mr-4">
+                    <Target className="w-6 h-6 text-red-800" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">{highlight.title}</h3>
+                </div>
+                <p className="text-gray-600 ml-16">{highlight.description}</p>
               </div>
             ))}
           </div>

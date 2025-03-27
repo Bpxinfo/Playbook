@@ -20,27 +20,27 @@ const ComplianceHome = () => {
       icon: Shield,
       color: "bg-blue-50"
     },
-    {
-      title: "Documentation",
-      description: "Access to compliance-related documentation, forms, and templates.",
-      path: "/compliance/documentation",
-      icon: FileText,
-      color: "bg-purple-50"
-    },
-    {
-      title: "Risk Management",
-      description: "Framework for identifying, assessing, and managing compliance risks.",
-      path: "/compliance/risk-management",
-      icon: AlertCircle,
-      color: "bg-green-50"
-    },
-    {
-      title: "Training & Resources",
-      description: "Compliance training materials and educational resources for team members.",
-      path: "/compliance/training",
-      icon: BookOpen,
-      color: "bg-yellow-50"
-    }
+    // {
+    //   title: "Documentation",
+    //   description: "Access to compliance-related documentation, forms, and templates.",
+    //   path: "/compliance/documentation",
+    //   icon: FileText,
+    //   color: "bg-purple-50"
+    // },
+    // {
+    //   title: "Risk Management",
+    //   description: "Framework for identifying, assessing, and managing compliance risks.",
+    //   path: "/compliance/risk-management",
+    //   icon: AlertCircle,
+    //   color: "bg-green-50"
+    // },
+    // {
+    //   title: "Training & Resources",
+    //   description: "Compliance training materials and educational resources for team members.",
+    //   path: "/compliance/training",
+    //   icon: BookOpen,
+    //   color: "bg-yellow-50"
+    // }
   ];
 
   return (

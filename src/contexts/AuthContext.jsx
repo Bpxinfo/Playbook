@@ -178,6 +178,8 @@ export const AuthProvider = ({ children }) => {
   const signInWithEmail = async (email, password) => {
     try {
       console.log('Starting email sign in process...');
+      setLoading(true);
+      
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
@@ -189,9 +191,27 @@ export const AuthProvider = ({ children }) => {
       }
       
       console.log('Email sign in successful:', data);
+      
+      // Explicitly update user state to avoid race conditions
+      if (data?.user) {
+        setUser(data.user);
+        setIsGuest(false);
+        localStorage.removeItem('isGuest');
+        sessionStorage.removeItem('isGuest');
+      }
+      
+      // Add a small delay to allow state to settle before navigating
+      setTimeout(() => {
+        if (window.location.pathname !== '/ccc-playbook') {
+          window.location.replace('/ccc-playbook');
+        }
+        setLoading(false);
+      }, 100);
+      
       return data;
     } catch (error) {
       console.error('Email sign in failed:', error);
+      setLoading(false);
       throw error;
     }
   };
@@ -200,35 +220,30 @@ export const AuthProvider = ({ children }) => {
     try {
       console.log('Starting sign out process...');
       
-      // First clear local state
+      // First clear all local state
       setUser(null);
       setIsGuest(false);
-      localStorage.removeItem('isGuest');
-      sessionStorage.removeItem('isGuest');
-      setLoading(false);
       
-      if (!isGuest) {
-        console.log('User is not a guest, signing out from Supabase...');
-        try {
-          const { error } = await supabase.auth.signOut();
-          if (error) {
-            console.error('Supabase sign out error:', error);
-            throw error;
-          }
-          console.log('Successfully signed out from Supabase');
-        } catch (supabaseError) {
-          console.error('Error during Supabase sign out:', supabaseError);
-          // Continue with redirect even if Supabase sign out fails
-        }
-      }
-      
-      // Clear any remaining auth state
+      // Clear all storage
       localStorage.clear();
       sessionStorage.clear();
       
-      console.log('Clearing all state and redirecting...');
+      // Explicitly remove guest state
+      localStorage.removeItem('isGuest');
+      sessionStorage.removeItem('isGuest');
+      
+      // Sign out from Supabase if we were signed in
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Supabase sign out error:', error);
+      }
+      
+      // Force light mode before redirecting
+      forceLightMode();
+      
       // Force a hard redirect to clear all state
       window.location.replace('/');
+      
     } catch (error) {
       console.error('Error during sign out:', error);
       // Even if there's an error, try to redirect
@@ -247,8 +262,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const continueAsGuest = () => {
+    // Clear any existing auth state first
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Set guest state
     setIsGuest(true);
+    setUser(null);
+    localStorage.setItem('isGuest', 'true');
     forceLightMode();
+    
+    // Navigate to playbook
+    window.location.replace('/ccc-playbook');
   };
 
   // Modify the auth state change handler
@@ -282,6 +307,7 @@ export const AuthProvider = ({ children }) => {
             setUser(session.user);
             setIsGuest(false);
             localStorage.removeItem('isGuest');
+            sessionStorage.removeItem('isGuest');
             // Ensure loading is set to false after session is processed
             setLoading(false);
           }
@@ -301,6 +327,8 @@ export const AuthProvider = ({ children }) => {
             if (isMounted) {
               setUser(null);
               setIsGuest(false);
+              localStorage.removeItem('isGuest');
+              sessionStorage.removeItem('isGuest');
               setLoading(false);
             }
           }
@@ -309,6 +337,9 @@ export const AuthProvider = ({ children }) => {
         console.error('Error initializing auth:', error);
         if (isMounted) {
           setUser(null);
+          setIsGuest(false);
+          localStorage.removeItem('isGuest');
+          sessionStorage.removeItem('isGuest');
           setLoading(false);
         }
       } finally {

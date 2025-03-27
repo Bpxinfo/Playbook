@@ -75,16 +75,6 @@ const CCCInitiativeHome = () => {
               );
             })}
           </div>
-
-          <section className="bg-white rounded-lg shadow-lg p-6">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <ImageWithZoom 
-                src={CCC_Overview} 
-                alt="CCC Overview" 
-                className="w-full rounded-lg shadow-lg mb-4"
-              />
-            </div>
-          </section>
  
 
           <section className="bg-gray-50 rounded-lg shadow-lg p-6">

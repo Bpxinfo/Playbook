@@ -77,39 +77,35 @@ const UserIcon = () => {
     try {
       const displayName = `${formData.firstName} ${formData.lastName}`.trim() || user.email.split('@')[0];
 
-      // Update both profile and user metadata in parallel
-      const [profileResult, userResult] = await Promise.all([
-        supabase
-          .from('profiles')
-          .upsert({
-            id: user.id,
-            display_name: displayName,
-            updated_at: new Date().toISOString()
-          })
-          .select()
-          .single(),
-        
-        supabase.auth.updateUser({
-          data: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            full_name: displayName
-          }
-        })
-      ]);
+      // Update user metadata first
+      const { error: userError } = await supabase.auth.updateUser({
+        data: {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          full_name: displayName
+        }
+      });
 
-      if (profileResult.error) throw profileResult.error;
-      if (userResult.error) throw userResult.error;
+      if (userError) throw userError;
 
-      // Update local state with the returned data
+      // Then update the profile
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          display_name: displayName,
+          updated_at: new Date().toISOString()
+        });
+
+      if (profileError) throw profileError;
+
+      // Update local state with the new data
       setFormData(prev => ({
         ...prev,
-        displayName: profileResult.data.display_name
+        displayName: displayName
       }));
 
-      setSuccess('Profile updated successfully!');
-      
-      // Close edit mode immediately
+      // Immediately close edit mode and dropdown
       setIsEditing(false);
       setIsOpen(false);
     } catch (err) {
@@ -155,12 +151,12 @@ const UserIcon = () => {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center space-x-2 focus:outline-none bg-white"
+          className="flex items-center space-x-2 focus:outline-none"
         >
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-800 to-red-600 flex items-center justify-center text-white font-medium hover:scale-110 transition-transform">
             {hasInitials ? initials : <User className="w-5 h-5" />}
           </div>
-          <ChevronDown className={`w-4 h-4 text-gray-600 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`w-4 h-4 text-gray-600 dark:text-gray-300 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
         </button>
 
         <AnimatePresence>
@@ -170,11 +166,11 @@ const UserIcon = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200"
+              className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#333333] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700"
             >
               {isGuest ? (
                 <div className="py-1">
-                  <div className="px-4 py-2 text-sm text-gray-900 font-medium border-b border-gray-100">
+                  <div className="px-4 py-2 text-sm text-gray-900 dark:text-white font-medium border-b border-gray-100 dark:border-gray-700">
                     Guest User
                   </div>
                   <button
@@ -182,13 +178,13 @@ const UserIcon = () => {
                       setIsOpen(false);
                       setIsSignupModalOpen(true);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Sign Up
                   </button>
                   <Link
                     to="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 bg-white"
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                     onClick={() => setIsOpen(false)}
                   >
                     Log In with Account
@@ -198,14 +194,14 @@ const UserIcon = () => {
                       signOut();
                       setIsOpen(false);
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     End Guest Session
                   </button>
                 </div>
               ) : (
                 <div className="py-1">
-                  <div className="px-4 py-2 text-sm text-gray-900 font-medium border-b border-gray-100">
+                  <div className="px-4 py-2 text-sm text-gray-900 dark:text-white font-medium border-b border-gray-100 dark:border-gray-700">
                     {formData.displayName || user?.email?.split('@')[0] || 'User'}
                   </div>
                   {isEditing ? (
@@ -256,7 +252,12 @@ const UserIcon = () => {
                           Cancel
                         </button>
                         <button
-                          type="submit"
+                          type="button"
+                          onClick={(e) => {
+                            handleSubmit(e);
+                            setIsEditing(false);
+                            setIsOpen(false);
+                          }}
                           className="inline-flex items-center px-3 py-1 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-800 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                         >
                           <Save className="w-4 h-4 mr-1" />
@@ -268,7 +269,7 @@ const UserIcon = () => {
                     <>
                       <button
                         onClick={() => setIsEditing(true)}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white flex items-center"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-white flex items-center"
                       >
                         <Edit className="w-4 h-4 mr-2" />
                         Edit Profile
@@ -278,7 +279,7 @@ const UserIcon = () => {
                           signOut();
                           setIsOpen(false);
                         }}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 bg-white flex items-center"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-white flex items-center"
                       >
                         <LogOut className="w-4 h-4 mr-2" />
                         Sign Out
