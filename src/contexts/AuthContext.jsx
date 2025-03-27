@@ -308,6 +308,7 @@ export const AuthProvider = ({ children }) => {
             setIsGuest(false);
             localStorage.removeItem('isGuest');
             sessionStorage.removeItem('isGuest');
+            forceLightMode();
             // Ensure loading is set to false after session is processed
             setLoading(false);
           }
@@ -364,6 +365,7 @@ export const AuthProvider = ({ children }) => {
             setUser(session.user);
             setIsGuest(false);
             localStorage.removeItem('isGuest');
+            forceLightMode();
           }
           await syncUserProfile(session);
           
