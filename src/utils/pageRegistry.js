@@ -2,7 +2,7 @@ import { createRoot, unmountComponentAtNode } from 'react-dom/client';
 
 export const pageRegistry = {
     // Home
-    '/': {
+    '/ccc-playbook': {
       component: () => import('@/pages/index'),
       title: 'CCC Playbook Home'
     },
@@ -18,28 +18,32 @@ export const pageRegistry = {
     },
   
     // Playbook App Overview
-    '/playbook-app-overview': {
+    '/playbook-overview': {
       component: () => import('@/pages/playbook-app/index'),
       title: 'Playbook Overview'
     },
   
     // CCC Initiative
-    '/ccc-initiative': {
+    '/ccc-overview': {
       component: () => import('@/pages/ccc-initiative/index'),
       title: 'CCC Initiative Overview'
     },
 
-    '/ccc-initiative/strategic-pillars': {
+    '/ccc-overview/strategic-pillars': {
       component: () => import('@/pages/ccc-initiative/StrategicPillars'),
       title: 'Strategic Pillars'
     },
-    '/ccc-initiative/key-messaging': {
+    '/ccc-overview/key-messaging': {
       component: () => import('@/pages/ccc-initiative/KeyMessaging'),
       title: 'Key Messaging'
     },
-    '/ccc-initiative/stakeholders': {
+    '/ccc-overview/stakeholders': {
       component: () => import('@/pages/ccc-initiative/Stakeholders'),
       title: 'Stakeholders'
+    },
+    '/ccc-overview/patient-impact': {
+      component: () => import('@/pages/ccc-initiative/PatientImpact'),
+      title: 'Patient Impact'
     },
   
     // Communication Plan
@@ -47,19 +51,25 @@ export const pageRegistry = {
       component: () => import('@/pages/communications/index'),
       title: 'Communication Plan'
     },
-  
-    // Communication Plan - Internal
     '/communications/channels': {
       component: () => import('@/pages/communications/Channels'),
       title: 'Channels'
+    },
+    '/communications/cadence': {
+      component: () => import('@/pages/communications/Cadence'),
+      title: 'Cadence'
     },
     '/communications/ccc-stakeholders': {
       component: () => import('@/pages/communications/CCCStakeholders'),
       title: 'CCC Stakeholders'
     },
-    '/communications/cadence': {
-      component: () => import('@/pages/communications/Cadence'),
-      title: 'Cadence'
+    '/communications/communication-path': {
+      component: () => import('@/pages/communications/CommunicationPath'),
+      title: 'Communication Path'
+    },
+    '/communications/internal-engagement-strategies': {
+      component: () => import('@/pages/communications/InternalEngagementStrategies'),
+      title: 'Internal Engagement Strategies'
     },
   
     // Internal Onboarding
@@ -67,7 +77,7 @@ export const pageRegistry = {
       component: () => import('@/pages/internal-onboarding/index'),
       title: 'Internal Onboarding'
     },
-    '/internal-onboarding/combined': {
+    '/internal-onboarding/ccc-core': {
       component: () => import('@/pages/internal-onboarding/CombinedOnboarding'),
       title: 'CCC Core Onboarding'
     },
@@ -91,6 +101,10 @@ export const pageRegistry = {
       component: () => import('@/pages/internal-onboarding/FullIntegration'),
       title: 'Full Integration'
     },
+    '/internal-onboarding/ccc-extended': {
+      component: () => import('@/pages/internal-onboarding/OWCombined'),
+      title: 'CCC Extended Onboarding'
+    },
     '/internal-onboarding/ccc-extended/onboarding-checklist': {
       component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
       title: 'Onboarding Checklist'
@@ -100,40 +114,32 @@ export const pageRegistry = {
       title: 'Welcome Orientation'
     },
     '/internal-onboarding/ccc-leadership-steerco': {
-      component: () => import('@/pages/internal-onboarding/ccc-leadership-steerco'),
+      component: () => import('@/pages/internal-onboarding/OWCombined'),
       title: 'CCC Leadership SteerCo'
     },
-    '/internal-onboarding/ccc-leadership-steerco/onboarding-checklist': {
-      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
-      title: 'Onboarding Checklist'
-    },
-    '/internal-onboarding/ccc-leadership-steerco/welcome-orientation': {
-      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
-      title: 'Welcome Orientation'
-    },
-    '/internal-onboarding/ccc-field-team': {
-      component: () => import('@/pages/internal-onboarding/ccc-field-team'),
+    '/internal-onboarding/field-team': {
+      component: () => import('@/pages/internal-onboarding/OWCombined'),
       title: 'CCC Field Team'
     },
-    '/internal-onboarding/ccc-field-team/onboarding-checklist': {
+    '/internal-onboarding/field-team/onboarding-checklist': {
       component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
       title: 'Onboarding Checklist'
     },
-    '/internal-onboarding/ccc-field-team/welcome-orientation': {
+    '/internal-onboarding/field-team/welcome-orientation': {
       component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
       title: 'Welcome Orientation'
     },
-    '/internal-onboarding/project-leads/onboarding-checklist': {
-      component: () => import('@/pages/internal-onboarding/OnboardingChecklist'),
-      title: 'Onboarding Checklist'
-    },
-    '/internal-onboarding/project-leads/welcome-orientation': {
-      component: () => import('@/pages/internal-onboarding/WelcomeOrientation'),
-      title: 'Welcome Orientation'
+    '/internal-onboarding/project-leads': {
+      component: () => import('@/pages/internal-onboarding/CombinedOnboarding'),
+      title: 'Project Leads'
     },
     '/internal-onboarding/ongoing-support': {
       component: () => import('@/pages/internal-onboarding/OngoingSupport'),
       title: 'Ongoing Support'
+    },
+    '/internal-onboarding/external-links': {
+      component: () => import('@/pages/internal-onboarding/ExternalLinks'),
+      title: 'External Links'
     },
   
     // Processes
@@ -149,7 +155,7 @@ export const pageRegistry = {
       component: () => import('@/pages/processes/Governance'),
       title: 'Governance'
     },
-    '/processes/resources-&-documentation': {
+    '/processes/sops-&-resources': {
       component: () => import('@/pages/processes/RandD'),
       title: 'SOPs & Resources'
     },
@@ -169,20 +175,23 @@ export const pageRegistry = {
       component: () => import('@/pages/systems/index'),
       title: 'Systems Overview'
     },
-
     '/systems/internal-platforms': {
       component: () => import('@/pages/systems/InternalPlatforms'),
       title: 'Internal Platforms'
+    },
+    '/systems/manual-systems': {
+      component: () => import('@/pages/systems/ManualSystems'),
+      title: 'Manual Systems'
+    },
+    '/systems/links-to-process': {
+      component: () => import('@/pages/systems/LinkstoProcess'),
+      title: 'Links to Process'
     },
   
     // Project Archetype
     '/project-archetype': {
       component: () => import('@/pages/project-archetype/index'),
       title: 'Project Archetype Overview'
-    },
-    '/project-archetype/core-principles': {
-      component: () => import('@/pages/project-archetype/CorePrinciples'),
-      title: 'CORE Principles'
     },
     '/project-archetype/ccc-project-lifecycle': {
       component: () => import('@/pages/project-archetype/ccc-project-lifecycle'),
@@ -212,25 +221,37 @@ export const pageRegistry = {
       component: () => import('@/pages/project-archetype/Grants'),
       title: 'Grants'
     },
-  };
-  
-  export async function initializeSearchIndex() {
-    const pages = {};
-    
-    for (const [path, config] of Object.entries(pageRegistry)) {
-      try {
-        const module = await config.component();
-        
-        pages[path] = {
-          title: config.title,
-          path,
-          metadata: config.metadata || ''
-        };
-      } catch (error) {
-        console.error(`Error loading page ${path}:`, error);
-      }
+
+    // Glossary
+    '/glossary': {
+      component: () => import('@/pages/glossary/GlossaryOfTerms'),
+      title: 'Glossary of Terms'
+    },
+
+    // FAQs
+    '/faqs': {
+      component: () => import('@/pages/faqs/FAQs'),
+      title: 'FAQs'
     }
+};
   
-    return pages;
+export async function initializeSearchIndex() {
+  const pages = {};
+  
+  for (const [path, config] of Object.entries(pageRegistry)) {
+    try {
+      const module = await config.component();
+      
+      pages[path] = {
+        title: config.title,
+        path,
+        metadata: config.metadata || ''
+      };
+    } catch (error) {
+      console.error(`Error loading page ${path}:`, error);
+    }
   }
+
+  return pages;
+}
   
