@@ -3,7 +3,7 @@ import {
   AlertTriangle, Info, Building, Users2, BookOpen, 
   Target, Shield, FileCheck, ChevronRight, Briefcase,
   Settings, UserCheck, Network, LineChart, CheckCircle2,
-  FileText, Flag, Brain, Workflow
+  FileText, Flag, Brain, Workflow, DollarSign, Users
 } from 'lucide-react';
 import advisory from '../../assets/advisory.jpg'
 import legalcompliance from '../../assets/legalcompliance.jpg'
@@ -104,7 +104,7 @@ const Processes = () => {
                   alt="CCC Process Overview" 
                   className="w-full rounded-lg shadow-lg mb-4"
                 />
-                <p className="text-sm text-gray-500 text-center">Process Flow Diagram</p>
+                <p className="text-sm text-gray-500 text-center dark:text-black">Process Flow Diagram</p>
               </div>
               
             </div>
@@ -239,6 +239,31 @@ const Processes = () => {
               <Settings className="w-6 h-6 mr-2" />
               Project Operations
             </h2>
+
+            {/* Project Lead Responsibilities - New section */}
+            <div className="bg-yellow-50 rounded-lg shadow p-6 mb-8">
+              <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
+                <Users2 className="w-5 h-5 mr-2 dark:text-black" />
+                Project Lead Responsibilities
+              </h3>
+              <div className="space-y-3">
+                {[
+                  "Oversee day-to-day project execution including team coordination, timeline management, and stakeholder communication",
+                  "Conduct biweekly status meetings with project team and maintain detailed documentation of all decisions and action items",
+                  "Develop and manage detailed project plans with clear milestones, dependencies, and resource allocations",
+                  "Establish and monitor critical success metrics for the project, reporting monthly to the CCC Adjudication Committee",
+                  "Proactively identify and mitigate risks, escalating issues that may impact project scope, timeline, or budget",
+                  "Ensure all project activities comply with Gilead policies, legal requirements, and regulatory guidelines",
+                  "Serve as the primary point of contact between CCC teams and external partners, maintaining appropriate boundaries",
+                  "Prepare quarterly progress reports and final project documentation for internal stakeholders"
+                ].map((text, index) => (
+                  <div key={index} className="flex items-start">
+                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
+                    <p className="text-gray-700 dark:text-black">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               {/* Project Tracking */}

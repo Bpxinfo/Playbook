@@ -22,16 +22,16 @@ const ISR = () => {
                 For all ISRs, the responsibility for the regulatory sponsor requirements, including the design, conduct, analysis, and publication of the study lays not with Gilead, but with the investigator or the investigator's institution.
               </p>
               <div className="bg-blue-50 p-4 rounded-lg mb-4 text-black">
-                <p className="font-medium mb-2 text-black">After review of the ISR proposal, the submission should either be rejected or accepted with no changes requested. If the proposal is approved by the IRC, Gilead's role is limited to:</p>
-                <ul className="list-disc pl-6 text-black">
+                <p className="font-medium mb-2 text-black dark:text-black">After review of the ISR proposal, the submission should either be rejected or accepted with no changes requested. If the proposal is approved by the IRC, Gilead's role is limited to:</p>
+                <ul className="list-disc pl-6 text-black dark:text-black">
                   <li>Providing study drug and/or funding</li>
                   <li>Monitoring the progress of the study and publications</li>
                   <li>Protocol check by Global Medical Affairs and Patient Safety</li>
                 </ul>
               </div>
               <div className="bg-green-50 p-4 rounded-lg text-black">
-                <p className="font-medium mb-2 text-black">GMA and Patient Safety may comment on major concerns related to patient safety to ensure:</p>
-                <ul className="list-disc pl-6 text-black">
+                <p className="font-medium mb-2 text-black dark:text-black">GMA and Patient Safety may comment on major concerns related to patient safety to ensure:</p>
+                <ul className="list-disc pl-6 text-black dark:text-black">
                   <li>The protocol aligns with the proposal study design and medication dosing that was approved at IRC.</li>
                   <li>Minimum safety requirements are aligned to the standards defined per US Package Insert and Investigator Brochure/guidance documents.</li>
                 </ul>

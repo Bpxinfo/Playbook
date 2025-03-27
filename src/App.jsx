@@ -389,6 +389,13 @@ function App() {
                   <CCCFAQs />
                 </ProtectedRoute>
               } />
+
+              {/* Feedback */}
+              <Route path="/feedback" element={
+                <ProtectedRoute>
+                  <FeedbackForm />
+                </ProtectedRoute>
+              } />
             </Route>
           </Routes>
         </Suspense>

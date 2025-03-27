@@ -2,29 +2,7 @@ import React, { useState } from 'react';
 import stakeholder from '../../assets/stakeholder.jpg';
 import { Users, Building, UserCheck, FileSpreadsheet, Network, ChevronRight } from 'lucide-react';
 import leadership from '../../assets/leadership.jpg'
-import ImageZoomModal from '../../components/ImageZoomModal';
-import { FiZoomIn } from 'react-icons/fi';
-
-const ImageWithZoom = ({ src, alt, className }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  return (
-    <>
-      <div className="relative group cursor-pointer" onClick={() => setIsModalOpen(true)}>
-        <img src={src} alt={alt} className={className} />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
-          <FiZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" size={24} />
-        </div>
-      </div>
-      <ImageZoomModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        imageUrl={src}
-        altText={alt}
-      />
-    </>
-  );
-};
+import ImageWithZoom from '../../components/ImageWithZoom';
 
 const Stakeholders = () => {
   const stakeholderSections = [
@@ -107,7 +85,7 @@ const Stakeholders = () => {
               Stakeholder Overview
             </h2>
             <div className="bg-gray-50 p-4 rounded-lg">
-              <img 
+              <ImageWithZoom 
                 src={stakeholder} 
                 alt="CCC Overview" 
                 className="w-full rounded-lg shadow-lg mb-4 hover:shadow-xl transition-shadow duration-200"
@@ -120,7 +98,7 @@ const Stakeholders = () => {
               CCC Leadership - SteerCo
             </h2>
             <div className="space-y-4">
-              <div className="bg-green-50 p-6 rounded-lg transform hover:scale-[1.02] transition-all duration-200">
+              <div className="bg-green-50 p-6 rounded-lg">
                 <ImageWithZoom 
                   src={leadership} 
                   alt="Leadership SteerCo" 

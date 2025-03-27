@@ -172,7 +172,7 @@ const PatientImpact = () => {
                     <div className="bg-white p-2 rounded-full shadow-md mr-3 flex-shrink-0">
                       <IconComponent className="w-5 h-5 text-red-800" />
                     </div>
-                    <p className="text-gray-700">{goal.goal}</p>
+                    <p className="text-gray-700 dark:text-black">{goal.goal}</p>
                   </div>
                 );
               })}

@@ -160,7 +160,7 @@ const CCCProjectLifecycle = () => {
           </section>
 
           {/* Project Proposal Funnel Section */}
-          <section className="bg-gradient-to-br from-red-50 to-white rounded-lg shadow-md p-6">
+          <section className="bg-white rounded-lg shadow-md p-6 transform transition-all hover:scale-[1.02]">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center gap-2">
               <Target className="w-6 h-6" />
               Project Proposal Funnel Material

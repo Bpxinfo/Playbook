@@ -32,11 +32,13 @@ const SystemsHome = () => {
   const systemHighlights = [
     {
       title: "GOptics",
-      description: "ISR / Collaborative Studies platform"
+      description: "ISR / Collaborative Studies platform",
+      url: "https://gilead-grants.steeprockinc.com/"
     },
     {
       title: "SteepRock",
-      description: "Grants and medical sponsorships portal"
+      description: "Grants and medical sponsorships portal",
+      url: "https://gilead-grants.steeprockinc.com/"
     }
   ];
 
@@ -63,15 +65,21 @@ const SystemsHome = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {systemHighlights.map((highlight, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+              <a 
+                key={index} 
+                href={highlight.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+              >
                 <div className="flex items-center mb-4">
                   <div className="bg-white p-3 rounded-full shadow-md mr-4">
                     <Target className="w-6 h-6 text-red-800" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800">{highlight.title}</h3>
                 </div>
-                <p className="text-gray-600 ml-16">{highlight.description}</p>
-              </div>
+                <p className="text-gray-600 ml-16 dark:text-white">{highlight.description}</p>
+              </a>
             ))}
           </div>
 

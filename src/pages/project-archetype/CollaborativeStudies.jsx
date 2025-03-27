@@ -24,8 +24,8 @@ const CollaborativeStudies = () => {
                 <li>Intends to use the data resulting from this research as part of a Gilead regulatory submission.</li>
               </ul>
               <div className="bg-yellow-50 p-4 rounded-lg mb-4 text-black">
-                <p className="font-medium text-black">Note:</p>
-                <ul className="list-disc pl-6 text-black">
+                <p className="font-medium text-black dark:text-black">Note:</p>
+                <ul className="list-disc pl-6 text-black dark:text-black">
                   <li>Collaborative research may be initiated by Gilead or the Sponsor.</li>
                   <li>Collaborative study proposals are reviewed and approved by the GRC where required, and protocols are reviewed and approved by the appropriate Protocol Review Board.</li>
                 </ul>
@@ -40,7 +40,7 @@ const CollaborativeStudies = () => {
               <p className="mb-4 text-black">(GRC/LRC) – primarily for generating evidence.</p>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-lg shadow text-black">
+                <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Prospectives (GRC)</h4>
                   <ul className="list-disc pl-6 text-black">
                     <li>FLOW Diagram</li>
@@ -51,7 +51,7 @@ const CollaborativeStudies = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white p-4 rounded-lg shadow text-black">
+                <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Retrospectives (LRC)</h4>
                   <ul className="list-disc pl-6 text-black">
                     <li>FLOW Diagram</li>

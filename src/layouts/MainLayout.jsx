@@ -788,7 +788,7 @@ const MainLayout = ({ children }) => {
         <div className="flex items-center justify-between px-4 w-full min-w-0">
           <div className="flex items-center space-x-4 bg-white dark:bg-[#333333] min-w-0">
             {/* CCC Digital Playbook icon/link */}
-            <button onClick={handleLogoClick} className="flex items-center bg-white dark:bg-[#333333]">
+            <button onClick={handleLogoClick} className="flex items-center">
               <Home className="w-5 h-5 text-red-800 dark:text-white mr-2" />
               <span className="text-xl font-semibold text-red-800 dark:text-white">CCC Playbook</span>
             </button>

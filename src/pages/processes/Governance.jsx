@@ -91,7 +91,7 @@ const ProcessesGovernance = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-white hover:bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 transition-all duration-200 group cursor-pointer"
+                className="flex items-center justify-between bg-white  p-4 rounded-lg shadow-sm border border-gray-200 transition-all duration-200 group cursor-pointer"
               >
                 <div className="flex items-center">
                   <div className="bg-red-800 p-2 rounded-full">
