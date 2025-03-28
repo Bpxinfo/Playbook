@@ -22,13 +22,6 @@ export default function InternalOnboardingHome() {
 
   const teamSections = [
     {
-      title: "Ongoing Support",
-      description: "Continuous learning and development resources for all team members.",
-      path: "/internal-onboarding/ongoing-support",
-      icon: HeartHandshake,
-      color: "bg-blue-50"
-    },
-    {
       title: "CCC Core",
       description: "Comprehensive onboarding program for core team members.",
       path: "/internal-onboarding/ccc-core",

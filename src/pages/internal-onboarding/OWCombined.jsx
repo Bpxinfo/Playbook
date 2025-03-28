@@ -98,6 +98,53 @@ const OWCombined = () => {
             </div>
           </div>
         </section>
+
+        {/* Ongoing Support Section */}
+        <section id="ongoing-support">
+          <h1 className="text-4xl font-light text-white mb-8 text-center bg-red-800 p-4 uppercase">Ongoing Support</h1>
+          <div className="space-y-8">
+            <div className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <BookOpen className="w-8 h-8 text-red-800 mr-3" />
+                <h2 className="text-2xl text-red-800">Continuous Learning</h2>
+              </div>
+              <ul className="pl-6 space-y-2 text-gray-700">
+                <li><CheckboxItem id="ongoing-learn-1" text="Provide monthly updates on initiative progress and changes" /></li>
+                <li><CheckboxItem id="ongoing-learn-2" text="Seek opportunities for skill development and cross-training" /></li>
+                <li><CheckboxItem id="ongoing-learn-3" text="Encourage knowledge sharing and best practices" /></li>
+              </ul>
+            </div>
+
+            <div className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <Users className="w-8 h-8 text-red-800 mr-3" />
+                <h2 className="text-2xl text-red-800">Team Integration</h2>
+              </div>
+              <ul className="pl-6 space-y-2 text-gray-700">
+                <li><CheckboxItem id="ongoing-team-1" text="Ongoing participation in team meetings and CCC activities" /></li>
+                <li><CheckboxItem id="ongoing-team-2" text="Advance initiative ideation for new projects and patient impact activities" /></li>
+                <li><CheckboxItem id="ongoing-team-3" text="Seek opportunities to lead sub-projects or mentor newer members" /></li>
+                <li><CheckboxItem id="ongoing-team-4" text="Participate in regular forums for idea sharing and collaborative problem-solving" /></li>
+              </ul>
+            </div>
+
+            <div className="bg-white shadow-md rounded-lg p-6 text-left hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <Target className="w-8 h-8 text-red-800 mr-3" />
+                <h2 className="text-2xl text-red-800">Project Execution</h2>
+              </div>
+              <ul className="pl-6 space-y-2 text-gray-700">
+                <li><CheckboxItem id="ongoing-project-1" text="Monthly status updates and progress tracking" /></li>
+                <li><CheckboxItem id="ongoing-project-2" text="Monthly review of patient impact indicators, key performance indicators (KPIs) and milestones" /></li>
+                <li><CheckboxItem id="ongoing-project-3" text="Quarterly strategic alignment sessions to ensure initiative goals are being met" /></li>
+                <li><CheckboxItem id="ongoing-project-4" text="Participation in planning and retrospectives or formation of lessons learned" /></li>
+                <li><CheckboxItem id="ongoing-project-5" text="Contribution to new project ideas, as well as risk management and mitigation strategies" /></li>
+                <li><CheckboxItem id="ongoing-project-6" text="Collaboration on timely deliverables and meeting project deadlines" /></li>
+                <li><CheckboxItem id="ongoing-project-7" text="Engagement in continuous improvement of project processes" /></li>
+              </ul>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

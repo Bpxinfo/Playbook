@@ -110,9 +110,7 @@ const MainLayout = ({ children }) => {
     },
     'internal-onboarding': {
       title: 'Internal Onboarding',
-      items: [
-        'Ongoing Support'
-      ],
+      items: [],
       subsections: [
         {
           id: 'ccc-core',
@@ -123,30 +121,34 @@ const MainLayout = ({ children }) => {
             { title: 'Immerse, Contribute', path: '/internal-onboarding/ccc-core#immerse-contribute' },
             { title: 'Deepen Engagement', path: '/internal-onboarding/ccc-core#deepen-engagement' },
             { title: 'Full Integration', path: '/internal-onboarding/ccc-core#full-integration' },
+            { title: 'Ongoing Support', path: '/internal-onboarding/ccc-core#ongoing-support' },
           ]
         },
         {
           id: 'ccc-extended',
           title: 'CCC Extended',
           items: [
-            'Onboarding Checklist',
-            'Welcome Orientation',
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-extended#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-extended#welcome-orientation' },
+            { title: 'Ongoing Support', path: '/internal-onboarding/ccc-extended#ongoing-support' },
           ]
         },
         {
           id: 'ccc-leadership-steerco',
           title: 'CCC Leadership SteerCo',
           items: [
-            'Onboarding Checklist',
-            'Welcome Orientation',
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-leadership-steerco#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-leadership-steerco#welcome-orientation' },
+            { title: 'Ongoing Support', path: '/internal-onboarding/ccc-leadership-steerco#ongoing-support' },
           ]
         },
         {
           id: 'field-team',
           title: 'Field Team',
           items: [
-            'Onboarding Checklist',
-            'Welcome Orientation',
+            { title: 'Onboarding Checklist', path: '/internal-onboarding/field-team#onboarding-checklist' },
+            { title: 'Welcome Orientation', path: '/internal-onboarding/field-team#welcome-orientation' },
+            { title: 'Ongoing Support', path: '/internal-onboarding/field-team#ongoing-support' },
           ]
         }, 
         {
@@ -158,6 +160,7 @@ const MainLayout = ({ children }) => {
             { title: 'Immerse, Contribute', path: '/internal-onboarding/project-leads#immerse-contribute' },
             { title: 'Deepen Engagement', path: '/internal-onboarding/project-leads#deepen-engagement' },
             { title: 'Full Integration', path: '/internal-onboarding/project-leads#full-integration' },
+            { title: 'Ongoing Support', path: '/internal-onboarding/project-leads#ongoing-support' },
           ]
         },
       ]

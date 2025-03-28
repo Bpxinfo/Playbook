@@ -214,16 +214,6 @@ function App() {
                   <FieldTeam />
                 </ProtectedRoute>
               } />
-              <Route path="/internal-onboarding/field-team/onboarding-checklist" element={
-                <ProtectedRoute>
-                  <OnboardingChecklist />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/field-team/welcome-orientation" element={
-                <ProtectedRoute>
-                  <WelcomeOrientation />
-                </ProtectedRoute>
-              } />
               
               {/* Project Leads Onboarding Page */}
               <Route path="/internal-onboarding/project-leads" element={
