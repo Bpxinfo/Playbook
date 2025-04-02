@@ -112,6 +112,9 @@ const TextAnnotator = ({ pageId, currentUser }) => {
     const body = window.prompt('Enter your comment:');
     if (!body) return;
 
+    // Use null for guest users to let database use default UUID
+    const userId = currentUser?.isGuest ? null : currentUser?.id;
+
     const newComment = {
       page_id: pageId,
       selection_text: selection.text,
@@ -119,9 +122,9 @@ const TextAnnotator = ({ pageId, currentUser }) => {
       body,
       type,
       status: 'open',
-      user_id: currentUser.id,
+      user_id: userId,
       pos_top: menuPosition.top,
-      pos_left: menuPosition.left,
+      pos_left: menuPosition.left
     };
 
     const { error } = await supabase

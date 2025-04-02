@@ -32,8 +32,8 @@ const TextSelectionContextMenu = () => {
   };
 
   const handleContextMenu = (e) => {
-    // Only allow comments for authenticated users who are not guests
-    if (!user || isGuest) {
+    // Guest users should also be able to comment
+    if (!user && !isGuest) {
       return;
     }
 
@@ -61,16 +61,26 @@ const TextSelectionContextMenu = () => {
 
     setIsSubmitting(true);
     try {
+      // Use a simple approach for guest users
+      const userName = isGuest ? 'Guest User' : 
+                      (user?.user_metadata?.full_name || 
+                       user?.email?.split('@')[0] || 
+                       'Anonymous User');
+      
+      const userEmail = isGuest ? 'guest@feedback.internal' : user?.email || 'anonymous@feedback.internal';
+      // Use null for guests to let database use default UUID
+      const userId = isGuest ? null : user?.id;
+
       const feedbackData = {
-        name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'Anonymous User',
-        email: user.email || 'anonymous@feedback.internal',
+        name: userName,
+        email: userEmail,
         section: getCurrentSection(),
         type: commentType,
         description: `Selected Text: "${selectedText}"\n\n${commentType === 'question' ? 'Question' : 'Comment'}: ${comment}`,
         submitted_at: new Date().toISOString(),
         status: 'pending',
         source: 'context-menu-comment',
-        user_id: user.id
+        user_id: userId
       };
 
       const { data, error: supabaseError } = await supabase

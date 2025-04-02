@@ -39,8 +39,8 @@ function TextAnnotation({ pageId, content }) {
   // Handle text selection and menu positioning
   useEffect(() => {
     const handleMouseUp = () => {
-      // Only allow comments for authenticated users who are not guests
-      if (!user || isGuest) {
+      // Guest users should also be able to comment
+      if (!user && !isGuest) {
         return;
       }
 
@@ -67,7 +67,7 @@ function TextAnnotation({ pageId, content }) {
 
   // Create a new comment
   const addComment = async (type) => {
-    if (!selectionRange || !user || isGuest) return;
+    if (!selectionRange) return;
     
     const selectedText = selectionRange.toString();
     const title = window.prompt(`Enter a short title for your ${type}:`);
@@ -76,6 +76,9 @@ function TextAnnotation({ pageId, content }) {
     const body = window.prompt("Enter the full comment text:");
     if (!body) return;
 
+    // Use null for guest users to let database use default UUID
+    const userId = isGuest ? null : user?.id;
+
     const newComment = {
       page_id: pageId,
       selection_text: selectedText,
@@ -83,7 +86,7 @@ function TextAnnotation({ pageId, content }) {
       body,
       type,
       status: "open",
-      user_id: user.id,
+      user_id: userId,
       pos_top: menuPos.top,
       pos_left: menuPos.left,
       created_at: new Date().toISOString()
