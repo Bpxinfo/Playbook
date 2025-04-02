@@ -155,7 +155,7 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'azure',
         options: {
-          redirectTo: `${window.location.origin}`,
+          redirectTo: `${window.location.origin}/ccc-playbook`,
           scopes: 'openid email profile User.Read',
           queryParams: {
             access_type: 'offline',
@@ -287,6 +287,18 @@ export const AuthProvider = ({ children }) => {
       try {
         isAuthenticating = true;
         setLoading(true);
+
+        // Check if we have a hash in the URL (OAuth redirect)
+        if (window.location.hash && window.location.hash.includes('access_token')) {
+          console.log('Found access_token in URL hash, processing OAuth redirect');
+          // Let Supabase handle the token exchange
+          await supabase.auth.getSession();
+          // Clear the hash to prevent repeated processing
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        }
+
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (!isMounted) return;
@@ -368,9 +380,13 @@ export const AuthProvider = ({ children }) => {
           }
           await syncUserProfile(session);
           
-          // Only navigate if this is a sign-in event and not already on the target page
-          if (event === 'SIGNED_IN' && window.location.pathname !== '/ccc-playbook') {
-            navigate('/ccc-playbook', { replace: true });
+          // Only navigate if this is a sign-in event and we're not already on a protected route
+          if (event === 'SIGNED_IN') {
+            const currentPath = window.location.pathname;
+            // Check if we're on a non-protected route (login, signup, or root)
+            if (currentPath === '/' || currentPath === '/login' || currentPath === '/signup') {
+              navigate('/ccc-playbook', { replace: true });
+            }
           }
         } else if (event === 'SIGNED_OUT') {
           console.log('Handling SIGNED_OUT event');

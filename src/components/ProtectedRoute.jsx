@@ -6,6 +6,11 @@ export default function ProtectedRoute({ children }) {
   const { user, isGuest, loading } = useAuth();
   const [timeoutExpired, setTimeoutExpired] = useState(false);
   const [localLoading, setLocalLoading] = useState(true);
+  
+  // Check if we're in a OAuth callback flow
+  const [isOAuthCallback, setIsOAuthCallback] = useState(() => {
+    return window.location.hash && window.location.hash.includes('access_token');
+  });
 
   // Add a timeout to prevent infinite loading
   useEffect(() => {
@@ -28,10 +33,10 @@ export default function ProtectedRoute({ children }) {
   }, [loading]);
 
   // Add debugging with more context
-  console.log('ProtectedRoute state:', { user, isGuest, loading, timeoutExpired, localLoading, path: window.location.pathname });
+  console.log('ProtectedRoute state:', { user, isGuest, loading, timeoutExpired, localLoading, path: window.location.pathname, isOAuthCallback });
 
-  // Show loading spinner while checking authentication, but respect timeout
-  if ((loading || localLoading) && !timeoutExpired) {
+  // Show loading spinner while checking authentication, or when processing OAuth callback
+  if (((loading || localLoading) && !timeoutExpired) || isOAuthCallback) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
