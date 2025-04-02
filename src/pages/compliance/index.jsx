@@ -20,13 +20,13 @@ const ComplianceHome = () => {
       icon: Shield,
       color: "bg-blue-50"
     },
-    // {
-    //   title: "Documentation",
-    //   description: "Access to compliance-related documentation, forms, and templates.",
-    //   path: "/compliance/documentation",
-    //   icon: FileText,
-    //   color: "bg-purple-50"
-    // },
+    {
+      title: "Full Compliance Document",
+      description: "Access the complete compliance documentation and detailed guidance for regulatory adherence.",
+      action: () => window.open('https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents', '_blank'),
+      icon: FileText,
+      color: "bg-purple-50"
+    },
     // {
     //   title: "Risk Management",
     //   description: "Framework for identifying, assessing, and managing compliance risks.",
@@ -69,7 +69,7 @@ const ComplianceHome = () => {
               return (
                 <button
                   key={index}
-                  onClick={() => navigate(section.path)}
+                  onClick={() => section.action ? section.action() : navigate(section.path)}
                   className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left`}
                 >
                   <div className="flex items-center justify-between mb-4">
