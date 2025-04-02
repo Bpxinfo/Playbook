@@ -394,13 +394,6 @@ const MainLayout = ({ children }) => {
   const getItemPath = (section, item, subsection = null) => {
     if (!section || !item) return '/';
     
-    // Special handling for compliance section
-    if (section === 'compliance') {
-      // const anchorId = item.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, 'and');
-      const anchorId = 'overview';
-      return `/compliance/guidance#${anchorId}`;
-    }
-    
     // Handle dropdown items
     if (typeof item === 'object' && item.hasDropdown) {
       const itemSlug = item.title.toLowerCase().replace(/\s+/g, '-');

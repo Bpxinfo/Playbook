@@ -294,7 +294,7 @@ function App() {
                   <ComplianceHome />
                 </ProtectedRoute>
               } />
-              <Route path="/compliance/guidance" element={
+              <Route path="/compliance/resources-and-support" element={
                 <ProtectedRoute>
                   <ComplianceGuidance />
                 </ProtectedRoute>

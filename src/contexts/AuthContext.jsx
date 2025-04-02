@@ -187,7 +187,7 @@ export const AuthProvider = ({ children }) => {
       
       if (error) {
         console.error('Email sign in error:', error);
-        throw error;
+        return { error };
       }
       
       console.log('Email sign in successful:', data);
@@ -198,21 +198,20 @@ export const AuthProvider = ({ children }) => {
         setIsGuest(false);
         localStorage.removeItem('isGuest');
         sessionStorage.removeItem('isGuest');
-      }
-      
-      // Add a small delay to allow state to settle before navigating
-      setTimeout(() => {
+        
+        // Force light mode and navigate
+        forceLightMode();
         if (window.location.pathname !== '/ccc-playbook') {
           window.location.replace('/ccc-playbook');
         }
-        setLoading(false);
-      }, 100);
+      }
       
-      return data;
+      return { data };
     } catch (error) {
       console.error('Email sign in failed:', error);
+      return { error };
+    } finally {
       setLoading(false);
-      throw error;
     }
   };
 

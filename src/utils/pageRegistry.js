@@ -165,7 +165,7 @@ export const pageRegistry = {
       component: () => import('@/pages/compliance/index'),
       title: 'Compliance Overview'
     },
-    '/compliance/guidance': {
+    '/compliance/resources-and-support': {
       component: () => import('@/pages/compliance/ComplianceGuidance'),
       title: 'Compliance Guidance'
     },
