@@ -68,10 +68,38 @@ const ComplianceGuidance = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+                <div className="flex items-start gap-4">
+                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 dark:text-black" />
+                  <div>
+                    <h3 className="font-medium text-gray-800 mb-2 dark:text-black">Full Compliance Document</h3>
+                    <p className="text-gray-700 dark:text-black">
+                      For the complete CCC Legal & Compliance Guidance document, please click{' '}
+                      <a 
+                        href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >
+                        here
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-          <section id="ccc-independence" className="bg-white rounded-lg shadow-md p-6">
+export default ComplianceGuidance;
+
+/*
+<section id="ccc-independence" className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">CCC Independence</h2>
             <div className="bg-white rounded-lg shadow p-6">
               <p className="text-gray-700 mb-4">
@@ -218,11 +246,4 @@ const ComplianceGuidance = () => {
                 className="w-full rounded-lg shadow-lg mb-4"
               />
             </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ComplianceGuidance;
+          </section> */
