@@ -155,7 +155,7 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'azure',
         options: {
-          redirectTo: `${window.location.origin}/ccc-playbook`,
+          redirectTo: `${window.location.origin}`,
           scopes: 'openid email profile User.Read',
           queryParams: {
             access_type: 'offline',
