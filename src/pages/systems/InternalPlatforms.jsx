@@ -22,28 +22,22 @@ const InternalPlatforms = () => {
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                     <tr className="dark:bg-gray-900">
-                      <td className="px-4 py-2 text-black dark:text-gray-200">GRC</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Shannon Dervin, Sr Dir GMA, GRC Chair<br /></td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200"></td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">GOptics</td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">Shannon Dervin<br /></td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">Governance review for Prospective Studies: Prospective Data Generation, ISR Collaboratives, Implementation Sciences (PFIS)</td>
                       <td className="px-4 py-2 text-black dark:text-gray-200">GRC</td>
                     </tr>
                     <tr className="dark:bg-gray-900">
-                      <td className="px-4 py-2 text-black dark:text-gray-200">LRC</td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">GOptics</td>
                       <td className="px-4 py-2 text-black dark:text-gray-200">Roy Koruth</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200"></td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Implement objectives</td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">Governance review for Retrospective Studies: Secondary Data Generation, Real World Evidence, Care Quality Improvement (PAQ)</td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">LRC</td>
                     </tr>
                     <tr className="dark:bg-gray-900">
                       <td className="px-4 py-2 text-black dark:text-gray-200">GVault</td>
                       <td className="px-4 py-2 text-black dark:text-gray-200">Lauren Crane, Deborah Ablordeppey</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">CCC Processes</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200"></td>
-                    </tr>
-                    <tr className="dark:bg-gray-900">
-                      <td className="px-4 py-2 text-black dark:text-gray-200">GOptics</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">Marina Karmanova</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200">ISR and collaborative studies platform → Study Concepts, Protocols</td>
-                      <td className="px-4 py-2 text-black dark:text-gray-200"></td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">SOPs, Business Guidance for all processes</td>
+                      <td className="px-4 py-2 text-black dark:text-gray-200">N/A</td>
                     </tr>
                   </tbody>
                 </table>

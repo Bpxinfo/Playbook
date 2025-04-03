@@ -20,25 +20,30 @@ const SystemsHome = () => {
       icon: Monitor,
       color: "bg-purple-50"
     },
-    {
-      title: "Manual Systems",
-      description: "Documentation of manual processes, workflows, and physical systems.",
-      path: "/systems/manual-systems",
-      icon: ClipboardList,
-      color: "bg-green-50"
-    }
+    // {
+    //   title: "Manual Systems",
+    //   description: "Documentation of manual processes, workflows, and physical systems.",
+    //   path: "/systems/manual-systems",
+    //   icon: ClipboardList,
+    //   color: "bg-green-50"
+    // }
   ];
 
   const systemHighlights = [
     {
       title: "GOptics",
       description: "ISR / Collaborative Studies platform",
-      url: "https://gilead-grants.steeprockinc.com/"
+      url: "https://gileadrnd.appiancloud.com/suite/sites/gs-isr"
     },
     {
       title: "SteepRock",
       description: "Grants and medical sponsorships portal",
       url: "https://gilead-grants.steeprockinc.com/"
+    },
+    {
+      title: "GVault",
+      description: "SOPs, Business Guidance for all processes",
+      url: "https://gvault.veevavault.com"
     }
   ];
 
@@ -64,13 +69,13 @@ const SystemsHome = () => {
           </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {systemHighlights.map((highlight, index) => (
+            {systemHighlights.slice(0, 2).map((highlight, index) => (
               <a 
                 key={index} 
                 href={highlight.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                className={`${index === 0 ? 'bg-red-50' : 'bg-blue-50'} p-6 rounded-lg shadow-md hover:shadow-lg transition-all`}
               >
                 <div className="flex items-center mb-4">
                   <div className="bg-white p-3 rounded-full shadow-md mr-4">
@@ -81,9 +86,23 @@ const SystemsHome = () => {
                 <p className="text-gray-600 ml-16 dark:text-white">{highlight.description}</p>
               </a>
             ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            {/* GVault and Internal Platforms in a 2x2 layout */}
+            <a 
+              href={systemHighlights[2].url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+            >
+              <div className="flex items-center mb-4">
+                <div className="bg-white p-3 rounded-full shadow-md mr-4">
+                  <Target className="w-6 h-6 text-red-800" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800">{systemHighlights[2].title}</h3>
+              </div>
+              <p className="text-gray-600 ml-16 dark:text-white">{systemHighlights[2].description}</p>
+            </a>
+            
             {sections.map((section, index) => {
               const IconComponent = section.icon;
               return (

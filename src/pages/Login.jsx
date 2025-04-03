@@ -111,7 +111,7 @@ export default function Login() {
       <div className="w-full max-w-md space-y-4">
         <div className="text-center">
           <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-200">
-            The road to freedom starts from here
+            The road to community patient impact starts here
           </p>
           <div className="flex justify-center items-center w-full h-32 mb-2">
             <TypewriterEffectSmooth 

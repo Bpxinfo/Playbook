@@ -81,7 +81,7 @@ const ProcessesGovernance = () => {
             { 
               text: "LRC - Local Research Committee", 
               icon: Users2,
-              url: "https://gileadconnect.sharepoint.com/sites/MA-Research" 
+              url: "https://gileadrnd.appiancloud.com/suite/sites/gs-isr" 
             }
           ].map((item, index) => {
             const IconComponent = item.icon;
