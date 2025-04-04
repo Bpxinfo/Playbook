@@ -7,11 +7,6 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isGuest, setIsGuest] = useState(() => {
-    const storedGuestState = localStorage.getItem('isGuest') === 'true';
-    console.log('Initial guest state:', storedGuestState);
-    return storedGuestState;
-  });
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { forceLightMode } = useTheme();
@@ -97,57 +92,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Add effect to handle initial guest state
+  // Add a cleanup function to handle unmounting
   useEffect(() => {
-    const storedGuestState = localStorage.getItem('isGuest') === 'true';
-    if (storedGuestState) {
-      setIsGuest(true);
+    return () => {
+      // Cleanup function
       setUser(null);
       setLoading(false);
-    }
+    };
   }, []);
-
-  // Modify the guest state effect to be more robust
-  useEffect(() => {
-    console.log('Guest state changed:', isGuest);
-    if (isGuest) {
-      localStorage.setItem('isGuest', 'true');
-      // Clear any existing user data when switching to guest mode
-      setUser(null);
-      setLoading(false);
-      // Force a hard redirect to ensure clean state
-      if (window.location.pathname !== '/ccc-playbook') {
-        window.location.replace('/ccc-playbook');
-      }
-    } else {
-      localStorage.removeItem('isGuest');
-      setLoading(false);
-    }
-  }, [isGuest]);
-
-  const signInWithGoogle = async () => {
-    try {
-      console.log('Starting Google sign in process...');
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}`,
-          queryParams: {
-            access_type: 'offline',
-            prompt: 'consent',
-          },
-        }
-      });
-      if (error) {
-        console.error('Google sign in error:', error);
-        throw error;
-      }
-      console.log('Google sign in initiated:', data);
-    } catch (error) {
-      console.error('Google sign in failed:', error);
-      throw error;
-    }
-  };
 
   const signInWithMicrosoft = async () => {
     try {
@@ -155,7 +107,7 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'azure',
         options: {
-          redirectTo: `${window.location.origin}`,
+          redirectTo: `${window.location.origin}/ccc-playbook`,
           scopes: 'openid email profile User.Read',
           queryParams: {
             access_type: 'offline',
@@ -175,61 +127,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signInWithEmail = async (email, password) => {
-    try {
-      console.log('Starting email sign in process...');
-      setLoading(true);
-      
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
-      
-      if (error) {
-        console.error('Email sign in error:', error);
-        return { error };
-      }
-      
-      console.log('Email sign in successful:', data);
-      
-      // Explicitly update user state to avoid race conditions
-      if (data?.user) {
-        setUser(data.user);
-        setIsGuest(false);
-        localStorage.removeItem('isGuest');
-        sessionStorage.removeItem('isGuest');
-        
-        // Force light mode and navigate
-        forceLightMode();
-        if (window.location.pathname !== '/ccc-playbook') {
-          window.location.replace('/ccc-playbook');
-        }
-      }
-      
-      return { data };
-    } catch (error) {
-      console.error('Email sign in failed:', error);
-      return { error };
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const signOut = async () => {
     try {
       console.log('Starting sign out process...');
       
       // First clear all local state
       setUser(null);
-      setIsGuest(false);
       
       // Clear all storage
       localStorage.clear();
       sessionStorage.clear();
-      
-      // Explicitly remove guest state
-      localStorage.removeItem('isGuest');
-      sessionStorage.removeItem('isGuest');
       
       // Sign out from Supabase if we were signed in
       const { error } = await supabase.auth.signOut();
@@ -248,31 +155,6 @@ export const AuthProvider = ({ children }) => {
       // Even if there's an error, try to redirect
       window.location.replace('/');
     }
-  };
-
-  // Add a cleanup function to handle unmounting
-  useEffect(() => {
-    return () => {
-      // Cleanup function
-      setUser(null);
-      setIsGuest(false);
-      setLoading(false);
-    };
-  }, []);
-
-  const continueAsGuest = () => {
-    // Clear any existing auth state first
-    localStorage.clear();
-    sessionStorage.clear();
-    
-    // Set guest state
-    setIsGuest(true);
-    setUser(null);
-    localStorage.setItem('isGuest', 'true');
-    forceLightMode();
-    
-    // Navigate to playbook
-    window.location.replace('/ccc-playbook');
   };
 
   // Modify the auth state change handler
@@ -313,45 +195,25 @@ export const AuthProvider = ({ children }) => {
 
         console.log('Auth session:', session);
         if (session?.user) {
-          console.log('User session found, disabling guest mode');
+          console.log('User session found');
           if (isMounted) {
             setUser(session.user);
-            setIsGuest(false);
-            localStorage.removeItem('isGuest');
-            sessionStorage.removeItem('isGuest');
             forceLightMode();
             // Ensure loading is set to false after session is processed
             setLoading(false);
           }
           await syncUserProfile(session);
         } else {
-          // Check if guest mode is active
-          const storedGuestState = localStorage.getItem('isGuest') === 'true';
-          if (storedGuestState) {
-            console.log('No user session but guest mode is active');
-            if (isMounted) {
-              setIsGuest(true);
-              setUser(null);
-              setLoading(false);
-            }
-          } else {
-            console.log('No user session and not in guest mode');
-            if (isMounted) {
-              setUser(null);
-              setIsGuest(false);
-              localStorage.removeItem('isGuest');
-              sessionStorage.removeItem('isGuest');
-              setLoading(false);
-            }
+          console.log('No user session');
+          if (isMounted) {
+            setUser(null);
+            setLoading(false);
           }
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
         if (isMounted) {
           setUser(null);
-          setIsGuest(false);
-          localStorage.removeItem('isGuest');
-          sessionStorage.removeItem('isGuest');
           setLoading(false);
         }
       } finally {
@@ -371,11 +233,9 @@ export const AuthProvider = ({ children }) => {
         console.log('Auth state change:', { event, session });
 
         if (session?.user) {
-          console.log('User session found during state change, disabling guest mode');
+          console.log('User session found during state change');
           if (isMounted) {
             setUser(session.user);
-            setIsGuest(false);
-            localStorage.removeItem('isGuest');
             forceLightMode();
           }
           await syncUserProfile(session);
@@ -392,8 +252,6 @@ export const AuthProvider = ({ children }) => {
           console.log('Handling SIGNED_OUT event');
           if (isMounted) {
             setUser(null);
-            setIsGuest(false);
-            localStorage.removeItem('isGuest');
             setLoading(false);
           }
           
@@ -420,30 +278,15 @@ export const AuthProvider = ({ children }) => {
       isMounted = false;
       subscription?.unsubscribe?.();
     };
-  }, [navigate, isGuest]);
-
-  const authValue = {
-    user,
-    isGuest,
-    loading,
-    signInWithGoogle,
-    signInWithMicrosoft,
-    signInWithEmail,
-    signOut,
-    continueAsGuest
-  };
+  }, [navigate]);
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        isGuest,
         loading,
-        signInWithGoogle,
         signInWithMicrosoft,
-        signInWithEmail,
-        signOut,
-        continueAsGuest
+        signOut
       }}
     >
       {children}

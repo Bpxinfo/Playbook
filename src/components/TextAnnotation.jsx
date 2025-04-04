@@ -3,243 +3,373 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ThumbsUp, Trash2, Edit, X, Check, MessageSquare, Send, Flag } from 'lucide-react';
 
 // Component for text annotation with feedback and question functionality
-function TextAnnotation({ pageId, content }) {
-  const { user, isGuest } = useAuth();
-  const [comments, setComments] = useState([]);
-  const [selectionRange, setSelectionRange] = useState(null);
-  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
-  const [showMenu, setShowMenu] = useState(false);
-  const [expandedCommentId, setExpandedCommentId] = useState(null);
-  const [adminAnswer, setAdminAnswer] = useState("");
+function TextAnnotation({ highlight, deleteHighlight, updateHighlight }) {
+  const { user } = useAuth();
+  const { id } = useParams();
+  const [comment, setComment] = useState('');
+  const [editedComment, setEditedComment] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [response, setResponse] = useState('');
+  const [isUiEnabled, setIsUiEnabled] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showShadow, setShowShadow] = useState(false);
+  const [showThanks, setShowThanks] = useState(false);
+  const navigate = useNavigate();
 
-  // Fetch existing unresolved comments on mount
+  // Prevent running useEffect on components not in the DOM
+  const [isMounted, setIsMounted] = useState(false);
+  
   useEffect(() => {
-    const loadComments = async () => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
+    // Load existing comment if it exists
+    if (highlight.comment) {
+      setComment(highlight.comment.text || '');
+    }
+    
+    // Enable UI elements
+    setIsUiEnabled(true);
+    
+    // Show message confirmation if this was a flagged comment
+    if (highlight.comment && highlight.comment.type === 'flag' && user) {
+      setShowThanks(true);
+      const timer = setTimeout(() => {
+        setShowThanks(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+    
+  }, [user, highlight, isMounted]);
+
+  const handleSaveComment = async (type = 'comment') => {
+    if (!user) {
+      // If not logged in, redirect to login
+      navigate('/login');
+      return;
+    }
+    
+    if (!isMounted) return;
+    
+    if (comment.trim() === '' && type !== 'flag') return;
+    
+    const userId = user?.id;
+    
+    try {
+      // Set up new comment structure
+      const commentData = {
+        text: comment,
+        type,
+        created_at: new Date().toISOString(),
+        user_id: userId,
+        user_name: user?.user_metadata?.name || user?.email?.split('@')[0] || 'User',
+        user_email: user?.email || 'anonymous@feedback.internal',
+        highlight_id: highlight.id,
+        page_id: id,
+        status: 'active'
+      };
+      
+      // Update local state first for immediate feedback
+      const updatedHighlight = { 
+        ...highlight, 
+        comment: commentData,
+        hasBeenSaved: true // Mark it as saved to prevent deletion on mouse leave
+      };
+      
+      updateHighlight(updatedHighlight);
+      
+      // Then save to the database
       const { data, error } = await supabase
-        .from("comments")
-        .select("*")
-        .eq("page_id", pageId)
-        .neq("status", "resolved");
-      
-      if (error) {
-        console.error("Error fetching comments:", error);
-        return;
-      }
-      
-      if (data) {
-        setComments(data);
-      }
-    };
-
-    loadComments();
-  }, [pageId]);
-
-  // Handle text selection and menu positioning
-  useEffect(() => {
-    const handleMouseUp = () => {
-      // Guest users should also be able to comment
-      if (!user && !isGuest) {
-        return;
-      }
-
-      const sel = window.getSelection();
-      if (sel && sel.toString().trim().length > 0) {
-        const range = sel.getRangeAt(0);
-        const rect = range.getBoundingClientRect();
-        setSelectionRange(range);
+        .from('comments')
+        .insert([commentData])
+        .select();
         
-        // Position menu at the end of selection
-        setMenuPos({
-          top: rect.bottom + window.scrollY,
-          left: Math.min(rect.right + window.scrollX, window.innerWidth - 100)
-        });
-        setShowMenu(true);
-      } else {
-        setShowMenu(false);
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        updatedHighlight.comment.id = data[0].id;
+        updateHighlight(updatedHighlight);
       }
-    };
-
-    document.addEventListener("mouseup", handleMouseUp);
-    return () => document.removeEventListener("mouseup", handleMouseUp);
-  }, [user, isGuest]); // Add user and isGuest to dependencies
-
-  // Create a new comment
-  const addComment = async (type) => {
-    if (!selectionRange) return;
-    
-    const selectedText = selectionRange.toString();
-    const title = window.prompt(`Enter a short title for your ${type}:`);
-    if (!title) return;
-    
-    const body = window.prompt("Enter the full comment text:");
-    if (!body) return;
-
-    // Use null for guest users to let database use default UUID
-    const userId = isGuest ? null : user?.id;
-
-    const newComment = {
-      page_id: pageId,
-      selection_text: selectedText,
-      title,
-      body,
-      type,
-      status: "open",
-      user_id: userId,
-      pos_top: menuPos.top,
-      pos_left: menuPos.left,
-      created_at: new Date().toISOString()
-    };
-
-    const { data, error } = await supabase
-      .from("comments")
-      .insert(newComment)
-      .select()
-      .single();
-
-    if (error) {
-      console.error("Error creating comment:", error);
-      return;
+      
+      // Clear input
+      setComment('');
+      
+      // Show thank you message for flags
+      if (type === 'flag') {
+        setShowThanks(true);
+        setTimeout(() => {
+          setShowThanks(false);
+        }, 3000);
+      }
+    } catch (error) {
+      console.error('Error saving comment:', error);
     }
-
-    if (data) {
-      setComments(prev => [...prev, data]);
-    }
-
-    // Clear selection and hide menu
-    window.getSelection().removeAllRanges();
-    setShowMenu(false);
-    setSelectionRange(null);
   };
-
-  // Resolve a comment and optionally add an admin answer
-  const resolveComment = async (commentId, answer = null) => {
-    if (!user || isGuest) return;
-
-    const updateData = {
-      status: "resolved",
-      ...(answer && { answer }),
-      resolved_at: new Date().toISOString(),
-      resolved_by: user.id
-    };
-
-    const { error } = await supabase
-      .from("comments")
-      .update(updateData)
-      .eq("id", commentId);
-
-    if (error) {
-      console.error("Error resolving comment:", error);
-      return;
+  
+  const handleDeleteHighlight = async () => {
+    if (!user) return;
+    
+    try {
+      setIsDeleting(true);
+      
+      // First delete any comments
+      if (highlight.comment && highlight.comment.id) {
+        await supabase
+          .from('comments')
+          .delete()
+          .eq('id', highlight.comment.id);
+      }
+      
+      // Then delete the highlight
+      if (highlight.id && highlight.id !== 'temp') {
+        await supabase
+          .from('highlights')
+          .delete()
+          .eq('id', highlight.id);
+      }
+      
+      // Update UI
+      deleteHighlight(highlight.id);
+    } catch (error) {
+      console.error('Error deleting highlight:', error);
+    } finally {
+      setIsDeleting(false);
     }
-
-    setComments(prev => prev.filter(c => c.id !== commentId));
-    setExpandedCommentId(null);
-    setAdminAnswer("");
   };
-
-  return (
-    <div className="relative">
-      {/* Content container */}
-      <div className="prose max-w-none">{content}</div>
-
-      {/* Comment icons */}
-      {comments.map(comment => (
-        <div key={comment.id}>
-          <Tippy
-            content={comment.title}
-            placement="top"
-            arrow={true}
-            theme="light"
-          >
-            <div
-              className="absolute cursor-pointer transform -translate-y-1/2"
-              style={{
-                top: comment.pos_top,
-                left: comment.pos_left
-              }}
-              onClick={() => setExpandedCommentId(comment.id)}
-            >
-              {comment.type === "question" ? "❓" : "💬"}
-            </div>
-          </Tippy>
-
-          {/* Expanded comment view */}
-          {expandedCommentId === comment.id && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-              onClick={() => setExpandedCommentId(null)}
-            >
-              <div
-                className="bg-white p-4 rounded-lg shadow-lg max-w-md w-full mx-4"
-                onClick={e => e.stopPropagation()}
+  
+  const handleEditComment = async () => {
+    if (!user) return;
+    if (!highlight.comment || !highlight.comment.id) return;
+    
+    try {
+      // Update local comment first
+      const updatedComment = {
+        ...highlight.comment,
+        text: editedComment,
+        updated_at: new Date().toISOString()
+      };
+      
+      const updatedHighlight = {
+        ...highlight,
+        comment: updatedComment
+      };
+      
+      updateHighlight(updatedHighlight);
+      
+      // Then update in the database
+      await supabase
+        .from('comments')
+        .update({ text: editedComment, updated_at: new Date().toISOString() })
+        .eq('id', highlight.comment.id);
+        
+      // Exit edit mode
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error updating comment:', error);
+    }
+  };
+  
+  const handleStartEdit = () => {
+    setEditedComment(comment);
+    setIsEditing(true);
+  };
+  
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+  
+  // Show different UI based on whether there's a comment
+  if (highlight.comment && highlight.comment.text) {
+    // If there's a flagged comment, just show thanks message
+    if (highlight.comment.type === 'flag') {
+      return (
+        <div 
+          className="p-3 text-sm bg-white rounded-md shadow-md border border-gray-200 mt-1 transition-all duration-300"
+          onMouseEnter={() => setShowShadow(true)}
+          onMouseLeave={() => setShowShadow(false)}
+        >
+          <div className="flex items-center space-x-2 text-amber-600 mb-1">
+            <Flag className="w-4 h-4" />
+            <span className="font-medium">Flag submitted</span>
+          </div>
+          <p className="text-gray-600 text-xs">
+            Thank you for flagging this content. Our team will review it.
+          </p>
+        </div>
+      );
+    }
+  
+    return (
+      <div 
+        className={`p-3 text-sm bg-white rounded-md border border-gray-200 mt-1 transition-all duration-300 ${showShadow ? 'shadow-md' : ''}`}
+        onMouseEnter={() => setShowShadow(true)}
+        onMouseLeave={() => setShowShadow(false)}
+      >
+        {isEditing ? (
+          <>
+            <textarea
+              value={editedComment}
+              onChange={(e) => setEditedComment(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-md mb-2 text-sm"
+              placeholder="Edit your comment..."
+              rows={3}
+            />
+            <div className="flex justify-end space-x-2">
+              <button
+                onClick={handleCancelEdit}
+                className="flex items-center text-xs text-gray-600 p-1 hover:bg-gray-100 rounded"
               >
-                <h3 className="font-bold text-lg mb-2">{comment.title}</h3>
-                <p className="text-gray-700 mb-4">{comment.body}</p>
-                
-                {comment.type === "question" && user && !isGuest && (
-                  <div className="mb-4">
-                    <textarea
-                      className="w-full p-2 border rounded"
-                      rows="3"
-                      placeholder="Enter your answer..."
-                      value={adminAnswer}
-                      onChange={e => setAdminAnswer(e.target.value)}
-                    />
-                    <button
-                      className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                      onClick={() => resolveComment(comment.id, adminAnswer)}
-                      disabled={!adminAnswer.trim()}
-                    >
-                      Submit Answer & Resolve
-                    </button>
-                  </div>
-                )}
-
-                {user && !isGuest && (
+                <X className="w-3 h-3 mr-1" />
+                Cancel
+              </button>
+              <button
+                onClick={handleEditComment}
+                className="flex items-center text-xs text-blue-600 p-1 hover:bg-blue-50 rounded"
+              >
+                <Check className="w-3 h-3 mr-1" />
+                Save
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-between items-start mb-1">
+              <span className="font-medium text-gray-800">
+                {highlight.comment.user_name || highlight.comment.user_email.split('@')[0]}
+              </span>
+              {user && (
+                <div className="flex space-x-1">
                   <button
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-2"
-                    onClick={() => resolveComment(comment.id)}
+                    onClick={handleStartEdit}
+                    className="text-gray-500 hover:text-blue-600"
                   >
-                    Mark as Resolved
+                    <Edit className="w-3 h-3" />
                   </button>
-                )}
-
-                <button
-                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-                  onClick={() => setExpandedCommentId(null)}
+                  <button
+                    onClick={handleDeleteHighlight}
+                    className="text-gray-500 hover:text-red-600"
+                    disabled={isDeleting}
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                </div>
+              )}
+            </div>
+            <p className="text-gray-800 whitespace-pre-wrap">{comment}</p>
+            
+            {/* Only show response features for authenticated users */}
+            {highlight.comment.type === "question" && user && (
+              <div className="mt-2 pt-2 border-t border-gray-100">
+                <div className="flex items-center mb-1">
+                  <MessageSquare className="w-3 h-3 text-gray-500 mr-1" />
+                  <span className="text-xs text-gray-500">Reply</span>
+                </div>
+                <div className="flex items-center">
+                  <input 
+                    type="text"
+                    value={response}
+                    onChange={(e) => setResponse(e.target.value)}
+                    className="flex-1 p-1 text-xs border border-gray-300 rounded-l-md"
+                    placeholder="Write a response..."
+                  />
+                  <button className="bg-blue-600 text-white p-1 rounded-r-md">
+                    <Send className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {/* Bottom action buttons */}
+            {user && (
+              <div className="mt-2 flex justify-between items-center">
+                <button className="flex items-center text-xs text-gray-500 hover:text-blue-600">
+                  <ThumbsUp className="w-3 h-3 mr-1" />
+                  <span>Helpful</span>
+                </button>
+                <button 
+                  onClick={() => handleSaveComment('flag')}
+                  className="flex items-center text-xs text-gray-500 hover:text-amber-600"
                 >
-                  Close
+                  <Flag className="w-3 h-3 mr-1" />
+                  <span>Flag</span>
                 </button>
               </div>
+            )}
+          </>
+        )}
+      </div>
+    );
+  }
+  
+  // For new comments or highlights without comments
+  return (
+    <div className="p-3 bg-white rounded-md shadow-md border border-gray-200 mt-1">
+      {showThanks ? (
+        <div className="text-center text-sm text-green-600 py-2">
+          <p>Thank you for your feedback!</p>
+        </div>
+      ) : (
+        <>
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded-md mb-2 text-sm"
+            placeholder={user ? "Add a comment or question..." : "Sign in to comment..."}
+            rows={3}
+            disabled={!user}
+          />
+          <div className="flex justify-between items-center">
+            <div className="flex space-x-2">
+              <button
+                onClick={() => handleSaveComment('comment')}
+                disabled={!user || comment.trim() === ''}
+                className={`px-2 py-1 rounded-md text-xs ${
+                  user && comment.trim() !== ''
+                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                    : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Comment
+              </button>
+              <button
+                onClick={() => handleSaveComment('question')}
+                disabled={!user || comment.trim() === ''}
+                className={`px-2 py-1 rounded-md text-xs ${
+                  user && comment.trim() !== ''
+                    ? 'bg-purple-600 text-white hover:bg-purple-700'
+                    : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Question
+              </button>
+            </div>
+            <button
+              onClick={() => handleSaveComment('flag')}
+              disabled={!user}
+              className={`flex items-center px-2 py-1 rounded-md text-xs ${
+                user
+                  ? 'bg-amber-100 text-amber-800 hover:bg-amber-200'
+                  : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              <Flag className="w-3 h-3 mr-1" />
+              <span>Flag</span>
+            </button>
+          </div>
+          {!user && (
+            <div className="mt-2 text-xs text-center text-gray-500">
+              Please <a href="/login" className="text-blue-600 hover:underline">sign in</a> to comment.
             </div>
           )}
-        </div>
-      ))}
-
-      {/* Selection menu */}
-      {showMenu && (
-        <div
-          className="fixed bg-white shadow-lg rounded-lg p-2 z-50 flex gap-2"
-          style={{
-            top: menuPos.top,
-            left: menuPos.left
-          }}
-        >
-          <button
-            className="p-2 hover:bg-gray-100 rounded"
-            onClick={() => addComment("feedback")}
-          >
-            💬 Feedback
-          </button>
-          <button
-            className="p-2 hover:bg-gray-100 rounded"
-            onClick={() => addComment("question")}
-          >
-            ❓ Question
-          </button>
-        </div>
+        </>
       )}
     </div>
   );

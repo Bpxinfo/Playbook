@@ -113,7 +113,7 @@ const TextAnnotator = ({ pageId, currentUser }) => {
     if (!body) return;
 
     // Use null for guest users to let database use default UUID
-    const userId = currentUser?.isGuest ? null : currentUser?.id;
+    const userId = currentUser?.id;
 
     const newComment = {
       page_id: pageId,

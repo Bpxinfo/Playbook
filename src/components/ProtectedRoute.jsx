@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function ProtectedRoute({ children }) {
-  const { user, isGuest, loading } = useAuth();
+  const { user, loading } = useAuth();
   const [timeoutExpired, setTimeoutExpired] = useState(false);
   const [localLoading, setLocalLoading] = useState(true);
   
@@ -33,7 +33,7 @@ export default function ProtectedRoute({ children }) {
   }, [loading]);
 
   // Add debugging with more context
-  console.log('ProtectedRoute state:', { user, isGuest, loading, timeoutExpired, localLoading, path: window.location.pathname, isOAuthCallback });
+  console.log('ProtectedRoute state:', { user, loading, timeoutExpired, localLoading, path: window.location.pathname, isOAuthCallback });
 
   // Show loading spinner while checking authentication, or when processing OAuth callback
   if (((loading || localLoading) && !timeoutExpired) || isOAuthCallback) {
@@ -44,8 +44,8 @@ export default function ProtectedRoute({ children }) {
     );
   }
 
-  // Check if user is authenticated or is a guest
-  const isAuthenticated = user !== null || isGuest === true;
+  // Check if user is authenticated
+  const isAuthenticated = user !== null;
   console.log('Is authenticated:', isAuthenticated);
 
   // If not authenticated and not loading (or timeout expired), redirect to login
@@ -60,7 +60,7 @@ export default function ProtectedRoute({ children }) {
     return <Navigate to="/ccc-playbook" replace />;
   }
 
-  // User is authenticated (or is a guest), render the protected content
+  // User is authenticated, render the protected content
   console.log('Rendering protected content for authenticated user');
   return children;
 } 

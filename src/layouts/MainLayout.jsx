@@ -37,7 +37,6 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { searchIndex } from '../utils/searchIndex';
 import useContentSearch from '../hooks/useContentSearch';
 import { performGlobalSearch } from '../utils/searchUtils';
-import TextSelectionComment from '../components/TextSelectionComment';
 import SearchDebug from '../components/SearchDebug';
 import { Sidebar, SidebarBody, SidebarLink } from '../components/Sidebar';
 import { AnimatePresence, motion } from 'motion/react';
@@ -778,7 +777,9 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-[#e8e8e8] dark:bg-[#212121] relative">
+      {/* Add the TextSelectionContextMenu component directly */}
       <TextSelectionContextMenu />
+      
       {/* Top Navigation Bar - Keep it intact */}
       <header className="w-full py-3 bg-white dark:bg-[#333333] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 w-full min-w-0">

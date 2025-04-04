@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const TextSelectionComment = () => {
-  const { user, isGuest } = useAuth();
+  const { user } = useAuth();
   const [selectedText, setSelectedText] = useState('');
   const [comment, setComment] = useState('');
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -31,8 +31,7 @@ const TextSelectionComment = () => {
   };
 
   const handleMouseUp = () => {
-    // Guest users should also be able to comment
-    if (!user && !isGuest) {
+    if (!user) {
       return;
     }
 
@@ -70,22 +69,29 @@ const TextSelectionComment = () => {
       setError('Please enter a comment');
       return;
     }
-
+    
     setIsSubmitting(true);
+    
+    // Add timeout to ensure spinner doesn't get stuck
+    const timeoutId = setTimeout(() => {
+      if (isSubmitting) {
+        setIsSubmitting(false);
+        setError('Request is taking longer than expected. Please try again.');
+      }
+    }, 5000);
+    
     try {
       // Format the description to include both selected text and comment
       const formattedDescription = `Selected Text: "${selectedText}"\n\nComment: ${comment}`;
       
-      // Use a simple approach for guest users
-      const userName = isGuest ? 'Guest User' : 
-                       (user?.user_metadata?.full_name || 
-                        user?.email?.split('@')[0] || 
-                        'Anonymous User');
+      // User information
+      const userName = user?.user_metadata?.full_name || 
+                     user?.email?.split('@')[0] || 
+                     'Anonymous User';
       
-      const userEmail = isGuest ? 'guest@feedback.internal' : user?.email || 'anonymous@feedback.internal';
-      // Use the actual user ID or null for guests (let the database handle default UUID)
-      const userId = isGuest ? null : user?.id;
-      
+      const userEmail = user?.email || 'anonymous@feedback.internal';
+      const userId = user?.id;
+
       const feedbackData = {
         name: userName,
         email: userEmail,
@@ -97,14 +103,14 @@ const TextSelectionComment = () => {
         source: 'inline-comment-tool',
         user_id: userId
       };
-
+      
       console.log('Attempting to submit feedback:', feedbackData);
 
       const { data, error: supabaseError } = await supabase
         .from('feedback')
         .insert([feedbackData])
         .select();
-
+        
       if (supabaseError) {
         console.error('Supabase error details:', supabaseError);
         if (supabaseError.message.includes('row-level security')) {
@@ -131,6 +137,7 @@ const TextSelectionComment = () => {
         }, 3000);
       }
     } finally {
+      clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };
@@ -149,12 +156,12 @@ const TextSelectionComment = () => {
       document.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [user, isGuest]); // Add user and isGuest to dependencies
+  }, [user]); // Add user to dependencies
 
   if (!showPopup) return null;
-
+  
   return (
-    <div
+    <div 
       ref={containerRef}
       className="fixed z-50 bg-white rounded-lg shadow-lg p-4"
       style={{
@@ -165,7 +172,7 @@ const TextSelectionComment = () => {
     >
       <div className="flex justify-between items-center mb-2">
         <h3 className="text-lg font-medium text-gray-900">Add Comment</h3>
-        <button
+        <button 
           onClick={() => setShowPopup(false)}
           className="text-gray-400 hover:text-gray-500"
         >
@@ -177,7 +184,7 @@ const TextSelectionComment = () => {
         <p className="text-sm text-gray-500 italic">"{selectedText}"</p>
         <p className="text-xs text-gray-400 mt-1">Section: {getCurrentSection()}</p>
       </div>
-
+      
       <form onSubmit={handleSubmit}>
         <textarea
           value={comment}

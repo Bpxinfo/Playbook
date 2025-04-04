@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { MessageSquare, X, HelpCircle } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { X, MessageSquare, HelpCircle } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const TextSelectionContextMenu = () => {
-  const { user, isGuest } = useAuth();
+  const { user } = useAuth();
   const [selectedText, setSelectedText] = useState('');
-  const [comment, setComment] = useState('');
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [showMenu, setShowMenu] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
+  const [commentType, setCommentType] = useState('comment');
+  const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [commentType, setCommentType] = useState('comment');
   const containerRef = useRef(null);
   const location = useLocation();
 
@@ -32,8 +32,7 @@ const TextSelectionContextMenu = () => {
   };
 
   const handleContextMenu = (e) => {
-    // Guest users should also be able to comment
-    if (!user && !isGuest) {
+    if (!user) {
       return;
     }
 
@@ -60,16 +59,23 @@ const TextSelectionContextMenu = () => {
     }
 
     setIsSubmitting(true);
+    
+    // Add timeout to ensure spinner doesn't get stuck
+    const timeoutId = setTimeout(() => {
+      if (isSubmitting) {
+        setIsSubmitting(false);
+        setError('Request is taking longer than expected. Please try again.');
+      }
+    }, 5000);
+    
     try {
       // Use a simple approach for guest users
-      const userName = isGuest ? 'Guest User' : 
-                      (user?.user_metadata?.full_name || 
-                       user?.email?.split('@')[0] || 
-                       'Anonymous User');
+      const userName = user?.user_metadata?.full_name || 
+                     user?.email?.split('@')[0] || 
+                    'Anonymous User';
       
-      const userEmail = isGuest ? 'guest@feedback.internal' : user?.email || 'anonymous@feedback.internal';
-      // Use null for guests to let database use default UUID
-      const userId = isGuest ? null : user?.id;
+      const userEmail = user?.email || 'anonymous@feedback.internal';
+      const userId = user?.id;
 
       const feedbackData = {
         name: userName,
@@ -111,6 +117,7 @@ const TextSelectionContextMenu = () => {
         }, 3000);
       }
     } finally {
+      clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };
@@ -130,7 +137,7 @@ const TextSelectionContextMenu = () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [user, isGuest]); // Add user and isGuest to dependencies
+  }, [user]); // Add user to dependencies
 
   if (!showMenu) return null;
 
@@ -173,7 +180,7 @@ const TextSelectionContextMenu = () => {
             <h3 className="text-sm font-medium bg-white text-gray-900">
               {commentType === 'question' ? 'Add Question' : 'Add Comment'}
             </h3>
-            <button
+            <button 
               onClick={() => setShowCommentForm(false)}
               className="text-gray-400 bg-white rounded-full p-1"
             >
