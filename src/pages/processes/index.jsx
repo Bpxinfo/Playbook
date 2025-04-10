@@ -83,7 +83,7 @@ const ProcessesHome = () => {
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Quick Reference</h2>
               <p className="text-gray-700 mb-4">
-                Start with the Processes & Governance section to understand our operational framework, then explore specific areas based on your needs. The Compliance Guidance section is essential for all team members.
+                Start with the Processes & Governance section to understand our operational framework, then explore specific areas based on your needs. The Legal & Compliance Guidance section is essential for all team members.
               </p>
               <button
                 onClick={() => navigate('/processes/processes-&-governance')}

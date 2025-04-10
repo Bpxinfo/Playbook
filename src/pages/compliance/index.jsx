@@ -46,13 +46,13 @@ const ComplianceHome = () => {
   return (
     <div className="p-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Compliance Guidance</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Legal & Compliance Guidance</h1>
         
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center mb-4">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                Compliance Framework
+                Legal & Compliance Framework
               </h2>
             </div>
             <p className="text-gray-700 mb-4">
@@ -91,7 +91,7 @@ const ComplianceHome = () => {
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Source Reference</h2>
               <p className="text-gray-700 mb-4">
-                Start with the Compliance Guidelines section to understand our compliance framework, then explore specific areas based on your needs. The Training & Resources section is essential for all team members.
+                Start with the Legal & Compliance Guidelines section to understand our compliance framework, then explore specific areas based on your needs. The Training & Resources section is essential for all team members.
               </p>
               <button
                 onClick={() => window.open('https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents', '_blank')}

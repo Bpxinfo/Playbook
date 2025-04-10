@@ -41,7 +41,7 @@ const ComplianceGuidance = () => {
   return (
     <div className="p-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Compliance Guidance</h1>
+        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Resources & Support</h1>
 
         <div className="space-y-6">
           <section id="overview" className="bg-white rounded-lg shadow-md p-6">

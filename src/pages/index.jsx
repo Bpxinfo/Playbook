@@ -41,7 +41,7 @@ const HomePage = () => {
       color: "bg-pink-50"
     },
     {
-      title: "Compliance Guidance",
+      title: "Legal & Compliance",
       description: "Understanding regulatory requirements and compliance protocols",
       icon: Shield,
       path: "/compliance",

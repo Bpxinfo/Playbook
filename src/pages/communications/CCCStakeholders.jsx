@@ -55,8 +55,8 @@ const stakeholderData = {
     description: 'USMA Strategy\nMSLs\nSEC\nStrategy & Operations',
     deliverable: 'Implementation and integration of CCC Strategy\nReceive CCC updates',
     priority: 'Implement objectives',
-    method: 'Presentations and meetings on objectives',
-    channels: 'Program and team meetings\nUSMA SharePoint\nEmail\nInstant Message'
+    method: 'Presentations and meetings on objectives\nUSMA SharePoint\nEmail\nInstant Message',
+    channels: 'Program and team meetings'
   },
   'PST': {
     description: 'Program Strategy Team (lead by PSTs)',
@@ -69,29 +69,29 @@ const stakeholderData = {
     description: 'Patient Assistance & Quality',
     deliverable: 'Inform patients about PAQ, the services they provide and guide them through the application process',
     priority: 'Help patients access medications and medical care they might otherwise be unable to afford',
-    method: 'Team meetings',
-    channels: 'Team meetings\nEmail\nInstant Message\nSharePoint'
+    method: 'Team meetings\nEmail\nInstant Message\nSharePoint',
+    channels: 'Team meetings'
   },
   'GPFIS': {
     description: 'Global Patient Focused Implementation Sciences',
     deliverable: 'Involving patients more actively in their care',
     priority: 'Enhancing Communication\nEncouraging Active Participation in Care\nProviding Support and Resources and priorities',
-    method: 'Team meetings',
-    channels: 'Team meetings\nEmail\nInstant Message\nSharePoint\nInternet web page?'
+    method: 'Team meetings\nEmail\nInstant Message\nSharePoint',
+    channels: 'Team meetings'
   },
   'MM': {
     description: 'Managed Markets',
     deliverable: 'Receive Updates\nProvide input per strategy, Implications for discussions with key external stakeholders',
     priority: 'Commercial Partner that connects to key external markets of National Accts, medicare NPO, includes Key Account Director KADs. Also focuses on reimbursement',
-    method: 'Slide Decks, Meetings, CCC Leadership SteerCo',
-    channels: 'Bi-Monthly Meetings\nEmail Updates\n(Extended Team Quarterly, Project Team Monthly)'
+    method: 'Slide Decks, Meetings, CCC Leadership SteerCo\nEmail Updates\n(Extended Team Quarterly, Project Team Monthly)',
+    channels: 'Bi-Monthly Meetings'
   },
   'Field Team': {
     description: 'KADs\nMSLs\nMVELs',
-    deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance (May 29, 2024)',
-    priority: 'Review of CCC partnering plans and visit with external professionals',
-    method: 'Review/discuss published data and approved plans with external professionals',
-    channels: 'Team meetings\nEmail\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)'
+    deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
+    priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
+    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)',
+    channels: 'Team meetings'
   },
   'RWE': {
     description: 'RWE in Medical Development',

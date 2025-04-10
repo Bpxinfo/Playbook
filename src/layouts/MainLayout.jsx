@@ -107,7 +107,7 @@ const MainLayout = ({ children }) => {
       ]
     },
     'compliance': {
-      title: 'Compliance Guidance',
+      title: 'Legal & Compliance',
       items: [
         // 'Overview',
         'Resources and Support',
@@ -825,7 +825,7 @@ const MainLayout = ({ children }) => {
                     className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <Shield className="w-4 h-4 mr-2" />
-                    Compliance Guidance
+                    Legal & Compliance
                   </a>
                   <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <Database className="w-4 h-4 mr-2" />
