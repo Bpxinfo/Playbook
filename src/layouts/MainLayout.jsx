@@ -87,16 +87,6 @@ const MainLayout = ({ children }) => {
         'Patient Impact'
       ]
     },
-    'communications': {
-      title: 'Communications',
-      items: [
-        'Channels',
-        'Cadence',
-        'CCC Stakeholders',
-        // 'Communication Path',
-        // 'Internal Engagement Strategies'
-      ]
-    },
     'project-archetype': {
       title: 'Projects Archetypes',
       items: [
@@ -106,6 +96,31 @@ const MainLayout = ({ children }) => {
         'Fee For Service',
         'Sponsorships',
         'Grants',
+      ]
+    },
+    'processes': {
+      title: 'Processes & Governance',
+      items: [
+        'Processes',
+        'Governance',
+        'SOPs & Resources'
+      ]
+    },
+    'compliance': {
+      title: 'Compliance Guidance',
+      items: [
+        // 'Overview',
+        'Resources and Support',
+      ]
+    },
+    'communications': {
+      title: 'Communications',
+      items: [
+        'Channels',
+        'Cadence',
+        'CCC Stakeholders',
+        // 'Communication Path',
+        // 'Internal Engagement Strategies'
       ]
     },
     'internal-onboarding': {
@@ -165,22 +180,6 @@ const MainLayout = ({ children }) => {
         },
       ]
     },
-    'processes': {
-      title: 'Processes & Governance',
-      items: [
-        'Processes',
-        'Governance',
-        'SOPs & Resources'
-      ]
-    },
-    'compliance': {
-      title: 'Compliance Guidance',
-      items: [
-        // 'Overview',
-        'Resources and Support',
-      ]
-    },
-
     'systems': {
       title: 'Systems',
       items: [

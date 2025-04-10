@@ -22,13 +22,6 @@ const CommunicationPlanHome = () => {
       icon: MessageSquare,
       subsections: [
         {
-          title: "CCC Stakeholders",
-          description: "Key stakeholders and their communication needs",
-          path: "/communications/ccc-stakeholders",
-          icon: Users,
-          color: "bg-blue-50"
-        },
-        {
           title: "Channels",
           description: "Communication channels and their usage",
           path: "/communications/channels",
@@ -40,6 +33,13 @@ const CommunicationPlanHome = () => {
           description: "Different message passing systems and flows",
           path: "/communications/cadence",
           icon: GitCommit,
+          color: "bg-blue-50"
+        },
+        {
+          title: "CCC Stakeholders",
+          description: "Key stakeholders and their communication needs",
+          path: "/communications/ccc-stakeholders",
+          icon: Users,
           color: "bg-blue-50"
         },
         // {

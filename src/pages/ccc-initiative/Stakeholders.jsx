@@ -95,7 +95,7 @@ const Stakeholders = () => {
 
           <section className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              CCC Leadership - SteerCo
+              CCC Leadership - SteerCo, Core and Extended Team
             </h2>
             <div className="space-y-4">
               <div className="bg-green-50 p-6 rounded-lg">

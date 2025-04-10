@@ -27,18 +27,11 @@ const HomePage = () => {
       color: "bg-green-50"
     },
     {
-      title: "Communications",
-      description: "Access internal and external communication strategies",
-      icon: MessageSquare,
-      path: "/communications",
-      color: "bg-purple-50"
-    },
-    {
-      title: "Internal Onboarding",
-      description: "Guide for new team member integration",
-      icon: UserPlus,
-      path: "/internal-onboarding",
-      color: "bg-yellow-50"
+      title: "Project Archetypes",
+      description: "Templates and frameworks for different project types",
+      icon: Folders,
+      path: "/project-archetypes",
+      color: "bg-teal-50"
     },
     {
       title: "Processes & Governance",
@@ -55,11 +48,18 @@ const HomePage = () => {
       color: "bg-indigo-50"
     },
     {
-      title: "Project Archetypes",
-      description: "Templates and frameworks for different project types",
-      icon: Folders,
-      path: "/project-archetypes",
-      color: "bg-teal-50"
+      title: "Communications",
+      description: "Access internal and external communication strategies",
+      icon: MessageSquare,
+      path: "/communications",
+      color: "bg-purple-50"
+    },
+    {
+      title: "Internal Onboarding",
+      description: "Guide for new team member integration",
+      icon: UserPlus,
+      path: "/internal-onboarding",
+      color: "bg-yellow-50"
     },
     {
       title: "Systems",

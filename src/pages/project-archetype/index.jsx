@@ -74,7 +74,6 @@ export default function ProjectArchetypeHome() {
               Building on our North Star - Elevating Partners to Impact Community Patients – the CCC seeks to accomplish our Strategic Pillars through the Core Principles that address each pillar.
             </p>
             
-            <h3 className="text-xl text-red-800 mb-4">Core Principles:</h3>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>Address unmet patient needs</li>
               <li>Enable community sites to better serve patients</li>

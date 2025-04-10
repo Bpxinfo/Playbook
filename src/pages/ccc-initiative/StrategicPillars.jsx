@@ -19,7 +19,7 @@ const StrategicPillars = () => {
     },
     {
       title: "Health Equity & Disparities",
-      description: "Address care gaps identified in the SE community setting with the potential to scale to other regions in the US",
+      description: "Address care gaps identified in the South East community setting with the potential to scale to other regions in the US",
       priorityAreas: [
         "Understand impact of care coordination and patient navigation with community stakeholders",
         "Understand impact and relationship of social determinants of health (SDOH) on cancer care equity"
@@ -42,7 +42,7 @@ const StrategicPillars = () => {
   return (
     <div className="p-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase flex items-center justify-center">
+        <h1 className="text-3xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase flex items-center justify-center">
           <Target className="w-8 h-8 mr-3" />
           Strategic Pillars
         </h1>
@@ -56,13 +56,13 @@ const StrategicPillars = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-red-800 p-6 rounded-lg">
                 <h3 className="text-xl text-white font-semibold mb-3">Mission:</h3>
-                <p className="text-white">
+                <p className="text-lg text-white">
                   Bring together key partners to improve the lives of patients receiving their cancer care in the community
                 </p>
               </div>
               <div className="bg-red-800 p-6 rounded-lg">
                 <h3 className="text-xl text-white font-semibold mb-3">Vision:</h3>
-                <p className="text-white">
+                <p className="text-lg text-white">
                   Effectively collaborate and partner with organizations across the country to identify impactful opportunities and implement innovative solutions
                 </p>
               </div>
@@ -77,18 +77,18 @@ const StrategicPillars = () => {
                         <IconComponent className="w-6 h-6 text-red-800" />
                       </div>
                     </div>
-                    <h2 className="text-lg font-semibold text-gray-800 mb-2">{pillar.title}</h2>
+                    <h2 className="text-xl font-semibold text-gray-800 mb-2">{pillar.title}</h2>
                     <div className="flex items-start mb-4">
                       <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
-                      <p className="text-gray-700 dark:text-black">{pillar.description}</p>
+                      <p className="text-lg text-gray-700 dark:text-black">{pillar.description}</p>
                     </div>
                     <div className="mt-4">
-                      <h3 className="text-md font-semibold text-gray-800 mb-2 dark:text-black">Priority Areas:</h3>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2 dark:text-black">Priority Areas:</h3>
                       <ul className="list-none space-y-2">
                         {pillar.priorityAreas.map((area, idx) => (
                           <li key={idx} className="flex items-start">
                             <ChevronRight className="w-4 h-4 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
-                            <span className="text-sm text-gray-700 dark:text-black">{area}</span>
+                            <span className="text-lg text-gray-700 dark:text-black">{area}</span>
                           </li>
                         ))}
                       </ul>

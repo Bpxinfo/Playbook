@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const stakeholderGroups = {
   cccInternal: {
-    title: 'CCC Internal Groups',
+    title: 'CCC Leadership - SteerCo, Core and Extended Teams',
     stakeholders: ['CCC Leadership SteerCo', 'CCC Core Team', 'CCC Extended Team', 'CCC Project Leads']
   },
   leadershipTeams: {
@@ -17,28 +17,28 @@ const stakeholderGroups = {
 
 const stakeholderData = {
   'CCC Leadership SteerCo': {
-    description: 'Definition of what SteerCo does. Functions included, what are their roles',
+    description: 'Advise & Advocate',
     deliverable: 'Provide guidance and endorsement of strategy, objectives, messaging\nReceive Updates',
-    priority: 'Advise & Advocate\nProvide direction and objectives to be executed',
+    priority: 'Provide direction and objectives to be executed',
     method: 'Slide Decks, Meetings',
     channels: 'Bi-Monthly Meetings\nEmail Updates'
   },
   'CCC Core Team': {
-    description: 'Advisors to the CCC',
+    description: 'Lead & Execute the CCC',
     deliverable: 'Provide Input on Projects, Guidance, Guardrails',
-    priority: 'Lead & Execute the CCC',
+    priority: 'Advisors to the CCC',
     method: 'Meetings, Discussion',
     channels: 'Bi-Weekly'
   },
   'CCC Extended Team': {
-    description: 'Alignment across extended',
+    description: 'Informed & Consulted',
     deliverable: 'Provide / Receive Information Updates',
-    priority: 'Informed & Consulted',
+    priority: 'Alignment across extended',
     method: 'Meetings, Email Updates',
     channels: 'Quarterly Meetings'
   },
   'CCC Project Leads': {
-    description: 'USMA Strategy, Lead, SEC, PAQ, GPFIS, MM',
+    description: 'USMA Strategy, SEC, PAQ, GPFIS, MM',
     deliverable: 'Provide Project Updates (milestones, risks, budget, spend, KPIs, Patient Impact data)',
     priority: 'Lead and Execute Projects',
     method: 'Meetings, Email Updates',
@@ -149,8 +149,8 @@ const CCCStakeholders = () => {
                 <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Description</th>
                 <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Deliverable [Receive / Provide]</th>
                 <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Priority</th>
-                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Method Communication</th>
-                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Communication Channels</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Channels</th>
+                <th className="border px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-900">Cadence</th>
               </tr>
             </thead>
             <tbody>
