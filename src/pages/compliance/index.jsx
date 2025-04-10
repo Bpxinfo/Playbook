@@ -21,7 +21,7 @@ const ComplianceHome = () => {
       color: "bg-blue-50"
     },
     {
-      title: "Full Compliance Document",
+      title: "Full Legal &Compliance Document",
       description: "Access the complete compliance documentation and detailed guidance for regulatory adherence.",
       action: () => window.open('https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents', '_blank'),
       icon: FileText,
