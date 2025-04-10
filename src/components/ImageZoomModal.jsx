@@ -147,7 +147,7 @@ const ImageZoomModal = ({ isOpen, onClose, imageUrl, altText }) => {
               <FiX size={24} />
             </button>
             
-            <div className="flex gap-4 mb-4">
+            <div className="flex gap-4 mb-4 items-center">
               <button
                 onClick={handleZoomIn}
                 className="bg-white rounded-full p-2 text-black hover:bg-gray-200"
@@ -160,6 +160,9 @@ const ImageZoomModal = ({ isOpen, onClose, imageUrl, altText }) => {
               >
                 <FiZoomOut size={20} />
               </button>
+              <span className="text-sm text-white ml-2">
+                Hold right click to drag canvas
+              </span>
             </div>
 
             <div 

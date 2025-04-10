@@ -14,7 +14,7 @@ const ComplianceHome = () => {
 
   const sections = [
     {
-      title: "Compliance Guidelines",
+      title: "Resources & Support",
       description: "Essential guidelines and requirements for maintaining regulatory compliance across all operations.",
       path: "/compliance/resources-and-support",
       icon: Shield,

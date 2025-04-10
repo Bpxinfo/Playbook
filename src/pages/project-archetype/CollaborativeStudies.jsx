@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import partnerSelection from '../../assets/partner-selection.jpg';
 import ImageWithZoom from '../../components/ImageWithZoom';
 
@@ -43,7 +44,7 @@ const CollaborativeStudies = () => {
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Prospectives (GRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li>FLOW Diagram</li>
+                    <li><Link to="/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
                     <li>Additional Governance (e.g. OPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Involved Roles</li>
@@ -54,7 +55,7 @@ const CollaborativeStudies = () => {
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Retrospectives (LRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li>FLOW Diagram</li>
+                    <li><Link to="/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
                     <li>Additional Governance (e.g. OPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Identify Journey, Experience</li>

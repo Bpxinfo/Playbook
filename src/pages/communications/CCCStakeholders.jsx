@@ -25,22 +25,22 @@ const stakeholderData = {
   },
   'CCC Core Team': {
     description: 'Lead & Execute the CCC',
-    deliverable: 'Provide Input on Projects, Guidance, Guardrails',
+    deliverable: 'Provide input on projects, guidance, guardrails',
     priority: 'Advisors to the CCC',
     method: 'Meetings, Discussion',
     channels: 'Bi-Weekly'
   },
   'CCC Extended Team': {
     description: 'Informed & Consulted',
-    deliverable: 'Provide / Receive Information Updates',
-    priority: 'Alignment across extended',
+    deliverable: 'Provide / receive information updates',
+    priority: 'Alignment across extended functions',
     method: 'Meetings, Email Updates',
     channels: 'Quarterly Meetings'
   },
   'CCC Project Leads': {
-    description: 'USMA Strategy, SEC, PAQ, GPFIS, MM',
-    deliverable: 'Provide Project Updates (milestones, risks, budget, spend, KPIs, Patient Impact data)',
-    priority: 'Lead and Execute Projects',
+    description: 'Lead and execute projects',
+    deliverable: 'Provide project updates (milestones, risks, budget, spend, KPIs, patient impact data)',
+    priority: 'USMA Strategy, SEC, PAQ, GPFIS, MM',
     method: 'Meetings, Email Updates',
     channels: 'Monthly'
   },
