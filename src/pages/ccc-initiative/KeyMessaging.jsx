@@ -8,16 +8,6 @@ const KeyMessages = () => {
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Key Messages</h1>
 
         <div className="space-y-6">
-          <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center">
-              <AlertCircle className="w-6 h-6 mr-2" />
-              Overview
-            </h2>
-            <div className="space-y-4">
-              <p className="text-gray-700">
-                The Community Cancer Collective (CCC) is advancing complex, multi-stakeholder projects to improve cancer outcomes and strengthen its role in community oncology. Through strategic partnerships, CCC drives impactful initiatives that enhance local cancer care and build site capabilities to better meet patient needs.                </p>
-            </div>
-          </section>
 
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center">

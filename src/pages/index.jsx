@@ -30,7 +30,7 @@ const HomePage = () => {
       title: "Project Archetypes",
       description: "Templates and frameworks for different project types",
       icon: Folders,
-      path: "/project-archetypes",
+      path: "/project-archetype",
       color: "bg-teal-50"
     },
     {

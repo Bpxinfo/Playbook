@@ -38,14 +38,13 @@ const CollaborativeStudies = () => {
           <section className="bg-white rounded-lg shadow-md p-6">
             <h3 className="text-xl font-semibold text-red-700 mb-3">Global Review Committee (GRC) / Local Review Committee (LRC)</h3>
             <div className="bg-gray-50 p-4 rounded-lg text-black">
-              <p className="mb-4 text-black">(GRC/LRC) – primarily for generating evidence.</p>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Prospectives (GRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
-                    <li>Additional Governance (e.g. OPRB)</li>
+                    <li><Link to="/processes/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
+                    <li>Additional Governance (e.g. oPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Involved Roles</li>
                     <li>Project</li>
@@ -55,25 +54,14 @@ const CollaborativeStudies = () => {
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Retrospectives (LRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
-                    <li>Additional Governance (e.g. OPRB)</li>
+                    <li><Link to="/processes/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
+                    <li>Additional Governance (e.g. oPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Identify Journey, Experience</li>
                   </ul>
                 </div>
               </div>
 
-              <div className="mt-6 text-black">
-                <h4 className="font-medium mb-2 text-black">CCC Additional Information</h4>
-                <ul className="list-disc pl-6 text-black">
-                  <li>CCC fits Within Current Evidence Gen Processes</li>
-                  <li>CCC Adjudication Committee</li>
-                  <li>Site Selection - CCC Partner Objective criteria</li>
-                  <li>Ensuring sufficient data, clinical infrastructure to support these studies</li>
-                  <li>MVELs/KADs (Key Account Director) have discussion with their sites</li>
-                  <li>RFP Program via GOptics, posted on AskGilead.com</li>
-                </ul>
-              </div>
             </div>
           </section>
         </div>

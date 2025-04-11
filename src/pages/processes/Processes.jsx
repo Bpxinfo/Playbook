@@ -305,26 +305,16 @@ const Processes = () => {
                 <AlertTriangle className="w-5 h-5 mr-2 dark:text-black" />
                 External Interaction Guidelines
               </h3>
-              <div className="mb-8">
-                <ImageWithZoom 
-                  src={legalcompliance} 
-                  alt="CCC Overview" 
-                  className="w-full rounded-lg shadow-lg mb-4"
-                />
-                <p className="text-sm text-gray-500 text-center">Legal & Compliance Guidance on CCC</p>
-              </div>
-              <div className="space-y-3">
-                {[
-                  "CCC discussions with customers are restricted to trained field personnel (MSLs, MVELs, KADs) using only approved materials, while sales teams including Oncology Sales Leadership must not engage in CCC discussions and must refer all inquiries to the CCC team",
-                  "CCC Leadership Steer Co and Home Office teams may discuss strategic objectives within existing Gilead policies, but CCC projects must never be discussed in connection with clinical pathways, formulary decisions, or contract negotiations for Gilead products",
-                  "All customer interactions regarding CCC must be channeled through the CCC team for follow-up, and commercial field personnel are prohibited from reaching out to CCC partners for project data or attending CCC-related meetings",
-                  "All CCC materials require appropriate internal review approval (MRC or PRC) before customer use"
-                ].map((text, index) => (
-                  <div key={index} className="flex items-start">
-                    <ChevronRight className="w-5 h-5 text-red-800 mr-2 mt-1 flex-shrink-0 dark:text-black" />
-                    <p className="text-gray-700 dark:text-black">{text}</p>
-                  </div>
-                ))}
+              <div className="text-center">
+                <a 
+                  href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-red-800 text-white rounded-lg hover:bg-red-900 transition-colors"
+                >
+                  <FileText className="w-5 h-5 mr-2" />
+                  View CCC Legal & Compliance Document
+                </a>
               </div>
             </div>
           </section>

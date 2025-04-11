@@ -851,7 +851,7 @@ const MainLayout = ({ children }) => {
                   </Link>
                   <a href="https://supabase.com/dashboard/project/ttfeudxktntujxehofzg/editor/29291?schema=public" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <BookOpen className="w-4 h-4 mr-2" />
-                    See All Feedback
+                    See All Feedback (Restricted)
                   </a>
                 </div>
               </div>

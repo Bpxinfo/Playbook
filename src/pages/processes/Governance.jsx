@@ -47,21 +47,21 @@ const ProcessesGovernance = () => {
       icon: Activity,
       color: "bg-blue-50"
     },
-    {
-      title: "ISR / Collaborative Studies Approval Process",
-      icon: Workflow,
-      color: "bg-green-50"
-    },
-    {
-      title: "RFP Process",
-      icon: FileText,
-      color: "bg-yellow-50"
-    },
-    {
-      title: "Multi-Institutional Ecosystem",
-      icon: Network,
-      color: "bg-purple-50"
-    }
+    // {
+    //   title: "ISR / Collaborative Studies Approval Process",
+    //   icon: Workflow,
+    //   color: "bg-green-50"
+    // },
+    // {
+    //   title: "RFP Process",
+    //   icon: FileText,
+    //   color: "bg-yellow-50"
+    // },
+    // {
+    //   title: "Multi-Institutional Ecosystem",
+    //   icon: Network,
+    //   color: "bg-purple-50"
+    // }
   ];
 
   return (
