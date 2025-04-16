@@ -37,7 +37,6 @@ const Channels = () => {
                         <li>SharePoint</li>
                         <li>Email Communications</li>
                         <li>Internal Newsletter</li>
-                        <li>Digital Bulletin Boards</li>
                       </ul>
                     </div>
                   </div>

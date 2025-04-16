@@ -18,10 +18,10 @@ const stakeholderGroups = {
 const stakeholderData = {
   'CCC Leadership SteerCo': {
     description: 'Advise & Advocate',
-    deliverable: 'Provide guidance and endorsement of strategy, objectives, messaging\nReceive Updates',
+    deliverable: 'Provide guidance and endorsement of strategy, \nobjectives, \nand key CCC messaging\nReceive regular updates regarding critical CCC Initiatives',
     priority: 'Provide direction and objectives to be executed',
-    method: 'Slide Decks, Meetings',
-    channels: 'Bi-Monthly Meetings\nEmail Updates'
+    method: 'Slide Decks, Meetings, Email',
+    channels: 'Bi-Monthly Meetings\n As needed'
   },
   'CCC Core Team': {
     description: 'Lead & Execute the CCC',
@@ -34,14 +34,14 @@ const stakeholderData = {
     description: 'Informed & Consulted',
     deliverable: 'Provide / receive information updates',
     priority: 'Alignment across extended functions',
-    method: 'Meetings, Email Updates',
+    method: 'Meetings, Email',
     channels: 'Quarterly Meetings'
   },
   'CCC Project Leads': {
     description: 'Lead and execute projects',
     deliverable: 'Provide project updates (milestones, risks, budget, spend, KPIs, patient impact data)',
-    priority: 'USMA Strategy, SEC, PAQ, GPFIS, MM',
-    method: 'Meetings, Email Updates',
+    priority: 'USMA Strategy, SEC, PAQ, PFIS, Managed Markets',
+    method: 'Meetings, Email',
     channels: 'Monthly'
   },
   'Executive Leadership': {
@@ -102,10 +102,10 @@ const stakeholderData = {
   },
   'HEOR': {
     description: 'HEOR in Commercial',
-    deliverable: 'Support PAQ studies, as needed',
+    deliverable: 'Support PAQ studies',
     priority: 'Value & Access',
     method: 'Study Updates, Extended Team',
-    channels: 'Quarterly'
+    channels: 'Quarterly, as needed'
   }
 };
 

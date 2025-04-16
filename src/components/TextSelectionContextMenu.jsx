@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { MessageSquare, X, HelpCircle } from 'lucide-react';
+import { MessageSquare, X, HelpCircle, Lightbulb } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -76,7 +76,7 @@ const TextSelectionContextMenu = () => {
         email: userEmail,
         section: getCurrentSection(),
         type: commentType,
-        description: `Selected Text: "${selectedText}"\n\n${commentType === 'question' ? 'Question' : 'Comment'}: ${comment}`,
+        description: `Selected Text: "${selectedText}"\n\n${commentType === 'question' ? 'Question' : commentType === 'idea' ? 'Idea' : 'Comment'}: ${comment}`,
         submitted_at: new Date().toISOString(),
         status: 'pending',
         source: 'context-menu-comment',
@@ -164,14 +164,24 @@ const TextSelectionContextMenu = () => {
             className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
           >
             <HelpCircle className="w-4 h-4" />
-            Add Question
+            Ask Question
+          </button>
+          <button
+            onClick={() => {
+              setShowCommentForm(true);
+              setCommentType('idea');
+            }}
+            className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
+          >
+            <Lightbulb className="w-4 h-4" />
+            Add Idea
           </button>
         </div>
       ) : (
         <div className="p-4">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-sm font-medium bg-white text-gray-900">
-              {commentType === 'question' ? 'Add Question' : 'Add Comment'}
+              {commentType === 'question' ? 'Add Question' : commentType === 'idea' ? 'Add Idea' : 'Add Comment'}
             </h3>
             <button
               onClick={() => setShowCommentForm(false)}
@@ -191,14 +201,14 @@ const TextSelectionContextMenu = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                {commentType === 'question' ? 'Your Question' : 'Your Comment'}
+                {commentType === 'question' ? 'Your Question' : commentType === 'idea' ? 'Your Idea' : 'Your Comment'}
               </label>
               <textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
                 rows={3}
-                placeholder={commentType === 'question' ? "Enter your question..." : "Enter your comment..."}
+                placeholder={commentType === 'question' ? "Enter your question..." : commentType === 'idea' ? "Enter your idea..." : "Enter your comment..."}
               />
             </div>
             {error && (
@@ -212,7 +222,7 @@ const TextSelectionContextMenu = () => {
               disabled={isSubmitting}
               className="w-full bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
             >
-              {isSubmitting ? 'Submitting...' : `Submit ${commentType === 'question' ? 'Question' : 'Comment'}`}
+              {isSubmitting ? 'Submitting...' : `Submit ${commentType === 'question' ? 'Question' : commentType === 'idea' ? 'Idea' : 'Comment'}`}
             </button>
           </form>
         </div>
