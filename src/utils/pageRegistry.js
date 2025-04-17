@@ -165,28 +165,28 @@ export const pageRegistry = {
       component: () => import('@/pages/compliance/index'),
       title: 'Compliance Overview'
     },
-    '/compliance/resources-and-support': {
-      component: () => import('@/pages/compliance/ComplianceGuidance'),
-      title: 'Compliance Guidance'
-    },
+    // '/compliance/resources-and-support': {
+    //   component: () => import('@/pages/compliance/ComplianceGuidance'),
+    //   title: 'Compliance Guidance'
+    // },
   
     // Systems
     '/systems': {
       component: () => import('@/pages/systems/index'),
       title: 'Systems Overview'
     },
-    '/systems/internal-platforms': {
-      component: () => import('@/pages/systems/InternalPlatforms'),
-      title: 'Internal Platforms'
-    },
-    '/systems/manual-systems': {
-      component: () => import('@/pages/systems/ManualSystems'),
-      title: 'Manual Systems'
-    },
-    '/systems/links-to-process': {
-      component: () => import('@/pages/systems/LinkstoProcess'),
-      title: 'Links to Process'
-    },
+    // '/systems/internal-platforms': {
+    //   component: () => import('@/pages/systems/InternalPlatforms'),
+    //   title: 'Internal Platforms'
+    // },
+    // '/systems/manual-systems': {
+    //   component: () => import('@/pages/systems/ManualSystems'),
+    //   title: 'Manual Systems'
+    // },
+    // '/systems/links-to-process': {
+    //   component: () => import('@/pages/systems/LinkstoProcess'),
+    //   title: 'Links to Process'
+    // },
   
     // Project Archetype
     '/project-archetype': {

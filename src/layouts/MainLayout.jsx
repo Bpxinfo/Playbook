@@ -182,11 +182,11 @@ const MainLayout = ({ children }) => {
     },
     'systems': {
       title: 'Systems',
-      items: [
-        'Internal Platforms',
-        //'Manual Systems',
-        // 'Links to Process'
-      ]
+      // items: [
+      //   'Internal Platforms',
+      //   //'Manual Systems',
+      //   // 'Links to Process'
+      // ]
     },
     'glossary': {
       title: 'Glossary of Terms',
