@@ -21,7 +21,7 @@ const CollaborativeStudies = () => {
               </p>
               <ul className="list-disc pl-6 mb-4 text-black">
                 <li>Collaborates with the Sponsor in the study design, study conduct, study analysis and report development, or publications.</li>
-                <li>Provides the Sponsor with access to data and/or biological samples from previous GSR trials.</li>
+                <li>Provides the Sponsor with access to data and/or biological samples from previous Gilead Sponsored Research (GSR) trials.</li>
                 <li>Intends to use the data resulting from this research as part of a Gilead regulatory submission.</li>
               </ul>
               <div className="bg-yellow-50 p-4 rounded-lg mb-4 text-black">
