@@ -208,7 +208,7 @@ export default ComplianceGuidance;
                 Guidelines for interactions between Gilead personnel and Customers/CCC Partners/Potential Partners:
               </p>
               <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li><strong>Medical Affairs (MSLs, MVels, etc.):</strong> May speak externally about CCC</li>
+                <li><strong>Medical Affairs (MSLs, MKALs, etc.):</strong> May speak externally about CCC</li>
                 <li><strong>KADs:</strong> May speak about CCC but cannot propose or oversee clinical studies, interventional studies, or others overseen by institutional review boards. May propose or oversee Health Equity and Education projects</li>
                 <li><strong>Home Office (Marketing, PA, Government Affairs, etc.):</strong> May speak about CCC, but limited to CCC strategic objectives and pillars</li>
                 <li><strong>Commercial Field (RMDs, TSs, RDs, EDs, ONEs, FRMs):</strong> May NOT speak about CCC</li>

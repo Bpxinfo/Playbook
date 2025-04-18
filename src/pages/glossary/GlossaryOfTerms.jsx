@@ -63,8 +63,8 @@ const GlossaryOfTerms = () => {
       definition: "Medical Science Liaison",
     },
     {
-      term: "MVEL",
-      definition: "Medical Value & Evidence Liaison",
+      term: "MKAL, formerly MVEL",
+      definition: "Medical Key Account Lead",
     },
     {
       term: "PAQ",

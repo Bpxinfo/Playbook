@@ -87,10 +87,10 @@ const stakeholderData = {
     channels: 'Bi-Monthly Meetings'
   },
   'Field Team': {
-    description: 'KADs\nMSLs\nMVELs',
+    description: 'KADs\nMSLs\nMKALs',
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
     priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
-    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)',
+    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MKALs)',
     channels: 'Team meetings'
   },
   'RWE': {
