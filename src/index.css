@@ -160,3 +160,40 @@ body:not(.dark) {
   color: #ffffff;
 }
 
+/* Target the td with the custom class */
+.row-span-bg-light-blue {
+  position: relative; /* Ensure positioning context */
+  /* overflow: hidden; */ /* Optional: Might help contain the pseudo-element if inset isn't perfect */
+}
+
+.row-span-bg-light-blue::before {
+  content: ''; /* Required */
+  display: block; /* Ensure it takes up space */
+  position: absolute; /* Position relative to the parent td */
+  inset: 0; /* Fill the parent td */
+  background-color: #EFF6FF; /* Tailwind's bg-blue-50 hex code */
+  /* z-index: -1; */ /* Removed */
+  /* Optional: If your cells have rounded corners */
+  /* border-radius: inherit; */
+}
+
+/* Add dark mode styling for the background */
+.dark .row-span-bg-light-blue::before {
+  background-color: #1E40AF; /* Tailwind's bg-blue-800 hex code - Adjust if needed */
+}
+
+/* --- CHANGE: Add rule to lift content above the background --- */
+.row-span-bg-light-blue .cell-content-above-bg {
+  position: relative; /* Establish stacking context for the content */
+  z-index: 1; /* Ensure content is above the pseudo-element */
+}
+
+/* Optional: If you want different colors, create more classes */
+/* .row-span-bg-light-green::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #F0FDF4; / * Tailwind's bg-green-50 * /
+  z-index: -1;
+} */
+
