@@ -59,7 +59,7 @@ const stakeholderData = {
     channels: 'Program and team meetings'
   },
   'PST': {
-    description: 'Program Strategy Team (lead by PSTs)',
+    description: 'Program Strategy Team',
     deliverable: 'Receive indication specific updates, study updates via SC\nProvide feedback on strategies',
     priority: 'Inform & Advise',
     method: 'Meetings',

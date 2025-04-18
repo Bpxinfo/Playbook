@@ -10,7 +10,7 @@ Strategy & Operations`,deliverable:`Implementation and integration of CCC Strate
 Receive CCC updates`,priority:"Implement objectives",method:"Presentations and meetings on objectives",channels:`Program and team meetings
 USMA SharePoint
 Email
-Instant Message`},PST:{description:"Program Strategy Team (lead by PSTs)",deliverable:`Receive indication specific updates, study updates via SC
+Instant Message`},PST:{description:"Program Strategy Team",deliverable:`Receive indication specific updates, study updates via SC
 Provide feedback on strategies`,priority:"Inform & Advise",method:"Meetings",channels:"Quarterly / as needed"},PAQ:{description:"Patient Assistance & Quality",deliverable:"Inform patients about PAQ, the services they provide and guide them through the application process",priority:"Help patients access medications and medical care they might otherwise be unable to afford",method:"Team meetings",channels:`Team meetings
 Email
 Instant Message
