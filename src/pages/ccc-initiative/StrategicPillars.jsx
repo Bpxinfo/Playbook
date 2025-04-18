@@ -54,15 +54,15 @@ const StrategicPillars = () => {
               Overview
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-red-800 p-6 rounded-lg">
-                <h3 className="text-xl text-white font-semibold mb-3">Mission:</h3>
-                <p className="text-lg text-white">
+              <div className="bg-red-200 p-6 rounded-lg">
+                <h3 className="text-xl text-grey font-semibold mb-3">Mission:</h3>
+                <p className="text-lg text-grey">
                   Bring together key partners to improve the lives of patients receiving their cancer care in the community
                 </p>
               </div>
-              <div className="bg-red-800 p-6 rounded-lg">
-                <h3 className="text-xl text-white font-semibold mb-3">Vision:</h3>
-                <p className="text-lg text-white">
+              <div className="bg-red-200 p-6 rounded-lg">
+                <h3 className="text-xl text-grey font-semibold mb-3">Vision:</h3>
+                <p className="text-lg text-grey">
                   Effectively collaborate and partner with organizations across the country to identify impactful opportunities and implement innovative solutions
                 </p>
               </div>
