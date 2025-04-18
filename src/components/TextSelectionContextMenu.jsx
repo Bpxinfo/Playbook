@@ -65,24 +65,29 @@ const TextSelectionContextMenu = () => {
         const range = selection.getRangeAt(0);
         const rangeRect = range.getBoundingClientRect();
 
+        // --- Capture Mouse Coords ---
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        // ---------------------------
+
+        // --- Viewport and Menu Dimensions/Estimates ---
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const estimatedFormHeight = 250;
         const reliableInitialMenuHeightEstimate = 100;
         const menuWidth = menuSize.width || 384;
-        const offset = 5;
+        const offset = 5; // Offset from mouse or selection edge
 
-        // Default position: below selection, aligned left
-        let top = rangeRect.bottom + offset;
-        let left = rangeRect.left;
+        // --- Initialize top/left (will be overwritten) ---
+        let top = 0;
+        let left = 0;
 
-        // Calculate available space
-        const spaceBelow = viewportHeight - rangeRect.bottom - offset;
-        const spaceRight = viewportWidth - rangeRect.left - offset; // Space right of selection start
+        // --- Calculate available space Below ---
+        const spaceBelow = viewportHeight - rangeRect.bottom - offset; // Space below selection
 
-        // Decide initial vertical placement (Above or Below)
+        // --- Decide Vertical Placement ---
         if (spaceBelow < estimatedFormHeight) {
-          // "Bottom Case": Not enough space below for the form.
+          // --- "Bottom Case": Position Above/Right of Selection (Logic unchanged) ---
           // Place *initial menu* above the selection.
           top = rangeRect.top - reliableInitialMenuHeightEstimate - offset;
           // Place left edge near right edge of selection for this case
@@ -91,41 +96,51 @@ const TextSelectionContextMenu = () => {
           if (left + menuWidth > viewportWidth - offset) {
             left = viewportWidth - menuWidth - offset;
           }
+          // --- End "Bottom Case" ---
+
         } else {
-          // "Default Case": Enough space below. Place below selection.
-          // Check horizontal space based on default left alignment
-          if (spaceRight < menuWidth) {
-            // Not enough space to the right, align right edge
+          // --- "Default Case": Position Top-Left near Mouse Cursor ---
+          // 1. Set position based on mouse coordinates
+          top = mouseY + offset;
+          left = mouseX + offset;
+
+          // 2. Check horizontal space *based on mouse position*
+          const spaceRightOfMouse = viewportWidth - mouseX - offset;
+          if (spaceRightOfMouse < menuWidth) {
+            // Not enough space to the right of mouse, align right edge of menu with viewport
             left = viewportWidth - menuWidth - offset;
           }
-          // 'top' remains rangeRect.bottom + offset (default)
+          // --- End "Default Case" ---
         }
-        // --- End Placement Logic ---
+        // --- End Initial Placement Calculation ---
 
-        // --- Final Boundary Adjustments ---
-        // 1. Prevent overflow at the BOTTOM edge (NEW CHECK)
-        // Check if the calculated 'top' position would make the *form* go off bottom
+
+        // --- Final Boundary Adjustments (Apply to both cases) ---
+        // 1. Prevent overflow at the BOTTOM edge
+        // Use estimatedFormHeight as it's the potentially tallest state
         if (top + estimatedFormHeight + offset > viewportHeight) {
-          // Adjust 'top' so the bottom edge aligns with viewport bottom
           top = viewportHeight - estimatedFormHeight - offset;
         }
 
-        // 2. Prevent overflow at the TOP edge (Existing Check)
+        // 2. Prevent overflow at the TOP edge
         top = Math.max(offset, top);
 
-        // 3. Prevent overflow at the LEFT edge (Existing Check)
+        // 3. Prevent overflow at the LEFT edge
         left = Math.max(offset, left);
         // --- End Final Boundary Adjustments ---
 
-        // Set position if not dragging
+
+        // --- Set Final State ---
+        // Set position only if not currently dragging
         if (!isDragging) {
             setPosition({ top, left });
         }
         setIsVisible(true);
-        setShowCommentForm(false);
+        setShowCommentForm(false); // Reset to show initial menu
         setComment('');
         setError('');
         setSuccess(false);
+        // --- End Set Final State ---
       } else {
         setIsVisible(false);
       }
@@ -268,104 +283,109 @@ const TextSelectionContextMenu = () => {
   return (
     <div
       ref={menuRef}
-      className="absolute bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50 flex flex-col"
+      className="absolute bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50 flex flex-row"
       style={{
         top: `${position.top}px`,
         left: `${position.left}px`,
         position: 'fixed',
-        cursor: isDragging ? 'grabbing' : 'default',
       }}
       onMouseDown={handleDragStart}
     >
       <div
-        className="text-center py-1 cursor-grab bg-gray-100 dark:bg-gray-700 rounded-t-md"
+        className={`
+          flex items-center justify-center px-1 cursor-grab bg-gray-100 dark:bg-gray-700 rounded-l-md
+          ${isDragging ? 'border-l-2 border-red-800' : ''}
+        `}
+        onMouseDown={handleDragStart}
       >
-        <GripVertical className="w-4 h-4 inline-block text-gray-400" />
+        <GripVertical className="w-4 h-4 text-gray-400" />
       </div>
 
-      {!showCommentForm ? (
-        <div className="py-1 flex-grow">
-          <button
-            onClick={() => {
-              setShowCommentForm(true);
-              setCommentType('comment');
-            }}
-            className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
-          >
-            <MessageSquare className="w-4 h-4" />
-            Add Comment
-          </button>
-          <button
-            onClick={() => {
-              setShowCommentForm(true);
-              setCommentType('question');
-            }}
-            className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
-          >
-            <HelpCircle className="w-4 h-4" />
-            Ask Question
-          </button>
-          <button
-            onClick={() => {
-              setShowCommentForm(true);
-              setCommentType('idea');
-            }}
-            className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
-          >
-            <Lightbulb className="w-4 h-4" />
-            Add Idea
-          </button>
-        </div>
-      ) : (
-        <div className="p-4 w-96 flex-grow">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-medium bg-white text-gray-900">
-              {commentType === 'question' ? 'Add Question' : commentType === 'idea' ? 'Add Idea' : 'Add Comment'}
-            </h3>
+      <div className="flex-grow">
+        {!showCommentForm ? (
+          <div className="py-1">
             <button
-              onClick={() => setShowCommentForm(false)}
-              className="text-gray-400 bg-white rounded-full p-1"
+              onClick={() => {
+                setShowCommentForm(true);
+                setCommentType('comment');
+              }}
+              className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
             >
-              <X className="w-4 h-4" />
+              <MessageSquare className="w-4 h-4" />
+              Add Comment
+            </button>
+            <button
+              onClick={() => {
+                setShowCommentForm(true);
+                setCommentType('question');
+              }}
+              className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
+            >
+              <HelpCircle className="w-4 h-4" />
+              Ask Question
+            </button>
+            <button
+              onClick={() => {
+                setShowCommentForm(true);
+                setCommentType('idea');
+              }}
+              className="w-full px-4 py-2 text-left text-gray-700 bg-white flex items-center gap-2 hover:bg-gray-50"
+            >
+              <Lightbulb className="w-4 h-4" />
+              Add Idea
             </button>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Selected Text
-              </label>
-              <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
-                "{selectedText}"
+        ) : (
+          <div className="p-4 w-96">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-sm font-medium bg-white text-gray-900">
+                {commentType === 'question' ? 'Add Question' : commentType === 'idea' ? 'Add Idea' : 'Add Comment'}
+              </h3>
+              <button
+                onClick={() => setShowCommentForm(false)}
+                className="text-gray-400 bg-white rounded-full p-1"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Selected Text
+                </label>
+                <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
+                  "{selectedText}"
+                </div>
               </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                {commentType === 'question' ? 'Your Question' : commentType === 'idea' ? 'Your Idea' : 'Your Comment'}
-              </label>
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                rows={2}
-                placeholder={commentType === 'question' ? "Enter your question..." : commentType === 'idea' ? "Enter your idea..." : "Enter your comment..."}
-              />
-            </div>
-            {error && (
-              <div className="text-sm text-red-600">{error}</div>
-            )}
-            {success && (
-              <div className="text-sm text-green-600">Submitted successfully!</div>
-            )}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
-            >
-              {isSubmitting ? 'Submitting...' : `Submit ${commentType === 'question' ? 'Question' : commentType === 'idea' ? 'Idea' : 'Comment'}`}
-            </button>
-          </form>
-        </div>
-      )}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {commentType === 'question' ? 'Your Question' : commentType === 'idea' ? 'Your Idea' : 'Your Comment'}
+                </label>
+                <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                  rows={2}
+                  placeholder={commentType === 'question' ? "Enter your question..." : commentType === 'idea' ? "Enter your idea..." : "Enter your comment..."}
+                />
+              </div>
+              {error && (
+                <div className="text-sm text-red-600">{error}</div>
+              )}
+              {success && (
+                <div className="text-sm text-green-600">Submitted successfully!</div>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-red-800 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
+              >
+                {isSubmitting ? 'Submitting...' : `Submit ${commentType === 'question' ? 'Question' : commentType === 'idea' ? 'Idea' : 'Comment'}`}
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
