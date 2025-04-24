@@ -11,7 +11,7 @@ const stakeholderGroups = {
   },
   functionalPartners: {
     title: 'Functional Partners',
-    stakeholders: ['PAQ', 'GPFIS', 'MM', 'Field Team', 'RWE', 'HEOR']
+    stakeholders: ['PAQ', 'GPFIS', 'Managed Markets', 'Field Team', 'RWE', 'HEOR']
   }
 };
 
@@ -24,7 +24,7 @@ const stakeholderData = {
     channels: 'Bi-Monthly Meetings\n As needed'
   },
   'CCC Core Team': {
-    description: 'Lead & Execute the CCC',
+    description: 'Lead & Execute',
     deliverable: 'Provide input on projects, guidance, guardrails',
     priority: 'Advisors to the CCC',
     method: 'Meetings, Discussion',
@@ -38,7 +38,7 @@ const stakeholderData = {
     channels: 'Quarterly Meetings'
   },
   'CCC Project Leads': {
-    description: 'Lead and execute projects',
+    description: 'Lead and execute CCC projects',
     deliverable: 'Provide project updates (milestones, risks, budget, spend, KPIs, patient impact data)',
     priority: 'USMA Strategy, SEC, PAQ, PFIS, Managed Markets',
     method: 'Meetings, Email',
@@ -79,7 +79,7 @@ const stakeholderData = {
     method: 'Team meetings\nEmail\nInstant Message\nSharePoint',
     channels: 'Team meetings'
   },
-  'MM': {
+  'Managed Markets': {
     description: 'Managed Markets',
     deliverable: 'Receive Updates\nProvide input per strategy, Implications for discussions with key external stakeholders',
     priority: 'Commercial Partner that connects to key external markets of National Accts, medicare NPO, includes Key Account Director KADs. Also focuses on reimbursement',
@@ -87,10 +87,10 @@ const stakeholderData = {
     channels: 'Bi-Monthly Meetings'
   },
   'Field Team': {
-    description: 'KADs\nMSLs\nMVELs',
+    description: 'KADs\nMSLs\nMKALs',
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
     priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
-    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MVELs)',
+    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MKAL)',
     channels: 'Team meetings'
   },
   'RWE': {

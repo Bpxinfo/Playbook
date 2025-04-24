@@ -1,33 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import { useCheckbox } from '../contexts/CheckboxContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const CheckboxItem = ({ id, text }) => {
+  const { user } = useAuth();
+  const { getCheckboxState, updateCheckboxState, isLoading } = useCheckbox();
   const [isChecked, setIsChecked] = useState(false);
   
   // Generate a unique ID based on the user's session and the checkbox ID
   const getStorageKey = () => {
-    // In a real app, you would use a proper user ID from authentication
-    // For demo purposes, we'll use a random session ID stored in localStorage
-    let sessionId = localStorage.getItem('guestSessionId');
-    if (!sessionId) {
-      sessionId = Math.random().toString(36).substring(2, 15);
-      localStorage.setItem('guestSessionId', sessionId);
+    // For non-authenticated users, we'll still use localStorage with a session ID
+    if (!user) {
+      let sessionId = localStorage.getItem('guestSessionId');
+      if (!sessionId) {
+        sessionId = Math.random().toString(36).substring(2, 15);
+        localStorage.setItem('guestSessionId', sessionId);
+      }
+      return `checkbox_${sessionId}_${id}`;
     }
-    return `checkbox_${sessionId}_${id}`;
+    return id;
   };
   
   useEffect(() => {
-    // Load the checkbox state from localStorage on component mount
-    const storedValue = localStorage.getItem(getStorageKey());
-    if (storedValue) {
-      setIsChecked(JSON.parse(storedValue));
+    // For authenticated users, use the database state
+    if (user && !isLoading) {
+      setIsChecked(getCheckboxState(id));
+    } else {
+      // For non-authenticated users, use localStorage
+      const storedValue = localStorage.getItem(getStorageKey());
+      if (storedValue) {
+        setIsChecked(JSON.parse(storedValue));
+      }
     }
-  }, [id]);
+  }, [id, user, isLoading, getCheckboxState]);
   
-  const handleToggle = () => {
+  const handleToggle = async () => {
     const newCheckedState = !isChecked;
     setIsChecked(newCheckedState);
-    // Save the new state to localStorage
-    localStorage.setItem(getStorageKey(), JSON.stringify(newCheckedState));
+    
+    console.log('Checkbox toggled. User:', user);
+    
+    if (user) {
+      // For authenticated users, update in the database
+      console.log(`Attempting to update Supabase for key: ${id}, state: ${newCheckedState}`);
+      await updateCheckboxState(id, newCheckedState);
+    } else {
+      // For non-authenticated users, save in localStorage
+      localStorage.setItem(getStorageKey(), JSON.stringify(newCheckedState));
+    }
   };
   
   return (

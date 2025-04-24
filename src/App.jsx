@@ -6,6 +6,7 @@ import { searchIndex } from '@/utils/searchIndex';
 import ContentIndexer from '@/components/ContentIndexer';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { CheckboxProvider } from '@/contexts/CheckboxContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
@@ -167,17 +168,21 @@ function App() {
                 </ProtectedRoute>
               } />
 
-              {/* Internal Onboarding */}
+              {/* Internal Onboarding - Wrapped with CheckboxProvider */}
               <Route path="/internal-onboarding" element={
                 <ProtectedRoute>
-                  <InternalOnboardingHome />
+                  <CheckboxProvider>
+                    <InternalOnboardingHome />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               
               {/* CCC Core Onboarding Page */}
               <Route path="/internal-onboarding/ccc-core" element={
                 <ProtectedRoute>
-                  <CCCCore />
+                  <CheckboxProvider>
+                    <CCCCore />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               
@@ -185,40 +190,52 @@ function App() {
               {/* CCC Extended */}
               <Route path="/internal-onboarding/ccc-extended/onboarding-checklist" element={
                 <ProtectedRoute>
-                  <OnboardingChecklist />
+                  <CheckboxProvider>
+                    <OnboardingChecklist />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               <Route path="/internal-onboarding/ccc-extended/welcome-orientation" element={
                 <ProtectedRoute>
-                  <WelcomeOrientation />
+                  <CheckboxProvider>
+                    <WelcomeOrientation />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               
               {/* CCC Leadership SteerCo */}
               <Route path="/internal-onboarding/ccc-leadership-steerco" element={
                 <ProtectedRoute>
-                  <CCCLeadershipSteerCo />
+                  <CheckboxProvider>
+                    <CCCLeadershipSteerCo />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
 
               {/* CCC Extended */}
               <Route path="/internal-onboarding/ccc-extended" element={
                 <ProtectedRoute>
-                  <CCCExtended />
+                  <CheckboxProvider>
+                    <CCCExtended />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               
               {/* CCC Field Team */}
               <Route path="/internal-onboarding/field-team" element={
                 <ProtectedRoute>
-                  <FieldTeam />
+                  <CheckboxProvider>
+                    <FieldTeam />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
               
               {/* Project Leads Onboarding Page */}
               <Route path="/internal-onboarding/project-leads" element={
                 <ProtectedRoute>
-                  <ProjectLeads />
+                  <CheckboxProvider>
+                    <ProjectLeads />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
             
@@ -226,7 +243,9 @@ function App() {
               {/* Ongoing Support */}
               <Route path="/internal-onboarding/ongoing-support" element={
                 <ProtectedRoute>
-                  <OngoingSupport />
+                  <CheckboxProvider>
+                    <OngoingSupport />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
 
@@ -262,7 +281,9 @@ function App() {
               } />
               <Route path="/internal-onboarding/external-links" element={
                 <ProtectedRoute>
-                  <ExternalLinks />
+                  <CheckboxProvider>
+                    <ExternalLinks />
+                  </CheckboxProvider>
                 </ProtectedRoute>
               } />
 
@@ -386,6 +407,45 @@ function App() {
                   <FeedbackForm />
                 </ProtectedRoute>
               } />
+
+              {/* Actual component routes with CheckboxProvider */}
+              <Route path="/internal-onboarding/ccc-core-extended/deepen-engagement" element={
+                <ProtectedRoute>
+                  <CheckboxProvider>
+                    <DeepenEngagement />
+                  </CheckboxProvider>
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/ccc-core-extended/full-integration" element={
+                <ProtectedRoute>
+                  <CheckboxProvider>
+                    <FullIntegration />
+                  </CheckboxProvider>
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/ccc-core-extended/immerse-contribute" element={
+                <ProtectedRoute>
+                  <CheckboxProvider>
+                    <ImmerseContribute />
+                  </CheckboxProvider>
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/ccc-core-extended/onboarding-checklist" element={
+                <ProtectedRoute>
+                  <CheckboxProvider>
+                    <OnboardingChecklist />
+                  </CheckboxProvider>
+                </ProtectedRoute>
+              } />
+              <Route path="/internal-onboarding/ccc-core-extended/welcome-orientation" element={
+                <ProtectedRoute>
+                  <CheckboxProvider>
+                    <WelcomeOrientation />
+                  </CheckboxProvider>
+                </ProtectedRoute>
+              } />
+              
+              {/* External links with CheckboxProvider */}
             </Route>
           </Routes>
         </Suspense>

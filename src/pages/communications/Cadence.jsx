@@ -83,8 +83,8 @@ const Cadence = () => {
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="5">Monthly</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Jira</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="3">Monthly</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Jira, Alignment Meetings, email</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Live Project Status, Milestones, Risks/Issues</td>
                     </tr>
@@ -95,22 +95,10 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project and Partner Updates</td>
                     </tr>
                     <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership SteerCo</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Core Team</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead + key stakeholders within Medical Affairs</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Review new key projects, discuss issues/delays in current projects, governance updates</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Alignment Meetings, email</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Project Leads</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Updates (e.g. milestones, budget updates, risks identified)</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Spotlights</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Teams, email</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Lead(s)</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Project Updates</td>
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Extended Team</td>
