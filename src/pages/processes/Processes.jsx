@@ -212,7 +212,7 @@ const Processes = () => {
               </div>
             </div>
 
-            {/* Adjudication Committee */}
+            {/* Adjudication Committee
             <div className="bg-purple-50 rounded-lg shadow p-6">
               <h3 className="text-lg font-semibold text-red-800 mb-4 flex items-center dark:text-black">
                 <Shield className="w-5 h-5 mr-2 dark:text-black" />
@@ -231,7 +231,7 @@ const Processes = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </section>
 
           <section id="project-operations" className="bg-white rounded-lg shadow-lg p-6">
