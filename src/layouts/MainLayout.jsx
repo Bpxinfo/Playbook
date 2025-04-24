@@ -106,13 +106,6 @@ const MainLayout = ({ children }) => {
         'SOPs & Resources'
       ]
     },
-    'compliance': {
-      title: 'Legal & Compliance',
-      // items: [
-      //   // 'Overview',
-      //   'Resources and Support',
-      // ]
-    },
     'communications': {
       title: 'Communications',
       items: [
@@ -127,6 +120,11 @@ const MainLayout = ({ children }) => {
       title: 'Internal Onboarding',
       items: [],
       subsections: [
+        {
+          id: 'legal-compliance',
+          title: 'Legal & Compliance',
+          items: []
+        },
         {
           id: 'ccc-core',
           title: 'CCC Core',
@@ -217,10 +215,6 @@ const MainLayout = ({ children }) => {
     'processes': {
       icon: Settings,
       defaultRoute: '/processes'
-    },
-    'compliance': {
-      icon: Shield,
-      defaultRoute: '/compliance'
     },
     'systems': {
       icon: Database,
@@ -825,8 +819,12 @@ const MainLayout = ({ children }) => {
                     className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <Shield className="w-4 h-4 mr-2" />
-                    Legal & Compliance
+                    Legal & Compliance (External)
                   </a>
+                  <Link to="/internal-onboarding/legal-compliance" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Shield className="w-4 h-4 mr-2" />
+                    Legal & Compliance
+                  </Link>
                   <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <Database className="w-4 h-4 mr-2" />
                     SOPs & Resources
@@ -1022,7 +1020,9 @@ const MainLayout = ({ children }) => {
                                       )}
                                     >
                                       <span className="text-sm">{subsection.title}</span>
-                                      <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
+                                      {subsection.items && subsection.items.length > 0 && (
+                                        <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${expandedSubSection === subsection.id ? 'rotate-180' : ''}`} />
+                                      )}
                                     </button>
                                     
                                     <AnimatePresence>

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const stakeholderGroups = {
   cccInternal: {
-    title: 'CCC Leadership - SteerCo, Core and Extended Teams',
-    stakeholders: ['CCC Leadership SteerCo', 'CCC Core Team', 'CCC Extended Team', 'CCC Project Leads']
+    title: 'CCC Team - Core, Extended, Project Leads',
+    stakeholders: ['CCC Core Team', 'CCC Extended Team', 'CCC Project Leads']
   },
   leadershipTeams: {
     title: 'Leadership Teams',
-    stakeholders: ['Executive Leadership', 'USMA Oncology', 'PST']
+    stakeholders: ['Executive Leadership', 'USMA Oncology LT', 'CCC Leadership SteerCo']
   },
   functionalPartners: {
     title: 'Functional Partners',
@@ -45,20 +45,20 @@ const stakeholderData = {
     channels: 'Monthly'
   },
   'Executive Leadership': {
-    description: 'Michael (MALT)\nSandrine (SLT)\nJohanna',
+    description: 'CCC reports to: Michael (MALT)\nSandrine (SLT)\nJohanna',
     deliverable: 'Receive Updates, Approve Budgets, Strategic Direction',
     priority: 'Remove Roadblocks',
     method: 'Deck, Meetings, Email Updates, Updates from CCC Leadership SteerCo',
     channels: 'Bi-Annual'
   },
-  'USMA Oncology': {
-    description: 'USMA Strategy\nMSLs\nSEC\nStrategy & Operations',
+  'USMA Oncology LT': {
+    description: 'Functions include: USMA Strategy, MSL, SEC, PAQ',
     deliverable: 'Implementation and integration of CCC Strategy\nReceive CCC updates',
     priority: 'Implement objectives',
     method: 'Presentations and meetings on objectives\nUSMA SharePoint\nEmail\nInstant Message',
     channels: 'Program and team meetings'
   },
-  'PST': {
+  'Leadership SteerCo': {
     description: 'Program Strategy Team',
     deliverable: 'Receive indication specific updates, study updates via SC\nProvide feedback on strategies',
     priority: 'Inform & Advise',

@@ -60,7 +60,6 @@ const LinktoSGF = lazy(() => import('@/pages/processes/RandD.jsx'));
 
 // Compliance
 const ComplianceHome = lazy(() => import('@/pages/compliance/index.jsx'));
-const ComplianceGuidance = lazy(() => import('@/pages/compliance/ComplianceGuidance.jsx'));
 
 // Systems
 const SystemsHome = lazy(() => import('@/pages/systems/index.jsx'));
@@ -249,44 +248,15 @@ function App() {
                 </ProtectedRoute>
               } />
 
-              <Route path="/internal-onboarding/ccc-core-extended/ongoing-support" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ongoing-support" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/deepen-engagement" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ccc-core-extended/deepen-engagement" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/full-integration" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ccc-core-extended/full-integration" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/immerse,-contribute" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ccc-core-extended/immerse-contribute" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/onboarding-checklist" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ccc-core-extended/onboarding-checklist" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/welcome-orientation" element={
-                <ProtectedRoute>
-                  <Navigate to="/internal-onboarding/ccc-core-extended/welcome-orientation" replace />
-                </ProtectedRoute>
-              } />
-              <Route path="/internal-onboarding/external-links" element={
+              {/* Legal & Compliance - Moved from top level to internal-onboarding */}
+              <Route path="/internal-onboarding/legal-compliance" element={
                 <ProtectedRoute>
                   <CheckboxProvider>
-                    <ExternalLinks />
+                    <ComplianceHome />
                   </CheckboxProvider>
                 </ProtectedRoute>
               } />
-
+              
               {/* Processes */}
               <Route path="/processes" element={
                 <ProtectedRoute>
@@ -306,18 +276,6 @@ function App() {
               <Route path="/processes/sops-&-resources" element={
                 <ProtectedRoute>
                   <LinktoSGF />
-                </ProtectedRoute>
-              } />
-
-              {/* Compliance */}
-              <Route path="/compliance" element={
-                <ProtectedRoute>
-                  <ComplianceHome />
-                </ProtectedRoute>
-              } />
-              <Route path="/compliance/resources-and-support" element={
-                <ProtectedRoute>
-                  <ComplianceGuidance />
                 </ProtectedRoute>
               } />
 

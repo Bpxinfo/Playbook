@@ -41,13 +41,6 @@ const HomePage = () => {
       color: "bg-pink-50"
     },
     {
-      title: "Legal & Compliance",
-      description: "Understanding regulatory requirements and compliance protocols",
-      icon: Shield,
-      path: "/compliance",
-      color: "bg-indigo-50"
-    },
-    {
       title: "Communications",
       description: "Access internal and external communication strategies",
       icon: MessageSquare,
