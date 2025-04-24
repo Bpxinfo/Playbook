@@ -4,7 +4,8 @@ import {
   Settings,
   GitBranch,
   FileText,
-  ArrowRight 
+  ArrowRight,
+  Shield
 } from 'lucide-react';
 
 const ProcessesHome = () => {
@@ -12,23 +13,16 @@ const ProcessesHome = () => {
 
   const sections = [
     {
-      title: "Processes",
-      description: "Comprehensive overview of operational processes and workflows.",
-      path: "/processes/processes",
+      title: "Processes & Governance",
+      description: "Comprehensive overview of operational processes, governance frameworks, and workflows.",
+      path: "/processes/processes-and-governance",
       icon: GitBranch,
       color: "bg-purple-50"
     },
     {
-      title: "Governance",
-      description: "Access to governance frameworks and oversight mechanisms.",
-      path: "/processes/governance",
-      icon: Settings,
-      color: "bg-blue-50"
-    },
-    {
       title: "SOPs & Resources",
       description: "Access to standard operating procedures, forms, and other essential documentation.",
-      path: "/processes/sops-&-resources",
+      path: "/processes/sops-and-resources",
       icon: FileText,
       color: "bg-yellow-50"
     }
@@ -86,7 +80,7 @@ const ProcessesHome = () => {
                 Start with the Processes & Governance section to understand our operational framework, then explore specific areas based on your needs. The Legal & Compliance Guidance section is essential for all team members.
               </p>
               <button
-                onClick={() => navigate('/processes/processes-&-governance')}
+                onClick={() => navigate('/processes/processes')}
                 className="bg-red-800 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 Start Here

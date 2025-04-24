@@ -147,15 +147,11 @@ export const pageRegistry = {
       component: () => import('@/pages/processes/index'),
       title: 'Processes Overview'
     },
-    '/processes/processes': {
+    '/processes/processes-and-governance': {
       component: () => import('@/pages/processes/Processes'),
-      title: 'Processes'
+      title: 'Processes & Governance'
     },
-    '/processes/governance': {
-      component: () => import('@/pages/processes/Governance'),
-      title: 'Governance'
-    },
-    '/processes/sops-&-resources': {
+    '/processes/sops-and-resources': {
       component: () => import('@/pages/processes/RandD'),
       title: 'SOPs & Resources'
     },

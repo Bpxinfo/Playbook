@@ -146,11 +146,11 @@ const Breadcrumbs = () => {
     'processes': {
       label: 'Processes & Governance'
     },
-    'processes-&-governance': {
+    'processes-and-governance': {
       label: 'Processes & Governance',
       parent: 'processes'
     },
-    'sops-&-resources': {
+    'sops-and-resources': {
       label: 'SOPs & Resources',
       parent: 'processes'
     },

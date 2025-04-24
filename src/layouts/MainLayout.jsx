@@ -101,8 +101,7 @@ const MainLayout = ({ children }) => {
     'processes': {
       title: 'Processes & Governance',
       items: [
-        'Processes',
-        'Governance',
+        'Processes and Governance',
         'SOPs & Resources'
       ]
     },
@@ -827,7 +826,7 @@ const MainLayout = ({ children }) => {
                     <Shield className="w-4 h-4 mr-2" />
                     Legal & Compliance
                   </a>
-                  <Link to="/processes/sops-&-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <Link to="/processes/sops-and-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <Database className="w-4 h-4 mr-2" />
                     SOPs & Resources
                   </Link>

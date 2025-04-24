@@ -39,7 +39,7 @@ const CCCFAQs = () => {
     },
     {
       question: "How does CCC governance work?",
-      answer: "CCC governance includes:\n\n• CCC Leadership SteerCo: Advises and advocates and provides strategic direction\n\n• CCC Adjudication Committee: Serves two key purposes:\n   - Determines the appropriate division (i.e., Medical vs Commercial) within Gilead to route candidate initiatives for evaluation\n   - Maps candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e. ISR, grants, etc)\n\n• CCC Project Review Process: includes the CCC Adjudication Committee to start and then follows the appropriate internal Gilead review/approval process\n\n📖 [Learn more in Governance](/processes/governance)",
+      answer: "CCC governance includes:\n\n• CCC Leadership SteerCo: Advises and advocates and provides strategic direction\n\n• CCC Adjudication Committee: Serves two key purposes:\n   - Determines the appropriate division (i.e., Medical vs Commercial) within Gilead to route candidate initiatives for evaluation\n   - Maps candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e. ISR, grants, etc)\n\n• CCC Project Review Process: includes the CCC Adjudication Committee to start and then follows the appropriate internal Gilead review/approval process\n\n📖 [Learn more in Processes & Governance](/processes/processes)",
       icon: Shield,
       color: "bg-orange-50 dark:bg-gray-800"
     },

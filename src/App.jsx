@@ -54,8 +54,7 @@ const FieldTeam = lazy(() => import('@/pages/internal-onboarding/OWCombined.jsx'
 
 // Processes
 const ProcessesHome = lazy(() => import('@/pages/processes/index.jsx'));
-const Processes = lazy(() => import('@/pages/processes/Processes.jsx'));
-const ProcessesGovernance = lazy(() => import('@/pages/processes/Governance.jsx'));
+const ProcessesAndGovernance = lazy(() => import('@/pages/processes/Processes.jsx'));
 const LinktoSGF = lazy(() => import('@/pages/processes/RandD.jsx'));
 
 // Compliance
@@ -293,17 +292,17 @@ function App() {
                   <ProcessesHome />
                 </ProtectedRoute>
               } />
-              <Route path="/processes/processes" element={
+              <Route path="/processes/Processes" element={
                 <ProtectedRoute>
-                  <Processes />
+                  <ProcessesAndGovernance />
                 </ProtectedRoute>
               } />
-              <Route path="/processes/governance" element={
+              <Route path="/processes/processes-and-governance" element={
                 <ProtectedRoute>
-                  <ProcessesGovernance />
+                  <ProcessesAndGovernance />
                 </ProtectedRoute>
               } />
-              <Route path="/processes/sops-&-resources" element={
+              <Route path="/processes/sops-and-resources" element={
                 <ProtectedRoute>
                   <LinktoSGF />
                 </ProtectedRoute>

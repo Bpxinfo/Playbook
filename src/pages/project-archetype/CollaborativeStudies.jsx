@@ -43,7 +43,7 @@ const CollaborativeStudies = () => {
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Prospectives (GRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
+                    <li><Link to="/processes/processes-and-governance" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
                     <li>Additional Governance (e.g. oPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Involved Roles</li>
@@ -54,7 +54,7 @@ const CollaborativeStudies = () => {
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
                   <h4 className="font-medium mb-2 text-black">Retrospectives (LRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes/processes" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
+                    <li><Link to="/processes/processes-and-governance" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
                     <li>Additional Governance (e.g. oPRB)</li>
                     <li>Expected Timeline</li>
                     <li>Identify Journey, Experience</li>
