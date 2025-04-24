@@ -64,7 +64,6 @@ const CommunicationPlanHome = () => {
     <div className="p-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Communications</h1>
-
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-2xl text-red-800 mb-4">Overview</h2>
