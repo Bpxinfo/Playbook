@@ -64,10 +64,12 @@ const CommunicationPlanHome = () => {
     <div className="p-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Communications</h1>
-
         <div className="space-y-6">
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Core Objectives</h2>
+          <div className="bg-white p-3 rounded-full shadow-md mr-4">
+                <MessageSquare className="w-8 h-8 text-red-800" />
+              </div>
+            <h2 className="text-2xl text-red-800 mb-4">Communications</h2>
             <div className="space-y-4">
               <p className="text-gray-700">
                 The CCC communication objectives aim to ensure clear, consistent, and timely information flow that supports stakeholder engagement, cross-functional collaboration, and organizational alignment. By establishing clear channels, fostering transparency, and encouraging active participation, the framework strengthens relationships across teams. Guided by principles of clarity, consistency, timeliness, relevance, accessibility, and transparency, CCC's communication approach ensures stakeholders stay informed, engaged, and aligned with the initiative's goals.              </p>
