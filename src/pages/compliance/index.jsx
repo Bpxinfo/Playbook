@@ -8,20 +8,21 @@ import {
   CheckCircle,
   BookOpen,
   AlertTriangle,
-  Info
+  Info,
+  HelpCircle
 } from 'lucide-react';
 
 const ComplianceHome = () => {
   const navigate = useNavigate();
 
   const sections = [
-    {
-      title: "Resources & Support",
-      description: "Essential guidelines and requirements for maintaining regulatory compliance across all operations.",
-      path: "/compliance/resources-and-support",
-      icon: Shield,
-      color: "bg-blue-50"
-    },
+    // {
+    //   title: "Resources & Support",
+    //   description: "Essential guidelines and requirements for maintaining regulatory compliance across all operations.",
+    //   path: "/compliance/resources-and-support",
+    //   icon: Shield,
+    //   color: "bg-blue-50"
+    // },
     {
       title: "Full Legal & Compliance Document",
       description: "Access the complete compliance documentation and detailed guidance for regulatory adherence.",
@@ -29,13 +30,13 @@ const ComplianceHome = () => {
       icon: FileText,
       color: "bg-purple-50"
     },
-    // {
-    //   title: "Risk Management",
-    //   description: "Framework for identifying, assessing, and managing compliance risks.",
-    //   path: "/compliance/risk-management",
-    //   icon: AlertCircle,
-    //   color: "bg-green-50"
-    // },
+    {
+      title: "Need Help?",
+      description: "If you have questions about compliance requirements or need clarification on any guidelines, please submit feedback or contact your compliance officer.",
+      path: "/feedback",
+      icon: HelpCircle,
+      color: "bg-green-50"
+    },
     // {
     //   title: "Training & Resources",
     //   description: "Compliance training materials and educational resources for team members.",
@@ -64,31 +65,6 @@ const ComplianceHome = () => {
               Our structured approach ensures that all activities align with regulatory requirements while maintaining operational efficiency and supporting our mission to improve community cancer care.
             </p>
           </section>
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {sections.map((section, index) => {
-              const IconComponent = section.icon;
-              return (
-                <button
-                  key={index}
-                  onClick={() => section.action ? section.action() : navigate(section.path)}
-                  className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left`}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <div className="bg-white p-3 rounded-full shadow-md mr-4">
-                        <IconComponent className="w-6 h-6 text-red-800" />
-                      </div>
-                      <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-gray-600 ml-16">{section.description}</p>
-                </button>
-              );
-            })}
-          </div>
 
           <div>
             <section id="key-compliance-principles" className="bg-white rounded-lg shadow-md p-6">
@@ -131,8 +107,34 @@ const ComplianceHome = () => {
               </div>
             </section>
           </div>
-  
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {sections.map((section, index) => {
+              const IconComponent = section.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => section.action ? section.action() : navigate(section.path)}
+                  className={`${section.color} p-6 rounded-lg shadow-md hover:shadow-lg transition-all group text-left`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <div className="bg-white p-3 rounded-full shadow-md mr-4">
+                        <IconComponent className="w-6 h-6 text-red-800" />
+                      </div>
+                      <h2 className="text-xl font-semibold text-gray-800">{section.title}</h2>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-red-800 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <p className="text-gray-600 ml-16">{section.description}</p>
+                </button>
+              );
+            })}
+          </div>
+
+
+
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Source Reference</h2>
               <p className="text-gray-700 mb-4">
@@ -166,7 +168,11 @@ const ComplianceHome = () => {
                 </button>
               </div>
             </section>
-          </div>
+          </div> */}
+
+
+  
+
 
         </div>
       </div>
