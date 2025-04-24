@@ -108,10 +108,10 @@ const MainLayout = ({ children }) => {
     },
     'compliance': {
       title: 'Legal & Compliance',
-      items: [
-        // 'Overview',
-        'Resources and Support',
-      ]
+      // items: [
+      //   // 'Overview',
+      //   'Resources and Support',
+      // ]
     },
     'communications': {
       title: 'Communications',
@@ -182,11 +182,11 @@ const MainLayout = ({ children }) => {
     },
     'systems': {
       title: 'Systems',
-      items: [
-        'Internal Platforms',
-        //'Manual Systems',
-        // 'Links to Process'
-      ]
+      // items: [
+      //   'Internal Platforms',
+      //   //'Manual Systems',
+      //   // 'Links to Process'
+      // ]
     },
     'glossary': {
       title: 'Glossary of Terms',

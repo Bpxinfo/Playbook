@@ -63,7 +63,7 @@ const GlossaryOfTerms = () => {
       definition: "Medical Science Liaison",
     },
     {
-      term: "MKAL",
+      term: "MKAL, formerly MVEL",
       definition: "Medical Key Account Lead",
     },
     {

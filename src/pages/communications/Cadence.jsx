@@ -102,9 +102,11 @@ const Cadence = () => {
                     </tr>
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Extended Team</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="2">Quarterly</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 relative row-span-bg-light-blue" rowSpan="2">
+                        <span className="cell-content-above-bg">Quarterly</span>
+                        </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Core Team</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Agenda Driven Updates</td>
                     </tr>
                     <tr>
@@ -113,13 +115,7 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead + Newsletter Lead (MSL rotation)</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Spotlights, Updates, etc</td>
                     </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership SteerCo</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Bimonthly</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Critical CCC Updates, Strategy Alignment</td>
-                    </tr>
+
                   </tbody>
                 </table>
               </div>

@@ -6,7 +6,9 @@ import {
   AlertCircle,
   ArrowRight,
   CheckCircle,
-  BookOpen
+  BookOpen,
+  AlertTriangle,
+  Info
 } from 'lucide-react';
 
 const ComplianceHome = () => {
@@ -21,7 +23,7 @@ const ComplianceHome = () => {
       color: "bg-blue-50"
     },
     {
-      title: "Full Legal &Compliance Document",
+      title: "Full Legal & Compliance Document",
       description: "Access the complete compliance documentation and detailed guidance for regulatory adherence.",
       action: () => window.open('https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents', '_blank'),
       icon: FileText,
@@ -63,6 +65,7 @@ const ComplianceHome = () => {
             </p>
           </section>
 
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {sections.map((section, index) => {
               const IconComponent = section.icon;
@@ -87,6 +90,48 @@ const ComplianceHome = () => {
             })}
           </div>
 
+          <div>
+            <section id="key-compliance-principles" className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-2xl text-red-800 mb-4">Key Compliance Principles</h2>
+              <div className="space-y-4">
+                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                  <div className="flex items-start gap-4">
+                    <AlertTriangle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1 dark:text-black" />
+                    <div>
+                      <h3 className="font-medium text-gray-800 mb-2 dark:text-black">Important Compliance Notes</h3>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-black">
+                        <li>All CCC activities must comply with applicable laws, regulations, and company policies</li>
+                        <li>Consult Legal/Compliance for guidance on specific activities or questions</li>
+                        <li>Document decisions and maintain records of compliance reviews</li>
+                        <li>Report any compliance concerns through appropriate channels</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-lg">
+                  <div className="flex items-start gap-4">
+                    <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1 dark:text-black" />
+                    <div>
+                      <h3 className="font-medium text-gray-800 mb-2 dark:text-black">Full Compliance Document</h3>
+                      <p className="text-gray-700 dark:text-black">
+                        For the complete CCC Legal & Compliance Guidance document, please click{' '}
+                        <a
+                          href="https://gileadconnect.sharepoint.com/sites/GNet-ER-BusinessConduct/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents%2FCCC%20Legal%20%26%20Compliance%20Guidance%20%2D%20Final%20as%20of%2005%2E2024%2Epdf&parent=%2Fsites%2FGNet%2DER%2DBusinessConduct%2FShared%20Documents"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          here
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div> */}
+              </div>
+            </section>
+          </div>
+  
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Source Reference</h2>
@@ -100,7 +145,7 @@ const ComplianceHome = () => {
                 Start Here
               </button>
             </section>
-
+       
             <section className="bg-gray-50 rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">Need Help?</h2>
               <p className="text-gray-700 mb-4">
@@ -122,6 +167,7 @@ const ComplianceHome = () => {
               </div>
             </section>
           </div>
+
         </div>
       </div>
     </div>

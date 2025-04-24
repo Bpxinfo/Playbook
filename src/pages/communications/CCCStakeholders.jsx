@@ -59,7 +59,7 @@ const stakeholderData = {
     channels: 'Program and team meetings'
   },
   'PST': {
-    description: 'Program Strategy Team (lead by PSTs)',
+    description: 'Program Strategy Team',
     deliverable: 'Receive indication specific updates, study updates via SC\nProvide feedback on strategies',
     priority: 'Inform & Advise',
     method: 'Meetings',
@@ -90,7 +90,7 @@ const stakeholderData = {
     description: 'KADs\nMSLs\nMKALs',
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
     priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
-    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MKAL)',
+    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MKALs)',
     channels: 'Team meetings'
   },
   'RWE': {

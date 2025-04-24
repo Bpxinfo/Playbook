@@ -28,7 +28,7 @@ const Stakeholders = () => {
     // },
     // {
     //   title: "Cross Functional Field Team",
-    //   description: "Our field team consists of Medical Value Executive Liaisons (MVELs), Medical Science Liaisons (MSLs), and Key Account Directors (KADs). They build and maintain relationships with healthcare providers at academic institutions and clinics, delivering targeted messaging that aligns with our brand strategy.",
+    //   description: "Our field team consists of Medical Key Account Leads (MKALs), Medical Science Liaisons (MSLs), and Key Account Directors (KADs). They build and maintain relationships with healthcare providers at academic institutions and clinics, delivering targeted messaging that aligns with our brand strategy.",
     //   icon: UserCheck,
     //   color: "bg-purple-50"
     // },
