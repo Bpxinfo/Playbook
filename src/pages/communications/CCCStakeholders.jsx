@@ -49,7 +49,7 @@ const stakeholderData = {
     deliverable: 'Receive Updates, Approve Budgets, Endorse Strategic Direction',
     priority: 'Remove Roadblocks',
     method: 'Deck, Meetings, Email Updates, Updates from CCC Leadership SteerCo',
-    channels: 'Bi-Annual'
+    channels: 'Upon Request'
   },
   'USMA Oncology LT': {
     description: 'USMA Strategy, MSL, SEC, PAQ',
@@ -84,7 +84,7 @@ const stakeholderData = {
     deliverable: 'Receive Updates\nProvide input per strategy, Implications for discussions with key external stakeholders',
     priority: 'Commercial Partner that connects to key external markets of National Accts, medicare NPO, includes Key Account Director KADs. Also focuses on reimbursement',
     method: 'Slide Decks, Meetings, CCC Leadership SteerCo\nEmail Updates\n(Extended Team Quarterly, Project Team Monthly)',
-    channels: 'Bi-Monthly Meetings'
+    channels: 'Team meetings'
   },
   'Field Team': {
     description: 'KADs\nMSLs\nMKALs',
@@ -98,14 +98,14 @@ const stakeholderData = {
     deliverable: 'Support PAQ studies, OPRB point of contact',
     priority: 'Medical Development focused, supports HEOR Value & Access',
     method: 'Study Updates, Extended Team',
-    channels: 'Quarterly'
+    channels: 'Team meetings'
   },
   'HEOR': {
     description: 'HEOR in Commercial',
     deliverable: 'Support PAQ studies',
     priority: 'Value & Access',
     method: 'Study Updates, Extended Team',
-    channels: 'Quarterly, as needed'
+    channels: 'Team meetings'
   }
 };
 

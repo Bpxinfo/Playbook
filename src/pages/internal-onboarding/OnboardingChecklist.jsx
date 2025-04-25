@@ -38,7 +38,7 @@ const PreIntegrationPrep = () => {
               <CheckboxItem id="background-3" text="Relevant project summaries, examples, and support resources" />
             </li>
             <li>
-              <CheckboxItem id="background-4" text="Process OverviewCC" />
+              <CheckboxItem id="background-4" text="CCC Project Lifecycle" />
             </li>
           </ul>
         </section>
