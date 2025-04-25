@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Grants = () => {
   return (
@@ -26,7 +27,8 @@ const Grants = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
-                  {/* <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p> */}
+                  <p className="text-black">See <Link to="/processes/sops-and-resources" className="underline hover:text-red-700">SOPs and Resources</Link></p>
+                  <p className="text-black">Includes:</p>
                   <ul className="list-disc pl-6 mt-2 text-black">
                     <li>FRM-04327 Grant Approval Form (GAF)</li>
                     <li>FRM-07237 Notification of Acceptance of Grant Funding Request</li>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sponsorships = () => {
   return (
@@ -29,12 +30,12 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
-                  <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p>
+                  <p className="text-black">See <Link to="/processes/sops-and-resources" className="underline hover:text-red-700">SOPs and Resources</Link></p>
                 </div>
                 <div className="text-black">
-                  <h4 className="font-medium mb-2 text-black">Steeprock Submission Process</h4>
-                  <p className="italic text-black">[Coming Soon]</p>
-                  <p className="mt-2 text-black">Guidance: LINK: SYSTEMS {'->'} STEEPROCK</p>
+                  <h4 className="font-medium mb-2 text-black">Gilead Grants Portal</h4>
+                  <p className="italic text-black"><a href="https://gilead-grants.steeprockinc.com/" target="_blank" rel="noopener noreferrer">SteepRock</a></p>
+                  {/* <p className="mt-2 text-black"><span className="font-bold">SYSTEM:</span> STEEPROCK</p> */}
                 </div>
               </div>
             </div>
@@ -56,7 +57,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
-                  <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p>
+                  <p className="text-black">See <Link to="/processes/sops-and-resources" className="underline hover:text-red-700">SOPs and Resources</Link></p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Steeprock Submission Process</h4>

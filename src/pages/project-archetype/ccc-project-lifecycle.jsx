@@ -64,7 +64,7 @@ const CCCProjectLifecycle = () => {
           <section className="bg-white rounded-lg shadow-md p-6 transform transition-all hover:scale-[1.02]">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center gap-2">
               <Target className="w-6 h-6" />
-              Project Proposal Development
+              Project Proposal Preparation
             </h2>
             <p className="text-gray-700 mb-4">
               Below are the key steps and considerations for preparing qualified CCC Concepts that align
