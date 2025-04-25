@@ -18,7 +18,7 @@ const Sponsorships = () => {
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
                   <p className="text-black">Medical Sponsorships through Grants Portal (Normal path for CCC)</p>
-                  <p className="text-black">Medical Sponsorships {'->'} USMA (SEC - Michelle Brockman&apos;s group) {'->'} Approval {'->'} Legal / Compliance Review</p>
+                  <p className="text-black">Medical Sponsorships {'->'} USMA (SEC) {'->'} Approval {'->'} Legal / Compliance Review</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>

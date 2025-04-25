@@ -41,16 +41,16 @@ const Grants = () => {
               <div className="space-y-4 text-black">
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
-                  <p className="text-black">IMed activities (not supported through CCC, separate process, NEED LINK to redirect to)</p>
+                  <p className="text-black">IMed activities (not supported through CCC, separate process)</p>
                 </div>
-                <div className="text-black">
+                {/* <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
                   <p className="italic text-black">[Coming Soon]</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
                   <p className="text-black">LINK: SYSTEMS {'->'} STEEPROCK</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </section>
