@@ -30,7 +30,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
-                  <p className="text-black">See <Link to="/processes/sops-and-resources" className="underline hover:text-red-700">SOPs and Resources</Link></p>
+                  <p className="text-black">SOP under development</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Gilead Grants Portal</h4>
