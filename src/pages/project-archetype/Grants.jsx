@@ -30,7 +30,6 @@ const Grants = () => {
                     <li>FRM-07237 Notification of Acceptance of Grant Funding Request</li>
                     <li>FRM-07649 Educational Grant Letter</li>
                   </ul>
-                  <p className="mt-2 italic text-black">[Coming Soon]</p>
                 </div>
               </div>
             </div>

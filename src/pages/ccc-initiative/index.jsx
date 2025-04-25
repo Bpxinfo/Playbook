@@ -23,7 +23,7 @@ const CCCInitiativeHome = () => {
       color: "bg-purple-50"
     },
     {
-      title: "Stakeholders",
+      title: "Internal Stakeholders",
       description: "Understand the roles and responsibilities of key stakeholders in the CCC initiative.",
       path: "/ccc-overview/stakeholders",
       icon: Users,

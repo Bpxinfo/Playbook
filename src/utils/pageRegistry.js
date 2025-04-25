@@ -39,7 +39,7 @@ export const pageRegistry = {
     },
     '/ccc-overview/stakeholders': {
       component: () => import('@/pages/ccc-initiative/Stakeholders'),
-      title: 'Stakeholders'
+      title: 'Internal Stakeholders'
     },
     '/ccc-overview/patient-impact': {
       component: () => import('@/pages/ccc-initiative/PatientImpact'),

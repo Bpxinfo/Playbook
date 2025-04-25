@@ -62,7 +62,7 @@ const SearchPage = () => {
             'Objectives and CCC Overview',
             'Strategic Pillars',
             'Key Messaging',
-            'Stakeholders'
+            'Internal Stakeholders'
           ]
         }
       };

@@ -83,7 +83,7 @@ const MainLayout = ({ children }) => {
       items: [
         'Strategic Pillars',
         'Key Messaging',
-        'Stakeholders',
+        'Internal Stakeholders',
         'Patient Impact'
       ]
     },
