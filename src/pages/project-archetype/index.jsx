@@ -62,7 +62,7 @@ export default function ProjectArchetypeHome() {
           <h2 className="text-2xl text-red-800 mb-4">Framework Overview</h2>
           <div className="space-y-4">
               <p className="text-gray-700">
-              The CCC project archetypes framework streamlines the management of four key initiative types—collaborative studies, fee-for-service projects, sponsorships, and grants—by providing clear guidelines that ensure alignment with core principles, operational excellence, and regulatory compliance. Each archetype supports CCC's mission to elevate partners and improve community patient impact through structured governance, community trust-building, and tailored education.
+              The CCC project archetypes framework streamlines the management of four key initiative types—collaborative studies, fee-for-service projects, sponsorships, and grants—by providing clear guidance that ensure alignment with core principles, operational excellence, and regulatory compliance. Each archetype supports CCC's mission to elevate partners and improve community patient impact through structured governance, community trust-building, and tailored education.
               </p>
           </div>
         </div>

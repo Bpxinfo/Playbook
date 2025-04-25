@@ -23,7 +23,7 @@ const PatientImpact = () => {
     },
     {
       title: "Improved Provider and Patient Education",
-      description: "Our educational programs help providers andpatients better understand their treatment journey, leading to improved adherence and better-informed decision-making.",
+      description: "Our educational programs help providers and patients better understand their treatment journey, leading to improved adherence and better-informed decision-making.",
       icon: GraduationCap,
       color: "bg-green-50"
     }

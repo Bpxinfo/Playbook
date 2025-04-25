@@ -28,7 +28,7 @@ const stakeholderData = {
     deliverable: 'Provide input on projects, guidance, guardrails',
     priority: 'Advisors to the CCC',
     method: 'Meetings, Discussion',
-    channels: 'Bi-Weekly'
+    channels: 'Monthly'
   },
   'CCC Extended Team': {
     description: 'Informed & Consulted',

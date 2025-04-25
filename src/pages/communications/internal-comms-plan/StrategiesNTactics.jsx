@@ -53,7 +53,7 @@ const StrategiesNTactics = () => {
     {
       tactic: "Newsletters",
       purpose: "Information Sharing",
-      frequency: "Bi-weekly",
+      frequency: "Monthly",
       impact: "Medium",
       icon: BookOpen,
       color: "bg-purple-50"

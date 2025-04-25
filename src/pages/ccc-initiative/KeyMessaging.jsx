@@ -53,7 +53,7 @@ const KeyMessages = () => {
                 <div className="flex items-start ">
                   <ArrowRight className="w-5 h-5 text-red-800 mr-3 mt-1 flex-shrink-0 dark:text-black" />
                   <p className="text-gray-700 dark:text-black">
-                    The CCC initiative unites key partners nationwide to transform community cancer care through strategic collaboration and innovation. Guided by our mission to enhance patient outcomes, we identify impactful opportunities, address unmet needs, and implement scalable solutions that elevate oncology care. Aligned with our North Star—"Elevating Partners to Impact Community Patients"—we strive to improve the lives of patients receiving cancer care in their communities.
+                  The CCC initiative unites key partners across the US to transform community cancer care through strategic collaboration and innovation. Guided by our mission to enhance patient outcomes, we identify impactful opportunities, address unmet needs, and implement scalable solutions that elevate oncology care in the community setting. Aligned with our North Star—"Elevating Partners to Impact Community Patients"—we strive to improve the lives of patients receiving their cancer care in their communities.
                   </p>
                 </div>
               </div>
