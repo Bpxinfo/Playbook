@@ -24,6 +24,10 @@ const ISR = () => {
               <p className="mb-4 text-black">
                 For all ISRs, the responsibility for the regulatory sponsor requirements, including the design, conduct, analysis, and publication of the study lays not with Gilead, but with the investigator or the investigator's institution.
               </p>
+              <div className="bg-white p-4 rounded-lg text-black">
+                <p className="font-medium mb-2 text-black dark:text-black">System:</p>
+                <p className="text-black"><a href="https://gileadrnd.appiancloud.com/suite/sites/gs-isr" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GOptics</a></p>
+              </div>
               <div className="bg-blue-50 p-4 rounded-lg mb-4 text-black">
                 <p className="font-medium mb-2 text-black dark:text-black">After review of the ISR proposal, the submission should either be rejected or accepted with no changes requested. If the proposal is approved by the IRC, Gilead's role is limited to:</p>
                 <ul className="list-disc pl-6 text-black dark:text-black">
@@ -39,10 +43,7 @@ const ISR = () => {
                   <li>Minimum safety requirements are aligned to the standards defined per US Package Insert and Investigator Brochure/guidance documents.</li>
                 </ul>
               </div>
-              <div className="bg-pink-50 p-4 rounded-lg text-black">
-                <p className="font-medium mb-2 text-black dark:text-black">System:</p>
-                <p className="text-black"><a href="https://gileadrnd.appiancloud.com/suite/sites/gs-isr" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GOptics</a></p>
-              </div>
+   
             </div>
           </section>
         </div>

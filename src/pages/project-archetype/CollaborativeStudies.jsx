@@ -31,6 +31,10 @@ const CollaborativeStudies = () => {
                   <li>Collaborative study proposals are reviewed and approved by the GRC where required, and protocols are reviewed and approved by the appropriate Protocol Review Board.</li>
                 </ul>
               </div>
+              <div className="bg-white p-4 rounded-lg text-black">
+                <p className="font-medium mb-2 text-black dark:text-black">System:</p>
+                <p className="text-black"><a href="https://gileadrnd.appiancloud.com/suite/sites/gs-isr" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GOptics</a></p>
+              </div>
             </div>
           </section>
 
