@@ -27,7 +27,7 @@ const CCCFAQs = () => {
     },
     {
       question: "How can I get involved with CCC projects?",
-      answer: "Projects are selected based on alignment with CCC objectives, strategic pillars, and scientific merit. Interested sites should ensure they meet the partner selection criteria and can demonstrate commitment to improving community cancer care.\n\n📖 [Learn more in Processes](/processes)",
+      answer: "\n Please reach out to the CCC lead (sabrina.meyers@gilead.com) for any questions or additional details regarding CCC Projects.",
       icon: Briefcase,
       color: "bg-yellow-50 dark:bg-gray-800"
     },
