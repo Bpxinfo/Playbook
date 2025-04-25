@@ -90,7 +90,7 @@ const stakeholderData = {
     description: 'KADs\nMSLs\nMKALs',
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
     priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
-    method: 'Email\nTeams Chat\nSharePoint (MSLs)\nEgnyto (MKALs)',
+    method: 'Email\nTeams Chat\nCLM (Veeva)',
     channels: 'Team meetings'
   },
   'RWE': {

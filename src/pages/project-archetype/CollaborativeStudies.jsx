@@ -12,7 +12,7 @@ const CollaborativeStudies = () => {
         <div className="space-y-6">
           {/* Collaborative Studies Section */}
           <section className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-2xl text-red-800 mb-4">Collaborative Studies (GRC / LRC)</h2>
+            <h2 className="text-2xl text-red-800 mb-4">Collaborative Studies (Governed by GRC / LRC)</h2>
             <div className="bg-gray-50 p-4 rounded-lg text-black">
               <h4 className="font-medium mb-2 text-black">Objective / Overview</h4>
               <p className="mb-4 text-black">Per SOP-13096</p>
@@ -41,25 +41,23 @@ const CollaborativeStudies = () => {
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
-                  <h4 className="font-medium mb-2 text-black">Prospectives (GRC)</h4>
+                  <h4 className="font-medium mb-2 text-black">Prospective Studies (GRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes/processes-and-governance" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
-                    <li>Additional Governance (e.g. oPRB)</li>
-                    <li>Expected Timeline</li>
-                    <li>Involved Roles</li>
-                    <li>Project</li>
+                    <li>Prospective Data Generation (Additional Governance: oPRB)</li>
+                    <li>ISR / Collaboratives</li>
+                    <li>Implementation Sciences (PFIS)</li>
                   </ul>
                 </div>
                 
                 <div className="bg-white p-4 rounded-lg shadow text-black border-2 border-white">
-                  <h4 className="font-medium mb-2 text-black">Retrospectives (LRC)</h4>
+                  <h4 className="font-medium mb-2 text-black">Retrospective Studies (LRC)</h4>
                   <ul className="list-disc pl-6 text-black">
-                    <li><Link to="/processes/processes-and-governance" className="text-red-800 hover:text-red-600">FLOW Diagram</Link></li>
-                    <li>Additional Governance (e.g. oPRB)</li>
-                    <li>Expected Timeline</li>
-                    <li>Identify Journey, Experience</li>
+                    <li>Secondary Data Generation</li>
+                    <li>Real World Evidence</li>
+                    <li>Care Quality Improvement (PAQ)</li>
                   </ul>
                 </div>
+                <li><Link to="/processes/processes-and-governance" className="text-red-800 hover:text-red-600">CCC Project Lifecycle</Link></li>
               </div>
 
             </div>
