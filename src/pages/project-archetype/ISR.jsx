@@ -13,7 +13,10 @@ const ISR = () => {
             <div className="bg-gray-50 p-4 rounded-lg text-black">
               <h4 className="font-medium mb-2 text-black">Objective / Overview</h4>
               <p className="mb-4 text-black">
-                ISR: Investigator Sponsored Research Review Committee (IRC) is responsible for the review and approval of investigator-sponsored research proposals (i.e., non-Gilead Sponsored Research (GSR), non-collaborative). These proposals can include Gilead or non-Gilead products, may be disease-focused, may be interventional or non-interventional, and may collect primary data or make use of secondary data collected for other purposes.
+                Investigator-sponsored research (ISR) proposals are non-Gilead Sponsored Research (GSR) and are non-collaborative. These proposals can include Gilead or non-Gilead products, may be disease-focused, may be interventional or non-interventional, and may collect primary data or make use of secondary data collected for other purposes.
+              </p>
+              <p className="mb-4 text-black">
+                The IRC (Investigator Sponsored Research Review Committee) is responsible for the review and approval of ISRs.
               </p>
               <p className="mb-4 text-black">
                 An ISR study involving a Gilead product can only be initiated after regulatory approval of that Gilead product in the country where the external sponsor is located.
@@ -37,7 +40,7 @@ const ISR = () => {
                 </ul>
               </div>
               <div className="bg-pink-50 p-4 rounded-lg text-black">
-                <p className="font-medium mb-2 text-black dark:text-black">Governance:</p>
+                <p className="font-medium mb-2 text-black dark:text-black">System:</p>
                 <p className="text-black"><a href="https://gileadrnd.appiancloud.com/suite/sites/gs-isr" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GOptics</a></p>
               </div>
             </div>

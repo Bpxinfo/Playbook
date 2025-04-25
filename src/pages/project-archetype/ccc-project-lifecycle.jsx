@@ -60,6 +60,32 @@ const CCCProjectLifecycle = () => {
             </div>
           </section>
 
+          {/* Project Proposal Funnel Section */}
+          <section className="bg-white rounded-lg shadow-md p-6 transform transition-all hover:scale-[1.02]">
+            <h2 className="text-2xl text-red-800 mb-4 flex items-center gap-2">
+              <Target className="w-6 h-6" />
+              Project Proposal Funnel
+            </h2>
+            <p className="text-gray-700 mb-4">
+              Below are the key steps and considerations for preparing qualified CCC Concepts that align
+              with CCC Criteria:
+            </p>
+            <ul className="list-none space-y-3 text-gray-700">
+              <li className="flex items-center gap-2">
+                Qualified CCC Concepts [ISR/Collaborative Studies, Aligned with CCC Criteria]
+              </li>
+              <li className="flex items-center gap-2">
+                Describe how the project aligns with the CCC Pillars
+              </li>
+              <li className="flex items-center gap-2">
+                Describe how the partner fits with the CCC Selection Criteria
+              </li>
+              <li className="flex items-center gap-2">
+                CCC Project Ideas, Draft Concepts are tracked by the CCC Team
+              </li>
+            </ul>
+          </section>
+
           {/* Project Development */}
           <section className="bg-white rounded-lg shadow-md p-6 transform transition-all hover:scale-[1.02]">
             <h2 className="text-2xl text-red-800 mb-4 flex items-center gap-2">
@@ -159,35 +185,6 @@ const CCCProjectLifecycle = () => {
             </div>
           </section>
 
-          {/* Project Proposal Funnel Section */}
-          <section className="bg-white rounded-lg shadow-md p-6 transform transition-all hover:scale-[1.02]">
-            <h2 className="text-2xl text-red-800 mb-4 flex items-center gap-2">
-              <Target className="w-6 h-6" />
-              Project Proposal Funnel Material
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Below are the key steps and considerations for preparing qualified CCC Concepts that align
-              with CCC Criteria:
-            </p>
-            <ul className="list-none space-y-3 text-gray-700">
-              <li className="flex items-center gap-2">
-                Qualified CCC Concepts [ISR/Collaborative Studies, Aligned with CCC Criteria]
-              </li>
-              <li className="flex items-center gap-2">
-                Describe how the project aligns with the CCC Pillars
-              </li>
-              <li className="flex items-center gap-2">
-                Describe how the partner fits with the CCC Selection Criteria
-              </li>
-              <li className="flex items-center gap-2">
-                CCC Project Ideas, Draft Concepts are tracked by the CCC Team (
-                <a href="#!" className="text-blue-500 hover:text-blue-700 underline">
-                  LINK
-                </a>
-                )
-              </li>
-            </ul>
-          </section>
         </div>
       </div>
     </div>
