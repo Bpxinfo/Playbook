@@ -124,7 +124,7 @@ function App() {
                   <KeyMessages />
                 </ProtectedRoute>
               } />
-              <Route path="/ccc-overview/stakeholders" element={
+              <Route path="/ccc-overview/internal-stakeholders" element={
                 <ProtectedRoute>
                   <Stakeholders />
                 </ProtectedRoute>

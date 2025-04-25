@@ -24,6 +24,10 @@ const ISR = () => {
               <p className="mb-4 text-black">
                 For all ISRs, the responsibility for the regulatory sponsor requirements, including the design, conduct, analysis, and publication of the study lays not with Gilead, but with the investigator or the investigator's institution.
               </p>
+              <h4 className="font-medium mb-2 text-black">Examples</h4>
+              <ul className="list-disc pl-6 mb-4 text-black">
+                <li>No CCC ISR examples at this time.</li>
+               </ul>
               <div className="bg-white p-4 rounded-lg text-black">
                 <p className="font-medium mb-2 text-black dark:text-black">System:</p>
                 <p className="text-black"><a href="https://gileadrnd.appiancloud.com/suite/sites/gs-isr" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GOptics</a></p>

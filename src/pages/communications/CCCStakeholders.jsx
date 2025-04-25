@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const stakeholderGroups = {
   cccInternal: {
-    title: 'CCC Team - Core, Extended, Project Leads',
+    title: 'CCC Team\nCore, Extended, Project Leads',
     stakeholders: ['CCC Core Team', 'CCC Extended Team', 'CCC Project Leads']
   },
   leadershipTeams: {
@@ -132,7 +132,7 @@ const CCCStakeholders = () => {
                 : 'bg-white text-gray-900 hover:bg-gray-50'
             }`}
           >
-            <h3 className="text-lg font-medium mb-2">{group.title}</h3>
+            <h3 className="text-lg font-medium mb-2 whitespace-pre-line">{group.title}</h3>
             <p className="text-sm opacity-75">{group.stakeholders.length} stakeholders</p>
           </button>
         ))}
@@ -140,7 +140,7 @@ const CCCStakeholders = () => {
 
       {/* Stakeholder Details Table */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl text-red-800 mb-4">{stakeholderGroups[selectedGroup].title}</h2>
+        <h2 className="text-2xl text-red-800 mb-4 whitespace-pre-line">{stakeholderGroups[selectedGroup].title}</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto border-collapse text-sm text-gray-700">
             <thead className="bg-gray-100">

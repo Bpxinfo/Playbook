@@ -24,6 +24,13 @@ const CollaborativeStudies = () => {
                 <li>Provides the Sponsor with access to data and/or biological samples from previous Gilead Sponsored Research (GSR) trials.</li>
                 <li>Intends to use the data resulting from this research as part of a Gilead regulatory submission.</li>
               </ul>
+              <h4 className="font-medium mb-2 text-black">Examples</h4>
+              <ul className="list-disc pl-6 mb-4 text-black">
+                <li>BroadReach/Dartmouth/AON SocialHealth360 Study (in collaboration with the PFIS team)</li>
+                <li>West Clinic/Univ of TN Breast Disparities Study (in collaboration with the PFIS team)</li>
+                <li>ONCare Alliance Breast Racial Disparities Study (in collaboration with the PAQ team)</li>
+                <li>Integra Connect RWE 2L+ mTNBC Study (completed) (in collaboration with the USMA Strategy, PAQ, and RWE teams)</li>
+              </ul>
               <div className="bg-yellow-50 p-4 rounded-lg mb-4 text-black">
                 <p className="font-medium text-black dark:text-black">Note:</p>
                 <ul className="list-disc pl-6 text-black dark:text-black">
