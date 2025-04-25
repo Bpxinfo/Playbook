@@ -39,13 +39,13 @@ const CCCFAQs = () => {
     },
     {
       question: "How does CCC governance work?",
-      answer: "CCC governance includes:\n\n• CCC Leadership SteerCo: Advises and advocates and provides strategic direction\n\n• CCC Adjudication Committee: Serves two key purposes:\n   - Determines the appropriate division (i.e., Medical vs Commercial) within Gilead to route candidate initiatives for evaluation\n   - Maps candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e. ISR, grants, etc)\n\n• CCC Project Review Process: includes the CCC Adjudication Committee to start and then follows the appropriate internal Gilead review/approval process\n\n📖 [Learn more in Processes & Governance](/processes/processes)",
+      answer: "CCC governance includes:\n\n• CCC Leadership SteerCo: Advises and advocates and provides strategic direction\n\n• CCC Adjudication Committee: Serves two key purposes:\n   - Determines the appropriate division (i.e., Medical vs Managed Markets) within Gilead to route candidate initiatives for evaluation\n   - Maps candidate initiatives to the most appropriate existing internal Gilead review, approval & funding mechanisms (i.e. ISR, grants, etc)\n\n• CCC Project Review Process: includes the CCC Adjudication Committee to start and then follows the appropriate internal Gilead review/approval process\n\n📖 [Learn more in Processes & Governance](/processes/processes)",
       icon: Shield,
       color: "bg-orange-50 dark:bg-gray-800"
     },
     {
       question: "What are CCC's key objectives?",
-      answer: "Key objectives include:\n\n• Advancing Evidence-Based Solutions in the community oncology setting\n\n• Reducing Disparities in Cancer Care\n\n• Enhancing Provider and Patient Education\n\n• Improving Cancer Care Delivery through collaboration\n\n• Supporting positive change for partners, communities, and patients\n\n• Developing capabilities that optimize quality of care for diverse oncology populations\n\n📖 [Learn more in CCC Overview](/ccc-overview/objectives)",
+      answer: "Key objectives include:\n\n• Advancing Evidence-Based Solutions in the community oncology setting\n\n• Reducing Disparities in Cancer Care\n\n• Enhancing Provider and Patient Education\n\n• Improving Cancer Care Delivery through collaboration\n\n• Supporting positive change for partners, communities, and patients\n\n• Developing capabilities that optimize quality of care for diverse oncology populations\n\n📖 [Learn more in CCC Overview](/ccc-overview/)",
       icon: Goal,
       color: "bg-indigo-50 dark:bg-gray-800"
     },
