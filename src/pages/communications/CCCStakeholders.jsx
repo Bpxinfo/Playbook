@@ -45,17 +45,17 @@ const stakeholderData = {
     channels: 'Monthly'
   },
   'Executive Leadership': {
-    description: 'CCC reports to: Michael (MALT)\nSandrine (SLT)\nJohanna',
-    deliverable: 'Receive Updates, Approve Budgets, Strategic Direction',
+    description: 'Updates given to: Michael (MALT)\nSandrine (SLT)\nJohanna',
+    deliverable: 'Receive Updates, Approve Budgets, Endorse Strategic Direction',
     priority: 'Remove Roadblocks',
     method: 'Deck, Meetings, Email Updates, Updates from CCC Leadership SteerCo',
     channels: 'Bi-Annual'
   },
   'USMA Oncology LT': {
-    description: 'Functions include: USMA Strategy, MSL, SEC, PAQ',
+    description: 'USMA Strategy, MSL, SEC, PAQ',
     deliverable: 'Implementation and integration of CCC Strategy\nReceive CCC updates',
     priority: 'Implement objectives',
-    method: 'Presentations and meetings on objectives\nUSMA SharePoint\nEmail\nInstant Message',
+    method: 'Presentations and meetings on objectives\nUSMA SharePoint\nEmail\nTeams Chat',
     channels: 'Program and team meetings'
   },
   'Leadership SteerCo': {
@@ -69,14 +69,14 @@ const stakeholderData = {
     description: 'Patient Assistance & Quality',
     deliverable: 'Inform patients about PAQ, the services they provide and guide them through the application process',
     priority: 'Help patients access medications and medical care they might otherwise be unable to afford',
-    method: 'Team meetings\nEmail\nInstant Message\nSharePoint',
+    method: 'Team meetings\nEmail\nTeams Chat\nSharePoint',
     channels: 'Team meetings'
   },
   'GPFIS': {
     description: 'Global Patient Focused Implementation Sciences',
     deliverable: 'Involving patients more actively in their care',
     priority: 'Enhancing Communication\nEncouraging Active Participation in Care\nProviding Support and Resources and priorities',
-    method: 'Team meetings\nEmail\nInstant Message\nSharePoint',
+    method: 'Team meetings\nEmail\nTeams Chat\nSharePoint',
     channels: 'Team meetings'
   },
   'Managed Markets': {
@@ -90,7 +90,7 @@ const stakeholderData = {
     description: 'KADs\nMSLs\nMKALs',
     deliverable: 'Interact with external professionals to discuss CCC but must follow Community Cancer Collective (CCC) Legal & Compliance Guidance',
     priority: 'Review of CCC partnering plans and visit with external professionals\nReview/discuss published data and approved plans with external professionals',
-    method: 'Email\nInstant Message\nSharePoint (MSLs)\nEgnyto (MKALs)',
+    method: 'Email\nTeams Chat\nSharePoint (MSLs)\nEgnyto (MKALs)',
     channels: 'Team meetings'
   },
   'RWE': {
