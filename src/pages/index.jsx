@@ -24,63 +24,63 @@ const HomePage = () => {
       description: "Understand our mission, vision, and strategic pillars",
       icon: Building,
       path: "/ccc-overview",
-      color: "bg-green-50"
+      color: "bg-rose-50"
     },
     {
       title: "Project Archetypes",
       description: "Templates and frameworks for different project types",
       icon: Folders,
       path: "/project-archetype",
-      color: "bg-teal-50"
+      color: "bg-orange-50"
     },
     {
       title: "Processes & Governance",
       description: "Learn about our operational frameworks",
       icon: Settings,
       path: "/processes",
-      color: "bg-pink-50"
+      color: "bg-yellow-50"
     },
     {
       title: "Communications",
       description: "Access internal and external communication strategies",
       icon: MessageSquare,
       path: "/communications",
-      color: "bg-purple-50"
+      color: "bg-green-50"
     },
     {
       title: "Internal Onboarding",
       description: "Guide for new team member integration",
       icon: UserPlus,
       path: "/internal-onboarding",
-      color: "bg-yellow-50"
+      color: "bg-cyan-50"
     },
     {
       title: "Legal & Compliance",
       description: "Understanding regulatory requirements and compliance protocols",
       icon: Shield,
       path: "/compliance",
-      color: "bg-indigo-50"
+      color: "bg-teal-50"
     },
     {
       title: "Systems",
       description: "Explore our digital and manual systems",
       icon: Database,
       path: "/systems",
-      color: "bg-orange-50"
+      color: "bg-indigo-50"
     },
     {
       title: "Glossary of Terms",
       description: "Definitions of key terms and concepts",
       icon: BookOpen,
       path: "/glossary",
-      color: "bg-rose-50"
+      color: "bg-purple-50"
     },
     {
       title: "FAQs",
       description: "Common questions and detailed answers",
       icon: HelpCircle,
       path: "/faqs",
-      color: "bg-cyan-50"
+      color: "bg-pink-50"
     }
   ];
 

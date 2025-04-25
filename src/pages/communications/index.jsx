@@ -26,21 +26,21 @@ const CommunicationPlanHome = () => {
           description: "Communication channels and their usage",
           path: "/communications/channels",
           icon: Share2,
-          color: "bg-blue-50"
+          color: "bg-green-50"
         },
         {
           title: "Cadence",
           description: "Different message passing systems and flows",
           path: "/communications/cadence",
           icon: GitCommit,
-          color: "bg-blue-50"
+          color: "bg-teal-50"
         },
         {
           title: "CCC Stakeholders",
           description: "Key stakeholders and their communication needs",
           path: "/communications/ccc-stakeholders",
           icon: Users,
-          color: "bg-blue-50"
+          color: "bg-indigo-50"
         },
         // {
         //   title: "Communication Path",
