@@ -20,11 +20,13 @@ const Grants = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Coming Soon]</p>
+                  <ul className="list-disc pl-6 mb-4 text-black">
+                    <li>No CCC grant examples at this time.</li>
+                  </ul>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
-                  <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p>
+                  {/* <p className="text-black">LINKs to COMPLIANCE, GOVERNANCE, SOPs</p> */}
                   <ul className="list-disc pl-6 mt-2 text-black">
                     <li>FRM-04327 Grant Approval Form (GAF)</li>
                     <li>FRM-07237 Notification of Acceptance of Grant Funding Request</li>
