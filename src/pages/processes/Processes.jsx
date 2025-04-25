@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { 
   AlertTriangle, Info, Building, Users2, BookOpen, 
-  Target, Shield, FileCheck, ChevronRight, Briefcase,
+  Target, Shield, FileCheck, CheckCheck, ChevronRight, Briefcase,
   Settings, UserCheck, Network, LineChart, CheckCircle2,
-  FileText, Flag, Brain, Workflow, DollarSign, Users,
+  FileText, Flag, Brain, Workflow, DollarSign, Users, UsersRound,
   ExternalLink
 } from 'lucide-react';
 import advisory from '../../assets/advisory.jpg'
@@ -43,11 +43,14 @@ const ProcessesAndGovernance = () => {
 
   const selectionCriteria = [
     { text: "Subject matter expertise", icon: Brain },
-    { text: "Data and IT infrastructure", icon: Settings },
-    { text: "Analytic/innovative culture", icon: Briefcase },
-    { text: "Institutional reputation", icon: Building },
-    { text: "Geographic location", icon: Target },
-    { text: "Project capabilities", icon: FileCheck }
+    { text: "Has community presence", icon: UsersRound },   
+    { text: "IT infrastructure", icon: Settings },
+    { text: "Clinical data infrastructure and research capabilities", icon: Settings },   
+    { text: "Minimal scope of services offered", icon: Briefcase },
+    { text: "Practice type", icon: CheckCheck },
+    { text: "Geographic reach / location", icon: Target },
+    { text: "Willingness to partner with Gilead", icon: FileCheck }
+    { text: "Reputation", icon: Building },
   ];
 
   const projectLimitations = [
@@ -207,7 +210,7 @@ const ProcessesAndGovernance = () => {
               <div className="space-y-6">
                 <div>
                   <p className="text-gray-700 mb-4">CCC projects and partners will be selected based on neutral, objective criteria. Partners will be selected based on, but not limited to, the following criteria:</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {selectionCriteria.map((item, index) => {
                       const IconComponent = item.icon;
                       return (

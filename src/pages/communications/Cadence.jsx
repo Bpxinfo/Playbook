@@ -101,6 +101,13 @@ const Cadence = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Review new key projects, discuss issues/delays in current projects, governance updates</td>
                     </tr>
                     <tr>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Leadership SteerCo</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700" rowSpan="1">Bi-Monthly</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Meeting</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Lead + key stakeholders within Medical Affairs</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Review new key projects, discuss issues/delays in current projects, governance updates</td>
+                    </tr>
+                    <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CCC Extended Team</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 relative row-span-bg-light-blue" rowSpan="2">
                         <span className="cell-content-above-bg">Quarterly</span>
