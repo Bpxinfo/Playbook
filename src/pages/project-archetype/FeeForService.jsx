@@ -20,7 +20,12 @@ const FeeForService = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Coming Soon]</p>
+                    <ul className="list-disc pl-6 mb-4 text-black">
+                    <li>ACCC/AONN Patient Navigation Survey (completed) (in collaboration with the PFIS, SEC, and Gov’t Affairs teams)</li>
+                    <li>MantaCares Patient Planner (Digital and Physical) (completed) (in collaboration with the PFIS team)</li>
+                    <li>Ontada/McKesson eLearn Now and PeerTrax+  Programs (in collaboration with the MM team)</li>
+                    <li>Viver Health mBC Guide (in collaboration with the PFIS team)</li>
+                  </ul>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
