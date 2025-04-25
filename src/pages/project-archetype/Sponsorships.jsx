@@ -22,7 +22,7 @@ const Sponsorships = () => {
                 </div>
                 <div className="space-y-4 text-black">
                   <h4 className="font-medium mb-2 text-black">Process</h4>
-                  <p className="text-black">Please submit all medical sponsorship requests to the CCC Lead [Sabrina Meyers (sabrina.meyers@gilead.com)]. Sabrina will review and discuss with SEC Lead (Michelle Brockman). If approved, we will request that the site/organization submit their request/proposal directly to the Gilead SteepRock Grants Portal.</p>
+                  <p className="text-black">Please submit all medical sponsorship requests to the CCC Lead [Sabrina Meyers (<a href="mailto:sabrina.meyers@gilead.com" className="underline hover:text-red-700">sabrina.meyers@gilead.com</a>)]. Sabrina will review and discuss with SEC Lead (Michelle Brockman). If approved, we will request that the site/organization submit their request/proposal directly to the Gilead SteepRock Grants Portal.</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>

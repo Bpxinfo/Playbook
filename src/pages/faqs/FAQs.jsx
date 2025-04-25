@@ -27,7 +27,11 @@ const CCCFAQs = () => {
     },
     {
       question: "How can I get involved with CCC projects?",
-      answer: "\n Please reach out to the CCC lead (sabrina.meyers@gilead.com) for any questions or additional details regarding CCC Projects.",
+      answer: (
+        <>
+          {"\n"} Please reach out to the CCC lead (<a href="mailto:sabrina.meyers@gilead.com" className="underline hover:text-red-700">sabrina.meyers@gilead.com</a>) for any questions or additional details regarding CCC Projects.
+        </>
+      ),
       icon: Briefcase,
       color: "bg-yellow-50 dark:bg-gray-800"
     },
@@ -62,6 +66,27 @@ const CCCFAQs = () => {
       color: "bg-yellow-50 dark:bg-gray-800"
     }
   ];
+
+  // Helper function to render paragraphs and link the specific email
+  const renderParagraphWithEmailLink = (paragraph) => {
+    const email = "sabrina.meyers@gilead.com";
+    const parts = paragraph.split(email);
+    if (parts.length <= 1) {
+      return paragraph; // Email not found
+    }
+    // Reconstruct the paragraph with the linked email
+    return parts.reduce((acc, part, i) => {
+      acc.push(part);
+      if (i < parts.length - 1) {
+        acc.push(
+          <a key={`email-${i}`} href={`mailto:${email}`} className="underline hover:text-red-700">
+            {email}
+          </a>
+        );
+      }
+      return acc;
+    }, []);
+  };
 
   return (
     <div className="p-4">
@@ -101,23 +126,30 @@ const CCCFAQs = () => {
                 
                 <div className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="p-6 pt-0">
-                    {faq.answer.split('\n').map((paragraph, pIndex) => {
-                      if (paragraph.includes('[Learn more in')) {
-                        const [text, link] = paragraph.match(/\[(.*?)\]\((.*?)\)/).slice(1);
+                    {typeof faq.answer === 'string' ? (
+                      faq.answer.split('\n').map((paragraph, pIndex) => {
+                        if (paragraph.includes('[Learn more in')) {
+                          const match = paragraph.match(/\[(.*?)\]\((.*?)\)/);
+                          if (match) {
+                            const [_, text, link] = match;
+                            return (
+                              <p key={pIndex} className="text-gray-700 dark:text-gray-300 mt-4">
+                                <span className="cursor-pointer text-red-800 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300" onClick={() => navigate(link)}>
+                                  📖 {text}
+                                </span>
+                              </p>
+                            );
+                          }
+                        }
                         return (
-                          <p key={pIndex} className="text-gray-700 dark:text-gray-300 mt-4">
-                            <span className="cursor-pointer text-red-800 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300" onClick={() => navigate(link)}>
-                              {text}
-                            </span>
+                          <p key={pIndex} className={`text-gray-700 dark:text-gray-300 ${paragraph.trim().startsWith('•') ? 'mt-3' : 'mb-2'}`}>
+                            {renderParagraphWithEmailLink(paragraph)}
                           </p>
                         );
-                      }
-                      return (
-                        <p key={pIndex} className={`text-gray-700 dark:text-gray-300 ${paragraph.trim().startsWith('•') ? 'mt-3' : 'mb-2'}`}>
-                          {paragraph}
-                        </p>
-                      );
-                    })}
+                      })
+                    ) : (
+                      <div className="text-gray-700 dark:text-gray-300 whitespace-pre-line">{faq.answer}</div>
+                    )}
                   </div>
                 </div>
               </div>
