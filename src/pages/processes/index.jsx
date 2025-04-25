@@ -20,7 +20,7 @@ const ProcessesHome = () => {
       color: "bg-purple-50"
     },
     {
-      title: "SOPs & Resources",
+      title: "SOPs and Resources",
       description: "Access to standard operating procedures, forms, and other essential documentation.",
       path: "/processes/sops-and-resources",
       icon: FileText,

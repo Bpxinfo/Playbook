@@ -49,7 +49,7 @@ const ProcessesAndGovernance = () => {
     { text: "Minimal scope of services offered", icon: Briefcase },
     { text: "Practice type", icon: CheckCheck },
     { text: "Geographic reach / location", icon: Target },
-    { text: "Willingness to partner with Gilead", icon: FileCheck }
+    { text: "Willingness to partner with Gilead", icon: FileCheck },
     { text: "Reputation", icon: Building },
   ];
 
