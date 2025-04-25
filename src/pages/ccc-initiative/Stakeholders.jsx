@@ -9,7 +9,7 @@ const Stakeholders = () => {
     {
       title: "CCC Internal Stakeholders",
       description: [
-        "The CCC Leadership Steering Committee provides strategic guidance and oversight for the Community Cancer Collective initiative. They require regular, concise updates to make informed decisions on project priorities and approvals.",
+        "The CCC Leadership Steering Committee provides strategic guidance and oversight for the Community Cancer Collective initiative.",
         "The CCC Core Team executes strategic initiatives of the program, ensuring alignment with organizational goals and stakeholder needs.",
         "The CCC Extended Team supports program implementation through specialized expertise and cross-functional collaboration, contributing to the overall success of the initiative."
       ],

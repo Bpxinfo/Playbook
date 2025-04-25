@@ -10,6 +10,12 @@ const PatientImpact = () => {
 
   const impactAreas = [
     {
+      title: "Evidence-Based Care",
+      description: "By bridging the gap between clinical trials and community implementation, we're ensuring patients receive the most effective, evidence-based treatments available.",
+      icon: Stethoscope,
+      color: "bg-purple-50"
+    },
+    {
       title: "Enhanced Access to Care",
       description: "Through our community partnerships and initiatives, we're improving access to quality cancer care in underserved regions, bringing advanced treatments closer to where patients live.",
       icon: Building,
@@ -20,12 +26,6 @@ const PatientImpact = () => {
       description: "Our educational programs help providers andpatients better understand their treatment journey, leading to improved adherence and better-informed decision-making.",
       icon: GraduationCap,
       color: "bg-green-50"
-    },
-    {
-      title: "Evidence-Based Care",
-      description: "By bridging the gap between clinical trials and community implementation, we're ensuring patients receive the most effective, evidence-based treatments available.",
-      icon: Stethoscope,
-      color: "bg-purple-50"
     }
   ];
 
