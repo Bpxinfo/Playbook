@@ -153,7 +153,7 @@ export const pageRegistry = {
     },
     '/processes/sops-and-resources': {
       component: () => import('@/pages/processes/RandD'),
-      title: 'SOPs & Resources'
+      title: 'SOPs and Resources'
     },
   
     // Compliance

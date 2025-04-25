@@ -102,7 +102,7 @@ const MainLayout = ({ children }) => {
       title: 'Processes & Governance',
       items: [
         'Processes and Governance',
-        'SOPs & Resources'
+        'SOPs and Resources'
       ]
     },
     'communications': {
@@ -828,7 +828,7 @@ const MainLayout = ({ children }) => {
                   </a>
                   <Link to="/processes/sops-and-resources" className="flex items-center px-4 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <Database className="w-4 h-4 mr-2" />
-                    SOPs & Resources
+                    SOPs and Resources
                   </Link>
                 </div>
               </div>

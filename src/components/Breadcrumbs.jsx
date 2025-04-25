@@ -30,8 +30,8 @@ const Breadcrumbs = () => {
       label: 'CCC Stakeholders',
       parent: 'internal-comms-plan'
     },
-    'strategies-&-tactics': {
-      label: 'Strategies & Tactics',
+    'strategies-and-tactics': {
+      label: 'Strategies and Tactics',
       parent: 'internal-comms-plan'
     },
     'timeline': {
@@ -151,7 +151,7 @@ const Breadcrumbs = () => {
       parent: 'processes'
     },
     'sops-and-resources': {
-      label: 'SOPs & Resources',
+      label: 'SOPs and Resources',
       parent: 'processes'
     },
     // Compliance
