@@ -70,19 +70,11 @@ const CCCProjectLifecycle = () => {
               Below are the key steps and considerations for preparing qualified CCC Concepts that align
               with CCC Criteria:
             </p>
-            <ul className="list-none space-y-3 text-gray-700">
-              <li className="flex items-center gap-2">
-                Qualified CCC Concepts [ISR/Collaborative Studies, Aligned with CCC Criteria]
-              </li>
-              <li className="flex items-center gap-2">
-                Describe how the project aligns with the CCC Pillars
-              </li>
-              <li className="flex items-center gap-2">
-                Describe how the partner fits with the CCC Selection Criteria
-              </li>
-              <li className="flex items-center gap-2">
-                CCC Project Ideas, Draft Concepts are tracked by the CCC Team
-              </li>
+            <ul className="list-disc pl-6 mb-4 text-black">
+            <li>Qualified CCC Concepts (ISR/Collaborative Studies aligned with CCC Criteria)</li>
+              <li>Describe how the project aligns with the CCC Pillars</li>
+              <li>Describe how the partner fits with the CCC Selection Criteria</li>
+              <li>CCC Project Ideas, Draft Concepts are tracked by the CCC Team</li>
             </ul>
           </section>
 
