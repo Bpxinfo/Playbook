@@ -22,7 +22,10 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Coming Soon]</p>
+                  <ul className="list-disc pl-6 mb-4 text-black">
+                    <li>ACCC projects – VA Disparities, AI in Cancer Care Delivery, and ACORI 1.0 & 2.0 (in collaboration with the SEC team)</li>
+                    <li>ACS projects – VOICES of Black Women Population Cohort Study and Improving Treatment of Advanced Breast Cancer Initiative (in collaboration with the SEC, Pt Advocacy, and PFIS teams)</li>
+                  </ul>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
@@ -47,7 +50,9 @@ const Sponsorships = () => {
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
-                  <p className="italic text-black">[Coming Soon]</p>
+                  <ul className="list-disc pl-6 mb-4 text-black">
+                    <li>No CCC corporate sponsorship examples at this time.</li>
+                  </ul>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Guidance</h4>
