@@ -18,8 +18,11 @@ const Sponsorships = () => {
               <div className="space-y-4 text-black">
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Description</h4>
-                  <p className="text-black">Medical Sponsorships through Grants Portal (Normal path for CCC)</p>
-                  <p className="text-black">Medical Sponsorships {'->'} USMA (SEC) {'->'} Approval {'->'} Legal / Compliance Review</p>
+                  <p className="text-black">All Medical Sponsorships should be submitted through the GIlead SteepRock Grants Portal.</p>
+                </div>
+                <div className="space-y-4 text-black">
+                  <h4 className="font-medium mb-2 text-black">Process</h4>
+                  <p className="text-black">Please submit all medical sponsorship requests to the CCC Lead [Sabrina Meyers (sabrina.meyers@gilead.com)]. Sabrina will review and discuss with SEC Lead (Michelle Brockman). If approved, we will request that the site/organization submit their request/proposal directly to the Gilead SteepRock Grants Portal.</p>
                 </div>
                 <div className="text-black">
                   <h4 className="font-medium mb-2 text-black">Examples</h4>
