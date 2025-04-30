@@ -30,18 +30,112 @@ const SearchPage = () => {
     try {
       // Get the navigation items from your layout or context
       const navigationItems = {
-        'playbook-app-overview': {
-          title: 'Playbook App Overview',
-          items: ['Objectives']
+        'playbook-overview': {
+          title: 'Playbook Overview',
         },
-        'ccc-initiative': {
-          title: 'CCC Initiative Overview',
+        'ccc-overview': {
+          title: 'CCC Overview',
           items: [
-            'Objectives and CCC Overview',
             'Strategic Pillars',
             'Key Messaging',
-            'Internal Stakeholders'
+            'Internal Stakeholders',
+            'Patient Impact'
           ]
+        },
+        'project-archetype': {
+          title: 'Projects Archetypes',
+          items: [
+            'CCC Project Lifecycle',
+            'Collaborative Studies',
+            'ISRs',
+            'Fee For Service',
+            'Sponsorships',
+            'Grants',
+          ]
+        },
+        'processes': {
+          title: 'Processes & Governance',
+          items: [
+            'Processes and Governance',
+            'SOPs and Resources'
+          ]
+        },
+        'communications': {
+          title: 'Communications',
+          items: [
+            'Channels',
+            'Cadence',
+            'CCC Stakeholders',
+          ]
+        },
+        'internal-onboarding': {
+          title: 'Internal Onboarding',
+          items: [],
+          subsections: [
+            {
+              id: 'ccc-core',
+              title: 'CCC Core',
+              items: [
+                { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-core#onboarding-checklist' },
+                { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-core#welcome-orientation' },
+                { title: 'Immerse, Contribute', path: '/internal-onboarding/ccc-core#immerse-contribute' },
+                { title: 'Deepen Engagement', path: '/internal-onboarding/ccc-core#deepen-engagement' },
+                { title: 'Full Integration', path: '/internal-onboarding/ccc-core#full-integration' },
+                { title: 'Ongoing Support', path: '/internal-onboarding/ccc-core#ongoing-support' },
+              ]
+            },
+            {
+              id: 'ccc-extended',
+              title: 'CCC Extended',
+              items: [
+                { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-extended#onboarding-checklist' },
+                { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-extended#welcome-orientation' },
+                { title: 'Ongoing Support', path: '/internal-onboarding/ccc-extended#ongoing-support' },
+              ]
+            },
+            {
+              id: 'ccc-leadership-steerco',
+              title: 'CCC Leadership SteerCo',
+              items: [
+                { title: 'Onboarding Checklist', path: '/internal-onboarding/ccc-leadership-steerco#onboarding-checklist' },
+                { title: 'Welcome Orientation', path: '/internal-onboarding/ccc-leadership-steerco#welcome-orientation' },
+                { title: 'Ongoing Support', path: '/internal-onboarding/ccc-leadership-steerco#ongoing-support' },
+              ]
+            },
+            {
+              id: 'field-team',
+              title: 'Field Team',
+              items: [
+                { title: 'Onboarding Checklist', path: '/internal-onboarding/field-team#onboarding-checklist' },
+                { title: 'Welcome Orientation', path: '/internal-onboarding/field-team#welcome-orientation' },
+                { title: 'Ongoing Support', path: '/internal-onboarding/field-team#ongoing-support' },
+              ]
+            },
+            {
+              id: 'project-leads',
+              title: 'Project Leads',
+              items: [
+                { title: 'Onboarding Checklist', path: '/internal-onboarding/project-leads#onboarding-checklist' },
+                { title: 'Welcome Orientation', path: '/internal-onboarding/project-leads#welcome-orientation' },
+                { title: 'Immerse, Contribute', path: '/internal-onboarding/project-leads#immerse-contribute' },
+                { title: 'Deepen Engagement', path: '/internal-onboarding/project-leads#deepen-engagement' },
+                { title: 'Full Integration', path: '/internal-onboarding/project-leads#full-integration' },
+                { title: 'Ongoing Support', path: '/internal-onboarding/project-leads#ongoing-support' },
+              ]
+            }
+          ]
+        },
+        'compliance': {
+          title: 'Legal & Compliance'
+        },
+        'systems': {
+          title: 'Systems'
+        },
+        'glossary': {
+          title: 'Glossary of Terms'
+        },
+        'faqs': {
+          title: 'FAQs'
         }
       };
 
