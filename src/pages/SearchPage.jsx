@@ -1,5 +1,5 @@
 // src/pages/SearchPage.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import useContentSearch from '../hooks/useContentSearch';
 import { performGlobalSearch } from '../utils/searchUtils';
@@ -8,37 +8,15 @@ import SearchResults from '../components/SearchResults';
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Start with loading true
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const searchTerm = searchParams.get('q') || '';
   const { searchContent, indexAllContent } = useContentSearch();
   const location = useLocation();
+  const isInitialized = React.useRef(false);
 
-  // Ensure content is indexed when the search page loads
-  useEffect(() => {
-    const initializeSearch = async () => {
-      try {
-        console.log('SearchPage: Starting content indexing');
-        const indexedPages = await indexAllContent();
-        console.log(`SearchPage: Indexed ${indexedPages} pages`);
-        
-        // If we have a search term, perform the search immediately
-        if (searchTerm && searchTerm.trim().length > 1) {
-          await performSearch();
-        } else {
-          setIsLoading(false);
-        }
-      } catch (err) {
-        console.error('SearchPage: Error during initialization:', err);
-        setError('Failed to initialize search. Please try again.');
-        setIsLoading(false);
-      }
-    };
-
-    initializeSearch();
-  }, [indexAllContent, searchTerm]);
-
-  const performSearch = async () => {
+  // Memoize the search function to prevent unnecessary re-renders
+  const performSearch = useCallback(async () => {
     if (!searchTerm || searchTerm.trim().length <= 1) {
       setResults([]);
       setIsLoading(false);
@@ -91,38 +69,61 @@ const SearchPage = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [searchTerm, searchContent]);
 
-  // Perform search when search term changes
+  // Initialize search when component mounts
   useEffect(() => {
+    if (isInitialized.current) return;
+    
+    const initializeSearch = async () => {
+      try {
+        console.log('SearchPage: Starting content indexing');
+        const indexedPages = await indexAllContent();
+        console.log(`SearchPage: Indexed ${indexedPages} pages`);
+        
+        // After indexing, perform search if we have a term
+        if (searchTerm && searchTerm.trim().length > 1) {
+          await performSearch();
+        } else {
+          setIsLoading(false);
+        }
+        
+        isInitialized.current = true;
+      } catch (err) {
+        console.error('SearchPage: Error during initialization:', err);
+        setError('Failed to initialize search. Please try again.');
+        setIsLoading(false);
+      }
+    };
+
+    initializeSearch();
+  }, [indexAllContent, performSearch, searchTerm]);
+
+  // Handle search term changes
+  useEffect(() => {
+    if (!isInitialized.current) return;
+    
     if (searchTerm && searchTerm.trim().length > 1) {
       performSearch();
+    } else {
+      setResults([]);
+      setIsLoading(false);
     }
-  }, [searchTerm]);
-
-  if (error) {
-    return (
-      <div className="p-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Search Results</h1>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <p className="text-red-600">{error}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  }, [searchTerm, performSearch]);
 
   return (
-    <div className="p-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-light text-white mb-6 text-center bg-red-800 p-4 uppercase">Search Results</h1>
-        <SearchResults 
-          results={results} 
-          searchTerm={searchTerm} 
-          isLoading={isLoading} 
-        />
-      </div>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-light text-red-800 mb-8">Search Results</h1>
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          {error}
+        </div>
+      )}
+      <SearchResults 
+        results={results} 
+        searchTerm={searchTerm} 
+        isLoading={isLoading} 
+      />
     </div>
   );
 };

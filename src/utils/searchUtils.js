@@ -190,14 +190,21 @@ const searchThroughNavigation = (query, navigationItems) => {
         }
 
         subsection.items?.forEach(item => {
-          if (item.toLowerCase().includes(normalizedQuery)) {
+          if (item instanceof String && item.toLowerCase().includes(normalizedQuery)) {
             results.push({
               title: item,
               path: `/${key}/${subsection.id}/${item.toLowerCase().replace(/\s+/g, '-')}`,
               excerpt: `${section.title} > ${subsection.title} > ${item}`,
               relevance: 1
             });
-          }
+          } else if (item.title?.toLowerCase().includes(normalizedQuery)) {
+            results.push({
+              title: item.title,
+              path: item.path,
+              excerpt: `${section.title} > ${subsection.title}`,
+              relevance: 2
+          });
+        }
         });
       });
     }
